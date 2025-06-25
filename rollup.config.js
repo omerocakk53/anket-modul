@@ -2,7 +2,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss'; // ✅ rollup için doğru plugin
-import tailwindcss from '@tailwindcss/postcss';
+import tailwindcss from 'tailwindcss';
 import autoprefixer from 'autoprefixer';
 import babel from '@rollup/plugin-babel';
 
@@ -29,9 +29,9 @@ export default {
     }),
     commonjs(),
     postcss({
-      extract: 'styles.css',
-      minimize: true,
+      inject: false,   // CSS'i JS içine inject etmez, yani CSS hiç dahil edilmez
       plugins: [tailwindcss(), autoprefixer()],
+      minimize: false,
     }),
     babel({
       exclude: 'node_modules/**',

@@ -1,31 +1,34 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: ['./src/**/*.{js,jsx}'],
+    content: [
+        "./**/*.{js,jsx,ts,tsx}", // tüm klasörleri tarar
+        "./components/**/*.{js,jsx}", // component'lerin olduğu klasör varsa
+    ],
     theme: {
         extend: {
-            // Renklerini buraya ekleyebilirsin
             colors: {
-                primary: {
-                    DEFAULT: '#3B82F6',
-                    light: '#60A5FA',
-                    dark: '#2563EB',
-                    text: '#ffffff',
-                },
-                secondary: {
-                    DEFAULT: '#10B981',
-                    light: '#34D399',
-                    dark: '#059669',
-                },
-                neutral: {
-                    light: '#F9FAFB',
-                    DEFAULT: '#E5E7EB',
-                    dark: '#6B7280',
-                    darkest: '#111827',
-                    white: '#ffffff',
-                },
-            },
-            fontFamily: {
-                sans: ['Inter', 'sans-serif'], // veya senin tercih ettiğin font
+                primary: "#4F46E5",
+                "primary-light": "#6366F1",
+                "primary-dark": "#4338CA",
+                "primary-text": "#ffffff",
+                "primary-darktext": "#000077",
+
+                secondary: "#10B981",
+                "secondary-light": "#34D399",
+                "secondary-dark": "#059669",
+
+                "neutral-white": "#ffffff",
+                "neutral-light": "#f3f4f6",
+                neutral: "#e5e7eb",
+                "neutral-dark": "#9ca3af",
+                "neutral-darkest": "#6b7280",
+
+                danger: "#ef4444",
+                "danger-dark": "#cc0000",
+
+                success: "#22c55e",
+                warning: "#eab308",
+                info: "#3b82f6",
             },
         },
     },
