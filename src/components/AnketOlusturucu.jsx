@@ -38,7 +38,7 @@ import { AnketiGüncelle } from '../services/AnketiGüncelle';
 import { fetchSurveyById } from '../services/AnketleriGetir';
 import { useParams } from "react-router-dom";
 // import { checkTokenValidity } from '../services/tokenHelper';
-
+import { useNavigate, useLocation } from "react-router-dom";
 import Header from '../components/common/Header'
 import authService from '../services/authService';
 function AnketOlusturucu() {
