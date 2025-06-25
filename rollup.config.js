@@ -36,7 +36,9 @@ export default {
     babel({
       exclude: 'node_modules/**',
       babelHelpers: 'bundled',
-      presets: ['@babel/preset-react'],
+      presets: [
+        ['@babel/preset-react', { runtime: 'automatic' }]
+      ],
       extensions: ['.js', '.jsx'],
     }),
   ],
