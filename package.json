@@ -14,8 +14,7 @@
     "build:js": "rollup -c",
     "build": "npm run build:css && npm run build:js",
     "clean": "rm -rf dist",
-    "prepare": "npm run build",
-    "generate:exports": "node generate-exports.js"
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
