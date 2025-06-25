@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { FaTrash } from "react-icons/fa";
-import ModalLayout from "../Components/layouts/ModalLayout";
+import ModalLayout from "../components/layouts/ModalLayout";
 import InputNumber from 'rc-input-number';
 import 'rc-input-number/assets/index.css';
-import ImageChoice from "../Components/ImageChoice";
+import ImageChoice from "../components/ImageChoice";
 
 function ImageChoiceSettingsModal({
   isOpen,

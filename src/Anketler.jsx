@@ -2,18 +2,18 @@ import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import Sidebar from "../Components/common/Sidebar";
-import Header from "../Components/common/Header";
-import FilterSortSearch from "../Components/common/FilterSortSearch";
-import AnketListele from "./AnketListele";
-import CreateSurveyModal from "../Components/modals/CreateSurveyModal";
-import CreateNewGroupModal from "../Components/modals/CreateNewGroupModal";
+import Sidebar from "./components/common/Sidebar";
+import Header from "./components/common/Header";
+import FilterSortSearch from "./components/common/FilterSortSearch";
+import AnketListele from "./pages/AnketListele";
+import CreateSurveyModal from "./components/modals/CreateSurveyModal";
+import CreateNewGroupModal from "./components/modals/CreateNewGroupModal";
 
-import { createSurvey } from "../Services/AnketKaydedici";
-import { decodeToken } from '../Services/tokenHelper';
-import authService from '../Services/authService';
-import { getUser } from "../Services/user";
-import { getSurveyById } from "../Services/AnketleriGetir";
+import { createSurvey } from "./services/AnketKaydedici";
+import { decodeToken } from './services/tokenHelper';
+import authService from './services/authService';
+import { getUser } from "./services/user";
+import { getSurveyById } from "./services/AnketleriGetir";
 
 import { FiFolderPlus } from 'react-icons/fi';
 

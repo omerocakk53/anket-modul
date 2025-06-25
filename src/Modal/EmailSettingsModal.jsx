@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Email from "../Components/Email";
-import ModalLayout from "../Components/layouts/ModalLayout";
+import Email from "../components/Email";
+import ModalLayout from "../components/layouts/ModalLayout";
 
 function EmailSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
   const [title, setTitle] = useState("");

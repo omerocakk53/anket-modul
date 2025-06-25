@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import FileUpload from "../Components/FileUpload";
-import ModalLayout from "../Components/layouts/ModalLayout";
+import FileUpload from "../components/FileUpload";
+import ModalLayout from "../components/layouts/ModalLayout";
 
 function FileUploadSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
   const [title, setTitle] = useState("");

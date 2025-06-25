@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaTrash } from "react-icons/fa";
-import Ranking from "../Components/Ranking";
-import ModalLayout from "../Components/layouts/ModalLayout";
+import Ranking from "../components/Ranking";
+import ModalLayout from "../components/layouts/ModalLayout";
 
 function RankingSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
   const [title, setTitle] = useState("");

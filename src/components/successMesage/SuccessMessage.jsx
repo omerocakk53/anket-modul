@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaCheckCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import authService from "../../Services/authService";
+import authService from "../../services/authService";
 import ses from "./sound/success.mp3";
 export default function SuccessMessage({ message, animationId, onDone }) {
     const [phase, setPhase] = useState("text");

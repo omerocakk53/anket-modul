@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Link from "../Components/Link";
-import ModalLayout from "../Components/layouts/ModalLayout";
+import Link from "../components/Link";
+import ModalLayout from "../components/layouts/ModalLayout";
 
 function LinkSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
   const [title, setTitle] = useState("");

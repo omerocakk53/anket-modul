@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaTrash } from 'react-icons/fa';
-import Matris from "../Components/Matris";
-import ModalLayout from "../Components/layouts/ModalLayout";
+import Matris from "../components/Matris";
+import ModalLayout from "../components/layouts/ModalLayout";
 
 function MatrisSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
   const [title, setTitle] = useState("");

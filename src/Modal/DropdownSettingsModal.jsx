@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Dropdown from "../Components/Dropdown";
+import Dropdown from "../components/Dropdown";
 import { FaTrash } from 'react-icons/fa';
-import ModalLayout from "../Components/layouts/ModalLayout";
+import ModalLayout from "../components/layouts/ModalLayout";
 function DropdownSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
   const [title, setTitle] = useState("");
   const [helpText, setHelpText] = useState("");

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-import authService from '../Services/authService';
-import { getUser } from '../Services/user';
+import authService from '../services/authService';
+import { getUser } from '../services/user';
 import { FaUserAlt, FaLock, FaPoll } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 const RECAPTCHA_SITE_KEY = '6LedKVMrAAAAADjF6wWHRZyuu_n59TsXo-UaCvpU'; // Kendi key’in ile değiştir

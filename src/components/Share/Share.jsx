@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { fetchSurveyById } from '../../Services/AnketleriGetir';
+import { fetchSurveyById } from '../../services/AnketleriGetir';
 import Header from '../common/Header';
-import { saveSurveyShare, getSurveyShare } from '../../Services/surveyShareService';
+import { saveSurveyShare, getSurveyShare } from '../../services/surveyShareService';
 import {
     FaSquareWhatsapp,
     FaTelegram,

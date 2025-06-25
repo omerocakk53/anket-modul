@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import colors from "./colors";  // default renklerin olduğu dosya
-import { getColorSettings } from "../Services/colorService";
-import authService from "../Services/authService";
+import { getColorSettings } from "../services/colorService";
+import authService from "../services/authService";
 import useThemeManager from "../hooks/useThemeManager";
 
 export const RenkUygulama = () => {

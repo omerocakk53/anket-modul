@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import LongText from "../Components/LongText";
-import ModalLayout from "../Components/layouts/ModalLayout";
+import LongText from "../components/LongText";
+import ModalLayout from "../components/layouts/ModalLayout";
 import InputNumber from "rc-input-number";
 import "rc-input-number/assets/index.css";
 

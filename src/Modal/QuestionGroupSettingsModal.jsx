@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaTrash } from "react-icons/fa";
-import QuestionGroup from "../Components/QuestionGroup";
-import ModalLayout from "../Components/layouts/ModalLayout";
+import QuestionGroup from "../components/QuestionGroup";
+import ModalLayout from "../components/layouts/ModalLayout";
 function QuestionGroupSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
   const [title, setTitle] = useState("");
   const [helpText, setHelpText] = useState("");

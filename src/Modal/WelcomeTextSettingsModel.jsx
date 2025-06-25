@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
-import WelcomeText from "../Components/WelcomeText";
-import ModalLayout from "../Components/layouts/ModalLayout";
+import WelcomeText from "../components/WelcomeText";
+import ModalLayout from "../components/layouts/ModalLayout";
 
 function WelcomeTextSettingsModel({ isOpen, onClose, onSave, onChange, initialData }) {
     const [title, setTitle] = useState("");

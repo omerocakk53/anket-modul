@@ -3,27 +3,27 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-toastify'; // Import toast
 
-import Description from '../Components/Description';
-import Dropdown from '../Components/Dropdown';
-import Email from '../Components/Email';
-import FileUpload from '../Components/FileUpload';
-import FinishText from '../Components/FinishText';
-import ImageChoice from '../Components/ImageChoice';
-import Link from '../Components/Link';
-import LongText from '../Components/LongText';
-import Matris from '../Components/Matris';
-import MultipleChoice from '../Components/MultipleChoice';
-import Numeric from '../Components/Numeric';
-import Payment from '../Components/Payment';
-import QuestionGroup from '../Components/QuestionGroup';
-import Ranking from '../Components/Ranking';
-import Rating from '../Components/Rating';
-import Scale from '../Components/Scale';
-import ShortText from '../Components/ShortText';
-import WelcomeText from '../Components/WelcomeText';
-import { fetchSurveyById } from '../Services/AnketleriGetir';
-import { cevaplariKaydet } from "../Services/cevaplariKaydet";
-import { showSuccess } from "../Components/successMesage/successController";
+import Description from '../components/Description';
+import Dropdown from '../components/Dropdown';
+import Email from '../components/Email';
+import FileUpload from '../components/FileUpload';
+import FinishText from '../components/FinishText';
+import ImageChoice from '../components/ImageChoice';
+import Link from '../components/Link';
+import LongText from '../components/LongText';
+import Matris from '../components/Matris';
+import MultipleChoice from '../components/MultipleChoice';
+import Numeric from '../components/Numeric';
+import Payment from '../components/Payment';
+import QuestionGroup from '../components/QuestionGroup';
+import Ranking from '../components/Ranking';
+import Rating from '../components/Rating';
+import Scale from '../components/Scale';
+import ShortText from '../components/ShortText';
+import WelcomeText from '../components/WelcomeText';
+import { fetchSurveyById } from '../services/AnketleriGetir';
+import { cevaplariKaydet } from "../services/cevaplariKaydet";
+import { showSuccess } from "../components/successMesage/successController";
 
 export default function AnketOynatıcısı({ surveyId }) {
     const [data, setData] = useState([]);

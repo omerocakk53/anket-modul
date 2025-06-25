@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { cevaplariGetir } from "../../Services/cevaplariGetir";
-import { cevaplariSil } from "../../Services/cevaplariSil";
-import { fetchSurveyById } from "../../Services/AnketleriGetir";
-// import { checkTokenValidity } from "../../Services/tokenHelper";
+import { cevaplariGetir } from "../../services/cevaplariGetir";
+import { cevaplariSil } from "../../services/cevaplariSil";
+import { fetchSurveyById } from "../../services/AnketleriGetir";
+// import { checkTokenValidity } from "../../services/tokenHelper";
 import { toast } from "react-toastify";
 
 import ViewSwitcher from "./ViewSwitcher";
@@ -12,7 +12,7 @@ import ChartView from "./ChartView";
 import AnswerTable from "./AnswerTable";
 import ComparisonPage from "./ComparisonPage";
 import Header from "../common/Header";
-import authService from "../../Services/authService";
+import authService from "../../services/authService";
 
 export default function CevaplarSayfasi() {
     const { surveyId } = useParams();

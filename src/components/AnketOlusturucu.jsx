@@ -34,13 +34,13 @@ import RankingController from '../Controller/RankingController';
 import PaymentController from '../Controller/PaymentController';
 import MatrisController from '../Controller/MatrisController';
 import { toast } from 'react-toastify';
-import { AnketiGüncelle } from '../Services/AnketiGüncelle';
-import { fetchSurveyById } from '../Services/AnketleriGetir';
+import { AnketiGüncelle } from '../services/AnketiGüncelle';
+import { fetchSurveyById } from '../services/AnketleriGetir';
 import { useParams } from "react-router-dom";
-// import { checkTokenValidity } from '../Services/tokenHelper';
+// import { checkTokenValidity } from '../services/tokenHelper';
 
-import Header from '../Components/common/Header'
-import authService from '../Services/authService';
+import Header from '../components/common/Header'
+import authService from '../services/authService';
 function AnketOlusturucu() {
     const [items, setItems] = useState([]);
     const [FinishWelcomeitems, setFinishWelcomeitems] = useState([]);

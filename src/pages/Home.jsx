@@ -1,6 +1,6 @@
 import React from 'react';
  // navigate fonksiyonunu kullanabilmek için
-import authService from '../Services/authService'; // authService'den getCurrentUser fonksiyonunu alıyoruz
+import authService from '../services/authService'; // authService'den getCurrentUser fonksiyonunu alıyoruz
 
 function Home() {
   const navigate = useNavigate();

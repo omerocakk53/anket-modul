@@ -1,5 +1,7 @@
 // src/index.js
 export { default as Anketler } from './Anketler';
+// 👇 BU SATIRI EN ÜSTE EKLE!
+import './styles/tailwind.css'; 
 
 // İstersen diğer yardımcı component veya servisleri de export edebilirsin:
 export * from './components/common/Sidebar';

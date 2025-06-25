@@ -1,7 +1,7 @@
 // src/pages/Register.js
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import authService from '../Services/authService'; // authService import ediyoruz
+import authService from '../services/authService'; // authService import ediyoruz
 import { FaUserAlt, FaLock } from 'react-icons/fa'; // React Icons
 
 const Register = () => {

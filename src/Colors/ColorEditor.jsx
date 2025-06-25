@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useThemeManager from "../hooks/useThemeManager";
-import { getColorSettings, saveColorSettings } from "../Services/colorService";
+import { getColorSettings, saveColorSettings } from "../services/colorService";
 import { useLocation } from 'react-router-dom';
 
 export default function ColorEditor() {
