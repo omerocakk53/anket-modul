@@ -1,8 +1,8 @@
 import React from 'react'
 
-const SurveyList = () => {
+const SurveyList = ({ survey }) => {
   return (
-    <div>SurveyList</div>
+    <div>{survey}</div>
   )
 }
 
