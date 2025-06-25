@@ -5,7 +5,7 @@ import postcss from 'rollup-plugin-postcss'; // ✅ rollup için doğru plugin
 import tailwindcss from 'tailwindcss';
 import autoprefixer from 'autoprefixer';
 import babel from '@rollup/plugin-babel';
-
+import url from '@rollup/plugin-url';
 export default {
   input: 'src/index.js',
   output: [
@@ -40,6 +40,10 @@ export default {
         ['@babel/preset-react', { runtime: 'automatic' }]
       ],
       extensions: ['.js', '.jsx'],
+    }),
+    url({
+      include: ['**/*.mp3'],
+      limit: 0, // base64'e çevirme, dosya olarak bırak
     }),
   ],
   external: [

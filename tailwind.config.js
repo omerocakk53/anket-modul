@@ -1,8 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     content: [
-        "./**/*.{js,jsx,ts,tsx}", // tüm klasörleri tarar
-        "./components/**/*.{js,jsx}", // component'lerin olduğu klasör varsa
+        './src/**/*.{js,jsx,ts,tsx}', // ✅ Doğru format bu
     ],
     theme: {
         extend: {
