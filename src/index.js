@@ -3,6 +3,10 @@ import './styles/tailwind.css';
 
 // ✅ Ana sayfa export
 export { default as Anketler } from './Anketler';
+export { default as AnketOynatıcısıWrapper } from './pages/AnketOynatıcısıWrapper';
+export { default as Share } from './components/Share/Share';
+export { default as AnketOlusturucu } from './components/AnketOlusturucu';
+export { default as ToastProvider } from './components/toast/ToastProvider';
 
 // ✅ Tüm modül export'ları aşağıda gruplanmıştır
 
@@ -20,7 +24,6 @@ export * from './components/common/EditSurveyModal';
 export * from './components/common/SurveyCard';
 
 // 🧱 Ana komponentler
-export * from './components/AnketOlusturucu';
 export * from './components/AnketOynatıcısı';
 export * from './components/Component';
 export * from './components/Description';
@@ -52,11 +55,6 @@ export * from './components/successMesage/successController';
 export * from './components/successMesage/SuccessMessage';
 export * from './components/successMesage/SuccessMessagePortal';
 
-// ✅ Paylaşım
-export * from './components/Share/Share';
-
-// ✅ Toast
-export * from './components/toast/ToastProvider';
 
 // 📊 Cevaplar
 export * from './components/Cevaplar/AnswerTable';
@@ -116,7 +114,6 @@ export * from './Modal/WelcomeTextSettingsModel';
 // 📄 Sayfalar
 export * from './pages/Anketler';
 export * from './pages/AnketListele';
-export * from './pages/AnketOynatıcısıWrapper';
 export * from './pages/Home';
 export * from './pages/NotFoundPage';
 
