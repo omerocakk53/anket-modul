@@ -1,7 +1,5 @@
-import React, { useEffect, useState, useCallback } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-
 import Sidebar from "../components/common/Sidebar";
 import Header from "../components/common/Header";
 import FilterSortSearch from "../components/common/FilterSortSearch";
@@ -10,13 +8,11 @@ import CreateSurveyModal from "../components/modals/CreateSurveyModal";
 import CreateNewGroupModal from "../components/modals/CreateNewGroupModal";
 import { FiFolderPlus } from 'react-icons/fi';
 
-export default function Anketler({ createSurvey, getSurveyById, handleLogout }) {
+export default function Anketler({ createSurvey, getSurveyById, handleLogout, deleteSurveyById, deleteSurveyShareById, AllAnswerDelete }) {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [newGroupName, setNewGroupName] = useState("");
     const [currentStep, setCurrentStep] = useState(1);
-    const navigate = useNavigate();
-
     const [userId, setUserId] = useState("6854213316eb00354043dfd0"); //Buraya İd Çekilecek
 
     const [refreshKey, setRefreshKey] = useState(0);
@@ -281,6 +277,9 @@ export default function Anketler({ createSurvey, getSurveyById, handleLogout }) 
                             <AnketListele
                                 visibleSurveys={visibleSurveys}
                                 setRefreshKey={setRefreshKey}
+                                deleteSurveyById={deleteSurveyById}
+                                deleteSurveyShareById={deleteSurveyShareById}
+                                AllAnswerDelete={AllAnswerDelete}
                             />
                         </div>
                     ) : (
