@@ -7,7 +7,7 @@ export default function Sidebar({
     groupedSurveysData,
     selectedGroup,
     setSelectedGroup,
-    userEmail,
+    username,
     handleLogout,
     openCreateSurveyModal,
     openCreateNewGroupModal,
@@ -103,18 +103,18 @@ export default function Sidebar({
                     <div className="flex items-center gap-2">
                         <div className="avatar placeholder">
                             <div className="bg-primary text-neutral-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">
-                                {userEmail ? userEmail.charAt(0).toUpperCase() : 'U'}
+                                {username ? username.charAt(0).toUpperCase() : 'U'}
                             </div>
                         </div>
-                        <span className="font-medium text-sm truncate">{userEmail || 'Kullanıcı'}</span>
+                        <span className="font-medium text-sm truncate">{username || 'Kullanıcı'}</span>
                     </div>
-                    <button
+                    {/* <button
                         onClick={handleLogout}
                         className="flex items-center gap-2 px-3 py-1 text-sm text-danger border border-danger rounded hover:bg-danger hover:text-white transition"
                     >
                         Çıkış
                         <FiLogOut className="h-5 w-5" />
-                    </button>
+                    </button> */}
                 </div>
             </div>
         </div>

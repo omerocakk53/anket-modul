@@ -17,7 +17,7 @@ export default function Anketler({ createSurvey, getSurveyById, handleLogout, de
     const [userId, setuserId] = useState();
 
     const [refreshKey, setRefreshKey] = useState(0);
-    const [userEmail, setUserEmail] = useState('');
+    const [username, setusername] = useState('');
     const [allSurveys, setAllSurveys] = useState([]);
     const [selectedGroup, setSelectedGroup] = useState(null);
     const [groupedSurveysData, setGroupedSurveysData] = useState({});
@@ -30,7 +30,7 @@ export default function Anketler({ createSurvey, getSurveyById, handleLogout, de
         if (!user) return;
         setChamber(user.chamber)
         setuserId(user.id)
-        setUserEmail(user.email)
+        setusername(user.name)
     }, [user])
 
     // Search, sort, filter handlers
@@ -252,7 +252,7 @@ export default function Anketler({ createSurvey, getSurveyById, handleLogout, de
                 groupedSurveysData={groupedSurveysData}
                 selectedGroup={selectedGroup}
                 setSelectedGroup={setSelectedGroup}
-                userEmail={userEmail}
+                username={username}
                 handleLogout={handleLogout}
                 openCreateSurveyModal={openCreateSurveyModal}
                 openCreateNewGroupModal={openCreateNewGroupModal}
