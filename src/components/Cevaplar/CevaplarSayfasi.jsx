@@ -80,6 +80,7 @@ export default function CevaplarSayfasi({ cevaplariGetir, cevaplariSil, fetchSur
         );
     };
 
+
     const filteredCevaplar = (selectedView === "Tablo" || selectedView === "Grafik")
         ? cevaplar?.filter((cevap) => {
             const created = new Date(cevap.createdAt);
@@ -111,6 +112,11 @@ export default function CevaplarSayfasi({ cevaplariGetir, cevaplariSil, fetchSur
             return dateInRange || textMatch;
         })
         : cevaplar;
+
+
+    function yonlendir() {
+        navigate('/anketolustur', { state: { userId: survey?.userId }, replace: true });
+    }
 
     return (
         <>

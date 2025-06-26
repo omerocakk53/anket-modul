@@ -200,6 +200,10 @@ function AnketOlusturucu({ AnketiGüncelle, fetchSurveyById, updateSurveyFeature
         setItem(null); // item state'ini tamamen sıfırla
         setEdit(false);
     };
+    function yonlendir() {
+        navigate('/anketolustur', { state: { userId: survey?.userId }, replace: true });
+    }
+
     const [sidebarOpen, setSidebarOpen] = useState(false);
     return (
         <>
