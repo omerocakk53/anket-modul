@@ -7,6 +7,8 @@ export { default as AnketOynatıcısıWrapper } from './pages/AnketOynatıcısı
 export { default as Share } from './components/Share/Share';
 export { default as AnketOlusturucu } from './components/AnketOlusturucu';
 export { default as ToastProvider } from './components/toast/ToastProvider';
+export { default as SuccessMessagePortal } from './components/successMesage/SuccessMessagePortal';
+export { default as CevaplarSayfasi } from './components/Cevaplar/CevaplarSayfasi';
 
 // ✅ Tüm modül export'ları aşağıda gruplanmıştır
 
@@ -53,7 +55,6 @@ export * from './components/modals/CreateSurveyModal';
 // ✅ Başarı Mesajı
 export * from './components/successMesage/successController';
 export * from './components/successMesage/SuccessMessage';
-export * from './components/successMesage/SuccessMessagePortal';
 
 
 // 📊 Cevaplar
