@@ -30,6 +30,7 @@ export default function Anketler({ createSurvey, getSurveyById, handleLogout, de
         if (!user) return;
         setChamber(user.chamber)
         setuserId(user._id)
+        console.log(user)
     }, [user])
 
     // Search, sort, filter handlers
