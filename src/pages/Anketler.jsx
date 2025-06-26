@@ -10,7 +10,7 @@ import CreateSurveyModal from "../components/modals/CreateSurveyModal";
 import CreateNewGroupModal from "../components/modals/CreateNewGroupModal";
 import { FiFolderPlus } from 'react-icons/fi';
 
-export default function Anketler({createSurvey,getSurveyById}) {
+export default function Anketler({ createSurvey, getSurveyById, handleLogout }) {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [newGroupName, setNewGroupName] = useState("");
@@ -216,7 +216,7 @@ export default function Anketler({createSurvey,getSurveyById}) {
         }
     };
 
-    
+
     const [isGroupModalOpen, setIsGroupModalOpen] = useState(false);
     const [isSurveyModalOpen, setIsSurveyModalOpen] = useState(false);
     const [sidebarOpen, setSidebarOpen] = useState(false);

@@ -2,7 +2,7 @@
 import './styles/tailwind.css';
 
 // ✅ Ana sayfa export
-export { default as Anketler } from './Anketler';
+export { default as Anketler } from './pages/Anketler';
 export { default as AnketOynatıcısıWrapper } from './pages/AnketOynatıcısıWrapper';
 export { default as Share } from './components/Share/Share';
 export { default as AnketOlusturucu } from './components/AnketOlusturucu';
@@ -108,7 +108,6 @@ export * from './Modal/ShortTextSettingsModel';
 export * from './Modal/WelcomeTextSettingsModel';
 
 // 📄 Sayfalar
-export * from './pages/Anketler';
 export * from './pages/AnketListele';
 
 // 🧠 Utils
