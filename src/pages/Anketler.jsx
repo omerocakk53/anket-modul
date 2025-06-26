@@ -13,7 +13,8 @@ export default function Anketler({ createSurvey, getSurveyById, handleLogout, de
     const [description, setDescription] = useState("");
     const [newGroupName, setNewGroupName] = useState("");
     const [currentStep, setCurrentStep] = useState(1);
-    const [chamber, setChamber] = useState("685421b016eb00354043dfde");
+    const [chamber, setChamber] = useState();
+    const [userId, setuserId] = useState();
 
     const [refreshKey, setRefreshKey] = useState(0);
     const [userEmail, setUserEmail] = useState('');
@@ -23,6 +24,13 @@ export default function Anketler({ createSurvey, getSurveyById, handleLogout, de
 
     const [searchTerm, setSearchTerm] = useState('');
     const [searchMode, setSearchMode] = useState('title');
+
+
+    useEffect(() => {
+        if (!user) return;
+        setChamber(user.chamber)
+        setuserId(user._id)
+    }, [user])
 
     // Search, sort, filter handlers
     const handleSearch = (text) => setSearchTerm(text.toLowerCase());
