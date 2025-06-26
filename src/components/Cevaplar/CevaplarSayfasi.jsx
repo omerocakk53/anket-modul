@@ -1,20 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { cevaplariGetir } from "../../services/cevaplariGetir";
-import { cevaplariSil } from "../../services/cevaplariSil";
-import { fetchSurveyById } from "../../services/AnketleriGetir";
-// import { checkTokenValidity } from "../../services/tokenHelper";
 import { toast } from "react-toastify";
-
 import ViewSwitcher from "./ViewSwitcher";
 import FilterBar from "./FilterBar";
 import ChartView from "./ChartView";
 import AnswerTable from "./AnswerTable";
 import ComparisonPage from "./ComparisonPage";
 import Header from "../common/Header";
-import authService from "../../services/authService";
 
-export default function CevaplarSayfasi() {
+export default function CevaplarSayfasi({ cevaplariGetir, cevaplariSil, fetchSurveyById }) {
     const { surveyId } = useParams();
     const [cevaplar, setCevaplar] = useState([]);
     const [sorular, setSorular] = useState([]);
@@ -24,14 +18,6 @@ export default function CevaplarSayfasi() {
     const [isDeleting, setIsDeleting] = useState(false);
     const [survey, setSurvey] = useState({});
     const navigate = useNavigate();
-
-    // useEffect(() => {
-    //     const token = localStorage.getItem("token");
-    //     if (!token || !checkTokenValidity(token)) {
-    //         localStorage.removeItem("token");
-    //         navigate("/login", { replace: true });
-    //     }
-    // }, [navigate]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -126,10 +112,6 @@ export default function CevaplarSayfasi() {
         })
         : cevaplar;
 
-    function yonlendir() {
-        const currentUser = authService.getCurrentUser?.();
-        navigate('/anketolustur', { state: { userId: currentUser?.id }, replace: true });
-    }
     return (
         <>
             <Header

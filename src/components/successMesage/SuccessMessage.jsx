@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaCheckCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import authService from "../../services/authService";
 import ses from "./sound/success.mp3";
 export default function SuccessMessage({ message, animationId, onDone }) {
     const [phase, setPhase] = useState("text");
@@ -24,17 +23,8 @@ export default function SuccessMessage({ message, animationId, onDone }) {
             playAudio(); // Ses çalma burada başlatılıyor
         }, 2000);
 
-        const timer2 = setTimeout(() => {
-            const currentUser = authService.getCurrentUser();
-            if (currentUser) {
-                navigate(`/anketolustur`, { state: { userId: currentUser.id } });
-            }
-            onDone && onDone();
-        }, 5000);
-
         return () => {
             clearTimeout(timer1);
-            clearTimeout(timer2);
         };
     }, [navigate, onDone]);
 

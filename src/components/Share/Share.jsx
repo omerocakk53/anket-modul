@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { fetchSurveyById } from '../../services/AnketleriGetir';
 import Header from '../common/Header';
-import { saveSurveyShare, getSurveyShare } from '../../services/surveyShareService';
 import {
     FaSquareWhatsapp,
     FaTelegram,
@@ -11,7 +9,7 @@ import {
     FaLinkedin
 } from 'react-icons/fa6';
 
-function Share() {
+function Share({fetchSurveyById,saveSurveyShare, getSurveyShare }) {
     const { surveyId } = useParams();
     const [survey, setSurvey] = useState({});
     const [shareData, setShareData] = useState({});

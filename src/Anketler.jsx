@@ -8,16 +8,9 @@ import FilterSortSearch from "./components/common/FilterSortSearch";
 import AnketListele from "./pages/AnketListele";
 import CreateSurveyModal from "./components/modals/CreateSurveyModal";
 import CreateNewGroupModal from "./components/modals/CreateNewGroupModal";
-
-import { createSurvey } from "./services/AnketKaydedici";
-import { decodeToken } from './services/tokenHelper';
-import authService from './services/authService';
-import { getUser } from "./services/user";
-import { getSurveyById } from "./services/AnketleriGetir";
-
 import { FiFolderPlus } from 'react-icons/fi';
 
-export default function Anketler() {
+export default function Anketler({ createSurvey, getSurveyById }) {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [newGroupName, setNewGroupName] = useState("");
@@ -223,11 +216,6 @@ export default function Anketler() {
         }
     };
 
-    // Çıkış işlemi
-    const handleLogout = () => {
-        navigate('/login', { replace: true });
-        authService.logout();
-    };
     const [isGroupModalOpen, setIsGroupModalOpen] = useState(false);
     const [isSurveyModalOpen, setIsSurveyModalOpen] = useState(false);
     const [sidebarOpen, setSidebarOpen] = useState(false);

@@ -1,19 +1,12 @@
 import React, { useEffect, useState } from "react";
 import colors from "./colors";  // default renklerin olduğu dosya
-import { getColorSettings } from "../services/colorService";
-import authService from "../services/authService";
 import useThemeManager from "../hooks/useThemeManager";
 
-export const RenkUygulama = () => {
-    const [userId, setUserId] = useState(null);
+export const RenkUygulama = ({getColorSettings}) => {
+    const [userId, setUserId] = useState(null); // USERID EKLE
     const [loading, setLoading] = useState(true); // loading durumu
     const { setColorsDirectly } = useThemeManager();
 
-    useEffect(() => {
-        const user = authService.getCurrentUser();
-        if (!user) return;
-        setUserId(user.id);
-    }, []);
 
     useEffect(() => {
         if (!userId) return;

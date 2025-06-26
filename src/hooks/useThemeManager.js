@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import colors from "../Colors/colors";
-import { applyTheme } from "../services/themeService";
 
-const useThemeManager = () => {
+const useThemeManager = ({ applyTheme }) => {
     const [dynamicColors, setDynamicColors] = useState(colors);
 
     useEffect(() => {

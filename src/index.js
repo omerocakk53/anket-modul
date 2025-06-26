@@ -9,7 +9,6 @@ export { default as AnketOlusturucu } from './components/AnketOlusturucu';
 export { default as ToastProvider } from './components/toast/ToastProvider';
 export { default as SuccessMessagePortal } from './components/successMesage/SuccessMessagePortal';
 export { default as CevaplarSayfasi } from './components/Cevaplar/CevaplarSayfasi';
-
 // ✅ Tüm modül export'ları aşağıda gruplanmıştır
 
 // 🎨 Renk & Tema
@@ -89,10 +88,6 @@ export * from './Controller/WelcomeTextController';
 // 🧩 Items
 export * from './Items/ComponentViewItems';
 
-// 🔐 Giriş / Kayıt
-export * from './Login/Login';
-export * from './Login/Register';
-
 // ⚙️ Ayar modalları
 export * from './Modal/DescriptionSettingsModal';
 export * from './Modal/DropdownSettingsModal';
@@ -115,24 +110,6 @@ export * from './Modal/WelcomeTextSettingsModel';
 // 📄 Sayfalar
 export * from './pages/Anketler';
 export * from './pages/AnketListele';
-export * from './pages/Home';
-export * from './pages/NotFoundPage';
-
-// 🔧 Servisler
-export * from './services/AnketiGüncelle';
-export * from './services/AnketKaydedici';
-export * from './services/AnketleriGetir';
-export * from './services/AnketleriSil';
-export * from './services/authService';
-export * from './services/cevaplariGetir';
-export * from './services/cevaplariKaydet';
-export * from './services/cevaplariSil';
-export * from './services/colorService';
-export * from './services/surveyShareService';
-export * from './services/themeService';
-export * from './services/tokenHelper';
-export * from './services/user';
 
 // 🧠 Utils
-export * from './utils/axiosInstance';
 export * from './utils/iconMap';

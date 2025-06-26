@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { FiX, FiInfo } from 'react-icons/fi';
-import { updateSurveyFeature } from '../../services/AnketiGüncelle';
 import { toast } from 'react-toastify';
 
-export default function EditSurveyModal({ survey, onClose, onUpdate }) {
+export default function EditSurveyModal({ survey, onClose, onUpdate,updateSurveyFeature }) {
   const [formData, setFormData] = useState({
     title: '',
     description: '',

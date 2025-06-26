@@ -34,14 +34,10 @@ import RankingController from '../Controller/RankingController';
 import PaymentController from '../Controller/PaymentController';
 import MatrisController from '../Controller/MatrisController';
 import { toast } from 'react-toastify';
-import { AnketiGüncelle } from '../services/AnketiGüncelle';
-import { fetchSurveyById } from '../services/AnketleriGetir';
 import { useParams } from "react-router-dom";
-// import { checkTokenValidity } from '../services/tokenHelper';
 import { useNavigate, useLocation } from "react-router-dom";
 import Header from '../components/common/Header'
-import authService from '../services/authService';
-function AnketOlusturucu() {
+function AnketOlusturucu({ AnketiGüncelle, fetchSurveyById }) {
     const [items, setItems] = useState([]);
     const [FinishWelcomeitems, setFinishWelcomeitems] = useState([]);
     const [item, setItem] = useState([]);
@@ -51,14 +47,6 @@ function AnketOlusturucu() {
     const [shouldReload, setShouldReload] = useState(false);
     const { surveyId } = useParams();
     const navigate = useNavigate();
-    // useEffect(() => {
-    //     const token = localStorage.getItem('token');
-    //     if (!token || !checkTokenValidity(token)) {
-    //         // Token yoksa veya geçersizse login sayfasına yönlendir
-    //         localStorage.removeItem('token'); // Token'ı temizle
-    //         navigate('/login', { replace: true });
-    //     }
-    // }, [navigate]);
 
     const controllers = [
         { type: "short_text", Component: ShortTextController, setItemsFn: setItems },
@@ -207,10 +195,6 @@ function AnketOlusturucu() {
         setItem(item);                        // Seçilen öğeyi gönder
     };
 
-    function yonlendir() {
-        const currentUser = authService.getCurrentUser?.();
-        navigate('/anketolustur', { state: { userId: currentUser?.id }, replace: true });
-    }
     const closeModal = () => {
         setIsOpen([false, ""]);
         setItem(null); // item state'ini tamamen sıfırla
@@ -253,7 +237,7 @@ function AnketOlusturucu() {
                         <Component
                             key={type}
                             isOpen={isOpen[1] === type ? isOpen[0] : false}
-                            setControllerOpen={() => { closeModal()}}
+                            setControllerOpen={() => { closeModal() }}
                             setItems={wrappedSetItems}
                             Item={item}
                             items={specificItems || items}

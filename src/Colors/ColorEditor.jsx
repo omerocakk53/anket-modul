@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import useThemeManager from "../hooks/useThemeManager";
-import { getColorSettings, saveColorSettings } from "../services/colorService";
 import { useLocation } from 'react-router-dom';
 
-export default function ColorEditor() {
+export default function ColorEditor({getColorSettings, saveColorSettings}) {
     const { dynamicColors, setColorsDirectly, updateColor } = useThemeManager();
     const [loading, setLoading] = useState(false);
     const location = useLocation();

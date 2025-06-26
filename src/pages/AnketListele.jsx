@@ -2,16 +2,13 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { deleteSurveyById } from "../services/AnketleriSil";
 import { toast } from "react-toastify";
 import { QRCodeCanvas, QRCodeSVG } from "qrcode.react";
 
 import SurveyCard from "../components/common/SurveyCard";
 import { IoMdClose } from "react-icons/io";
-import { deleteSurveyShareById } from "../services/surveyShareService";
-import { AllAnswerDelete } from "../services/cevaplariSil";
 
-export default function AnketListele({ visibleSurveys, setRefreshKey }) {
+export default function AnketListele({ visibleSurveys, setRefreshKey, deleteSurveyById, deleteSurveyShareById, AllAnswerDelete }) {
     const [qrData, setQrData] = useState(null);
     const navigate = useNavigate();
     const url = window.location.origin;
