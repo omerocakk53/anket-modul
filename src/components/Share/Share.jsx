@@ -9,12 +9,11 @@ import {
     FaLinkedin
 } from 'react-icons/fa6';
 
-function Share({fetchSurveyById,saveSurveyShare, getSurveyShare }) {
+function Share({ fetchSurveyById, saveSurveyShare, getSurveyShare }) {
     const { surveyId } = useParams();
     const [survey, setSurvey] = useState({});
     const [shareData, setShareData] = useState({});
     const navigate = useNavigate();
-    console.log(survey)
     const BASE_URL = window.location.origin;
     const fileInputRef = useRef(null);
     useEffect(() => {
@@ -117,7 +116,7 @@ function Share({fetchSurveyById,saveSurveyShare, getSurveyShare }) {
 
 
     const goBack = () => {
-        navigate('/anketolustur',{replace: true }); 
+        navigate('/anketolustur', { replace: true });
     };
 
     return (
