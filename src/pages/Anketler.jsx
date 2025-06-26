@@ -30,6 +30,7 @@ export default function Anketler({ createSurvey, getSurveyById, handleLogout, de
         if (!user) return;
         setChamber(user.chamber)
         setuserId(user.id)
+        setUserEmail(user.email)
     }, [user])
 
     // Search, sort, filter handlers
@@ -116,7 +117,7 @@ export default function Anketler({ createSurvey, getSurveyById, handleLogout, de
 
 
     useEffect(() => {
-        if (!chamber,!userId) return; // Eğer chamber yoksa yükleme yapma
+        if (!chamber, !userId) return; // Eğer chamber yoksa yükleme yapma
 
         const loadSurveys = async () => {
             try {
@@ -143,7 +144,7 @@ export default function Anketler({ createSurvey, getSurveyById, handleLogout, de
         };
 
         loadSurveys();
-    }, [chamber, refreshKey,userId]); // sadece chamber geldikten sonra çalışır
+    }, [chamber, refreshKey, userId]); // sadece chamber geldikten sonra çalışır
 
 
     // Anket oluşturma işlemi (mevcut grup altında)
