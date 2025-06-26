@@ -208,7 +208,7 @@ function AnketOlusturucu({ AnketiGüncelle, fetchSurveyById }) {
                 surveyData={survey}
                 onBackToMain={() => yonlendir()}
                 selectedGroup={"Anketler"}
-                onUpdateSurvey={(updatedSurvey) => setSurvey(updatedSurvey.updatedSurvey)}
+                onUpdateSurvey={(updatedSurvey) => { AnketiGüncelle(updatedSurvey.updatedSurvey) }}
                 Sidebar={(sideBar) => { setSidebarOpen(sideBar) }}
             />
             <div className={survey.active ? "flex justify-between gap-4 w-full pl-2 blur-sm" : "flex justify-between gap-4 w-full pl-2"}>

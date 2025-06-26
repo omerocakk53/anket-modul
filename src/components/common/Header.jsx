@@ -243,19 +243,8 @@ export default function Header({
                     onClick={() => setSidebarOpen(prev => !prev)}
                     className="p-2 focus:outline-none xl:hidden"
                 >
-                    {/* Hamburger ikonu (üç çizgi) */}
                     <CiMenuKebab size={24} />
                 </button>
-                {/* <button
-                    onClick={() => {
-                        navigate("/coloredit", { state: { userId: UserId } }); // userId'yi dinamik yapabilirsin
-                    }}
-
-                    className="btn btn-ghost btn-circle text-neutral-dark hover:text-primary tooltip tooltip-bottom"
-                    data-tip="Color"
-                >
-                    <IoColorFillOutline size={26} />
-                </button> */}
                 <button
                     className="btn btn-ghost btn-circle text-neutral-dark hover:text-primary tooltip tooltip-bottom"
                     data-tip="Destek"
