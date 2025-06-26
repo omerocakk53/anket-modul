@@ -30,7 +30,7 @@ export default function AnswerTable({ cevaplar, sorular, onDelete, isDeleting })
 
           {/* Başlık */}
           <h4 className="text-md font-bold text-neutral-darkest mb-4 pr-8">
-            Cevap İd: #{idx + 1} <br /> Cevap Tarihi: {new Date(cevap.createdAt).toLocaleString("tr-TR")} <br />  Cevaplayan İd: Null <br /> Cevaplayan İsmi: Null
+            Cevap İd: #{idx + 1} <br /> Cevap Tarihi: {new Date(cevap.createdAt).toLocaleString("tr-TR")} <br />  Cevaplayan İd: {cevap._id} <br /> Cevaplayan İsmi: {cevap.userName}
           </h4>
 
           {/* Cevaplar */}
