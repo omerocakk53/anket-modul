@@ -37,7 +37,7 @@ import { toast } from 'react-toastify';
 import { useParams } from "react-router-dom";
 import { useNavigate, useLocation } from "react-router-dom";
 import Header from '../components/common/Header'
-function AnketOlusturucu({ AnketiGüncelle, fetchSurveyById }) {
+function AnketOlusturucu({ AnketiGüncelle, fetchSurveyById, updateSurveyFeature }) {
     const [items, setItems] = useState([]);
     const [FinishWelcomeitems, setFinishWelcomeitems] = useState([]);
     const [item, setItem] = useState([]);
@@ -208,8 +208,9 @@ function AnketOlusturucu({ AnketiGüncelle, fetchSurveyById }) {
                 surveyData={survey}
                 onBackToMain={() => yonlendir()}
                 selectedGroup={"Anketler"}
-                onUpdateSurvey={(updatedSurvey) => { setSurvey(updatedSurvey.updatedSurvey), console.log(updatedSurvey.updatedSurvey) }}
+                onUpdateSurvey={(updatedSurvey) => { setSurvey(updatedSurvey.updatedSurvey) }}
                 Sidebar={(sideBar) => { setSidebarOpen(sideBar) }}
+                updateSurveyFeature={updateSurveyFeature}
             />
             <div className={survey.active ? "flex justify-between gap-4 w-full pl-2 blur-sm" : "flex justify-between gap-4 w-full pl-2"}>
                 {/* Sol Panel */}
