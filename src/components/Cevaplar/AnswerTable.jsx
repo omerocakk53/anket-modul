@@ -36,9 +36,9 @@ export default function AnswerTable({ cevaplar, sorular, onDelete, isDeleting })
           {/* Cevaplar */}
           <div className="divide-y">
             {sorular.map((soru, i) => {
-              const ans = cevap.find((a) => a._id === soru._id);
+              const ans = cevap.answers.find((a) => a.itemType === soru.id);
               if (!ans) return null;
-              return <AnswerItem key={soru._id} index={i} soru={soru} cevap={ans} />;
+              return <AnswerItem key={soru.id} index={i} soru={soru} cevap={ans} />;
             })}
           </div>
         </div>
