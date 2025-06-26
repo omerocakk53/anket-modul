@@ -116,7 +116,7 @@ export default function Anketler({ createSurvey, getSurveyById, handleLogout, de
 
 
     useEffect(() => {
-        if (!chamber) return; // Eğer chamber yoksa yükleme yapma
+        if (!chamber,!userId) return; // Eğer chamber yoksa yükleme yapma
 
         const loadSurveys = async () => {
             try {
@@ -143,7 +143,7 @@ export default function Anketler({ createSurvey, getSurveyById, handleLogout, de
         };
 
         loadSurveys();
-    }, [chamber, refreshKey]); // sadece chamber geldikten sonra çalışır
+    }, [chamber, refreshKey,userId]); // sadece chamber geldikten sonra çalışır
 
 
     // Anket oluşturma işlemi (mevcut grup altında)
@@ -162,6 +162,7 @@ export default function Anketler({ createSurvey, getSurveyById, handleLogout, de
                 title: title.trim(),
                 description: description.trim(),
                 chamber,
+                userId,
                 group: selectedGroup
             };
 
@@ -195,6 +196,7 @@ export default function Anketler({ createSurvey, getSurveyById, handleLogout, de
                 title: title.trim(),
                 description: description.trim(),
                 chamber,
+                userId,
                 group: newGroupName.trim()
             };
 
@@ -257,7 +259,7 @@ export default function Anketler({ createSurvey, getSurveyById, handleLogout, de
             />
 
             <div className="flex-1 flex flex-col bg-neutral-light min-h-screen">
-                <Header selectedGroup={selectedGroup} chamber={chamber} Sidebar={(sidebar) => { setSidebarOpen(sidebar) }} />
+                <Header selectedGroup={selectedGroup} chamber={chamber} UserId={userId} Sidebar={(sidebar) => { setSidebarOpen(sidebar) }} />
 
                 <main className="flex-1 p-4 md:p-8 bg-neutral-light overflow-y-auto">
                     <FilterSortSearch
