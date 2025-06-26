@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import AnketOynatıcısı from "../components/AnketOynatıcısı";
 
-export default function AnketOynatıcısıWrapper({fetchSurveyById, cevaplariKaydet}) {
+export default function AnketOynatıcısıWrapper({ fetchSurveyById, cevaplariKaydet, user }) {
   const { surveyId } = useParams();
-  return <AnketOynatıcısı surveyId={surveyId} fetchSurveyById={fetchSurveyById} cevaplariKaydet={cevaplariKaydet} />;
+  return <AnketOynatıcısı user={user} surveyId={surveyId} fetchSurveyById={fetchSurveyById} cevaplariKaydet={cevaplariKaydet} />;
 }
