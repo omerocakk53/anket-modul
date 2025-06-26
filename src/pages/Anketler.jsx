@@ -29,8 +29,7 @@ export default function Anketler({ createSurvey, getSurveyById, handleLogout, de
     useEffect(() => {
         if (!user) return;
         setChamber(user.chamber)
-        setuserId(user._id)
-        console.log(user)
+        setuserId(user.id)
     }, [user])
 
     // Search, sort, filter handlers
