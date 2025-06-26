@@ -8,12 +8,12 @@ import CreateSurveyModal from "../components/modals/CreateSurveyModal";
 import CreateNewGroupModal from "../components/modals/CreateNewGroupModal";
 import { FiFolderPlus } from 'react-icons/fi';
 
-export default function Anketler({ createSurvey, getSurveyById, handleLogout, deleteSurveyById, deleteSurveyShareById, AllAnswerDelete }) {
+export default function Anketler({ createSurvey, getSurveyById, handleLogout, deleteSurveyById, deleteSurveyShareById, AllAnswerDelete, user }) {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [newGroupName, setNewGroupName] = useState("");
     const [currentStep, setCurrentStep] = useState(1);
-    const [userId, setUserId] = useState("6854213316eb00354043dfd0"); //Buraya İd Çekilecek
+    const [chamber, setChamber] = useState("685421b016eb00354043dfde");
 
     const [refreshKey, setRefreshKey] = useState(0);
     const [userEmail, setUserEmail] = useState('');
@@ -33,12 +33,6 @@ export default function Anketler({ createSurvey, getSurveyById, handleLogout, de
     const [sortBy, setSortBy] = useState(null); // 'title', 'tags', 'createTime' veya null
     const [sortOrder, setSortOrder] = useState('asc'); // 'asc' veya 'desc'
     const [dateRange, setDateRange] = useState({ startDate: '', endDate: '' });
-
-
-    //userId ve userEmail al
-    useEffect(() => {
-
-    }, []);
 
 
     // Filtrelenmiş ve sıralanmış anketler
@@ -114,11 +108,11 @@ export default function Anketler({ createSurvey, getSurveyById, handleLogout, de
 
 
     useEffect(() => {
-        if (!userId) return; // Eğer userId yoksa yükleme yapma
+        if (!chamber) return; // Eğer chamber yoksa yükleme yapma
 
         const loadSurveys = async () => {
             try {
-                const data = await getSurveyById(userId);
+                const data = await getSurveyById(chamber);
                 setAllSurveys(data);
 
                 const grouped = data.reduce((acc, survey) => {
@@ -141,7 +135,7 @@ export default function Anketler({ createSurvey, getSurveyById, handleLogout, de
         };
 
         loadSurveys();
-    }, [userId, refreshKey]); // sadece userId geldikten sonra çalışır
+    }, [chamber, refreshKey]); // sadece chamber geldikten sonra çalışır
 
 
     // Anket oluşturma işlemi (mevcut grup altında)
@@ -159,7 +153,7 @@ export default function Anketler({ createSurvey, getSurveyById, handleLogout, de
             const surveyData = {
                 title: title.trim(),
                 description: description.trim(),
-                userId,
+                chamber,
                 group: selectedGroup
             };
 
@@ -192,7 +186,7 @@ export default function Anketler({ createSurvey, getSurveyById, handleLogout, de
             const surveyData = {
                 title: title.trim(),
                 description: description.trim(),
-                userId,
+                chamber,
                 group: newGroupName.trim()
             };
 
@@ -255,7 +249,7 @@ export default function Anketler({ createSurvey, getSurveyById, handleLogout, de
             />
 
             <div className="flex-1 flex flex-col bg-neutral-light min-h-screen">
-                <Header selectedGroup={selectedGroup} UserId={userId} Sidebar={(sidebar) => { setSidebarOpen(sidebar) }} />
+                <Header selectedGroup={selectedGroup} chamber={chamber} Sidebar={(sidebar) => { setSidebarOpen(sidebar) }} />
 
                 <main className="flex-1 p-4 md:p-8 bg-neutral-light overflow-y-auto">
                     <FilterSortSearch

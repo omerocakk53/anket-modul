@@ -115,7 +115,7 @@ export default function CevaplarSayfasi({ cevaplariGetir, cevaplariSil, fetchSur
 
 
     function yonlendir() {
-        navigate('/anketolustur', { state: { userId: survey?.userId }, replace: true });
+        navigate('/anketolustur',{replace: true });
     }
 
     return (

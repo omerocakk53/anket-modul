@@ -117,7 +117,7 @@ function Share({fetchSurveyById,saveSurveyShare, getSurveyShare }) {
 
 
     const goBack = () => {
-        navigate('/anketolustur', { state: { userId: survey.userId }, replace: true });
+        navigate('/anketolustur',{replace: true }); 
     };
 
     return (
