@@ -10,11 +10,11 @@
     "dist"
   ],
   "scripts": {
-    "build:css": "npx tailwindcss -i ./src/styles/tailwind.css -o ./dist/styles.css --minify",
+    "build:css": "tailwindcss -i ./src/styles/tailwind.css -o ./dist/styles.css --minify",
     "build:js": "rollup -c",
-    "build": "npm run build:css && npm run build:js",
+    "build": "pnpm run build:css && pnpm run build:js",
     "clean": "rm -rf dist",
-    "prepare": "npm run build"
+    "prepare": "pnpm run build"
   },
   "repository": {
     "type": "git",
