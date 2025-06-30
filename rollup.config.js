@@ -27,8 +27,8 @@ export default {
     }),
     commonjs(),
     postcss({
-      inject: false,   // CSS'i JS içine inject etmez, yani CSS hiç dahil edilmez
-      plugins: [tailwindcss(), autoprefixer()],
+      inject: true,   
+      plugins: [autoprefixer()],
       minimize: false,
     }),
     babel({
