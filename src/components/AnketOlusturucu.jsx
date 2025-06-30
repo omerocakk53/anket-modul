@@ -36,7 +36,7 @@ import MatrisController from '../Controller/MatrisController';
 import { toast } from 'react-toastify';
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import Header from '../components/common/Header'
+import Header from './common/Header'
 function AnketOlusturucu({ updatesurvey, fetchsurveyById, updatesurveyfeature }) {
     const [items, setItems] = useState([]);
     const [FinishWelcomeitems, setFinishWelcomeitems] = useState([]);

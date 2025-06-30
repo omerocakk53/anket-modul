@@ -3,25 +3,25 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-toastify'; // Import toast
 
-import Description from '../components/Description';
-import Dropdown from '../components/Dropdown';
-import Email from '../components/Email';
-import FileUpload from '../components/FileUpload';
-import FinishText from '../components/FinishText';
-import ImageChoice from '../components/ImageChoice';
-import Link from '../components/Link';
-import LongText from '../components/LongText';
-import Matris from '../components/Matris';
-import MultipleChoice from '../components/MultipleChoice';
-import Numeric from '../components/Numeric';
-import Payment from '../components/Payment';
-import QuestionGroup from '../components/QuestionGroup';
-import Ranking from '../components/Ranking';
-import Rating from '../components/Rating';
-import Scale from '../components/Scale';
-import ShortText from '../components/ShortText';
-import WelcomeText from '../components/WelcomeText';
-import { showSuccess } from "../components/successMesage/successController";
+import Description from './Description';
+import Dropdown from './Dropdown';
+import Email from './Email';
+import FileUpload from './FileUpload';
+import FinishText from './FinishText';
+import ImageChoice from './ImageChoice';
+import Link from './Link';
+import LongText from './LongText';
+import Matris from './Matris';
+import MultipleChoice from './MultipleChoice';
+import Numeric from './Numeric';
+import Payment from './Payment';
+import QuestionGroup from './QuestionGroup';
+import Ranking from './Ranking';
+import Rating from './Rating';
+import Scale from './Scale';
+import ShortText from './ShortText';
+import WelcomeText from './WelcomeText';
+import { showSuccess } from "./successMesage/successController";
 
 export default function AnketOynatıcısı({ surveyId, user, fetchsurveyById, answersave }) {
     const [data, setData] = useState([]);

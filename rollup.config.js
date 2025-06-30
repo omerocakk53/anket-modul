@@ -1,7 +1,6 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import peerDepsExternal from 'rollup-plugin-peer-deps-external';
-import postcss from 'rollup-plugin-postcss'; // ✅ rollup için doğru plugin
+import postcss from 'rollup-plugin-postcss'; 
 import tailwindcss from 'tailwindcss';
 import autoprefixer from 'autoprefixer';
 import babel from '@rollup/plugin-babel';
@@ -23,7 +22,6 @@ export default {
     },
   ],
   plugins: [
-    peerDepsExternal(),
     resolve({
       extensions: ['.js', '.jsx'],
     }),
@@ -46,28 +44,4 @@ export default {
       limit: 0, // base64'e çevirme, dosya olarak bırak
     }),
   ],
-  external: [
-    'react',
-    'react-dom',
-    'react-router-dom',
-    'react-toastify',
-    'react-icons',
-    'axios',
-    'jwt-decode',
-    'date-fns/locale',
-    'react-date-range',
-    'react-date-range/dist/styles.css',
-    'react-date-range/dist/theme/default.css',
-    'qrcode.react',
-    '@dnd-kit/core',
-    '@dnd-kit/sortable',
-    '@dnd-kit/utilities',
-    'rc-input-number',
-    'rc-input-number/assets/index.css',
-    'rc-slider',
-    'rc-slider/assets/index.css',
-    'framer-motion',
-    'react-tooltip',
-    'recharts'
-  ]
 };

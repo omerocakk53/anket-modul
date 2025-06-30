@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Rating from "../components/Rating";
+import Rating from "../components/Rating.jsx";
 import ModalLayout from "../components/layouts/ModalLayout.jsx";
 import { FaStar, FaHeart, FaThumbsUp } from 'react-icons/fa'; // Yıldız, Kalp ve Ok simgeleri
 import Slider from "rc-slider";
