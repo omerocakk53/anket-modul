@@ -1,5 +1,10 @@
 // ✅ TailwindCSS’i doğrudan projeye uygulamak için
 import './styles/tailwind.css';
+// Library css
+
+import "react-date-range/dist/styles.css";
+import "react-date-range/dist/theme/default.css";
+import "rc-slider/assets/index.css"; // Slider stilini ekle
 
 // ✅ Ana sayfa export
 export { default as Anketler } from './pages/Anketler';
@@ -114,8 +119,3 @@ export * from './pages/AnketListele';
 export * from './utils/iconMap';
 
 
-// Library css
-
-import "react-date-range/dist/styles.css";
-import "react-date-range/dist/theme/default.css";
-import "rc-slider/assets/index.css"; // Slider stilini ekle
