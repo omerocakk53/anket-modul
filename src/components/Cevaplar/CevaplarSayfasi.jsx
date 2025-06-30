@@ -8,7 +8,7 @@ import AnswerTable from "./AnswerTable";
 import ComparisonPage from "./ComparisonPage";
 import Header from "../common/Header";
 
-export default function CevaplarSayfasi({ cevaplariGetir, cevaplariSil, fetchSurveyById }) {
+export default function CevaplarSayfasi({ answerget, answerdelete, fetchsurveyById }) {
     const { surveyId } = useParams();
     const [cevaplar, setCevaplar] = useState([]);
     const [sorular, setSorular] = useState([]);
@@ -23,8 +23,8 @@ export default function CevaplarSayfasi({ cevaplariGetir, cevaplariSil, fetchSur
         const fetchData = async () => {
             try {
                 const [cevapData, survey] = await Promise.all([
-                    cevaplariGetir(surveyId),
-                    fetchSurveyById(surveyId),
+                    answerget(surveyId),
+                    fetchsurveyById(surveyId),
                 ]);
                 setSurvey(survey);
                 setCevaplar(cevapData);
@@ -52,8 +52,8 @@ export default function CevaplarSayfasi({ cevaplariGetir, cevaplariSil, fetchSur
                                 toast.dismiss(t.id);
                                 try {
                                     setIsDeleting(true);
-                                    await cevaplariSil(surveyId, answerId);
-                                    const updatedCevaplar = await cevaplariGetir(surveyId);
+                                    await answerdelete(surveyId, answerId);
+                                    const updatedCevaplar = await answerget(surveyId);
                                     setCevaplar(updatedCevaplar);
                                     toast.success("Cevap başarıyla silindi");
                                 } catch {

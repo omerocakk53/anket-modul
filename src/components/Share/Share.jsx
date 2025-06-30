@@ -9,7 +9,7 @@ import {
     FaLinkedin
 } from 'react-icons/fa6';
 
-function Share({ fetchSurveyById, saveSurveyShare, getSurveyShare }) {
+function Share({ fetchsurveyById, savesurveyshare, getsurveyshare }) {
     const { surveyId } = useParams();
     const [survey, setSurvey] = useState({});
     const [shareData, setShareData] = useState({});
@@ -19,12 +19,12 @@ function Share({ fetchSurveyById, saveSurveyShare, getSurveyShare }) {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const surveyRes = await fetchSurveyById(surveyId);
+                const surveyRes = await fetchsurveyById(surveyId);
                 setSurvey(surveyRes);
 
                 let shareRes;
                 try {
-                    shareRes = await getSurveyShare(surveyId);
+                    shareRes = await getsurveyshare(surveyId);
                 } catch (error) {
                     shareRes = null; // veri yoksa null kabul et
                 }
@@ -65,7 +65,7 @@ function Share({ fetchSurveyById, saveSurveyShare, getSurveyShare }) {
             formData.append("image", shareData.image);
         }
         try {
-            await saveSurveyShare(formData);
+            await savesurveyshare(formData);
         } catch (err) {
             console.error("Paylaşım kaydedilemedi", err);
         }

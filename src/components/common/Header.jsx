@@ -16,7 +16,7 @@ export default function Header({
     UserId,
     Sidebar,
     isShareMode,
-    updateSurveyFeature
+    updatesurveyfeature
 }) {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     useEffect(() => {
@@ -106,7 +106,7 @@ export default function Header({
                                 onUpdateSurvey(updated);
                                 setIsModalOpen(false);
                             }}
-                            updateSurveyFeature={updateSurveyFeature}
+                            updatesurveyfeature={updatesurveyfeature}
                         />
                     )}
                 </header>

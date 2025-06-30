@@ -23,7 +23,7 @@ import ShortText from '../components/ShortText';
 import WelcomeText from '../components/WelcomeText';
 import { showSuccess } from "../components/successMesage/successController";
 
-export default function AnketOynatıcısı({ surveyId, user, fetchSurveyById, cevaplariKaydet }) {
+export default function AnketOynatıcısı({ surveyId, user, fetchsurveyById, answersave }) {
     const [data, setData] = useState([]);
     const [survey, setSurvey] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -109,7 +109,7 @@ export default function AnketOynatıcısı({ surveyId, user, fetchSurveyById, ce
                         value: value
                     };
                 });
-                await cevaplariKaydet(surveyId, user.name,  formattedAnswers);
+                await answersave(surveyId, user.name,  formattedAnswers);
                 showSuccess("Anket Cevabınız Alındı");
             } catch (err) {
                 console.error("Cevaplar kaydedilemedi:", err);
@@ -186,7 +186,7 @@ export default function AnketOynatıcısı({ surveyId, user, fetchSurveyById, ce
     useEffect(() => {
         async function loadSurvey() {
             try {
-                const survey = await fetchSurveyById(surveyId);
+                const survey = await fetchsurveyById(surveyId);
                 const sorted = [
                     ...survey.FinishWelcomeitems.filter(q => q.id.includes("welcome")),
                     ...survey.items.filter(q => !q.id.includes("welcome") && !q.id.includes("finish")),

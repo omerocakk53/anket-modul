@@ -8,7 +8,7 @@ import { QRCodeCanvas, QRCodeSVG } from "qrcode.react";
 import SurveyCard from "../components/common/SurveyCard";
 import { IoMdClose } from "react-icons/io";
 
-export default function AnketListele({ visibleSurveys, setRefreshKey, deleteSurveyById, deleteSurveyShareById, AllAnswerDelete }) {
+export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurvey, deletesurveyshareById, allanswerdelete }) {
     const [qrData, setQrData] = useState(null);
     const navigate = useNavigate();
     const url = window.location.origin;
@@ -25,9 +25,9 @@ export default function AnketListele({ visibleSurveys, setRefreshKey, deleteSurv
                         onClick={async () => {
                             toast.dismiss(t.id);
                             try {
-                                await deleteSurveyShareById(id);
-                                await AllAnswerDelete(id);
-                                await deleteSurveyById(id);
+                                await deletesurveyshareById(id);
+                                await allanswerdelete(id);
+                                await deletesurvey(id);
                                 setRefreshKey(prev => prev + 1);
                                 toast.success(`"${title}" anketi silindi.`);
                             } catch (err) {

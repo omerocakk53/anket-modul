@@ -35,9 +35,9 @@ import PaymentController from '../Controller/PaymentController';
 import MatrisController from '../Controller/MatrisController';
 import { toast } from 'react-toastify';
 import { useParams } from "react-router-dom";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Header from '../components/common/Header'
-function AnketOlusturucu({ AnketiGüncelle, fetchSurveyById, updateSurveyFeature }) {
+function AnketOlusturucu({ updatesurvey, fetchsurveyById, updatesurveyfeature }) {
     const [items, setItems] = useState([]);
     const [FinishWelcomeitems, setFinishWelcomeitems] = useState([]);
     const [item, setItem] = useState([]);
@@ -72,7 +72,7 @@ function AnketOlusturucu({ AnketiGüncelle, fetchSurveyById, updateSurveyFeature
     useEffect(() => {
         async function loadSurvey() {
             try {
-                const survey = await fetchSurveyById(surveyId);
+                const survey = await fetchsurveyById(surveyId);
                 setSurvey(survey);
                 setItems(survey?.items);
                 setFinishWelcomeitems(survey?.FinishWelcomeitems);
@@ -113,7 +113,7 @@ function AnketOlusturucu({ AnketiGüncelle, fetchSurveyById, updateSurveyFeature
             setItems(newItems);
 
             // Sıralama sonrası güncelle
-            AnketiGüncelle({
+            updatesurvey({
                 surveyId,
                 items: newItems,
                 FinishWelcomeitems,
@@ -125,7 +125,7 @@ function AnketOlusturucu({ AnketiGüncelle, fetchSurveyById, updateSurveyFeature
     const handleDelete = (id) => {
         setItems((prevItems) => {
             const newItems = prevItems.filter(item => item.id !== id);
-            AnketiGüncelle({ surveyId, items: newItems, FinishWelcomeitems }); // güncel state ile çağır
+            updatesurvey({ surveyId, items: newItems, FinishWelcomeitems }); // güncel state ile çağır
             setShouldReload(true); // yeniden yükleme tetiklenir
             return newItems;
         });
@@ -135,7 +135,7 @@ function AnketOlusturucu({ AnketiGüncelle, fetchSurveyById, updateSurveyFeature
     const handleDeleteWelcomeFinish = (id) => {
         setFinishWelcomeitems((prev) => {
             const newFinishItems = prev.filter(item => item.id !== id);
-            AnketiGüncelle({ surveyId, items, FinishWelcomeitems: newFinishItems }); // güncel state ile çağır
+            updatesurvey({ surveyId, items, FinishWelcomeitems: newFinishItems }); // güncel state ile çağır
             setShouldReload(true); // yeniden yükleme tetiklenir
             return newFinishItems;
         });
@@ -214,7 +214,7 @@ function AnketOlusturucu({ AnketiGüncelle, fetchSurveyById, updateSurveyFeature
                 selectedGroup={"Anketler"}
                 onUpdateSurvey={(updatedSurvey) => { setSurvey(updatedSurvey.updatedSurvey) }}
                 Sidebar={(sideBar) => { setSidebarOpen(sideBar) }}
-                updateSurveyFeature={updateSurveyFeature}
+                updatesurveyfeature={updatesurveyfeature}
             />
             <div className={survey.active ? "flex justify-between gap-4 w-full pl-2 blur-sm" : "flex justify-between gap-4 w-full pl-2"}>
                 {/* Sol Panel */}
@@ -229,7 +229,7 @@ function AnketOlusturucu({ AnketiGüncelle, fetchSurveyById, updateSurveyFeature
                     const wrappedSetItems = (newItem) => {
                         setItemsFn((prevItems) => {
                             const updatedItems = Array.isArray(newItem) ? newItem : [...prevItems, newItem];
-                            AnketiGüncelle({
+                            updatesurvey({
                                 surveyId,
                                 items: type === "welcome" || type === "finish" ? items : updatedItems,
                                 FinishWelcomeitems: type === "welcome" || type === "finish" ? updatedItems : FinishWelcomeitems,

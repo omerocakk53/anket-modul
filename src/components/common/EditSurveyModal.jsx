@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FiX, FiInfo } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 
-export default function EditSurveyModal({ survey, onClose, onUpdate,updateSurveyFeature }) {
+export default function EditSurveyModal({ survey, onClose, onUpdate,updatesurveyfeature }) {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -126,7 +126,7 @@ export default function EditSurveyModal({ survey, onClose, onUpdate,updateSurvey
     }
 
     try {
-      const updated = await updateSurveyFeature(survey._id, filteredData);
+      const updated = await updatesurveyfeature(survey._id, filteredData);
       toast.success("Anket Güncellendi");
       onUpdate(updated);
       onClose();
