@@ -112,3 +112,10 @@ export * from './pages/AnketListele';
 
 // 🧠 Utils
 export * from './utils/iconMap';
+
+
+// Library css
+
+import "react-date-range/dist/styles.css";
+import "react-date-range/dist/theme/default.css";
+import "rc-slider/assets/index.css"; // Slider stilini ekle
