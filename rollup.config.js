@@ -1,6 +1,6 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import postcss from 'rollup-plugin-postcss'; 
+import postcss from 'rollup-plugin-postcss';
 import tailwindcss from 'tailwindcss';
 import autoprefixer from 'autoprefixer';
 import babel from '@rollup/plugin-babel';
@@ -44,4 +44,9 @@ export default {
       limit: 0, // base64'e çevirme, dosya olarak bırak
     }),
   ],
+  external: [
+    "react",
+    "react-dom",
+    "react-router-dom"
+  ]
 };
