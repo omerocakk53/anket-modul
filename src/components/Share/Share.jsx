@@ -78,7 +78,7 @@ function Share({ fetchSurveyById, saveSurveyShare, getSurveyShare }) {
         return () => clearTimeout(timeout);
     }, [shareData]);
 
-    const surveyLink = `${BASE_URL}/v1/s/${survey.link}/${surveyId}`;
+    const surveyLink = `${BASE_URL}/v1/survey/s/${survey.link}/${surveyId}`;
 
     const shareButtons = [
         {
