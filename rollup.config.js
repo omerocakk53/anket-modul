@@ -4,8 +4,9 @@ import postcss from 'rollup-plugin-postcss';
 import autoprefixer from 'autoprefixer';
 import babel from '@rollup/plugin-babel';
 import url from '@rollup/plugin-url';
+
 export default {
-  input: 'src/index.js',
+  input: './index.js',
   output: [
     {
       file: 'dist/index.cjs.js',
@@ -26,9 +27,10 @@ export default {
     }),
     commonjs(),
     postcss({
-      inject: false,   
+      inject: true,
       plugins: [autoprefixer()],
       minimize: false,
+      exclude: 'src/**',
     }),
     babel({
       exclude: 'node_modules/**',

@@ -1,6 +1,6 @@
 {
   "name": "@omerocakk53/anket-modul",
-  "version": "2.0.8",
+  "version": "2.0.9",
   "description": "Yeniden kullanılabilir React anket modülü",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -10,7 +10,7 @@
     "dist"
   ],
   "scripts": {
-    "build:css": "tailwindcss -i ./src/styles/tailwind.css -o ./dist/styles.css --minify",
+    "build:css": "tailwindcss -i ./styles/tailwind.css -o ./dist/styles.css --minify",
     "build:js": "rollup -c",
     "build": "pnpm run build:css && pnpm run build:js",
     "clean": "rm -rf dist",
