@@ -3,6 +3,7 @@ import DateRangeSelector from './components/DateRangeSelector'
 import SurveyComparisonChart from './components/SurveyComparisonChart'
 import ChangeHighlights from './components/ChangeHighlights'
 import { calculateItemAverages, mergeAverages } from '../../utils/analysisUtils'
+import { useParams } from 'react-router-dom'
 
 const AnalysisPage = ({ answerget }) => {
     const { surveyId } = useParams();
