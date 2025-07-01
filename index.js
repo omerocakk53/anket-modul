@@ -8,6 +8,7 @@ export { default as AnketOlusturucu } from './src/components/AnketOlusturucu';
 export { default as ToastProvider } from './src/components/toast/ToastProvider';
 export { default as SuccessMessagePortal } from './src/components/successMesage/SuccessMessagePortal';
 export { default as CevaplarSayfasi } from './src/components/Cevaplar/CevaplarSayfasi';
+export { default as AnalysisPage } from './src/components/Analiz/AnalysisPage';
 // ✅ Tüm modül export'ları aşağıda gruplanmıştır
 
 // 🎨 Renk & Tema
@@ -63,6 +64,16 @@ export * from './src/components/Cevaplar/ComparisonPage';
 export * from './src/components/Cevaplar/FilterBar';
 export * from './src/components/Cevaplar/ViewSwitcher';
 export * from './src/components/AnswerItem';
+
+
+// 📊 Analiz Page
+export * from './src/components/Analiz/components/ChangeHighlights';
+export * from './src/components/Analiz/components/DateRangeSelector';
+export * from './src/components/Analiz/components/SurveyComparisonChart';
+export * from './src/utils/analysisUtils';
+
+
+
 
 // 🎮 Kontrolcü (controller) dosyaları
 export * from './src/Controller/DescriptionController';
