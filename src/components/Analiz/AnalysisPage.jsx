@@ -4,6 +4,7 @@ import SurveyComparisonChart from './components/SurveyComparisonChart'
 import ChangeHighlights from './components/ChangeHighlights'
 import { calculateItemAverages, mergeAverages } from '../../utils/analysisUtils'
 import { useParams } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const AnalysisPage = ({ answerget }) => {
     const { surveyId } = useParams();
@@ -11,30 +12,45 @@ const AnalysisPage = ({ answerget }) => {
     const [range2, setRange2] = useState(null)
     const [comparisonData, setComparisonData] = useState([])
 
+
     const handleCompare = async () => {
-        const allAnswers = await answerget(surveyId)
+        if (!range1?.startDate || !range2?.startDate) {
+            toast.warning("Lütfen iki tarih aralığı da seçin.")
+            return
+        }
 
-        const data1 = allAnswers.filter(a => {
-            const d = new Date(a.createdAt)
-            return d >= range1.startDate && d <= range1.endDate
-        })
+        try {
+            const allAnswers = await answerget(surveyId)
 
-        const data2 = allAnswers.filter(a => {
-            const d = new Date(a.createdAt)
-            return d >= range2.startDate && d <= range2.endDate
-        })
+            const data1 = allAnswers.filter(a => {
+                const d = new Date(a.createdAt)
+                return d >= range1.startDate && d <= range1.endDate
+            })
 
-        const avg1 = calculateItemAverages(data1)
-        const avg2 = calculateItemAverages(data2)
+            const data2 = allAnswers.filter(a => {
+                const d = new Date(a.createdAt)
+                return d >= range2.startDate && d <= range2.endDate
+            })
 
-        const comparison = mergeAverages(avg1, avg2, {
-            "rating-13": "Genel Memnuniyet",
-            "scale-12": "Personel İlgisi",
-            "numeric-4": "Bekleme Süresi (dk)"
-        })
+            if (data1.length === 0 || data2.length === 0) {
+                toast.info("Seçilen tarih aralıklarında yeterli veri bulunamadı.")
+            }
 
-        setComparisonData(comparison)
+            const avg1 = calculateItemAverages(data1)
+            const avg2 = calculateItemAverages(data2)
+            const comparison = mergeAverages(avg1, avg2, {
+                "rating-13": "Genel Memnuniyet",
+                "scale-12": "Personel İlgisi",
+                "numeric-4": "Bekleme Süresi"
+            })
+
+            setComparisonData(comparison)
+        } catch (error) {
+            toast.error("Veri getirilirken bir hata oluştu.")
+            console.error(error)
+        }
     }
+
 
     return (
         <div className="max-w-6xl mx-auto p-6 bg-neutral-white rounded-2xl shadow-md">
