@@ -4,9 +4,9 @@ import SurveyComparisonChart from './components/SurveyComparisonChart'
 import ChangeHighlights from './components/ChangeHighlights'
 import { calculateItemAverages, mergeAverages } from '../../utils/analysisUtils'
 
-const AnalysisPage = ({ surveyId, services }) => {
-    const { answerget } = services
-
+const AnalysisPage = ({ answerget }) => {
+    const { answerget } = answerget
+    const { surveyId } = useParams();
     const [range1, setRange1] = useState(null)
     const [range2, setRange2] = useState(null)
     const [comparisonData, setComparisonData] = useState([])
