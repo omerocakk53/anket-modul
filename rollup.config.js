@@ -27,10 +27,11 @@ export default {
     }),
     commonjs(),
     postcss({
-      inject: false,
-      plugins: [autoprefixer()],
+      inject: true,
       minimize: false,
-      exclude: 'src/**',
+      plugins: [autoprefixer()],
+      include: ['**/node_modules/**/assets/*.css', '**/node_modules/**/*.css'],
+      exclude: ['src/styles/tailwind.css'],
     }),
     babel({
       exclude: 'node_modules/**',

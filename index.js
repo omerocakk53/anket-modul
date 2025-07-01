@@ -1,6 +1,4 @@
 // ✅ TailwindCSS’i doğrudan projeye uygulamak için
-import './styles/tailwind.css';
-
 
 // ✅ Ana sayfa export
 export { default as Anketler } from './src/pages/Anketler';
