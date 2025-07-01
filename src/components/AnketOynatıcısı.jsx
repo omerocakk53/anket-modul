@@ -109,6 +109,7 @@ export default function AnketOynatıcısı({ surveyId, user, fetchsurveyById, an
                         value: value
                     };
                 });
+                console.log(surveyId, user.name,  formattedAnswers);
                 await answersave(surveyId, user.name,  formattedAnswers);
                 showSuccess("Anket Cevabınız Alındı");
             } catch (err) {
