@@ -27,7 +27,7 @@ export default {
     }),
     commonjs(),
     postcss({
-      inject: true,
+      inject: false,
       plugins: [autoprefixer()],
       minimize: false,
       exclude: 'src/**',
