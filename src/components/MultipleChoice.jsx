@@ -150,7 +150,7 @@ export default function MultipleChoice({
     <div>
       {title ? (
         <>
-          <label className="tw-font-semibold tw-text-primary-text tw-mb-2 tw-block">
+          <label className="font-semibold text-primary-text mb-2 block">
             {SurveyNumberVisible
               ? count
                 ? title === ""
@@ -159,13 +159,13 @@ export default function MultipleChoice({
                 : title || null
               : title || null}
             {isMulti && (
-              <span className="tw-text-sm tw-text-primary-text tw-ml-2">
+              <span className="text-sm text-primary-text ml-2">
                 Birden fazla seçebilirsin
                 {MultiSelectLimit > 0 && ` (Seçim limiti: ${MultiSelectLimit})`}
               </span>
             )}
           </label>
-          {helpText && <p className="tw-text-sm tw-text-neutral tw-mb-5">{helpText}</p>}
+          {helpText && <p className="text-sm text-neutral mb-5">{helpText}</p>}
           <div className={containerClasses}>
             {/* Options */}
             {allOptionsIncludingHepsi.map((opt, idx) => {
@@ -184,7 +184,7 @@ export default function MultipleChoice({
 
             {/* Custom Option */}
             {allowCustomOption && (
-              <div className="tw-flex tw-items-center tw-gap-2 tw-mt-4">
+              <div className="flex items-center gap-2 mt-4">
                 <input
                   type="text"
                   className={`${buttonBaseClasses} ${customOption ? selectedClasses : unselectedClasses} border-neutral-dark text-black bg-neutral placeholder:text-neutral-dark p-2 w-48`}
@@ -199,8 +199,8 @@ export default function MultipleChoice({
           </div>
         </>
       ) : (
-        <div className="tw-flex tw-justify-center tw-items-center">
-          <h1 className="tw-text-primary-text tw-text-xl">Tasarlamaya Başlayın</h1>
+        <div className="flex justify-center items-center">
+          <h1 className="text-primary-text text-xl">Tasarlamaya Başlayın</h1>
         </div>
       )}
     </div>

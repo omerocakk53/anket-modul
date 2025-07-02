@@ -124,44 +124,44 @@ function Share({ fetchsurveyById, savesurveyshare, getsurveyshare }) {
         <>
             <Header isShareMode={true} surveyData={survey} onBackToMain={goBack} Sidebar={() => { }} />
 
-            <div className="tw-max-w-6xl tw-mx-auto tw-px-4 tw-py-8 tw-overflow-x-hidden">
-                <div className="tw-grid tw-gap-8 tw-lg:grid-cols-2">
+            <div className="max-w-6xl mx-auto px-4 py-8 overflow-x-hidden">
+                <div className="grid gap-8 lg:grid-cols-2">
 
                     {/* SOL PANEL: Form Alanı */}
-                    <div className="tw-bg-white tw-rounded-2xl tw-shadow-xl tw-p-6 tw-md:p-8 tw-space-y-6">
-                        <h2 className="tw-text-xl tw-md:text-2xl tw-font-bold tw-text-gray-800">Paylaşım Ayarları</h2>
+                    <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8 space-y-6">
+                        <h2 className="text-xl md:text-2xl font-bold text-gray-800">Paylaşım Ayarları</h2>
 
                         <div>
-                            <label className="tw-block tw-text-sm tw-font-medium tw-text-gray-700">Paylaşım Başlığı</label>
+                            <label className="block text-sm font-medium text-gray-700">Paylaşım Başlığı</label>
                             <input
                                 type="text"
                                 name="title"
                                 value={shareData?.title}
                                 onChange={handleChange}
                                 placeholder="Anket başlığı girin..."
-                                className="tw-mt-1 tw-w-full tw-px-4 tw-py-2 tw-border tw-rounded-xl tw-focus:ring-2 tw-focus:ring-blue-500 tw-text-sm"
+                                className="mt-1 w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-blue-500 text-sm"
                             />
                         </div>
 
                         <div>
-                            <label className="tw-block tw-text-sm tw-font-medium tw-text-gray-700">Paylaşım Açıklaması</label>
+                            <label className="block text-sm font-medium text-gray-700">Paylaşım Açıklaması</label>
                             <textarea
                                 name="description"
                                 value={shareData?.description}
                                 onChange={handleChange}
                                 rows={4}
                                 placeholder="Kısa açıklama yazın..."
-                                className="tw-mt-1 tw-w-full tw-px-4 tw-py-2 tw-border tw-rounded-xl tw-focus:ring-2 tw-focus:ring-blue-500 tw-text-sm"
+                                className="mt-1 w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-blue-500 text-sm"
                             />
                         </div>
 
                         <div>
-                            <label className="tw-block tw-text-sm tw-font-medium tw-text-gray-700">Open Graph Görseli</label>
+                            <label className="block text-sm font-medium text-gray-700">Open Graph Görseli</label>
                             <div
                                 onClick={() => fileInputRef.current.click()}
-                                className="tw-mt-2 tw-flex tw-items-center tw-justify-center tw-h-36 tw-sm:h-40 tw-border-2 tw-border-dashed tw-rounded-xl tw-cursor-pointer tw-hover:border-blue-400 tw-hover:text-blue-500 tw-transition tw-text-center tw-px-2"
+                                className="mt-2 flex items-center justify-center h-36 sm:h-40 border-2 border-dashed rounded-xl cursor-pointer hover:border-blue-400 hover:text-blue-500 transition text-center px-2"
                             >
-                                <span className="tw-text-sm tw-text-gray-500">
+                                <span className="text-sm text-gray-500">
                                     {shareData.image === "" ? 'Yeni görsel seç' : 'Görsel seçmek için tıklayın'}
                                 </span>
                                 <input
@@ -169,18 +169,18 @@ function Share({ fetchsurveyById, savesurveyshare, getsurveyshare }) {
                                     accept="image/*"
                                     ref={fileInputRef}
                                     onChange={handleImageChange}
-                                    className="tw-hidden"
+                                    className="hidden"
                                 />
                             </div>
                         </div>
                     </div>
 
                     {/* SAĞ PANEL: Önizleme + Paylaşım */}
-                    <div className="tw-bg-gray-50 tw-rounded-2xl tw-shadow-lg tw-p-6 tw-md:p-8 tw-space-y-6">
-                        <h2 className="tw-text-xl tw-md:text-2xl tw-font-bold tw-text-gray-800">Open Graph Önizleme</h2>
+                    <div className="bg-gray-50 rounded-2xl shadow-lg p-6 md:p-8 space-y-6">
+                        <h2 className="text-xl md:text-2xl font-bold text-gray-800">Open Graph Önizleme</h2>
 
                         {/* Önizleme Kartı */}
-                        <div className="tw-rounded-xl tw-overflow-hidden tw-border tw-bg-white">
+                        <div className="rounded-xl overflow-hidden border bg-white">
                             <img
                                 src={
                                     shareData?.image
@@ -190,18 +190,18 @@ function Share({ fetchsurveyById, savesurveyshare, getsurveyshare }) {
                                         : `${BASE_URL}/uploads/fixShareimg.png`
                                 }
                                 alt="OpenGraph"
-                                className="tw-w-full tw-h-40 tw-sm:h-48 tw-object-cover"
+                                className="w-full h-40 sm:h-48 object-cover"
                             />
-                            <div className="tw-p-4">
-                                <h3 className="tw-text-base tw-md:text-lg tw-font-semibold tw-break-words">
+                            <div className="p-4">
+                                <h3 className="text-base md:text-lg font-semibold break-words">
                                     {shareData?.title || 'Başlık bulunamadı'}
                                 </h3>
-                                <p className="tw-text-sm tw-text-gray-600 tw-break-words">
+                                <p className="text-sm text-gray-600 break-words">
                                     {shareData?.description || 'Açıklama eklenmemiş.'}
                                 </p>
                                 <a
                                     href={surveyLink}
-                                    className="tw-mt-2 tw-inline-block tw-text-blue-500 tw-text-xs tw-hover:underline tw-break-all"
+                                    className="mt-2 inline-block text-blue-500 text-xs hover:underline break-all"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
@@ -212,8 +212,8 @@ function Share({ fetchsurveyById, savesurveyshare, getsurveyshare }) {
 
                         {/* Sosyal Medya Paylaşım Butonları */}
                         <div>
-                            <h3 className="tw-text-base tw-md:text-lg tw-font-semibold tw-mb-2">Sosyal Medyada Paylaş</h3>
-                            <div className="tw-flex tw-flex-wrap tw-gap-4 tw-justify-start tw-min-w-0">
+                            <h3 className="text-base md:text-lg font-semibold mb-2">Sosyal Medyada Paylaş</h3>
+                            <div className="flex flex-wrap gap-4 justify-start min-w-0">
                                 {shareButtons.map((btn, i) => (
                                     <a
                                         key={i}
@@ -224,7 +224,7 @@ function Share({ fetchsurveyById, savesurveyshare, getsurveyshare }) {
                                         aria-label={`${btn.name} ile paylaş`}
                                         title={`${btn.name} ile paylaş`}
                                     >
-                                        <div className="tw-transition-transform tw-duration-300 tw-group-hover:rotate-[12deg] tw-group-hover:scale-110">
+                                        <div className="transition-transform duration-300 group-hover:rotate-[12deg] group-hover:scale-110">
                                             {btn.icon}
                                         </div>
                                     </a>

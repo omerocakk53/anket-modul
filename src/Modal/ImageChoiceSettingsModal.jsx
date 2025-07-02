@@ -91,16 +91,16 @@ function ImageChoiceSettingsModal({
   };
   if (!isOpen) return null;
   const leftPanel = (
-    <div className="tw-space-y-4 tw-mb-24">
-      <h2 className="tw-text-lg tw-font-bold tw-mb-4">Görsel Seçim Ayarları</h2>
+    <div className="space-y-4 mb-24">
+      <h2 className="text-lg font-bold mb-4">Görsel Seçim Ayarları</h2>
 
       <div>
-        <label className="tw-block tw-text-sm tw-font-medium tw-mb-1" htmlFor="title">
+        <label className="block text-sm font-medium mb-1" htmlFor="title">
           Başlık
         </label>
         <input
           id="title"
-          className="tw-w-full tw-border tw-rounded tw-p-2"
+          className="w-full border rounded p-2"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Sorunun başlığı"
@@ -109,12 +109,12 @@ function ImageChoiceSettingsModal({
       </div>
 
       <div>
-        <label className="tw-block tw-text-sm tw-font-medium tw-mb-1" htmlFor="helpText">
+        <label className="block text-sm font-medium mb-1" htmlFor="helpText">
           Yardım Metni
         </label>
         <input
           id="helpText"
-          className="tw-w-full tw-border tw-rounded tw-p-2"
+          className="w-full border rounded p-2"
           value={helpText}
           onChange={(e) => setHelpText(e.target.value)}
           type="text"
@@ -122,18 +122,18 @@ function ImageChoiceSettingsModal({
       </div>
 
       <div>
-        <label className="tw-block tw-text-sm tw-font-medium tw-mb-1">Görseller</label>
+        <label className="block text-sm font-medium mb-1">Görseller</label>
         {images.map((img, idx) => (
-          <div key={idx} className="tw-flex tw-items-center tw-gap-2 tw-mb-2">
+          <div key={idx} className="flex items-center gap-2 mb-2">
             <input
-              className="tw-flex-1 tw-border tw-rounded tw-p-2"
+              className="flex-1 border rounded p-2"
               value={img}
               onChange={(e) => handleImageChange(idx, e.target.value)}
               placeholder={`Görsel ${idx + 1} URL'si`}
               type="text"
             />
             <input
-              className="tw-flex-1 tw-border tw-rounded tw-p-2"
+              className="flex-1 border rounded p-2"
               value={imageTitles[idx]}
               onChange={(e) => handleTitleChange(idx, e.target.value)}
               placeholder={`Görsel ${idx + 1} Başlık`}
@@ -141,7 +141,7 @@ function ImageChoiceSettingsModal({
             />
             <button
               onClick={() => removeImage(idx)}
-              className="tw-text-red-500 tw-hover:text-red-700"
+              className="text-red-500 hover:text-red-700"
               title="Görseli Sil"
             >
               <FaTrash />
@@ -150,16 +150,16 @@ function ImageChoiceSettingsModal({
         ))}
         <button
           type="button"
-          className="tw-mt-2 tw-text-blue-600 tw-hover:underline"
+          className="mt-2 text-blue-600 hover:underline"
           onClick={addImage}
         >
           + Görsel Ekle
         </button>
       </div>
 
-      <div className="tw-flex tw-items-center tw-space-x-3">
+      <div className="flex items-center space-x-3">
         <label
-          className="tw-text-sm tw-font-medium tw-text-primary-dark tw-select-none tw-cursor-pointer"
+          className="text-sm font-medium text-primary-dark select-none cursor-pointer"
           onClick={() => setHorizontalDesign((prev) => !prev)}
         >
           Görselleri büyüt
@@ -177,9 +177,9 @@ function ImageChoiceSettingsModal({
           />
         </button>
       </div>
-      <div className="tw-flex tw-items-center tw-space-x-3">
+      <div className="flex items-center space-x-3">
         <label
-          className="tw-text-sm tw-font-medium tw-text-primary-dark tw-select-none tw-cursor-pointer"
+          className="text-sm font-medium text-primary-dark select-none cursor-pointer"
           onClick={() => setSurveyNumberVisible(prev => !prev)}
         >
           Soru Numarası Gözüksün
@@ -197,9 +197,9 @@ function ImageChoiceSettingsModal({
           />
         </button>
       </div>
-      <div className="tw-flex tw-items-center tw-space-x-3">
+      <div className="flex items-center space-x-3">
         <label
-          className="tw-text-sm tw-font-medium tw-text-primary-dark tw-select-none tw-cursor-pointer"
+          className="text-sm font-medium text-primary-dark select-none cursor-pointer"
           onClick={() => setMultiselectActive((prev) => !prev)}
         >
           Çoklu Seçim
@@ -217,9 +217,9 @@ function ImageChoiceSettingsModal({
           />
         </button>
       </div>
-      <div className="tw-flex tw-items-center tw-space-x-3">
+      <div className="flex items-center space-x-3">
         <label
-          className="tw-text-sm tw-font-medium tw-text-primary-dark tw-select-none tw-cursor-pointer"
+          className="text-sm font-medium text-primary-dark select-none cursor-pointer"
           onClick={() => setComplusory(prev => !prev)}
         >
           Zorunlu alan
@@ -239,7 +239,7 @@ function ImageChoiceSettingsModal({
       </div>
       {MultiselectActive && (
         <div>
-          <label className="tw-block tw-text-sm tw-font-medium tw-mb-1 tw-text-primary-dark">
+          <label className="block text-sm font-medium mb-1 text-primary-dark">
             Çoklu Seçim Sınırı
           </label>
           <InputNumber
@@ -249,15 +249,15 @@ function ImageChoiceSettingsModal({
             onChange={(val) => setMultiSelectLimit(val || 0)}
             style={{ width: 120 }}
           />
-          <p className="tw-text-xs tw-text-gray-500">0 ' ise sınırsız seçim</p>
+          <p className="text-xs text-gray-500">0 ' ise sınırsız seçim</p>
         </div>
       )}
 
-      <div className="tw-flex tw-gap-2 tw-p-5 tw-absolute tw-left-0 tw-bottom-0 tw-bg-neutral tw-md:w-1/2 tw-w-full">
-        <button type="button" className="tw-px-4 tw-py-2 tw-bg-gray-300 tw-rounded" onClick={onClose}>
+      <div className="flex gap-2 p-5 absolute left-0 bottom-0 bg-neutral md:w-1/2 w-full">
+        <button type="button" className="px-4 py-2 bg-gray-300 rounded" onClick={onClose}>
           Vazgeç
         </button>
-        <button type="button" className="tw-px-4 tw-py-2 tw-bg-blue-600 tw-text-white tw-rounded tw-hover:bg-blue-700" onClick={handleSave}>
+        <button type="button" className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" onClick={handleSave}>
           Kaydet
         </button>
       </div>
