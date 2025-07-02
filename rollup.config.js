@@ -1,7 +1,6 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import postcss from 'rollup-plugin-postcss';
-import tailwindcss from 'tailwindcss';
 import autoprefixer from 'autoprefixer';
 import babel from '@rollup/plugin-babel';
 import url from '@rollup/plugin-url';
@@ -30,10 +29,9 @@ export default {
     postcss({
       inject: true,
       minimize: false,
-      plugins: [autoprefixer(),tailwindcss('./tailwind.config.js'),],
-      modules: {
-        generateScopedName: '[name]__[local]___[hash:base64:5]' // Örnek: Button__button___a1b2c
-      },
+      plugins: [autoprefixer()],
+      include: ['**/node_modules/**/assets/*.css', '**/node_modules/**/*.css'],
+      exclude: ['src/styles/tailwind.css'],
     }),
     babel({
       exclude: 'node_modules/**',
