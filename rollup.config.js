@@ -27,12 +27,11 @@ export default {
     }),
     commonjs(),
     postcss({
-      modules: {
-        generateScopedName: '[name]__[local]___[hash:base64:5]',
-      },
-      extract: 'styles.css',
-      minimize: true,
+      inject: true,
+      minimize: false,
       plugins: [autoprefixer()],
+      include: ['**/node_modules/**/assets/*.css', '**/node_modules/**/*.css'],
+      exclude: ['src/styles/tailwind.css'],
     }),
     babel({
       exclude: 'node_modules/**',
