@@ -7,9 +7,7 @@ export { default as Share } from './src/components/Share/Share';
 export { default as AnketOlusturucu } from './src/components/AnketOlusturucu';
 export { default as ToastProvider } from './src/components/toast/ToastProvider';
 export { default as SuccessMessagePortal } from './src/components/successMesage/SuccessMessagePortal';
-export { default as CevaplarSayfasi } from './src/components/Cevaplar/CevaplarSayfasi';
-export { default as AnalysisPage } from './src/components/Analiz/AnalysisPage';
-// ✅ Tüm modül export'ları aşağıda gruplanmıştır
+export { default as CevaplarSayfasi } from './src/components/answer/CevaplarSayfasi';
 
 // 🎨 Renk & Tema
 export * from './src/Colors/ColorEditor';
@@ -56,13 +54,13 @@ export * from './src/components/successMesage/successController';
 export * from './src/components/successMesage/SuccessMessage';
 
 
-// 📊 Cevaplar
-export * from './src/components/Cevaplar/AnswerTable';
-export * from './src/components/Cevaplar/CevaplarSayfasi';
-export * from './src/components/Cevaplar/ChartView';
-export * from './src/components/Cevaplar/ComparisonPage';
-export * from './src/components/Cevaplar/FilterBar';
-export * from './src/components/Cevaplar/ViewSwitcher';
+// 📊 answer
+export * from './src/components/answer/AnswerTable';
+export * from './src/components/answer/CevaplarSayfasi';
+export * from './src/components/answer/ChartView';
+export * from './src/components/answer/ComparisonPage';
+export * from './src/components/answer/FilterBar';
+export * from './src/components/answer/ViewSwitcher';
 export * from './src/components/AnswerItem';
 
 
