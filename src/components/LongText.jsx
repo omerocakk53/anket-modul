@@ -24,7 +24,7 @@ export default function LongText({
     <div>
       {title ? (
         <>
-          <label htmlFor={id} className="tw-font-semibold tw-text-primary-text">
+          <label htmlFor={id} className="font-semibold text-primary-text">
             {SurveyNumberVisible
               ? count
                 ? title === ""
@@ -33,25 +33,25 @@ export default function LongText({
                 : title || null
               : title || null}
           </label>
-          <p className="tw-text-sm tw-mb-1 tw-text-neutral">{helpText}</p>
+          <p className="text-sm mb-1 text-neutral">{helpText}</p>
 
           <textarea
             id={id}
             name={id}
-            className="tw-border tw-border-success tw-bg-neutral tw-rounded-xl tw-p-2 tw-w-full tw-outline-none"
+            className="border border-success bg-neutral rounded-xl p-2 w-full outline-none"
             rows="4"
             value={value || ""}
             onChange={handleChange}
           />
           {charLimit > 0 && (
-            <p className="tw-text-xs tw-text-right tw-text-gray-500 tw-mt-1">
+            <p className="text-xs text-right text-gray-500 mt-1">
               {remainingChars} karakter kaldı
             </p>
           )}
         </>
       ) : (
-        <div className="tw-flex tw-justify-center tw-items-center">
-          <h1 className="tw-text-primary-text tw-text-xl">Tasarlamaya Başlayın</h1>
+        <div className="flex justify-center items-center">
+          <h1 className="text-primary-text text-xl">Tasarlamaya Başlayın</h1>
         </div>
       )}
     </div>

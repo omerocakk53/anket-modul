@@ -15,12 +15,12 @@ export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurv
 
     const handleDelete = async (id, title) => {
         toast((t) => (
-            <div className="tw-flex tw-flex-col tw-items-center tw-p-4 tw-bg-white tw-rounded-lg tw-">
-                <p className="tw-text-lg tw-font-semibold tw-mb-4 tw-text-gray-800">
+            <div className="flex flex-col items-center p-4 bg-white rounded-lg ">
+                <p className="text-lg font-semibold mb-4 text-gray-800">
                     Anketi silmek istediğinize emin misiniz?
                 </p>
-                <p className="tw-text-sm tw-text-gray-600 tw-mb-6">Bu işlem geri alınamaz.</p>
-                <div className="tw-flex tw-gap-4">
+                <p className="text-sm text-gray-600 mb-6">Bu işlem geri alınamaz.</p>
+                <div className="flex gap-4">
                     <button
                         onClick={async () => {
                             toast.dismiss(t.id);
@@ -35,13 +35,13 @@ export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurv
                                 console.error("Silme hatası:", err);
                             }
                         }}
-                        className="tw-bg-red-600 tw-text-white tw-px-4 tw-py-2 tw-rounded tw-hover:bg-red-700 tw-transition"
+                        className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition"
                     >
                         Evet, Sil
                     </button>
                     <button
                         onClick={() => toast.dismiss(t.id)}
-                        className="tw-bg-gray-200 tw-text-gray-700 tw-px-4 tw-py-2 tw-rounded tw-hover:bg-gray-300 tw-transition"
+                        className="bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300 transition"
                     >
                         Vazgeç
                     </button>
@@ -113,42 +113,42 @@ export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurv
             ))}
 
             {qrData && (
-                <div className="tw-fixed tw-inset-0 tw-z-50 tw-flex tw-items-center tw-justify-center tw-backdrop-blur-xs">
-                    <div className="tw-relative tw-bg-white tw-rounded-lg tw-shadow-lg tw-p-6 tw-max-w-xs">
+                <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-xs">
+                    <div className="relative bg-white rounded-lg shadow-lg p-6 max-w-xs">
                         <button
-                            className="tw-absolute tw-top-2 tw-right-2 tw-text-gray-600 tw-hover:text-gray-800"
+                            className="absolute top-2 right-2 text-gray-600 hover:text-gray-800"
                             onClick={handleCloseQr}
                         >
                             <IoMdClose size={30} />
                         </button>
 
-                        <h2 className="tw-text-lg tw-font-semibold tw-mb-4 tw-text-center">QR Kodu</h2>
+                        <h2 className="text-lg font-semibold mb-4 text-center">QR Kodu</h2>
 
                         {/* PNG görünüm için canvas */}
-                        <div className="tw-flex tw-justify-center">
+                        <div className="flex justify-center">
                             <div id="qr-code-png">
                                 <QRCodeCanvas value={qrData} size={200} />
                             </div>
                         </div>
 
                         {/* SVG görünüm için svg (gizli ama indirilebilir) */}
-                        <div id="qr-code-svg" className="tw-hidden">
+                        <div id="qr-code-svg" className="hidden">
                             <QRCodeSVG value={qrData} size={200} />
                         </div>
 
-                        <p className="tw-mt-4 tw-text-center tw-text-sm tw-break-all tw-text-primary tw-underline">{qrData}</p>
+                        <p className="mt-4 text-center text-sm break-all text-primary underline">{qrData}</p>
 
-                        <div className="tw-mt-6 tw-flex tw-justify-center tw-space-x-4">
+                        <div className="mt-6 flex justify-center space-x-4">
                             <button
                                 onClick={handleDownloadPng}
-                                className="tw-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-bg-gradient-to-r tw-from-secondary tw-to-primary-darktext tw-text-white tw-text-sm tw-font-medium tw-rounded-xl tw-shadow-md tw-hover:shadow-lg tw-transition-all tw-duration-300 tw-hover:scale-105"
+                                className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-secondary to-primary-darktext text-white text-sm font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
                             >
                                 PNG İndir
                             </button>
 
                             <button
                                 onClick={handleDownloadSvg}
-                                className="tw-flex tw-items-center tw-gap-2 tw-px-4 tw-py-2 tw-bg-gradient-to-r tw-from-secondary tw-to-primary-darktext tw-text-white tw-text-sm tw-font-medium tw-rounded-xl tw-shadow-md tw-hover:shadow-lg tw-transition-all tw-duration-300 tw-hover:scale-105"
+                                className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-secondary to-primary-darktext text-white text-sm font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
                             >
                                 SVG İndir
                             </button>

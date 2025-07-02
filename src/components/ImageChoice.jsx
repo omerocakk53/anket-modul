@@ -57,7 +57,7 @@ export default function ImageChoice({
     <div>
       {title ? (
         <>
-          <h4 className="tw-font-semibold tw-text-primary-text">
+          <h4 className="font-semibold text-primary-text">
             {SurveyNumberVisible
               ? count
                 ? title === ""
@@ -66,28 +66,28 @@ export default function ImageChoice({
                 : title || null
               : title || null}
             {MultiselectActive && (
-              <span className="tw-text-sm tw-text-primary-text tw-ml-2">
+              <span className="text-sm text-primary-text ml-2">
                 Birden fazla seçebilirsin
                 {MultiSelectLimit > 0 && ` (Seçim limiti: ${MultiSelectLimit})`}
               </span>
             )}
           </h4>
-          <p className="tw-text-sm tw-text-neutral tw-mb-2">{helpText}</p>
+          <p className="text-sm text-neutral mb-2">{helpText}</p>
 
           {/* Eğer çoklu seçim aktifse, kutu işaretleme yöntemi kullanılacak */}
           {MultiselectActive ? (
             <div className={`grid grid-cols-2 gap-4 p-2`}>
               {images.map((img, idx) => (
-                <label key={idx} className="tw-flex tw-flex-col tw-items-center">
+                <label key={idx} className="flex flex-col items-center">
                   <input
                     type="checkbox"
                     name={id}
                     value={idx}
                     onChange={() => handleImageSelect(idx)}
-                    className="tw-hidden tw-peer"
+                    className="hidden peer"
                     checked={selectedImages.includes(idx)}
                   />
-                  <span className="tw-text-center tw-mt-2 tw-text-sm tw-sm:text-base tw-font-semibold tw-text-primary-text tw-hover:text-primary-dark tw-transition tw-duration-300 tw-ease-in-out">
+                  <span className="text-center mt-2 text-sm sm:text-base font-semibold text-primary-text hover:text-primary-dark transition duration-300 ease-in-out">
                     {imageTitles[idx]}
                   </span>
                   <img
@@ -101,16 +101,16 @@ export default function ImageChoice({
           ) : (
             <div className={`grid grid-cols-2 gap-4 p-2`}>
               {images.map((img, idx) => (
-                <label key={idx} className="tw-flex tw-flex-col tw-items-center">
+                <label key={idx} className="flex flex-col items-center">
                   <input
                     type="radio"
                     name={id}
                     value={idx}
                     onChange={() => handleImageSelect(idx)}
-                    className="tw-hidden tw-peer"
+                    className="hidden peer"
                     checked={selectedImages.includes(idx)}
                   />
-                  <span className="tw-text-center tw-mt-2 tw-text-sm tw-sm:text-base tw-font-semibold tw-text-primary-text tw-hover:text-primary-dark tw-transition tw-duration-300 tw-ease-in-out">
+                  <span className="text-center mt-2 text-sm sm:text-base font-semibold text-primary-text hover:text-primary-dark transition duration-300 ease-in-out">
                     {imageTitles[idx]}
                   </span>
                   <img
@@ -124,8 +124,8 @@ export default function ImageChoice({
           )}
         </>
       ) : (
-        <div className="tw-flex tw-justify-center tw-items-center">
-          <h1 className="tw-text-primary-text tw-text-xl">Tasarlamaya Başlayın</h1>
+        <div className="flex justify-center items-center">
+          <h1 className="text-primary-text text-xl">Tasarlamaya Başlayın</h1>
         </div>
       )}
     </div>

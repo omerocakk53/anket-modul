@@ -35,7 +35,7 @@ export default function Email({ title, helpText, id, value, onChange, count , Su
 
   return (
     <div>
-      {title ? (<>  <label htmlFor={id} className="tw-font-semibold tw-text-primary-text">{
+      {title ? (<>  <label htmlFor={id} className="font-semibold text-primary-text">{
         SurveyNumberVisible
           ? (
             count
@@ -44,7 +44,7 @@ export default function Email({ title, helpText, id, value, onChange, count , Su
           )
           : (title || null)
       }</label>
-        <p className="tw-text-sm tw-text-neutral tw-mb-2">{helpText}</p>
+        <p className="text-sm text-neutral mb-2">{helpText}</p>
         <input
           id={id}
           name={id}
@@ -56,7 +56,7 @@ export default function Email({ title, helpText, id, value, onChange, count , Su
           onBlur={() => setError(validateEmail(value))}
           required
         />
-        {error && <p className="tw-text-danger tw-text-sm tw-mt-1">{error}</p>}</>) : (<><div className="tw-flex tw-justify-center tw-items-center"><h1 className="tw-text-primary-text tw-text-xl">Tasarlamaya Başlayın</h1></div></>)}
+        {error && <p className="text-danger text-sm mt-1">{error}</p>}</>) : (<><div className="flex justify-center items-center"><h1 className="text-primary-text text-xl">Tasarlamaya Başlayın</h1></div></>)}
     </div>
   );
 }

@@ -38,8 +38,8 @@ export default function Scale({ title, helpText, data, id, value = null, onChang
   };
 
   return (
-    <div className="tw-p-4">
-      {title ? (<>  <label className="tw-font-semibold tw-text-primary-text">{
+    <div className="p-4">
+      {title ? (<>  <label className="font-semibold text-primary-text">{
         SurveyNumberVisible
           ? (
             count
@@ -48,8 +48,8 @@ export default function Scale({ title, helpText, data, id, value = null, onChang
           )
           : (title || null)
       }</label>
-        <p className="tw-text-sm tw-text-neutral tw-mb-2">{helpText}</p>
-        <div className="tw-flex tw-gap-1 tw-p-1 tw-rounded-lg">
+        <p className="text-sm text-neutral mb-2">{helpText}</p>
+        <div className="flex gap-1 p-1 rounded-lg">
           {range.map((num) => (
             <button
               key={num}
@@ -60,7 +60,7 @@ export default function Scale({ title, helpText, data, id, value = null, onChang
               {num}
             </button>
           ))}
-        </div></>) : (<><div className="tw-flex tw-justify-center tw-items-center"><h1 className="tw-text-primary-text tw-text-xl">Tasarlamaya Başlayın</h1></div></>)}
+        </div></>) : (<><div className="flex justify-center items-center"><h1 className="text-primary-text text-xl">Tasarlamaya Başlayın</h1></div></>)}
     </div>
   );
 }

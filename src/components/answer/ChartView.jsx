@@ -44,11 +44,11 @@ export default function GraphView({ allAnswers }) {
     .filter(Boolean);
 
   return (
-    <div className="tw-p-4 tw-space-y-4">
+    <div className="p-4 space-y-4">
       <select
         value={selectedQuestionId}
         onChange={(e) => setSelectedQuestionId(e.target.value)}
-        className="tw-p-2 tw-border tw-rounded"
+        className="p-2 border rounded"
       >
         <option value="">Soru seçiniz</option>
         {numericQuestions.map((q) => {
@@ -73,7 +73,7 @@ export default function GraphView({ allAnswers }) {
           </BarChart>
         </ResponsiveContainer>
       ) : (
-        <p className="tw-text-sm tw-text-gray-500">Veri bulunamadı veya soru seçilmedi.</p>
+        <p className="text-sm text-gray-500">Veri bulunamadı veya soru seçilmedi.</p>
       )}
     </div>
   );

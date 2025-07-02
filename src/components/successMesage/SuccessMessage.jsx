@@ -56,8 +56,8 @@ export default function SuccessMessage({ message, animationId, onDone }) {
     };
 
     return (
-        <div className="tw-fixed tw-inset-0 tw-z-[9999] tw-flex tw-items-center tw-justify-center tw-bg-black/70 tw-pointer-events-none">
-            <div className="tw-relative tw-flex tw-flex-col tw-items-center tw-justify-center tw-p-12">
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 pointer-events-none">
+            <div className="relative flex flex-col items-center justify-center p-12">
                 <AnimatePresence mode="wait">
                     {phase === "text" && (
                         <motion.h1
@@ -66,7 +66,7 @@ export default function SuccessMessage({ message, animationId, onDone }) {
                             initial="hidden"
                             animate="visible"
                             exit="exit"
-                            className="tw-text-white tw-text-4xl tw-sm:text-5xl tw-font-bold tw-text-center tw-drop-shadow-lg"
+                            className="text-white text-4xl sm:text-5xl font-bold text-center drop-shadow-lg"
                         >
                             {message}
                         </motion.h1>
@@ -78,7 +78,7 @@ export default function SuccessMessage({ message, animationId, onDone }) {
                             initial="hidden"
                             animate="visible"
                             exit="exit"
-                            className="tw-text-green-400 tw-text-7xl tw-sm:text-8xl tw-drop-shadow-2xl"
+                            className="text-green-400 text-7xl sm:text-8xl drop-shadow-2xl"
                         >
                             <FaCheckCircle />
                         </motion.div>
