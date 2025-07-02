@@ -14,7 +14,7 @@
     "build:js": "rollup -c",
     "build": "pnpm run build:css && pnpm run build:js",
     "clean": "rm -rf dist",
-    "prepare": "pnpm run build:js"
+    "prepare": "pnpm build"
   },
   "repository": {
     "type": "git",
