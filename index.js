@@ -1,13 +1,13 @@
 // ✅ TailwindCSS’i doğrudan projeye uygulamak için
 
 // ✅ Ana sayfa export
-export { default as Anketler } from './src/pages/Anketler';
-export { default as AnketOynatıcısıWrapper } from './src/pages/AnketOynatıcısıWrapper';
+export { default as Surveys } from './src/pages/Anketler';
+export { default as SurveyPlayerWrapper } from './src/pages/AnketOynatıcısıWrapper';
 export { default as Share } from './src/components/Share/Share';
-export { default as AnketOlusturucu } from './src/components/AnketOlusturucu';
+export { default as SurveyCreate } from './src/components/AnketOlusturucu';
 export { default as ToastProvider } from './src/components/toast/ToastProvider';
 export { default as SuccessMessagePortal } from './src/components/successMesage/SuccessMessagePortal';
-export { default as CevaplarSayfasi } from './src/components/answer/CevaplarSayfasi';
+export { default as Answer } from './src/components/answer/AnswerPage';
 
 // 🎨 Renk & Tema
 export * from './src/Colors/ColorEditor';
@@ -56,7 +56,7 @@ export * from './src/components/successMesage/SuccessMessage';
 
 // 📊 answer
 export * from './src/components/answer/AnswerTable';
-export * from './src/components/answer/CevaplarSayfasi';
+export * from './src/components/answer/AnswerPage';
 export * from './src/components/answer/ChartView';
 export * from './src/components/answer/ComparisonPage';
 export * from './src/components/answer/FilterBar';

@@ -8,7 +8,7 @@ import AnswerTable from "./AnswerTable";
 import ComparisonPage from "./ComparisonPage";
 import Header from "../common/Header";
 
-export default function CevaplarSayfasi({ answerget, answerdelete, fetchsurveyById }) {
+export default function AnswerPage({ answerget, answerdelete, fetchsurveyById }) {
     const { surveyId } = useParams();
     const [cevaplar, setCevaplar] = useState([]);
     const [sorular, setSorular] = useState([]);
@@ -115,7 +115,7 @@ export default function CevaplarSayfasi({ answerget, answerdelete, fetchsurveyBy
 
 
     function yonlendir() {
-        navigate('/anketolustur',{replace: true });
+        navigate('/anketolustur', { replace: true });
     }
 
     return (
