@@ -16,8 +16,8 @@ export default function FileUpload({ title, helpText, value, id, onChange, count
   };
 
   return (
-    <div className="p-4">
-      {title ? (<>  <label htmlFor={id} className="font-semibold text-primary-text block mb-1">
+    <div className="tw-p-4">
+      {title ? (<>  <label htmlFor={id} className="tw-font-semibold tw-text-primary-text tw-block tw-mb-1">
         {
         SurveyNumberVisible
           ? (
@@ -28,45 +28,45 @@ export default function FileUpload({ title, helpText, value, id, onChange, count
           : (title || null)
       }
       </label>
-        <p className="text-sm text-neutral mb-4">{helpText}</p>
+        <p className="tw-text-sm tw-text-neutral tw-mb-4">{helpText}</p>
         <input
           type="file"
           id={id}
           name={id}
           ref={fileInputRef} // Assign the ref to the input
           onChange={(e) => onChange(e.target.files[0])}
-          className="hidden" // Hide the default file input
+          className="tw-hidden" // Hide the default file input
         />
         {!value ? (
           <button
             type="button"
             onClick={handleButtonClick}
-            className="flex items-center justify-center w-full px-4 py-3 border-2 border-dashed border-primary-light rounded-lg text-primary-text hover:bg-primary-light hover:text-primary-text transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-light focus:ring-opacity-50"
+            className="tw-flex tw-items-center tw-justify-center tw-w-full tw-px-4 tw-py-3 tw-border-2 tw-border-dashed tw-border-primary-light tw-rounded-lg tw-text-primary-text tw-hover:bg-primary-light tw-hover:text-primary-text tw-transition-colors tw-duration-200 tw-focus:outline-none tw-focus:ring-2 tw-focus:ring-primary-light tw-focus:ring-opacity-50"
           >
-            <FiUploadCloud className="mr-2 text-xl" />
+            <FiUploadCloud className="tw-mr-2 tw-text-xl" />
             <span>Dosya Seçmek İçin Tıkla veya Sürükle</span>
           </button>
         ) : (
-          <div className="flex items-center justify-between p-3 border border-secondary-light rounded-lg bg-secondary-light/30 text-primary-text">
-            <div className="flex items-center">
-              <FiFile className="mr-2 text-xl text-primary-text" />
-              <span className="font-medium text-sm truncate">{value.name}</span>
+          <div className="tw-flex tw-items-center tw-justify-between tw-p-3 tw-border tw-border-secondary-light tw-rounded-lg tw-bg-secondary-light/30 tw-text-primary-text">
+            <div className="tw-flex tw-items-center">
+              <FiFile className="tw-mr-2 tw-text-xl tw-text-primary-text" />
+              <span className="tw-font-medium tw-text-sm tw-truncate">{value.name}</span>
             </div>
             <button
               type="button"
               onClick={handleFileRemove}
-              className="ml-4 text-neutral hover:text-danger transition-colors duration-200"
+              className="tw-ml-4 tw-text-neutral tw-hover:text-danger tw-transition-colors tw-duration-200"
               title="Dosyayı Kaldır"
             >
-              <FiXCircle className="text-xl" />
+              <FiXCircle className="tw-text-xl" />
             </button>
           </div>
         )}
         {value && (
-          <p className="text-xs text-neutral mt-2">
-            Seçilen dosya: <span className="font-semibold text-secondary-light">{value.name}</span>
+          <p className="tw-text-xs tw-text-neutral tw-mt-2">
+            Seçilen dosya: <span className="tw-font-semibold tw-text-secondary-light">{value.name}</span>
           </p>
-        )}</>) : (<><div className="flex justify-center items-center"><h1 className="text-primary-text text-xl">Tasarlamaya Başlayın</h1></div></>)}
+        )}</>) : (<><div className="tw-flex tw-justify-center tw-items-center"><h1 className="tw-text-primary-text tw-text-xl">Tasarlamaya Başlayın</h1></div></>)}
     </div>
   );
 }

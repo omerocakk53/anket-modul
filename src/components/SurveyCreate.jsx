@@ -252,20 +252,20 @@ function SurveyCreate({ updatesurvey, fetchsurveyById, updatesurveyfeature }) {
                     );
                 })}
                 {/* Sağ Panel */}
-                <div className="flex-1 rounded-lg space-y-4 mr-5">
+                <div className="tw-flex-1 tw-rounded-lg tw-space-y-4 tw-mr-5">
                     {/* Hoşgeldin Sayfası */}
                     {(() => {
                         const welcomeItem = FinishWelcomeitems?.find(item => item.id.includes("welcome"));
                         if (!welcomeItem) {
                             return (
-                                <div className="w-full border-secondary-light border border-dashed p-4 rounded-lg text-center text-primary-darktext flex items-center justify-center gap-2 bg-neutral/50">
+                                <div className="tw-w-full tw-border-secondary-light tw-border tw-border-dashed tw-p-4 tw-rounded-lg tw-text-center tw-text-primary-darktext tw-flex tw-items-center tw-justify-center tw-gap-2 tw-bg-neutral/50">
                                     <RxEnter size={25} />
                                     Hoşgeldin Sayfası
                                 </div>
                             );
                         }
                         return (
-                            <div className="w-full border-secondary-light border p-4 rounded-lg text-primary-darktext bg-neutral/50 space-y-1 shadow-sm">
+                            <div className="tw-w-full tw-border-secondary-light tw-border tw-p-4 tw-rounded-lg tw-text-primary-darktext tw-bg-neutral/50 tw-space-y-1 tw-shadow-sm">
                                 <ComponentViewItems
                                     item={welcomeItem}
                                     onDelete={() => handleDeleteWelcomeFinish(welcomeItem.id)}
@@ -278,18 +278,18 @@ function SurveyCreate({ updatesurvey, fetchsurveyById, updatesurveyfeature }) {
                         );
                     })()}
                     {/* Sürükle Bırak Alanı */}
-                    {items?.length > 0 ? (<div className="w-full border-secondary-light border p-4 rounded-lg text-primary-darktext bg-neutral/50 space-y-1 shadow-sm">
+                    {items?.length > 0 ? (<div className="tw-w-full tw-border-secondary-light tw-border tw-p-4 tw-rounded-lg tw-text-primary-darktext tw-bg-neutral/50 tw-space-y-1 tw-shadow-sm">
                         {survey.active === false ? (
                             <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
                                 <SortableContext
                                     items={items.filter(item => !item.id.includes("welcome") && !item.id.includes("finish")).map(item => item.id)}
                                     strategy={verticalListSortingStrategy}
                                 >
-                                    <div className="space-y-2 overflow-scroll overflow-x-hidden h-[304px] w-[100%]">
+                                    <div className="tw-space-y-2 tw-overflow-scroll tw-overflow-x-hidden tw-h-[304px] tw-w-[100%]">
                                         {items
                                             .filter(item => !item.id.includes("welcome") && !item.id.includes("finish"))
                                             .map((item, index) => (
-                                                <div key={item.id} className="w-full">
+                                                <div key={item.id} className="tw-w-full">
                                                     <ComponentViewItems
                                                         item={item}
                                                         onDelete={handleDelete}
@@ -303,11 +303,11 @@ function SurveyCreate({ updatesurvey, fetchsurveyById, updatesurveyfeature }) {
                             </DndContext>
                         ) : (
                             // DnD olmadan sadece sıralı listeyi göster
-                            <div className="space-y-2 overflow-scroll overflow-x-hidden h-[304px] w-[100%]">
+                            <div className="tw-space-y-2 tw-overflow-scroll tw-overflow-x-hidden tw-h-[304px] tw-w-[100%]">
                                 {items
                                     .filter(item => !item.id.includes("welcome") && !item.id.includes("finish"))
                                     .map((item, index) => (
-                                        <div key={item.id} className="w-full">
+                                        <div key={item.id} className="tw-w-full">
                                             <ComponentViewItems
                                                 item={item}
                                                 count={`${index + 1} - ${item.label}`}
@@ -317,7 +317,7 @@ function SurveyCreate({ updatesurvey, fetchsurveyById, updatesurveyfeature }) {
                                     ))}
                             </div>
                         )}
-                    </div>) : (<div className="w-full border-secondary-light border border-dashed p-4 rounded-lg text-center text-primary-darktext flex items-center justify-center gap-2 bg-neutral/50">
+                    </div>) : (<div className="tw-w-full tw-border-secondary-light tw-border tw-border-dashed tw-p-4 tw-rounded-lg tw-text-center tw-text-primary-darktext tw-flex tw-items-center tw-justify-center tw-gap-2 tw-bg-neutral/50">
                         <LuTableOfContents size={25} />
                         İçerik Alanı
                     </div>)
@@ -327,14 +327,14 @@ function SurveyCreate({ updatesurvey, fetchsurveyById, updatesurveyfeature }) {
                         const finishItem = FinishWelcomeitems?.find(item => item.id.includes("finish"));
                         if (!finishItem) {
                             return (
-                                <div className="w-full border-secondary-light border border-dashed p-4 rounded-lg text-center text-primary-darktext flex items-center justify-center gap-2 bg-neutral/50">
+                                <div className="tw-w-full tw-border-secondary-light tw-border tw-border-dashed tw-p-4 tw-rounded-lg tw-text-center tw-text-primary-darktext tw-flex tw-items-center tw-justify-center tw-gap-2 tw-bg-neutral/50">
                                     <MdOutlineWavingHand size={25} />
                                     Bitiş Sayfası
                                 </div>
                             );
                         }
                         return (
-                            <div className="w-full border-secondary-light  border p-4 rounded-lg text-primary-darktext bg-neutral/50 space-y-1 shadow-sm">
+                            <div className="tw-w-full tw-border-secondary-light tw- tw-border tw-p-4 tw-rounded-lg tw-text-primary-darktext tw-bg-neutral/50 tw-space-y-1 tw-shadow-sm">
                                 <ComponentViewItems
                                     item={finishItem}
                                     onDelete={() => handleDeleteWelcomeFinish(finishItem.id)}

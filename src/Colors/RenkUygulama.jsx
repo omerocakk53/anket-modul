@@ -32,8 +32,8 @@ export const RenkUygulama = ({getColorSettings}) => {
 
     if (loading) {
         return (
-            <div className="flex items-center justify-center h-screen bg-neutral-light fixed inset-0 z-50">
-                <div className="text-2xl text-neutral-darkest animate-pulse">
+            <div className="tw-flex tw-items-center tw-justify-center tw-h-screen tw-bg-neutral-light tw-fixed tw-inset-0 tw-z-50">
+                <div className="tw-text-2xl tw-text-neutral-darkest tw-animate-pulse">
                     Renk ayarları yükleniyor...
                 </div>
             </div>

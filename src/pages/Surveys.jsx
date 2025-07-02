@@ -245,10 +245,10 @@ export default function Anketler({ createSurvey, fetchsurveychamberById, handleL
     };
 
     return (
-        <div className="flex flex-col md:flex-row h-screen bg-gradient-to-br from-primary-light to-secondary-light font-sans">
+        <div className="tw-flex tw-flex-col tw-md:flex-row tw-h-screen tw-bg-gradient-to-br tw-from-primary-light tw-to-secondary-light tw-font-sans">
             {/* Sidebar: Mobilde gizli, tablet+ göster */}
             <Sidebar
-                className="hidden md:flex md:flex-shrink-0"
+                className="tw-hidden tw-md:flex tw-md:flex-shrink-0"
                 groupedSurveysData={groupedSurveysData}
                 selectedGroup={selectedGroup}
                 setSelectedGroup={setSelectedGroup}
@@ -259,10 +259,10 @@ export default function Anketler({ createSurvey, fetchsurveychamberById, handleL
                 sidebar={sidebarOpen}
             />
 
-            <div className="flex-1 flex flex-col bg-neutral-light min-h-screen">
+            <div className="tw-flex-1 tw-flex tw-flex-col tw-bg-neutral-light tw-min-h-screen">
                 <Header selectedGroup={selectedGroup} chamber={chamber} UserId={userId} Sidebar={(sidebar) => { setSidebarOpen(sidebar) }} />
 
-                <main className="flex-1 p-4 md:p-8 bg-neutral-light overflow-y-auto">
+                <main className="tw-flex-1 tw-p-4 tw-md:p-8 tw-bg-neutral-light tw-overflow-y-auto">
                     <FilterSortSearch
                         onSearch={handleSearch}
                         onSort={handleSort}
@@ -275,10 +275,10 @@ export default function Anketler({ createSurvey, fetchsurveychamberById, handleL
                         dateRange={dateRange}
                         setDateRange={setDateRange}
                     />
-                    <hr className="mb-5 border-none h-[1px] rounded-xl bg-neutral-darkest" />
+                    <hr className="tw-mb-5 tw-border-none tw-h-[1px] tw-rounded-xl tw-bg-neutral-darkest" />
 
                     {selectedGroup ? (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                        <div className="tw-grid tw-grid-cols-1 tw-sm:grid-cols-2 tw-md:grid-cols-3 tw-lg:grid-cols-4 tw-gap-4 tw-md:gap-6">
                             <AnketListele
                                 visibleSurveys={visibleSurveys}
                                 setRefreshKey={setRefreshKey}
@@ -288,19 +288,19 @@ export default function Anketler({ createSurvey, fetchsurveychamberById, handleL
                             />
                         </div>
                     ) : (
-                        <div className="col-span-full text-center py-12 bg-neutral-white rounded-lg shadow-md border border-neutral-DEFAULT mx-4 md:mx-0">
-                            <h3 className="text-xl md:text-2xl font-bold text-neutral-darkest mb-4">
+                        <div className="tw-col-span-full tw-text-center tw-py-12 tw-bg-neutral-white tw-rounded-lg tw-shadow-md tw-border tw-border-neutral-DEFAULT tw-mx-4 tw-md:mx-0">
+                            <h3 className="tw-text-xl tw-md:text-2xl tw-font-bold tw-text-neutral-darkest tw-mb-4">
                                 Hoş Geldiniz!
                             </h3>
-                            <p className="text-neutral-dark text-base md:text-lg">
+                            <p className="tw-text-neutral-dark tw-text-base tw-md:text-lg">
                                 Başlamak için yeni bir klasör oluşturun.
                             </p>
                             <button
-                                className="btn bg-primary text-primary-text px-5 py-2 rounded-lg shadow-md hover:bg-primary-dark transition-colors duration-200 mt-6 text-base md:text-lg"
+                                className="tw-btn tw-bg-primary tw-text-primary-text tw-px-5 tw-py-2 tw-rounded-lg tw-shadow-md tw-hover:bg-primary-dark tw-transition-colors tw-duration-200 tw-mt-6 tw-text-base tw-md:text-lg"
                                 onClick={openCreateNewGroupModal}
                             >
-                                <div className="flex items-center justify-center">
-                                    <FiFolderPlus className="h-5 w-5 mr-2" />
+                                <div className="tw-flex tw-items-center tw-justify-center">
+                                    <FiFolderPlus className="tw-h-5 tw-w-5 tw-mr-2" />
                                     Yeni Klasör Oluştur
                                 </div>
                             </button>

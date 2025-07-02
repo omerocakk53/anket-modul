@@ -43,10 +43,10 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
     const handleDelete = async (answerId) => {
         toast(
             (t) => (
-                <div className="p-4">
-                    <p className="font-semibold text-lg mb-2">Silmek istediğinize emin misiniz?</p>
-                    <p className="text-sm mb-4 text-neutral-dark">Bu işlem geri alınamaz.</p>
-                    <div className="flex gap-3">
+                <div className="tw-p-4">
+                    <p className="tw-font-semibold tw-text-lg tw-mb-2">Silmek istediğinize emin misiniz?</p>
+                    <p className="tw-text-sm tw-mb-4 tw-text-neutral-dark">Bu işlem geri alınamaz.</p>
+                    <div className="tw-flex tw-gap-3">
                         <button
                             onClick={async () => {
                                 toast.dismiss(t.id);
@@ -62,14 +62,14 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
                                     setIsDeleting(false);
                                 }
                             }}
-                            className="bg-danger text-white px-4 py-2 rounded-md"
+                            className="tw-bg-danger tw-text-white tw-px-4 tw-py-2 tw-rounded-md"
                             disabled={isDeleting}
                         >
                             Evet
                         </button>
                         <button
                             onClick={() => toast.dismiss(t.id)}
-                            className="bg-gray-200 px-4 py-2 rounded-md"
+                            className="tw-bg-gray-200 tw-px-4 tw-py-2 tw-rounded-md"
                         >
                             Hayır
                         </button>
@@ -126,7 +126,7 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
                 onBackToMain={() => yonlendir()}
                 Sidebar={() => { }}
             />
-            <div className="max-w-6xl mx-auto p-6 bg-neutral-light rounded-lg shadow-inner">
+            <div className="tw-max-w-6xl tw-mx-auto tw-p-6 tw-bg-neutral-light tw-rounded-lg tw-shadow-inner">
                 <ViewSwitcher selectedView={selectedView} setSelectedView={setSelectedView} />
                 {selectedView === "Tablo" || selectedView === "Grafik" ? (
                     <FilterBar
@@ -137,9 +137,9 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
                     />
                 ) : (<></>)}
                 {filteredCevaplar.length === 0 ? (
-                    <div className="bg-neutral-white border border-neutral-DEFAULT rounded-lg p-6 text-center text-neutral-dark">
-                        <p className="text-lg font-semibold mb-2">Gösterilecek cevap bulunamadı.</p>
-                        <p className="text-sm">Tarih aralığı veya arama kriterlerini değiştirin.</p>
+                    <div className="tw-bg-neutral-white tw-border tw-border-neutral-DEFAULT tw-rounded-lg tw-p-6 tw-text-center tw-text-neutral-dark">
+                        <p className="tw-text-lg tw-font-semibold tw-mb-2">Gösterilecek cevap bulunamadı.</p>
+                        <p className="tw-text-sm">Tarih aralığı veya arama kriterlerini değiştirin.</p>
                     </div>
                 ) : (
                     <>

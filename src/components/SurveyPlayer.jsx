@@ -205,12 +205,12 @@ export default function SurveyPlayer({ surveyId, user, fetchsurveyById, answersa
     }, [surveyId]);
 
 
-    if (loading) return <div className="p-4 text-primary">Anket yükleniyor...</div>;
+    if (loading) return <div className="tw-p-4 tw-text-primary">Anket yükleniyor...</div>;
 
     if (!loading && data.length === 0) {
         return (
-            <div className="w-screen h-screen flex items-center justify-center">
-                <div className="p-6 rounded text-neutral-darkest text-3xl font-semibold">
+            <div className="tw-w-screen tw-h-screen tw-flex tw-items-center tw-justify-center">
+                <div className="tw-p-6 tw-rounded tw-text-neutral-darkest tw-text-3xl tw-font-semibold">
                     Anket boş.
                 </div>
             </div>
@@ -221,8 +221,8 @@ export default function SurveyPlayer({ surveyId, user, fetchsurveyById, answersa
 
     } else {
         return (
-            <div className="w-screen h-screen flex items-center justify-center">
-                <div className="p-6 rounded text-neutral-darkest text-3xl font-semibold">
+            <div className="tw-w-screen tw-h-screen tw-flex tw-items-center tw-justify-center">
+                <div className="tw-p-6 tw-rounded tw-text-neutral-darkest tw-text-3xl tw-font-semibold">
                     Bu Anket Kapalıdır.
                 </div>
             </div>
@@ -230,18 +230,18 @@ export default function SurveyPlayer({ surveyId, user, fetchsurveyById, answersa
     }
 
     return (
-        <div className="w-screen h-screen overflow-hidden flex items-center justify-center">
-            <div className="w-full h-full bg-neutral-dark shadow-lg rounded-md relative flex flex-col">
+        <div className="tw-w-screen tw-h-screen tw-overflow-hidden tw-flex tw-items-center tw-justify-center">
+            <div className="tw-w-full tw-h-full tw-bg-neutral-dark tw-shadow-lg tw-rounded-md tw-relative tw-flex tw-flex-col">
                 {submitted ? (
                     <></>
                 ) : (
                     <>
-                        <div className="absolute top-4 left-0 right-0 text-center text-sm text-primary-text">
+                        <div className="tw-absolute tw-top-4 tw-left-0 tw-right-0 tw-text-center tw-text-sm tw-text-primary-text">
                             {questionLabels.includes(currentItem?.label)
                                 ? `Soru ${data.filter(i => questionLabels.includes(i.label)).findIndex(i => i.id === currentItem.id) + 1} / ${data.filter(i => questionLabels.includes(i.label)).length}`
                                 : null}
                         </div>
-                        <div className="flex-grow flex items-center justify-center max-w-10/12 mx-auto w-full relative overflow-hidden">
+                        <div className="tw-flex-grow tw-flex tw-items-center tw-justify-center tw-max-w-10/12 tw-mx-auto tw-w-full tw-relative tw-overflow-hidden">
                             <AnimatePresence mode="wait">
                                 {currentItem && (
                                     <motion.div
@@ -250,7 +250,7 @@ export default function SurveyPlayer({ surveyId, user, fetchsurveyById, answersa
                                         animate={{ opacity: 1, y: 0 }}
                                         exit={{ opacity: 0, y: -100 }}
                                         transition={{ duration: 0.5 }}
-                                        className="w-full"
+                                        className="tw-w-full"
                                     >
                                         {renderComponent(currentItem)}
                                         {/* Error message moved to toast notifications */}
@@ -258,17 +258,17 @@ export default function SurveyPlayer({ surveyId, user, fetchsurveyById, answersa
                                 )}
                             </AnimatePresence>
                         </div>
-                        <div className="flex mb-10 justify-between max-w-2xl mx-auto w-full px-4">
+                        <div className="tw-flex tw-mb-10 tw-justify-between tw-max-w-2xl tw-mx-auto tw-w-full tw-px-4">
                             <button
                                 onClick={handleBack}
                                 disabled={currentIndex === 0}
-                                className="px-6 py-2 rounded bg-neutral-darkest text-primary-text hover:bg-primary-darktext disabled:opacity-50 transition-colors duration-200"
+                                className="tw-px-6 tw-py-2 tw-rounded tw-bg-neutral-darkest tw-text-primary-text tw-hover:bg-primary-darktext tw-disabled:opacity-50 tw-transition-colors tw-duration-200"
                             >
                                 Geri
                             </button>
                             <button
                                 onClick={handleNext}
-                                className="px-6 py-2 rounded bg-primary text-primary-text hover:bg-primary-dark transition-colors duration-200"
+                                className="tw-px-6 tw-py-2 tw-rounded tw-bg-primary tw-text-primary-text tw-hover:bg-primary-dark tw-transition-colors tw-duration-200"
                             >
                                 {currentIndex === data.length - 1 ? 'Gönder' : 'İleri'}
                             </button>

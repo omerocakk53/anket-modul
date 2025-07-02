@@ -38,30 +38,30 @@ function ShortTextModal({ isOpen, onClose, onSave, onChange, initialData, count 
   if (!isOpen) return null;
 
   const leftPanel = (
-    <div className="space-y-4">
-      <h2 className="text-lg font-bold">Soru Ayarları</h2>
+    <div className="tw-space-y-4">
+      <h2 className="tw-text-lg tw-font-bold">Soru Ayarları</h2>
       <div>
-        <label className="block text-sm font-medium mb-1">Başlık</label>
+        <label className="tw-block tw-text-sm tw-font-medium tw-mb-1">Başlık</label>
         <input
           type="text"
-          className="w-full border rounded p-2"
+          className="tw-w-full tw-border tw-rounded tw-p-2"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
       </div>
       <div>
-        <label className="block text-sm font-medium mb-1">Yardım Metni</label>
+        <label className="tw-block tw-text-sm tw-font-medium tw-mb-1">Yardım Metni</label>
         <input
           type="text"
-          className="w-full border rounded p-2"
+          className="tw-w-full tw-border tw-rounded tw-p-2"
           value={helpText}
           onChange={(e) => setHelpText(e.target.value)}
         />
       </div>
       <div>
-        <label className="block text-sm font-medium mb-1">Giriş Türü</label>
+        <label className="tw-block tw-text-sm tw-font-medium tw-mb-1">Giriş Türü</label>
         <select
-          className="w-full border rounded p-2"
+          className="tw-w-full tw-border tw-rounded tw-p-2"
           value={inputType}
           onChange={(e) => setInputType(e.target.value)}
         >
@@ -74,7 +74,7 @@ function ShortTextModal({ isOpen, onClose, onSave, onChange, initialData, count 
       </div>
       {inputType === "text" && (
         <div>
-          <label className="block text-sm font-medium mb-1">
+          <label className="tw-block tw-text-sm tw-font-medium tw-mb-1">
             Karakter Sınırı (0 = Sınırsız)
           </label>
           <InputNumber
@@ -82,13 +82,13 @@ function ShortTextModal({ isOpen, onClose, onSave, onChange, initialData, count 
             max={1000}
             value={charLimit}
             onChange={setCharLimit}
-            className="w-full border rounded p-2"
+            className="tw-w-full tw-border tw-rounded tw-p-2"
           />
         </div>
       )}
-      <div className="flex items-center space-x-3">
+      <div className="tw-flex tw-items-center tw-space-x-3">
         <label
-          className="text-sm font-medium text-primary-dark select-none cursor-pointer"
+          className="tw-text-sm tw-font-medium tw-text-primary-dark tw-select-none tw-cursor-pointer"
           onClick={() => setComplusory(prev => !prev)}
         >
           Zorunlu alan
@@ -106,9 +106,9 @@ function ShortTextModal({ isOpen, onClose, onSave, onChange, initialData, count 
           />
         </button>
       </div>
-      <div className="flex items-center space-x-3">
+      <div className="tw-flex tw-items-center tw-space-x-3">
         <label
-          className="text-sm font-medium text-primary-dark select-none cursor-pointer"
+          className="tw-text-sm tw-font-medium tw-text-primary-dark tw-select-none tw-cursor-pointer"
           onClick={() => setSurveyNumberVisible(prev => !prev)}
         >
           Soru Numarası Gözüksün
@@ -126,12 +126,12 @@ function ShortTextModal({ isOpen, onClose, onSave, onChange, initialData, count 
           />
         </button>
       </div>
-      <div className="flex gap-2 p-5 absolute left-0 bottom-0 bg-neutral md:w-1/2 w-full ">
-        <button className="px-4 py-2 bg-gray-300 rounded" onClick={onClose}>
+      <div className="tw-flex tw-gap-2 tw-p-5 tw-absolute tw-left-0 tw-bottom-0 tw-bg-neutral tw-md:w-1/2 tw-w-full tw-">
+        <button className="tw-px-4 tw-py-2 tw-bg-gray-300 tw-rounded" onClick={onClose}>
           Vazgeç
         </button>
         <button
-          className="px-4 py-2 bg-blue-500 text-white rounded"
+          className="tw-px-4 tw-py-2 tw-bg-blue-500 tw-text-white tw-rounded"
           onClick={() => {
             onSave({ title, helpText, complusory, SurveyNumberVisible, inputType, charLimit });
             setTitle("");

@@ -37,8 +37,8 @@ export default function Rating({ title, helpText, maxValue = 5, id, value = 0, o
   };
 
   return (
-    <div className="p-4">
-      {title ? (<>  <label className="block font-semibold text-primary-text">{
+    <div className="tw-p-4">
+      {title ? (<>  <label className="tw-block tw-font-semibold tw-text-primary-text">{
         SurveyNumberVisible
           ? (
             count
@@ -47,8 +47,8 @@ export default function Rating({ title, helpText, maxValue = 5, id, value = 0, o
           )
           : (title || null)
       }</label>
-        <p className="text-sm text-neutral mb-2">{helpText}</p>
-        <div className="flex gap-1 text-2xl">
+        <p className="tw-text-sm tw-text-neutral tw-mb-2">{helpText}</p>
+        <div className="tw-flex tw-gap-1 tw-text-2xl">
           {[...Array(maxValue)].map((_, idx) => {
             const rating = idx + 1;
             const isFilled = rating <= (hovered || value);
@@ -67,7 +67,7 @@ export default function Rating({ title, helpText, maxValue = 5, id, value = 0, o
               </span>
             );
           })}
-        </div></>) : (<><div className="flex justify-center items-center"><h1 className="text-primary-text text-xl">Tasarlamaya Başlayın</h1></div></>)}
+        </div></>) : (<><div className="tw-flex tw-justify-center tw-items-center"><h1 className="tw-text-primary-text tw-text-xl">Tasarlamaya Başlayın</h1></div></>)}
     </div>
   );
 }
