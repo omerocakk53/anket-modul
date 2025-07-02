@@ -90,9 +90,6 @@ importers:
       postcss-modules:
         specifier: ^6.0.1
         version: 6.0.1(postcss@8.5.6)
-      postcss-rename:
-        specifier: ^0.8.0
-        version: 0.8.0
       rollup:
         specifier: ^2.79.2
         version: 2.79.2
@@ -1703,10 +1700,6 @@ packages:
     engines: {node: ^10 || ^12 || >=14.0}
     peerDependencies:
       postcss: ^8.2.15
-
-  postcss-rename@0.8.0:
-    resolution: {integrity: sha512-QV8cCSubAkUT/EVIhZY+NRF4cDNzIziR7vSE1dFE797reOPIsczFTXyZfFh3t623cDrdsAhxPFf8XJcYaCbScQ==}
-    engines: {node: '>=20.0.0'}
 
   postcss-selector-parser@6.1.2:
     resolution: {integrity: sha512-Q8qQfPiZ+THO/3ZrOrO0cJJKfpYCagtMUkXbnEfmgUjwXg6z/WBeOyS9APBBPCTSiDV+s4SwQGu8yFsiMRIudg==}
@@ -3790,11 +3783,6 @@ snapshots:
   postcss-reduce-transforms@5.1.0(postcss@8.5.6):
     dependencies:
       postcss: 8.5.6
-      postcss-value-parser: 4.2.0
-
-  postcss-rename@0.8.0:
-    dependencies:
-      postcss-selector-parser: 7.1.0
       postcss-value-parser: 4.2.0
 
   postcss-selector-parser@6.1.2:
