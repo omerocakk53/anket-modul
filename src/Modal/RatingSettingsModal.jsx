@@ -56,13 +56,13 @@ function RatingSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
   };
 
   const leftPanel = (
-    <div className="tw-space-y-4">
-      <h2 className="tw-text-lg tw-font-bold">Derecelendirme Soru Ayarları</h2>
+    <div className="space-y-4">
+      <h2 className="text-lg font-bold">Derecelendirme Soru Ayarları</h2>
 
       <div>
-        <label className="tw-block tw-text-sm tw-font-medium tw-mb-1">Başlık</label>
+        <label className="block text-sm font-medium mb-1">Başlık</label>
         <input
-          className="tw-w-full tw-border tw-rounded tw-p-2"
+          className="w-full border rounded p-2"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Sorunuzu yazın..."
@@ -70,34 +70,34 @@ function RatingSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
       </div>
 
       <div>
-        <label className="tw-block tw-text-sm tw-font-medium tw-mb-1">Yardım Metni</label>
+        <label className="block text-sm font-medium mb-1">Yardım Metni</label>
         <input
-          className="tw-w-full tw-border tw-rounded tw-p-2"
+          className="w-full border rounded p-2"
           value={helpText}
           onChange={(e) => setHelpText(e.target.value)}
         />
       </div>
 
       <div>
-        <label className="tw-block tw-text-sm tw-font-medium tw-mb-1">Puanlama Değeri</label>
+        <label className="block text-sm font-medium mb-1">Puanlama Değeri</label>
         <Slider
           min={1}
           max={10}
           value={maxValue}
           onChange={(val) => setMaxValue(val)} // Slider ile değeri güncelliyoruz
-          className="tw-w-full"
+          className="w-full"
           thumbClassName="thumb-class" // Slider başlığına stil eklemek isterseniz
           trackClassName="track-class" // Track'e stil eklemek isterseniz
         />
-        <div className="tw-flex tw-justify-between tw-text-sm tw-mt-2">
+        <div className="flex justify-between text-sm mt-2">
           <span>1</span>
           <span>{maxValue}</span>
         </div>
       </div>
 
       <div>
-        <label className="tw-block tw-text-sm tw-font-medium tw-mb-1">Simge Seçin</label>
-        <div className="tw-flex tw-space-x-4 tw-text-primary">
+        <label className="block text-sm font-medium mb-1">Simge Seçin</label>
+        <div className="flex space-x-4 text-primary">
           <button
             onClick={() => handleIconChange('star')}
             className={`p-2 ${selectedIcon === 'star' ? 'text-success' : ''}`}
@@ -119,9 +119,9 @@ function RatingSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
         </div>
       </div>
 
-      <div className="tw-flex tw-items-center tw-space-x-3">
+      <div className="flex items-center space-x-3">
         <label
-          className="tw-text-sm tw-font-medium tw-text-primary-dark tw-select-none tw-cursor-pointer"
+          className="text-sm font-medium text-primary-dark select-none cursor-pointer"
           onClick={() => setComplusory(prev => !prev)}
         >
           Zorunlu alan
@@ -140,11 +140,11 @@ function RatingSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
         </button>
       </div>
 
-      <div className="tw-flex tw-gap-2 tw-p-5 tw-absolute tw-left-0 tw-bottom-0 tw-bg-neutral tw-md:w-1/2 tw-w-full tw-">
-        <button className="tw-px-4 tw-py-2 tw-bg-gray-300 tw-rounded" onClick={onClose}>
+      <div className="flex gap-2 p-5 absolute left-0 bottom-0 bg-neutral md:w-1/2 w-full ">
+        <button className="px-4 py-2 bg-gray-300 rounded" onClick={onClose}>
           Vazgeç
         </button>
-        <button className="tw-px-4 tw-py-2 tw-bg-blue-500 tw-text-white tw-rounded" onClick={handleSave}>
+        <button className="px-4 py-2 bg-blue-500 text-white rounded" onClick={handleSave}>
           Kaydet
         </button>
       </div>

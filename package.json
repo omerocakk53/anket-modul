@@ -11,7 +11,8 @@
   ],
   "scripts": {
     "build:css": "tailwindcss -i ./styles/tailwind.css -o ./dist/styles.css --minify",
-    "prefix:tw": "node src/scripts/prefixTailwind.js",
+    "prefix:tw": "node scripts/prefixTailwind.js",
+    "unprefix:tw": "node scripts/unprefixTailwind.js",
     "build:js": "rollup -c",
     "build": "pnpm run build:css && pnpm run build:js",
     "clean": "rm -rf dist",

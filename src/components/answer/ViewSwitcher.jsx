@@ -2,7 +2,7 @@ export default function ViewSwitcher({ selectedView, setSelectedView }) {
   const views = ["Tablo", "Grafik", "Karşılaştırma"];
 
   return (
-    <div className="tw-flex tw-gap-4 tw-mb-4">
+    <div className="flex gap-4 mb-4">
       {views.map(view => (
         <button
           key={view}

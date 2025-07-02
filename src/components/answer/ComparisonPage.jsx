@@ -114,7 +114,7 @@ export default function ComparisonPage({ allAnswers }) {
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
             return (
-                <div className="tw-bg-white tw-p-2 tw-border tw-rounded tw-shadow">
+                <div className="bg-white p-2 border rounded shadow">
                     {payload.map((p) => (
                         <p key={p.dataKey} style={{ color: p.color }}>
                             {p.name}: {p.value.toFixed(2)}
@@ -127,12 +127,12 @@ export default function ComparisonPage({ allAnswers }) {
     };
 
     return (
-        <div className="tw-p-6 tw-max-w-5xl tw-mx-auto tw-space-y-6">
-            <h1 className="tw-text-2xl tw-font-bold tw-mb-4">Memnuniyet Anketleri Karşılaştırma</h1>
+        <div className="p-6 max-w-5xl mx-auto space-y-6">
+            <h1 className="text-2xl font-bold mb-4">Memnuniyet Anketleri Karşılaştırma</h1>
 
-            <div className="tw-flex tw-justify-between tw-flex-wrap">
+            <div className="flex justify-between flex-wrap">
                 <div>
-                    <h2 className="tw-font-semibold tw-mb-2">1. Anket Tarih Aralığı</h2>
+                    <h2 className="font-semibold mb-2">1. Anket Tarih Aralığı</h2>
                     <DateRange
                         ranges={survey1Range}
                         onChange={(item) => setSurvey1Range([item.survey1 || item.selection])}
@@ -143,7 +143,7 @@ export default function ComparisonPage({ allAnswers }) {
                 </div>
 
                 <div>
-                    <h2 className="tw-font-semibold tw-mb-2">2. Anket Tarih Aralığı</h2>
+                    <h2 className="font-semibold mb-2">2. Anket Tarih Aralığı</h2>
                     <DateRange
                         ranges={survey2Range}
                         onChange={(item) => setSurvey2Range([item.survey2 || item.selection])}
@@ -154,7 +154,7 @@ export default function ComparisonPage({ allAnswers }) {
                 </div>
             </div>
 
-            <div className="tw-mt-8" style={{ width: "100%", height: 400 }}>
+            <div className="mt-8" style={{ width: "100%", height: 400 }}>
                 <ResponsiveContainer>
                     <BarChart
                         data={chartData}

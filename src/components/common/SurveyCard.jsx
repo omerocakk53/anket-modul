@@ -45,14 +45,16 @@ export default function SurveyCard({ survey, handleDelete, handleCopyLink, handl
 
     return (
         <div
-            className="tw-bg-neutral-white tw-rounded-lg tw-shadow-md tw-border tw-border-neutral tw-p-6 tw-flex tw-flex-col tw-justify-between tw-relative tw-overflow-hidden tw-cursor-pointer tw-h-[420px] tw-sm:h-70 tw-hover:shadow-xl tw-transition-shadow tw-duration-300 tw-transform tw-hover:-translate-y-1"
+            className="bg-neutral-white rounded-lg shadow-md border border-neutral p-6 flex flex-col justify-between
+                       relative overflow-hidden cursor-pointer h-[420px] sm:h-70
+                       hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
             {/* Üst Kısım: Başlık ve Grup */}
             <div className="">
-                <h3 className="tw-text-xl tw-font-bold tw-text-neutral-darkest tw-truncate">{survey.title}</h3>
-                <h3 className="tw-text-sm tw-text-neutral-darkest tw-truncate">{survey.description}</h3>
+                <h3 className="text-xl font-bold text-neutral-darkest truncate">{survey.title}</h3>
+                <h3 className="text-sm text-neutral-darkest truncate">{survey.description}</h3>
                 <span>
                     <div className={`text-xs flex items-center gap-1 py-0.5 rounded-full w-16 justify-center mt-1 mb-1 border font-medium shrink-0
                         ${survey.active ? 'text-success bg-success/10 border-success' : 'text-danger bg-danger/10 border-danger'}`}>
@@ -61,14 +63,14 @@ export default function SurveyCard({ survey, handleDelete, handleCopyLink, handl
                     </div>
                 </span>
                 <div>
-                    <h2 className="tw-text-lg tw-font-semibold tw-mb-2">Anket Etiketleriniz</h2>
+                    <h2 className="text-lg font-semibold mb-2">Anket Etiketleriniz</h2>
 
                     {survey.tags && survey.tags.length > 0 ? (
-                        <><div className="tw-flex tw-flex-wrap tw-gap-2 tw-mb-7">
+                        <><div className="flex flex-wrap gap-2 mb-7">
                             {survey.tags.slice(0, 3).map((tag, idx) => (
                                 <span
                                     key={idx}
-                                    className="tw-text-xs tw-font-medium tw-bg-indigo-100 tw-text-indigo-700 tw-px-3 tw-py-1 tw-rounded-full tw-select-none tw-truncate tw-max-w-[8rem]"
+                                    className="text-xs font-medium bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full select-none truncate max-w-[8rem]"
                                     title={tag}
                                 >
                                     {tag}
@@ -76,7 +78,7 @@ export default function SurveyCard({ survey, handleDelete, handleCopyLink, handl
                             ))}
                             {survey.tags.length > 3 && (
                                 <span
-                                    className="tw-text-xs tw-font-medium tw-bg-indigo-300 tw-text-indigo-900 tw-px-3 tw-py-1 tw-rounded-full tw-select-none tw-cursor-default"
+                                    className="text-xs font-medium bg-indigo-300 text-indigo-900 px-3 py-1 rounded-full select-none cursor-default"
                                     title={survey.tags.slice(3).join(', ')}
                                 >
                                     +{survey.tags.length - 3} daha
@@ -85,7 +87,7 @@ export default function SurveyCard({ survey, handleDelete, handleCopyLink, handl
                         </div>
                         </>
                     ) : (
-                        <><p className="tw-text-sm tw-text-neutral-500 tw-mb-8">Henüz etiket yok.</p></>
+                        <><p className="text-sm text-neutral-500 mb-8">Henüz etiket yok.</p></>
                     )}
                 </div>
                 {/* Mobil buton bloğu */}
@@ -104,102 +106,102 @@ export default function SurveyCard({ survey, handleDelete, handleCopyLink, handl
     hidden md:flex 
   `}
             >
-                <div className="tw-absolute tw-right-[7px] tw-bottom-[7px]">
+                <div className="absolute right-[7px] bottom-[7px]">
                     <button
                         onClick={handleNavigateToShare}
-                        className="tw-flex tw-items-center tw-justify-center tw-gap-1 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-rounded-md tw-text-primary-text tw-bg-primary tw-hover:bg-primary-dark tw-transition tw-duration-200 tw-hover:scale-105 tw-shadow-sm tw-hover:shadow-lg"
+                        className="flex items-center justify-center gap-1 px-3 py-2 text-sm font-medium rounded-md text-primary-text bg-primary hover:bg-primary-dark transition duration-200 hover:scale-105 shadow-sm hover:shadow-lg"
                     >
-                        <TbLocationShare className="tw-h-4 tw-w-4" /> Paylaş
+                        <TbLocationShare className="h-4 w-4" /> Paylaş
                     </button>
                 </div>
-                <div className="tw-w-full tw-px-4 tw-grid tw-grid-cols-2 tw-gap-2">
+                <div className="w-full px-4 grid grid-cols-2 gap-2">
                     <button
                         onClick={handleNavigateToEdit}
-                        className="tw-flex tw-items-center tw-justify-center tw-gap-1 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-rounded-md tw-text-primary-text tw-bg-primary tw-hover:bg-primary-dark tw-transition tw-duration-200 tw-hover:scale-105 tw-shadow-sm tw-hover:shadow-lg"
+                        className="flex items-center justify-center gap-1 px-3 py-2 text-sm font-medium rounded-md text-primary-text bg-primary hover:bg-primary-dark transition duration-200 hover:scale-105 shadow-sm hover:shadow-lg"
                     >
-                        <FiEdit className="tw-h-4 tw-w-4" /> Düzenle
+                        <FiEdit className="h-4 w-4" /> Düzenle
                     </button>
                     <button
                         onClick={handleNavigateToResults}
-                        className="tw-flex tw-items-center tw-justify-center tw-gap-1 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-rounded-md tw-text-white tw-bg-success tw-hover:bg-success/90 tw-transition tw-duration-200 tw-hover:scale-105 tw-shadow-sm tw-hover:shadow-lg"
+                        className="flex items-center justify-center gap-1 px-3 py-2 text-sm font-medium rounded-md text-white bg-success hover:bg-success/90 transition duration-200 hover:scale-105 shadow-sm hover:shadow-lg"
                     >
-                        <FiBarChart2 className="tw-h-4 tw-w-4" /> Cevaplar
+                        <FiBarChart2 className="h-4 w-4" /> Cevaplar
                     </button>
                 </div>
 
-                <div className="tw-w-full tw-px-4 tw-grid tw-grid-cols-2 tw-gap-2 tw-mt-2">
+                <div className="w-full px-4 grid grid-cols-2 gap-2 mt-2">
                     <button
                         onClick={handleNavigateToPreview}
-                        className="tw-flex tw-items-center tw-justify-center tw-gap-1 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-rounded-md tw-text-white tw-bg-info tw-hover:bg-info/90 tw-transition tw-duration-200 tw-hover:scale-105 tw-shadow-sm tw-hover:shadow-lg"
+                        className="flex items-center justify-center gap-1 px-3 py-2 text-sm font-medium rounded-md text-white bg-info hover:bg-info/90 transition duration-200 hover:scale-105 shadow-sm hover:shadow-lg"
                     >
-                        <RiSurveyLine className="tw-h-4 tw-w-4" /> Önizle
+                        <RiSurveyLine className="h-4 w-4" /> Önizle
                     </button>
                     <button
                         onClick={() => handleCopyLink(survey._id, survey.link)}
-                        className="tw-flex tw-items-center tw-justify-center tw-gap-1 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-rounded-md tw-text-white tw-bg-warning tw-hover:bg-warning/90 tw-transition tw-duration-200 tw-hover:scale-105 tw-shadow-sm tw-hover:shadow-lg"
+                        className="flex items-center justify-center gap-1 px-3 py-2 text-sm font-medium rounded-md text-white bg-warning hover:bg-warning/90 transition duration-200 hover:scale-105 shadow-sm hover:shadow-lg"
                     >
-                        <FiLink className="tw-h-4 tw-w-4" /> Link
+                        <FiLink className="h-4 w-4" /> Link
                     </button>
                 </div>
 
-                <div className="tw-w-full tw-px-4 tw-flex tw-justify-between tw-gap-2 tw-mt-2">
+                <div className="w-full px-4 flex justify-between gap-2 mt-2">
                     <button
                         onClick={() => handleShowQr(survey._id, survey.link)}
-                        className="tw-flex-1 tw-flex tw-items-center tw-justify-center tw-gap-1 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-rounded-md tw-text-white tw-bg-secondary tw-hover:bg-secondary-dark tw-transition tw-duration-200 tw-hover:scale-105 tw-shadow-sm tw-hover:shadow-lg"
+                        className="flex-1 flex items-center justify-center gap-1 px-3 py-2 text-sm font-medium rounded-md text-white bg-secondary hover:bg-secondary-dark transition duration-200 hover:scale-105 shadow-sm hover:shadow-lg"
                     >
-                        <AiOutlineQrcode className="tw-h-4 tw-w-4" /> QR Kod
+                        <AiOutlineQrcode className="h-4 w-4" /> QR Kod
                     </button>
                     <button
                         onClick={() => handleDelete(survey._id, survey.title)}
-                        className="tw-flex-1 tw-flex tw-items-center tw-justify-center tw-gap-1 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-rounded-md tw-text-white tw-bg-danger tw-hover:bg-danger-dark tw-transition tw-duration-200 tw-hover:scale-105 tw-shadow-sm tw-hover:shadow-lg"
+                        className="flex-1 flex items-center justify-center gap-1 px-3 py-2 text-sm font-medium rounded-md text-white bg-danger hover:bg-danger-dark transition duration-200 hover:scale-105 shadow-sm hover:shadow-lg"
                     >
-                        <FiTrash2 className="tw-h-4 tw-w-4" /> Sil
+                        <FiTrash2 className="h-4 w-4" /> Sil
                     </button>
                 </div>
             </div>
-            <div className="tw-space-y-3 tw-md:hidden">
-                <div className="tw-absolute tw-right-[7px] tw-bottom-[7px]">
+            <div className="space-y-3 md:hidden">
+                <div className="absolute right-[7px] bottom-[7px]">
                     <button
                         onClick={handleNavigateToShare}
-                        className="tw-flex tw-items-center tw-justify-center tw-gap-1 tw-px-3 tw-py-2 tw-text-sm tw-font-medium tw-rounded-md tw-text-primary-text tw-bg-primary tw-hover:bg-primary-dark tw-transition tw-duration-200 tw-hover:scale-105 tw-shadow-sm tw-hover:shadow-lg"
+                        className="flex items-center justify-center gap-1 px-3 py-2 text-sm font-medium rounded-md text-primary-text bg-primary hover:bg-primary-dark transition duration-200 hover:scale-105 shadow-sm hover:shadow-lg"
                     >
-                        <TbLocationShare className="tw-h-4 tw-w-4" /> Paylaş
+                        <TbLocationShare className="h-4 w-4" /> Paylaş
                     </button>
                 </div>
                 {/* 1. Satır */}
-                <div className="tw-grid tw-grid-cols-2 tw-gap-3">
-                    <button onClick={handleNavigateToEdit} className="tw-flex tw-items-center tw-justify-center tw-gap-2 tw-px-4 tw-py-2 tw-text-sm tw-font-medium tw-rounded-lg tw-text-primary-text tw-bg-primary tw-hover:bg-primary-dark tw-transition tw-duration-200 tw-shadow">
-                        <FiEdit className="tw-h-4 tw-w-4" /> Düzenle
+                <div className="grid grid-cols-2 gap-3">
+                    <button onClick={handleNavigateToEdit} className="flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium rounded-lg text-primary-text bg-primary hover:bg-primary-dark transition duration-200 shadow">
+                        <FiEdit className="h-4 w-4" /> Düzenle
                     </button>
-                    <button onClick={handleNavigateToResults} className="tw-flex tw-items-center tw-justify-center tw-gap-2 tw-px-4 tw-py-2 tw-text-sm tw-font-medium tw-rounded-lg tw-text-white tw-bg-success tw-hover:bg-success/90 tw-transition tw-duration-200 tw-shadow">
-                        <FiBarChart2 className="tw-h-4 tw-w-4" /> Cevaplar
+                    <button onClick={handleNavigateToResults} className="flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium rounded-lg text-white bg-success hover:bg-success/90 transition duration-200 shadow">
+                        <FiBarChart2 className="h-4 w-4" /> Cevaplar
                     </button>
                 </div>
 
                 {/* 2. Satır */}
-                <div className="tw-grid tw-grid-cols-2 tw-gap-3">
-                    <button onClick={handleNavigateToPreview} className="tw-flex tw-items-center tw-justify-center tw-gap-2 tw-px-4 tw-py-2 tw-text-sm tw-font-medium tw-rounded-lg tw-text-white tw-bg-info tw-hover:bg-info/90 tw-transition tw-duration-200 tw-shadow">
-                        <RiSurveyLine className="tw-h-4 tw-w-4" /> Önizle
+                <div className="grid grid-cols-2 gap-3">
+                    <button onClick={handleNavigateToPreview} className="flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium rounded-lg text-white bg-info hover:bg-info/90 transition duration-200 shadow">
+                        <RiSurveyLine className="h-4 w-4" /> Önizle
                     </button>
-                    <button onClick={() => handleCopyLink(survey._id, survey.link)} className="tw-flex tw-items-center tw-justify-center tw-gap-2 tw-px-4 tw-py-2 tw-text-sm tw-font-medium tw-rounded-lg tw-text-white tw-bg-warning tw-hover:bg-warning/90 tw-transition tw-duration-200 tw-shadow">
-                        <FiLink className="tw-h-4 tw-w-4" /> Link
+                    <button onClick={() => handleCopyLink(survey._id, survey.link)} className="flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium rounded-lg text-white bg-warning hover:bg-warning/90 transition duration-200 shadow">
+                        <FiLink className="h-4 w-4" /> Link
                     </button>
                 </div>
 
                 {/* 3. Satır */}
-                <div className="tw-grid tw-grid-cols-2 tw-gap-3">
-                    <button onClick={() => handleShowQr(survey._id, survey.link)} className="tw-flex tw-items-center tw-justify-center tw-gap-2 tw-px-4 tw-py-2 tw-text-sm tw-font-medium tw-rounded-lg tw-text-white tw-bg-secondary tw-hover:bg-secondary-dark tw-transition tw-duration-200 tw-shadow">
-                        <AiOutlineQrcode className="tw-h-4 tw-w-4" /> QR Kod
+                <div className="grid grid-cols-2 gap-3">
+                    <button onClick={() => handleShowQr(survey._id, survey.link)} className="flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium rounded-lg text-white bg-secondary hover:bg-secondary-dark transition duration-200 shadow">
+                        <AiOutlineQrcode className="h-4 w-4" /> QR Kod
                     </button>
-                    <button onClick={() => handleDelete(survey._id, survey.title)} className="tw-flex tw-items-center tw-justify-center tw-gap-2 tw-px-4 tw-py-2 tw-text-sm tw-font-medium tw-rounded-lg tw-text-white tw-bg-danger tw-hover:bg-danger-dark tw-transition tw-duration-200 tw-shadow">
-                        <FiTrash2 className="tw-h-4 tw-w-4" /> Sil
+                    <button onClick={() => handleDelete(survey._id, survey.title)} className="flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium rounded-lg text-white bg-danger hover:bg-danger-dark transition duration-200 shadow">
+                        <FiTrash2 className="h-4 w-4" /> Sil
                     </button>
                 </div>
             </div>
             {/* Oluşturulma Tarihi (sol altta) */}
-            <div className="tw-mt-5 tw-text-xs tw-text-neutral-dark tw-flex tw-flex-col tw-space-y-0.5 tw-gap-2 tw-w-[200px] tw-sm:w-[175px] tw-">
-                <span className="tw-flex tw-items-center tw-gap-3 tw-border tw-border-primary tw-px-1 tw-rounded-xl tw-text-primary-dark"> <FiCalendar /> {formattedCreatedAt}</span>
-                <span className="tw-flex tw-items-center tw-gap-3 tw-border tw-border-primary tw-px-1 tw-rounded-xl tw-text-primary-dark"><FiEdit /> {formattedLastModified}</span>
+            <div className="mt-5 text-xs text-neutral-dark flex flex-col space-y-0.5 gap-2 w-[200px] sm:w-[175px] ">
+                <span className="flex items-center gap-3 border border-primary px-1 rounded-xl text-primary-dark"> <FiCalendar /> {formattedCreatedAt}</span>
+                <span className="flex items-center gap-3 border border-primary px-1 rounded-xl text-primary-dark"><FiEdit /> {formattedLastModified}</span>
             </div>
         </div>
     );
