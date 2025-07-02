@@ -1,8 +1,8 @@
 export default function WelcomeText({ title, helpText }) {
   return (
-    <div className="p-4 rounded text-center gap-2 text-primary-text">
-      {title ? (<>   <h1 className="text-5xl font-bold mb-5">{title}</h1>
-        <p className="text-3xl text-neutral">{helpText}</p></>) : (<><div className="flex justify-center items-center"><h1 className="text-primary-text text-xl">Mesajınız</h1></div></>)}
+    <div className="tw-p-4 tw-rounded tw-text-center tw-gap-2 tw-text-primary-text">
+      {title ? (<>   <h1 className="tw-text-5xl tw-font-bold tw-mb-5">{title}</h1>
+        <p className="tw-text-3xl tw-text-neutral">{helpText}</p></>) : (<><div className="tw-flex tw-justify-center tw-items-center"><h1 className="tw-text-primary-text tw-text-xl">Mesajınız</h1></div></>)}
     </div>
   );
 }

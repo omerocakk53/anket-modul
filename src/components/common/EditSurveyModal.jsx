@@ -137,73 +137,73 @@ export default function EditSurveyModal({ survey, onClose, onUpdate,updatesurvey
 
 
   return (
-    <div className="fixed inset-0 z-50 flex justify-center items-center bg-black/30 backdrop-blur-sm px-2">
-      <div className="bg-neutral-white rounded-2xl shadow-xl p-4 sm:p-6 w-full max-w-xl max-h-[90vh] overflow-y-auto relative border border-neutral-light">
+    <div className="tw-fixed tw-inset-0 tw-z-50 tw-flex tw-justify-center tw-items-center tw-bg-black/30 tw-backdrop-blur-sm tw-px-2">
+      <div className="tw-bg-neutral-white tw-rounded-2xl tw-shadow-xl tw-p-4 tw-sm:p-6 tw-w-full tw-max-w-xl tw-max-h-[90vh] tw-overflow-y-auto tw-relative tw-border tw-border-neutral-light">
 
         {/* Kapat butonu */}
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 text-neutral-dark hover:text-danger-dark transition"
+          className="tw-absolute tw-top-3 tw-right-3 tw-text-neutral-dark tw-hover:text-danger-dark tw-transition"
         >
           <FiX size={28} />
         </button>
 
         {/* Başlık */}
-        <h2 className="text-lg sm:text-xl font-semibold mb-4 text-primary-dark">Anketi Düzenle</h2>
+        <h2 className="tw-text-lg tw-sm:text-xl tw-font-semibold tw-mb-4 tw-text-primary-dark">Anketi Düzenle</h2>
 
         {/* Bilgi kutusu */}
-        <div className="flex items-start bg-info/10 text-info p-3 rounded-md text-sm gap-2 mb-5">
-          <FiInfo className="mt-1" />
+        <div className="tw-flex tw-items-start tw-bg-info/10 tw-text-info tw-p-3 tw-rounded-md tw-text-sm tw-gap-2 tw-mb-5">
+          <FiInfo className="tw-mt-1" />
           <span>
             <strong>Bilgi:</strong> Sadece doldurduğunuz alanlar güncellenecektir. Boş bırakılan değerler eski haliyle kalır.
           </span>
         </div>
 
         {/* Form alanları */}
-        <form onSubmit={handleSubmit} className="space-y-5">
+        <form onSubmit={handleSubmit} className="tw-space-y-5">
           {/* Başlık */}
           <div>
-            <label className="block text-sm font-medium text-primary-dark mb-1">Anket Başlığı</label>
+            <label className="tw-block tw-text-sm tw-font-medium tw-text-primary-dark tw-mb-1">Anket Başlığı</label>
             <input
               name="title"
               value={formData.title}
               onChange={handleChange}
               placeholder={survey.title || 'Anket başlığı'}
-              className="w-full p-2 border rounded-lg border-neutral-light focus:outline-none focus:ring-2 focus:ring-primary-light"
+              className="tw-w-full tw-p-2 tw-border tw-rounded-lg tw-border-neutral-light tw-focus:outline-none tw-focus:ring-2 tw-focus:ring-primary-light"
             />
           </div>
 
           {/* Açıklama */}
           <div>
-            <label className="block text-sm font-medium text-primary-dark mb-1">Açıklama</label>
+            <label className="tw-block tw-text-sm tw-font-medium tw-text-primary-dark tw-mb-1">Açıklama</label>
             <textarea
               name="description"
               value={formData.description}
               onChange={handleChange}
               placeholder={survey.description || 'Anket açıklaması'}
               rows={3}
-              className="w-full p-2 border rounded-lg border-neutral-light focus:outline-none focus:ring-2 focus:ring-primary-light"
+              className="tw-w-full tw-p-2 tw-border tw-rounded-lg tw-border-neutral-light tw-focus:outline-none tw-focus:ring-2 tw-focus:ring-primary-light"
             />
           </div>
 
           {/* Klasör Adı */}
           <div>
-            <label className="block text-sm font-medium text-primary-dark mb-1">Klasör Adı</label>
+            <label className="tw-block tw-text-sm tw-font-medium tw-text-primary-dark tw-mb-1">Klasör Adı</label>
             <input
               name="group"
               value={formData.group}
               onChange={handleChange}
               placeholder={survey.group || 'Klasör adı'}
-              className="w-full p-2 border rounded-lg border-neutral-light focus:outline-none focus:ring-2 focus:ring-primary-light"
+              className="tw-w-full tw-p-2 tw-border tw-rounded-lg tw-border-neutral-light tw-focus:outline-none tw-focus:ring-2 tw-focus:ring-primary-light"
             />
           </div>
           {/* Link Adresi */}
           <div>
-            <label className="block text-sm font-medium text-primary-dark mb-1">
+            <label className="tw-block tw-text-sm tw-font-medium tw-text-primary-dark tw-mb-1">
               Link Adresi
             </label>
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-neutral-dark whitespace-nowrap">
+            <div className="tw-flex tw-items-center tw-gap-2">
+              <span className="tw-text-sm tw-text-neutral-dark tw-whitespace-nowrap">
                 https://anketline.odanet.net/
               </span>
               <input
@@ -211,28 +211,28 @@ export default function EditSurveyModal({ survey, onClose, onUpdate,updatesurvey
                 value={formData.link}
                 onChange={handleChange}
                 placeholder={survey.link || 'anket-linki'}
-                className="flex-1 p-2 border rounded-lg border-neutral-light focus:outline-none focus:ring-2 focus:ring-primary-light"
+                className="tw-flex-1 tw-p-2 tw-border tw-rounded-lg tw-border-neutral-light tw-focus:outline-none tw-focus:ring-2 tw-focus:ring-primary-light"
               />
             </div>
-            <p className="text-xs text-neutral-dark mt-1">
+            <p className="tw-text-xs tw-text-neutral-dark tw-mt-1">
               Küçük harf, sayı ve tire (-) kullanılabilir. Örn: <code>ilk-anket</code>
             </p>
           </div>
           {/* Etiketler */}
           <div>
-            <label className="block text-sm font-medium text-primary-dark mb-1">Etiketler (en fazla 3)</label>
+            <label className="tw-block tw-text-sm tw-font-medium tw-text-primary-dark tw-mb-1">Etiketler (en fazla 3)</label>
 
-            <div className="flex gap-2 mb-2 flex-wrap">
+            <div className="tw-flex tw-gap-2 tw-mb-2 tw-flex-wrap">
               {formData.tags.map(tag => (
                 <div
                   key={tag}
-                  className="flex items-center bg-primary-light text-primary-text rounded-full px-3 py-1 text-sm"
+                  className="tw-flex tw-items-center tw-bg-primary-light tw-text-primary-text tw-rounded-full tw-px-3 tw-py-1 tw-text-sm"
                 >
                   {tag}
                   <button
                     type="button"
                     onClick={() => handleRemoveTag(tag)}
-                    className="ml-2 text-primary-dark hover:text-danger"
+                    className="tw-ml-2 tw-text-primary-dark tw-hover:text-danger"
                     title="Etiketi kaldır"
                   >
                     <FiX size={14} />
@@ -248,7 +248,7 @@ export default function EditSurveyModal({ survey, onClose, onUpdate,updatesurvey
               onKeyDown={handleKeyDown}
               placeholder={formData.tags.length >= 3 ? 'Etiket limiti doldu' : 'Yeni etiket ekle'}
               disabled={formData.tags.length >= 3}
-              className="w-full p-2 border border-neutral-light rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light"
+              className="tw-w-full tw-p-2 tw-border tw-border-neutral-light tw-rounded-lg tw-focus:outline-none tw-focus:ring-2 tw-focus:ring-primary-light"
             />
 
             <button
@@ -265,9 +265,9 @@ export default function EditSurveyModal({ survey, onClose, onUpdate,updatesurvey
           </div>
 
           {/* Aktif mi? */}
-          <div className="flex items-center space-x-3">
+          <div className="tw-flex tw-items-center tw-space-x-3">
             <label
-              className="text-sm font-medium text-primary-dark select-none cursor-pointer"
+              className="tw-text-sm tw-font-medium tw-text-primary-dark tw-select-none tw-cursor-pointer"
               onClick={handleToggleActive}
             >
               Anket Aktif mi?
@@ -289,7 +289,7 @@ export default function EditSurveyModal({ survey, onClose, onUpdate,updatesurvey
           {/* Kaydet Butonu */}
           <button
             type="submit"
-            className="w-full py-2 rounded-lg font-semibold transition bg-primary hover:bg-secondary text-white"
+            className="tw-w-full tw-py-2 tw-rounded-lg tw-font-semibold tw-transition tw-bg-primary tw-hover:bg-secondary tw-text-white"
           >
             Kaydet
           </button>

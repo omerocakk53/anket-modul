@@ -28,12 +28,12 @@ function ComponentViewItems({ item, onDelete, count, onClick }) {
       style={style}
       className={`flex items-center justify-between rounded p-3 shadow cursor-grab ${bgColor} ${hoverBg}`}
     >
-      <div onClick={onClick} className="flex items-center gap-2" {...attributes} {...listeners}>
-        <FaGripVertical className="text-gray-400" />
+      <div onClick={onClick} className="tw-flex tw-items-center tw-gap-2" {...attributes} {...listeners}>
+        <FaGripVertical className="tw-text-gray-400" />
         {Icon && <Icon className={`text-xl ${textColor}`} />}
         <span>{count + " - " + item.title}</span>
       </div>
-      <button onClick={() => onDelete(id)} className="text-red-500 hover:text-red-700">
+      <button onClick={() => onDelete(id)} className="tw-text-red-500 tw-hover:text-red-700">
         <FaTrash />
       </button>
     </div>

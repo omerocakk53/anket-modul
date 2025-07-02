@@ -84,23 +84,23 @@ export default function FilterSortSearch({
   };
 
   return (
-    <div className="flex items-center justify-between flex-wrap gap-4 mb-6">
-      <div className="flex gap-3 items-center">
+    <div className="tw-flex tw-items-center tw-justify-between tw-flex-wrap tw-gap-4 tw-mb-6">
+      <div className="tw-flex tw-gap-3 tw-items-center">
 
         {/* Arama Modu */}
-        <div className="relative inline-block text-left" ref={dropdownRef}>
+        <div className="tw-relative tw-inline-block tw-text-left" ref={dropdownRef}>
           <button
             type="button"
             onClick={() => setDropdownOpen(!dropdownOpen)}
-            className="flex items-center gap-1 px-3 py-1.5 text-sm border border-primary-light text-primary-darktext rounded-lg hover:bg-primary-dark hover:text-primary-text transition"
+            className="tw-flex tw-items-center tw-gap-1 tw-px-3 tw-py-1.5 tw-text-sm tw-border tw-border-primary-light tw-text-primary-darktext tw-rounded-lg tw-hover:bg-primary-dark tw-hover:text-primary-text tw-transition"
           >
-            <FiTag className="w-4 h-4" />
+            <FiTag className="tw-w-4 tw-h-4" />
             {searchMode === 'title' ? 'Başlık ile Ara' : 'Etiket ile Ara'}
-            <FiChevronDown className="w-4 h-4 ml-1" />
+            <FiChevronDown className="tw-w-4 tw-h-4 tw-ml-1" />
           </button>
 
           {dropdownOpen && (
-            <div className="absolute right-0 mt-2 w-40 bg-white border border-primary-light rounded-md shadow-lg z-10">
+            <div className="tw-absolute tw-right-0 tw-mt-2 tw-w-40 tw-bg-white tw-border tw-border-primary-light tw-rounded-md tw-shadow-lg tw-z-10">
               <button
                 className={`block w-full text-left px-4 py-2 text-sm hover:bg-primary-light hover:text-primary-text ${searchMode === 'title' ? 'font-bold bg-primary-light text-primary-text' : ''}`}
                 onClick={() => handleSelectMode('title')}
@@ -118,18 +118,18 @@ export default function FilterSortSearch({
         </div>
 
         {/* Sıralama */}
-        <div className="relative inline-block text-left" ref={sortRef}>
+        <div className="tw-relative tw-inline-block tw-text-left" ref={sortRef}>
           <button
             onClick={() => setSortDropdownOpen(!sortDropdownOpen)}
-            className="flex items-center gap-1 px-3 py-1.5 text-sm border border-secondary  rounded-lg hover:bg-secondary hover:text-primary-text transition"
+            className="tw-flex tw-items-center tw-gap-1 tw-px-3 tw-py-1.5 tw-text-sm tw-border tw-border-secondary tw- tw-rounded-lg tw-hover:bg-secondary tw-hover:text-primary-text tw-transition"
           >
-            <FiList className="w-4 h-4" />
+            <FiList className="tw-w-4 tw-h-4" />
             Sırala
-            <FiChevronDown className="w-4 h-4 ml-1" />
+            <FiChevronDown className="tw-w-4 tw-h-4 tw-ml-1" />
           </button>
 
           {sortDropdownOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-white border border-secondary-light rounded-md shadow-lg z-10">
+            <div className="tw-absolute tw-right-0 tw-mt-2 tw-w-48 tw-bg-white tw-border tw-border-secondary-light tw-rounded-md tw-shadow-lg tw-z-10">
               <button
                 className={`block w-full text-left px-4 py-2 text-sm hover:bg-secondary-light hover:text-primary-text ${sortBy === 'title' ? 'font-bold bg-secondary-light text-primary-text' : ''}`}
                 onClick={() => handleSortChange('title')}
@@ -167,19 +167,19 @@ export default function FilterSortSearch({
 
       {/* Tarih filtresi */}
       {sortBy === 'createTime' && (
-        <div className="relative w-full max-w-md">
+        <div className="tw-relative tw-w-full tw-max-w-md">
           <button
             onClick={() => setCalendarOpen(!calendarOpen)}
-            className="flex items-center gap-2 px-3 py-1.5 border border-primary text-primary-darktext hover:bg-primary hover:text-primary-text transition w-full justify-center text-sm rounded-lg"
+            className="tw-flex tw-items-center tw-gap-2 tw-px-3 tw-py-1.5 tw-border tw-border-primary tw-text-primary-darktext tw-hover:bg-primary tw-hover:text-primary-text tw-transition tw-w-full tw-justify-center tw-text-sm tw-rounded-lg"
           >
-            <FiCalendar className="w-5 h-5" />
+            <FiCalendar className="tw-w-5 tw-h-5" />
             {dateRange.startDate && dateRange.endDate
               ? `${formatDate(dateRange.startDate)} - ${formatDate(dateRange.endDate)}`
               : 'Tarih Aralığı Seç'}
           </button>
 
           {calendarOpen && (
-            <div ref={calendarRef} className="absolute top-full mt-2 z-20 shadow-lg rounded-lg">
+            <div ref={calendarRef} className="tw-absolute tw-top-full tw-mt-2 tw-z-20 tw-shadow-lg tw-rounded-lg">
               <DateRange
                 editableDateInputs={true}
                 onChange={handleRangeChange}
@@ -191,7 +191,7 @@ export default function FilterSortSearch({
                 }]}
                 locale={tr} // ← Türkçe olarak ayarlıyoruz
                 maxDate={new Date()}
-                className="shadow-md rounded-md"
+                className="tw-shadow-md tw-rounded-md"
               />
             </div>
           )}
@@ -199,15 +199,15 @@ export default function FilterSortSearch({
       )}
 
       {/* Arama kutusu */}
-      <div className="relative w-full max-w-sm">
+      <div className="tw-relative tw-w-full tw-max-w-sm">
         <input
           type="text"
           value={searchText}
           onChange={handleSearchChange}
           placeholder="Ara..."
-          className="w-full pl-10 pr-4 py-2 text-sm border border-neutral-light rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary text-neutral-darkest"
+          className="tw-w-full tw-pl-10 tw-pr-4 tw-py-2 tw-text-sm tw-border tw-border-neutral-light tw-rounded-lg tw-shadow-sm tw-focus:outline-none tw-focus:ring-1 tw-focus:ring-primary tw-focus:border-primary tw-text-neutral-darkest"
         />
-        <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary w-4 h-4" />
+        <FiSearch className="tw-absolute tw-left-3 tw-top-1/2 tw-transform tw--translate-y-1/2 tw-text-primary tw-w-4 tw-h-4" />
       </div>
     </div>
   );
