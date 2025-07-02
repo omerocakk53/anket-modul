@@ -28,15 +28,12 @@ export default {
     }),
     commonjs(),
     postcss({
-      inject: true, // CSS'i JS içinde <style> olarak bas
-      minimize: true,
+      inject: true,
+      minimize: false,
+      plugins: [autoprefixer(),tailwindcss()],
       modules: {
-        generateScopedName: '[name]__[local]___[hash:base64:5]'
+        generateScopedName: '[name]__[local]___[hash:base64:5]' // Örnek: Button__button___a1b2c
       },
-      plugins: [
-        tailwindcss('./tailwind.config.js'),
-        autoprefixer()
-      ]
     }),
     babel({
       exclude: 'node_modules/**',
