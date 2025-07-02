@@ -11,12 +11,10 @@
   ],
   "scripts": {
     "build:css": "tailwindcss -i ./styles/tailwind.css -o ./dist/styles.css --minify",
-    "prefix:tw": "node scripts/prefixTailwind.js",
-    "unprefix:tw": "node scripts/unprefixTailwind.js",
     "build:js": "rollup -c",
     "build": "pnpm run build:css && pnpm run build:js",
     "clean": "rm -rf dist",
-    "prepare": "pnpm build"
+    "prepare": "pnpm build:js"
   },
   "repository": {
     "type": "git",
@@ -47,6 +45,7 @@
     "postcss": "^8.5.6",
     "postcss-load-config": "^6.0.1",
     "postcss-modules": "^6.0.1",
+    "postcss-rename": "^0.8.0",
     "rollup": "^2.79.2",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-postcss": "^4.0.2",
