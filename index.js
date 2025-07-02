@@ -51,7 +51,6 @@ export * from './src/components/modals/CreateSurveyModal';
 export * from './src/components/successMesage/successController';
 export * from './src/components/successMesage/SuccessMessage';
 
-
 // answer
 export * from './src/components/answer/AnswerTable';
 export * from './src/components/answer/AnswerPage';
@@ -60,16 +59,6 @@ export * from './src/components/answer/ComparisonPage';
 export * from './src/components/answer/FilterBar';
 export * from './src/components/answer/ViewSwitcher';
 export * from './src/components/AnswerItem';
-
-
-// Analiz Page
-export * from './src/components/Analiz/components/ChangeHighlights';
-export * from './src/components/Analiz/components/DateRangeSelector';
-export * from './src/components/Analiz/components/SurveyComparisonChart';
-export * from './src/utils/analysisUtils';
-
-
-
 
 // Kontrolcü (controller) dosyaları
 export * from './src/Controller/DescriptionController';
