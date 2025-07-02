@@ -63,10 +63,10 @@ export default function Numeric({
   }, [value, allowDecimal, thousandSeparator]);
 
   return (
-    <div className="mb-4">
+    <div className="tw-mb-4">
       {title ? (
         <>
-          <label htmlFor={id} className="font-semibold text-primary-text">
+          <label htmlFor={id} className="tw-font-semibold tw-text-primary-text">
             {SurveyNumberVisible
               ? count
                 ? title === ""
@@ -75,7 +75,7 @@ export default function Numeric({
                 : title || null
               : title || null}
           </label>
-          <p className="text-sm mb-2 text-neutral">{helpText}</p>
+          <p className="tw-text-sm tw-mb-2 tw-text-neutral">{helpText}</p>
           <input
             type="text"
             inputMode="decimal"
@@ -93,19 +93,19 @@ export default function Numeric({
             // maxLength'e ekstra olarak binlik ayırıcı karakterlerini ekledik (tam tamına değil ama kabaca)
           />
           {charLimit > 0 && (
-            <p className="text-xs text-gray-500 mt-1">
+            <p className="tw-text-xs tw-text-gray-500 tw-mt-1">
               Karakter sınırı: {charLimit}
             </p>
           )}
           {showWarning && (
-            <p className="text-sm text-red-600 mt-1">
+            <p className="tw-text-sm tw-text-red-600 tw-mt-1">
               Lütfen sadece geçerli sayısal değer giriniz.
             </p>
           )}
         </>
       ) : (
-        <div className="flex justify-center items-center">
-          <h1 className="text-primary-text text-xl">Tasarlamaya Başlayın</h1>
+        <div className="tw-flex tw-justify-center tw-items-center">
+          <h1 className="tw-text-primary-text tw-text-xl">Tasarlamaya Başlayın</h1>
         </div>
       )}
     </div>

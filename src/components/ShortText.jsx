@@ -74,23 +74,23 @@ export default function ShortText({
             : undefined;
 
   return (
-    <div className="p-4">
+    <div className="tw-p-4">
       {title ? (
         <>
-          <label htmlFor={id} className="font-semibold text-primary-text">
+          <label htmlFor={id} className="tw-font-semibold tw-text-primary-text">
             {SurveyNumberVisible
               ? count
                 ? `${count}. ${title}${inputTitleSuffix[inputType] || ""}`
                 : `${title}${inputTitleSuffix[inputType] || ""}`
               : `${title}${inputTitleSuffix[inputType] || ""}`}
           </label>
-          <p className="text-sm text-neutral mb-2">{helpText}</p>
+          <p className="tw-text-sm tw-text-neutral tw-mb-2">{helpText}</p>
 
           <input
             id={id}
             name={id}
             type={inputType === "tc" || inputType === "zip" ? "text" : inputType}
-            className="border border-success bg-neutral outline-none rounded-xl p-2 w-full"
+            className="tw-border tw-border-success tw-bg-neutral tw-outline-none tw-rounded-xl tw-p-2 tw-w-full"
             value={value || ""}
             inputMode={["tel", "tc", "zip"].includes(inputType) ? "numeric" : "text"}
             onChange={handleChange}
@@ -98,14 +98,14 @@ export default function ShortText({
             pattern={["tel", "tc", "zip"].includes(inputType) ? "\\d*" : undefined}
           />
           {remainingChars !== null && (
-            <p className="text-xs text-right text-gray-500 mt-1">
+            <p className="tw-text-xs tw-text-right tw-text-gray-500 tw-mt-1">
               {remainingChars} karakter kaldı
             </p>
           )}
         </>
       ) : (
-        <div className="flex justify-center items-center">
-          <h1 className="text-primary-text text-xl">Tasarlamaya Başlayın</h1>
+        <div className="tw-flex tw-justify-center tw-items-center">
+          <h1 className="tw-text-primary-text tw-text-xl">Tasarlamaya Başlayın</h1>
         </div>
       )}
     </div>

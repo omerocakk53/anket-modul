@@ -36,34 +36,34 @@ export default function ColorEditor({getColorSettings, saveColorSettings}) {
         }
     };
 
-    if (loading) return <div className="text-center p-4">Yükleniyor...</div>;
+    if (loading) return <div className="tw-text-center tw-p-4">Yükleniyor...</div>;
 
     return (
-        <div className="min-h-screen bg-neutral-light p-8">
-            <div className="max-w-4xl mx-auto mb-10 text-center">
-                <h1 className="text-4xl font-extrabold text-primary mb-2">Renk Düzenleyici</h1>
-                <p className="text-neutral-darkest text-lg">Kendi renk temanı kolayca özelleştir, anında önizleme!</p>
+        <div className="tw-min-h-screen tw-bg-neutral-light tw-p-8">
+            <div className="tw-max-w-4xl tw-mx-auto tw-mb-10 tw-text-center">
+                <h1 className="tw-text-4xl tw-font-extrabold tw-text-primary tw-mb-2">Renk Düzenleyici</h1>
+                <p className="tw-text-neutral-darkest tw-text-lg">Kendi renk temanı kolayca özelleştir, anında önizleme!</p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <div className="tw-grid tw-grid-cols-1 tw-sm:grid-cols-2 tw-md:grid-cols-3 tw-gap-6 tw-max-w-5xl tw-mx-auto">
                 {Object.entries(dynamicColors).map(([key, value]) => (
                     <div
                         key={key}
-                        className="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-200"
+                        className="tw-flex tw-items-center tw-gap-4 tw-bg-white tw-p-4 tw-rounded-xl tw-shadow-sm tw-hover:shadow-lg tw-transition-shadow tw-duration-200"
                     >
-                        <div className="relative">
+                        <div className="tw-relative">
                             <div
-                                className="w-12 h-12 rounded-lg border border-neutral-dark"
+                                className="tw-w-12 tw-h-12 tw-rounded-lg tw-border tw-border-neutral-dark"
                                 style={{ backgroundColor: value }}
                             />
-                            <span className="absolute bottom-[-1.5rem] left-1/2 transform -translate-x-1/2 text-xs text-neutral-darkest">
+                            <span className="tw-absolute tw-bottom-[-1.5rem] tw-left-1/2 tw-transform tw--translate-x-1/2 tw-text-xs tw-text-neutral-darkest">
                                 {value.toUpperCase()}
                             </span>
                         </div>
-                        <div className="flex-1">
+                        <div className="tw-flex-1">
                             <label
                                 htmlFor={`color-${key}`}
-                                className="block text-neutral-darkest font-semibold mb-1 capitalize"
+                                className="tw-block tw-text-neutral-darkest tw-font-semibold tw-mb-1 tw-capitalize"
                             >
                                 {key.replace(/-/g, " ")}
                             </label>
@@ -72,17 +72,17 @@ export default function ColorEditor({getColorSettings, saveColorSettings}) {
                                 id={`color-${key}`}
                                 value={value}
                                 onChange={(e) => updateColor(key, e.target.value)}
-                                className="w-full h-10 cursor-pointer border border-neutral-dark rounded-lg transition"
+                                className="tw-w-full tw-h-10 tw-cursor-pointer tw-border tw-border-neutral-dark tw-rounded-lg tw-transition"
                             />
                         </div>
                     </div>
                 ))}
             </div>
 
-            <div className="text-center mt-12">
+            <div className="tw-text-center tw-mt-12">
                 <button
                     onClick={handleSave}
-                    className="px-8 py-3 bg-primary text-white text-lg font-medium rounded-full shadow-md hover:bg-primary-dark transition-all"
+                    className="tw-px-8 tw-py-3 tw-bg-primary tw-text-white tw-text-lg tw-font-medium tw-rounded-full tw-shadow-md tw-hover:bg-primary-dark tw-transition-all"
                 >
                     Renkleri Kaydet
                 </button>

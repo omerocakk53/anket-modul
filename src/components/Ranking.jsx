@@ -1,7 +1,7 @@
 export default function Ranking({ title, helpText, options = [], count , SurveyNumberVisible}) {
   return (
     <div>
-      {title ? (<>    <label className="font-semibold text-primary-text">{
+      {title ? (<>    <label className="tw-font-semibold tw-text-primary-text">{
         SurveyNumberVisible
           ? (
             count
@@ -10,12 +10,12 @@ export default function Ranking({ title, helpText, options = [], count , SurveyN
           )
           : (title || null)
       }</label>
-        <p className="text-sm text-neutral">{helpText}</p>
-        <ol className="list-decimal ml-6 space-y-1 ">
+        <p className="tw-text-sm tw-text-neutral">{helpText}</p>
+        <ol className="tw-list-decimal tw-ml-6 tw-space-y-1 tw-">
           {options.map((opt, idx) => (
-            <li key={idx} className="border-0 border-b-[1px] border-primary-light p-2 text-primary-text">{opt}</li>
+            <li key={idx} className="tw-border-0 tw-border-b-[1px] tw-border-primary-light tw-p-2 tw-text-primary-text">{opt}</li>
           ))}
-        </ol></>) : (<><div className="flex justify-center items-center"><h1 className="text-primary-text text-xl">Tasarlamaya Başlayın</h1></div></>)}
+        </ol></>) : (<><div className="tw-flex tw-justify-center tw-items-center"><h1 className="tw-text-primary-text tw-text-xl">Tasarlamaya Başlayın</h1></div></>)}
     </div>
   );
 }

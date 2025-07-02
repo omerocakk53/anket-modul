@@ -26,53 +26,53 @@ export default function Header({
     if (isEditMode) {
         return (
             <>
-                <header className="bg-neutral/0 shadow-sm mb-4">
-                    <div className="px-3 py-2 sm:px-6 sm:py-3 space-y-2">
+                <header className="tw-bg-neutral/0 tw-shadow-sm tw-mb-4">
+                    <div className="tw-px-3 tw-py-2 tw-sm:px-6 tw-sm:py-3 tw-space-y-2">
 
                         {/* Logo ve Menü Butonu */}
-                        <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-2 text-primary font-bold text-lg">
-                                <FaPoll className="h-6 w-6 animate-pulse-slow" />
-                                <h1 className="tracking-tight animate-fade-in-slide">OdaAnket</h1>
+                        <div className="tw-flex tw-items-center tw-justify-between">
+                            <div className="tw-flex tw-items-center tw-gap-2 tw-text-primary tw-font-bold tw-text-lg">
+                                <FaPoll className="tw-h-6 tw-w-6 tw-animate-pulse-slow" />
+                                <h1 className="tw-tracking-tight tw-animate-fade-in-slide">OdaAnket</h1>
                             </div>
                             <button
                                 onClick={() => setSidebarOpen(prev => !prev)}
-                                className="sm:hidden px-2 py-1 text-xs text-primary-darktext hover:text-primary  transition"
+                                className="tw-sm:hidden tw-px-2 tw-py-1 tw-text-xs tw-text-primary-darktext tw-hover:text-primary tw- tw-transition"
                             >
                                 <CiMenuKebab size={24} />
                             </button>
                         </div>
 
                         {/* Başlık ve Açıklama */}
-                        <div className="space-y-1">
-                            <div className="flex items-center gap-2">
+                        <div className="tw-space-y-1">
+                            <div className="tw-flex tw-items-center tw-gap-2">
                                 <button
                                     onClick={onBackToMain}
-                                    className="p-1 rounded-full bg-neutral-100 hover:bg-neutral-200 text-primary transition"
+                                    className="tw-p-1 tw-rounded-full tw-bg-neutral-100 tw-hover:bg-neutral-200 tw-text-primary tw-transition"
                                     title="Ana Menüye Dön"
                                 >
                                     <FiArrowLeft size={16} />
                                 </button>
-                                <h2 className="text-base sm:text-lg font-medium text-neutral-800 truncate max-w-[80%]">
+                                <h2 className="tw-text-base tw-sm:text-lg tw-font-medium tw-text-neutral-800 tw-truncate tw-max-w-[80%]">
                                     {surveyData.title}
                                 </h2>
                             </div>
-                            <p className="text-sm text-neutral-600 truncate">{surveyData.description || "Açıklama Yok"}</p>
+                            <p className="tw-text-sm tw-text-neutral-600 tw-truncate">{surveyData.description || "Açıklama Yok"}</p>
                         </div>
 
                         {/* Etiketler - daha küçük boy ve kaydırılabilir */}
-                        <div className="flex gap-2 overflow-x-auto text-xs pb-1">
-                            <div className="flex items-center gap-1 border border-primary px-2 py-0.5 rounded-full text-primary-dark shrink-0">
+                        <div className="tw-flex tw-gap-2 tw-overflow-x-auto tw-text-xs tw-pb-1">
+                            <div className="tw-flex tw-items-center tw-gap-1 tw-border tw-border-primary tw-px-2 tw-py-0.5 tw-rounded-full tw-text-primary-dark tw-shrink-0">
                                 <FiFolder size={14} />
                                 <span>{surveyData.group || 'Belirtilmemiş'}</span>
                             </div>
-                            <div className="flex items-center gap-1 border border-primary px-2 py-0.5 rounded-full text-primary-dark shrink-0">
+                            <div className="tw-flex tw-items-center tw-gap-1 tw-border tw-border-primary tw-px-2 tw-py-0.5 tw-rounded-full tw-text-primary-dark tw-shrink-0">
                                 <FiCalendar size={14} />
                                 <span>
                                     {new Date(surveyData.createdAt).toLocaleDateString("tr-TR")}
                                 </span>
                             </div>
-                            <div className="flex items-center gap-1 border border-primary px-2 py-0.5 rounded-full text-primary-dark shrink-0">
+                            <div className="tw-flex tw-items-center tw-gap-1 tw-border tw-border-primary tw-px-2 tw-py-0.5 tw-rounded-full tw-text-primary-dark tw-shrink-0">
                                 <FiEdit size={14} />
                                 <span>
                                     {new Date(surveyData.lastModified).toLocaleDateString("tr-TR")}
@@ -86,10 +86,10 @@ export default function Header({
                         </div>
 
                         {/* Düzenle Butonu */}
-                        <div className="flex">
+                        <div className="tw-flex">
                             <button
                                 onClick={() => setIsModalOpen(true)}
-                                className="flex items-center gap-1 px-3 py-1 text-xs font-medium border rounded text-primary-dark border-primary hover:bg-primary hover:text-white transition"
+                                className="tw-flex tw-items-center tw-gap-1 tw-px-3 tw-py-1 tw-text-xs tw-font-medium tw-border tw-rounded tw-text-primary-dark tw-border-primary tw-hover:bg-primary tw-hover:text-white tw-transition"
                             >
                                 <FiEdit size={14} />
                                 Düzenle
@@ -117,47 +117,47 @@ export default function Header({
     } else if (isAnswerMode) {
         return (
             <>
-                <header className="bg-neutral/0 shadow-sm mb-4">
-                    <div className="px-3 py-2 sm:px-6 sm:py-3 space-y-2">
+                <header className="tw-bg-neutral/0 tw-shadow-sm tw-mb-4">
+                    <div className="tw-px-3 tw-py-2 tw-sm:px-6 tw-sm:py-3 tw-space-y-2">
 
                         {/* Logo ve Menü Butonu */}
-                        <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-2 text-primary font-bold text-lg">
-                                <FaPoll className="h-6 w-6 animate-pulse-slow" />
-                                <h1 className="tracking-tight animate-fade-in-slide">OdaAnket</h1>
+                        <div className="tw-flex tw-items-center tw-justify-between">
+                            <div className="tw-flex tw-items-center tw-gap-2 tw-text-primary tw-font-bold tw-text-lg">
+                                <FaPoll className="tw-h-6 tw-w-6 tw-animate-pulse-slow" />
+                                <h1 className="tw-tracking-tight tw-animate-fade-in-slide">OdaAnket</h1>
                             </div>
                         </div>
 
                         {/* Başlık ve Açıklama */}
-                        <div className="space-y-1">
-                            <div className="flex items-center gap-2">
+                        <div className="tw-space-y-1">
+                            <div className="tw-flex tw-items-center tw-gap-2">
                                 <button
                                     onClick={onBackToMain}
-                                    className="p-1 rounded-full bg-neutral-100 hover:bg-neutral-200 text-primary transition"
+                                    className="tw-p-1 tw-rounded-full tw-bg-neutral-100 tw-hover:bg-neutral-200 tw-text-primary tw-transition"
                                     title="Ana Menüye Dön"
                                 >
                                     <FiArrowLeft size={16} />
                                 </button>
-                                <h2 className="text-base sm:text-lg font-medium text-neutral-800 truncate max-w-[80%]">
+                                <h2 className="tw-text-base tw-sm:text-lg tw-font-medium tw-text-neutral-800 tw-truncate tw-max-w-[80%]">
                                     {surveyData.title} Cevapları
                                 </h2>
                             </div>
-                            <p className="text-sm text-neutral-600 truncate">{surveyData.description || "Açıklama Yok"}</p>
+                            <p className="tw-text-sm tw-text-neutral-600 tw-truncate">{surveyData.description || "Açıklama Yok"}</p>
                         </div>
 
                         {/* Etiketler - daha küçük boy ve kaydırılabilir */}
-                        <div className="flex gap-2 overflow-x-auto text-xs pb-1">
-                            <div className="flex items-center gap-1 border border-primary px-2 py-0.5 rounded-full text-primary-dark shrink-0">
+                        <div className="tw-flex tw-gap-2 tw-overflow-x-auto tw-text-xs tw-pb-1">
+                            <div className="tw-flex tw-items-center tw-gap-1 tw-border tw-border-primary tw-px-2 tw-py-0.5 tw-rounded-full tw-text-primary-dark tw-shrink-0">
                                 <FiFolder size={14} />
                                 <span>{surveyData.group || 'Belirtilmemiş'}</span>
                             </div>
-                            <div className="flex items-center gap-1 border border-primary px-2 py-0.5 rounded-full text-primary-dark shrink-0">
+                            <div className="tw-flex tw-items-center tw-gap-1 tw-border tw-border-primary tw-px-2 tw-py-0.5 tw-rounded-full tw-text-primary-dark tw-shrink-0">
                                 <FiCalendar size={14} />
                                 <span>
                                     {new Date(surveyData.createdAt).toLocaleDateString("tr-TR")}
                                 </span>
                             </div>
-                            <div className="flex items-center gap-1 border border-primary px-2 py-0.5 rounded-full text-primary-dark shrink-0">
+                            <div className="tw-flex tw-items-center tw-gap-1 tw-border tw-border-primary tw-px-2 tw-py-0.5 tw-rounded-full tw-text-primary-dark tw-shrink-0">
                                 <FiEdit size={14} />
                                 <span>
                                     {new Date(surveyData.lastModified).toLocaleDateString("tr-TR")}
@@ -176,47 +176,47 @@ export default function Header({
     } else if (isShareMode) {
         return (
             <>
-                <header className="bg-neutral/0 shadow-sm mb-4">
-                    <div className="px-3 py-2 sm:px-6 sm:py-3 space-y-2">
+                <header className="tw-bg-neutral/0 tw-shadow-sm tw-mb-4">
+                    <div className="tw-px-3 tw-py-2 tw-sm:px-6 tw-sm:py-3 tw-space-y-2">
 
                         {/* Logo ve Menü Butonu */}
-                        <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-2 text-primary font-bold text-lg">
-                                <FaPoll className="h-6 w-6 animate-pulse-slow" />
-                                <h1 className="tracking-tight animate-fade-in-slide">OdaAnket</h1>
+                        <div className="tw-flex tw-items-center tw-justify-between">
+                            <div className="tw-flex tw-items-center tw-gap-2 tw-text-primary tw-font-bold tw-text-lg">
+                                <FaPoll className="tw-h-6 tw-w-6 tw-animate-pulse-slow" />
+                                <h1 className="tw-tracking-tight tw-animate-fade-in-slide">OdaAnket</h1>
                             </div>
                         </div>
 
                         {/* Başlık ve Açıklama */}
-                        <div className="space-y-1">
-                            <div className="flex items-center gap-2">
+                        <div className="tw-space-y-1">
+                            <div className="tw-flex tw-items-center tw-gap-2">
                                 <button
                                     onClick={onBackToMain}
-                                    className="p-1 rounded-full bg-neutral-100 hover:bg-neutral-200 text-primary transition"
+                                    className="tw-p-1 tw-rounded-full tw-bg-neutral-100 tw-hover:bg-neutral-200 tw-text-primary tw-transition"
                                     title="Ana Menüye Dön"
                                 >
                                     <FiArrowLeft size={16} />
                                 </button>
-                                <h2 className="text-base sm:text-lg font-medium text-neutral-800 truncate max-w-[80%]">
+                                <h2 className="tw-text-base tw-sm:text-lg tw-font-medium tw-text-neutral-800 tw-truncate tw-max-w-[80%]">
                                     {surveyData.title}
                                 </h2>
                             </div>
-                            <p className="text-sm text-neutral-600 truncate">{surveyData.description || "Açıklama Yok"}</p>
+                            <p className="tw-text-sm tw-text-neutral-600 tw-truncate">{surveyData.description || "Açıklama Yok"}</p>
                         </div>
 
                         {/* Etiketler - daha küçük boy ve kaydırılabilir */}
-                        <div className="flex gap-2 overflow-x-auto text-xs pb-1">
-                            <div className="flex items-center gap-1 border border-primary px-2 py-0.5 rounded-full text-primary-dark shrink-0">
+                        <div className="tw-flex tw-gap-2 tw-overflow-x-auto tw-text-xs tw-pb-1">
+                            <div className="tw-flex tw-items-center tw-gap-1 tw-border tw-border-primary tw-px-2 tw-py-0.5 tw-rounded-full tw-text-primary-dark tw-shrink-0">
                                 <FiFolder size={14} />
                                 <span>{surveyData.group || 'Belirtilmemiş'}</span>
                             </div>
-                            <div className="flex items-center gap-1 border border-primary px-2 py-0.5 rounded-full text-primary-dark shrink-0">
+                            <div className="tw-flex tw-items-center tw-gap-1 tw-border tw-border-primary tw-px-2 tw-py-0.5 tw-rounded-full tw-text-primary-dark tw-shrink-0">
                                 <FiCalendar size={14} />
                                 <span>
                                     {new Date(surveyData.createdAt).toLocaleDateString("tr-TR")}
                                 </span>
                             </div>
-                            <div className="flex items-center gap-1 border border-primary px-2 py-0.5 rounded-full text-primary-dark shrink-0">
+                            <div className="tw-flex tw-items-center tw-gap-1 tw-border tw-border-primary tw-px-2 tw-py-0.5 tw-rounded-full tw-text-primary-dark tw-shrink-0">
                                 <FiEdit size={14} />
                                 <span>
                                     {new Date(surveyData.lastModified).toLocaleDateString("tr-TR")}
@@ -235,26 +235,26 @@ export default function Header({
     }
     // Ana sayfa header
     return (
-        <header className="flex items-center justify-between p-6 bg-neutral-white border-b border-neutral shadow-sm">
-            <div className="flex items-center gap-3 px-1 rounded-xl text-primary-dark text-2xl">
+        <header className="tw-flex tw-items-center tw-justify-between tw-p-6 tw-bg-neutral-white tw-border-b tw-border-neutral tw-shadow-sm">
+            <div className="tw-flex tw-items-center tw-gap-3 tw-px-1 tw-rounded-xl tw-text-primary-dark tw-text-2xl">
                 <FiFolder />
                 <span>{selectedGroup || 'Belirtilmemiş'}</span>
             </div>
-            <div className="flex items-center space-x-4">
+            <div className="tw-flex tw-items-center tw-space-x-4">
                 <button
                     onClick={() => setSidebarOpen(prev => !prev)}
-                    className="p-2 focus:outline-none xl:hidden"
+                    className="tw-p-2 tw-focus:outline-none tw-xl:hidden"
                 >
                     <CiMenuKebab size={24} />
                 </button>
                 <button
-                    className="btn btn-ghost btn-circle text-neutral-dark hover:text-primary tooltip tooltip-bottom"
+                    className="tw-btn tw-btn-ghost tw-btn-circle tw-text-neutral-dark tw-hover:text-primary tw-tooltip tw-tooltip-bottom"
                     data-tip="Destek"
                 >
                     <FiHelpCircle size={24} />
                 </button>
                 <button
-                    className="btn btn-ghost btn-circle text-neutral-dark hover:text-primary tooltip tooltip-bottom"
+                    className="tw-btn tw-btn-ghost tw-btn-circle tw-text-neutral-dark tw-hover:text-primary tw-tooltip tw-tooltip-bottom"
                     data-tip="Bildirimler"
                 >
                     <FiBell size={24} />

@@ -49,7 +49,7 @@ function Component({ onAddItem, sideBar, setSidebarOpen }) {
                     ${iconProps.textColor || 'text-gray-800'} 
                     ${iconProps.hoverBg || 'hover:bg-gray-300'}`}
       >
-        <div className="text-xl">
+        <div className="tw-text-xl">
           {IconComponent && <IconComponent size={20} />}
         </div>
         <span className={fullWidth ? 'font-semibold' : 'text-sm font-medium'}>
@@ -66,12 +66,12 @@ function Component({ onAddItem, sideBar, setSidebarOpen }) {
   return (
     <>
       {/* Masaüstü için sabit görünüm */}
-      <div className="hidden lg:block p-4 border border-secondary-light w-full h-full shadow-xl bg-neutral/50 rounded-lg">
+      <div className="tw-hidden tw-lg:block tw-p-4 tw-border tw-border-secondary-light tw-w-full tw-h-full tw-shadow-xl tw-bg-neutral/50 tw-rounded-lg">
         {renderButton(welcomeItem, true)}
-        <div className="grid grid-cols-2 gap-3 mt-3">
+        <div className="tw-grid tw-grid-cols-2 tw-gap-3 tw-mt-3">
           {regularItems.map(item => renderButton(item))}
         </div>
-        <div className="mt-4">
+        <div className="tw-mt-4">
           {renderButton(finishItem, true)}
         </div>
       </div>
@@ -81,14 +81,14 @@ function Component({ onAddItem, sideBar, setSidebarOpen }) {
         <div className={`lg:hidden fixed top-0 right-0 h-full w-4/5 max-w-sm z-50 bg-white shadow-lg border-l border-gray-200 p-4 
                         ${sideBar && !isClosing ? 'animate-slide-in' : 'animate-slide-out'} overflow-y-auto`}>
           {/* Kapatma butonu */}
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-bold">Bileşen Menüsü</h2>
+          <div className="tw-flex tw-justify-between tw-items-center tw-mb-4">
+            <h2 className="tw-text-lg tw-font-bold">Bileşen Menüsü</h2>
             <button
               onClick={() => {
                 setIsClosing(true);
                 setSidebarOpen(false); // Bu sidebar durumu parent bileşenden gelmeli
               }}
-              className="text-primary-darktext hover:text-danger"
+              className="tw-text-primary-darktext tw-hover:text-danger"
               title="Kapat"
             >
               <FiX size={24} />
@@ -97,11 +97,11 @@ function Component({ onAddItem, sideBar, setSidebarOpen }) {
 
           {renderButton(welcomeItem, true)}
 
-          <div className="grid grid-cols-2 gap-3 mt-3">
+          <div className="tw-grid tw-grid-cols-2 tw-gap-3 tw-mt-3">
             {regularItems.map(item => renderButton(item))}
           </div>
 
-          <div className="mt-4">
+          <div className="tw-mt-4">
             {renderButton(finishItem, true)}
           </div>
         </div>

@@ -36,14 +36,14 @@ function PaymentSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
   if (!isOpen) return null;
 
   const leftPanel = (
-    <div className="space-y-4">
-      <h2 className="text-lg font-bold">Ödeme Alanı Ayarları</h2>
+    <div className="tw-space-y-4">
+      <h2 className="tw-text-lg tw-font-bold">Ödeme Alanı Ayarları</h2>
 
       {/* Başlık */}
       <div>
-        <label className="block text-sm font-medium mb-1">Başlık</label>
+        <label className="tw-block tw-text-sm tw-font-medium tw-mb-1">Başlık</label>
         <input
-          className="w-full border rounded p-2"
+          className="tw-w-full tw-border tw-rounded tw-p-2"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Ödeme başlığı"
@@ -52,9 +52,9 @@ function PaymentSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
 
       {/* Yardım Metni */}
       <div>
-        <label className="block text-sm font-medium mb-1">Yardım Metni</label>
+        <label className="tw-block tw-text-sm tw-font-medium tw-mb-1">Yardım Metni</label>
         <input
-          className="w-full border rounded p-2"
+          className="tw-w-full tw-border tw-rounded tw-p-2"
           value={helpText}
           onChange={(e) => setHelpText(e.target.value)}
         />
@@ -62,10 +62,10 @@ function PaymentSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
 
       {/* Tutar */}
       <div>
-        <label className="block text-sm font-medium mb-1">Tutar ({currency})</label>
+        <label className="tw-block tw-text-sm tw-font-medium tw-mb-1">Tutar ({currency})</label>
         <input
           type="number"
-          className="w-full border rounded p-2"
+          className="tw-w-full tw-border tw-rounded tw-p-2"
           value={amount}
           onChange={(e) => setAmount(Number(e.target.value))}
           placeholder="0"
@@ -74,9 +74,9 @@ function PaymentSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
 
       {/* ✅ Para Birimi Seçimi */}
       <div>
-        <label className="block text-sm font-medium mb-1">Para Birimi</label>
+        <label className="tw-block tw-text-sm tw-font-medium tw-mb-1">Para Birimi</label>
         <select
-          className="w-full border rounded p-2"
+          className="tw-w-full tw-border tw-rounded tw-p-2"
           value={currency}
           onChange={(e) => setCurrency(e.target.value)}
         >
@@ -88,9 +88,9 @@ function PaymentSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
       </div>
 
       {/* Soru numarası */}
-      <div className="flex items-center space-x-3">
+      <div className="tw-flex tw-items-center tw-space-x-3">
         <label
-          className="text-sm font-medium text-primary-dark select-none cursor-pointer"
+          className="tw-text-sm tw-font-medium tw-text-primary-dark tw-select-none tw-cursor-pointer"
           onClick={() => setSurveyNumberVisible(prev => !prev)}
         >
           Soru Numarası Gözüksün
@@ -108,9 +108,9 @@ function PaymentSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
       </div>
 
       {/* Butonlar */}
-      <div className="flex gap-2 p-5 absolute left-0 bottom-0 bg-neutral md:w-1/2 w-full ">
-        <button className="px-4 py-2 bg-gray-300 rounded" onClick={onClose}>Vazgeç</button>
-        <button className="px-4 py-2 bg-blue-500 text-white rounded" onClick={handleSave}>Kaydet</button>
+      <div className="tw-flex tw-gap-2 tw-p-5 tw-absolute tw-left-0 tw-bottom-0 tw-bg-neutral tw-md:w-1/2 tw-w-full tw-">
+        <button className="tw-px-4 tw-py-2 tw-bg-gray-300 tw-rounded" onClick={onClose}>Vazgeç</button>
+        <button className="tw-px-4 tw-py-2 tw-bg-blue-500 tw-text-white tw-rounded" onClick={handleSave}>Kaydet</button>
       </div>
     </div>
   );
