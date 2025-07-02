@@ -8,21 +8,21 @@ export default function SurveyCard({ survey, handleDelete, handleCopyLink, handl
     const [isHovered, setIsHovered] = useState(false);
     // Anket önizleme rotası için
     const handleNavigateToPreview = () => {
-        navigate(`/${survey._id}`); // Anketin canlı önizlemesi için rota
+        navigate(`/anket/${survey._id}`); // Anketin canlı önizlemesi için rota
     };
 
     // Anket düzenleme rotası için
     const handleNavigateToEdit = () => {
-        navigate(`/tasarim/${survey._id}`); // Anket tasarım/düzenleme sayfası için rota
+        navigate(`/anket/tasarim/${survey._id}`); // Anket tasarım/düzenleme sayfası için rota
     };
 
     // Anket cevapları/sonuçları rotası için
     const handleNavigateToResults = () => {
-        navigate(`/cevaplar/${survey._id}`); // Anketin cevaplarını görüntüleme sayfası için rota
+        navigate(`/anket/analiz/${survey._id}`); // Anketin cevaplarını görüntüleme sayfası için rota
     };
 
     const handleNavigateToShare = () => {
-        navigate(`/share/${survey._id}`); // Anketin cevaplarını görüntüleme sayfası için rota
+        navigate(`/anket/share/${survey._id}`); // Anketin cevaplarını görüntüleme sayfası için rota
     }
 
     const formattedCreatedAt = new Date(survey.createdAt).toLocaleDateString('tr-TR', {
