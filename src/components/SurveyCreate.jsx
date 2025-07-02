@@ -200,7 +200,7 @@ function SurveyCreate({ updatesurvey, fetchsurveyById, updatesurveyfeature }) {
         setEdit(false);
     };
     function yonlendir() {
-        navigate('/anketolustur',{replace: true });
+        navigate('/anket',{replace: true });
     }
 
     const [sidebarOpen, setSidebarOpen] = useState(false);

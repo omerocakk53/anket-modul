@@ -115,7 +115,7 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
 
 
     function yonlendir() {
-        navigate('/anketolustur', { replace: true });
+        navigate('/anket', { replace: true });
     }
 
     return (
