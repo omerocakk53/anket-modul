@@ -58,7 +58,7 @@ export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurv
 
     const handleCopyLink = (id, surveyLink) => {
         const safeLink = formatSurveyLink(surveyLink);
-        const link = `${url}${safeLink ? `anket/${safeLink}` : ''}/${id}`;
+        const link = `${url}${safeLink ? `/anket/${safeLink}` : ''}/${id}`;
         navigator.clipboard.writeText(link)
             .then(() => toast.success("Anket linki panoya kopyalandı!"))
             .catch(() => toast.error("Link kopyalanamadı!"));
@@ -66,7 +66,7 @@ export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurv
 
     const handleShowQr = (id, surveyLink) => {
         const safeLink = formatSurveyLink(surveyLink);
-        const link = `${url}${safeLink ? `anket/${safeLink}` : ''}/${id}`;
+        const link = `${url}${safeLink ? `/anket/${safeLink}` : ''}/${id}`;
         setQrData(link);
         document.getElementById('qr_modal')
     };
