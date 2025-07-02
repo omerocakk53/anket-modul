@@ -23,7 +23,7 @@ import ShortText from './ShortText';
 import WelcomeText from './WelcomeText';
 import { showSuccess } from "./successMesage/successController";
 
-export default function AnketOynatıcısı({ surveyId, user, fetchsurveyById, answersave }) {
+export default function SurveyPlayer({ surveyId, user, fetchsurveyById, answersave }) {
     const [data, setData] = useState([]);
     const [survey, setSurvey] = useState([]);
     const [loading, setLoading] = useState(true);

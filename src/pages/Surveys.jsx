@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import Sidebar from "../components/common/Sidebar";
 import Header from "../components/common/Header";
 import FilterSortSearch from "../components/common/FilterSortSearch";
-import AnketListele from "./AnketListele";
+import AnketListele from "./SurveyList";
 import CreateSurveyModal from "../components/modals/CreateSurveyModal";
 import CreateNewGroupModal from "../components/modals/CreateNewGroupModal";
 import { FiFolderPlus } from 'react-icons/fi';

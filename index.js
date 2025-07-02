@@ -1,29 +1,27 @@
-// ✅ TailwindCSS’i doğrudan projeye uygulamak için
-
-// ✅ Ana sayfa export
-export { default as Surveys } from './src/pages/Anketler';
-export { default as SurveyPlayerWrapper } from './src/pages/AnketOynatıcısıWrapper';
-export { default as Share } from './src/components/Share/Share';
-export { default as SurveyCreate } from './src/components/AnketOlusturucu';
+// Ana sayfa export
+export { default as Surveys } from './src/pages/Surveys';
+export { default as SurveyPlayerWrapper } from './src/pages/SurveyPlayerWrapper';
+export { default as Share } from './src/components/share/Share';
+export { default as SurveyCreate } from './src/components/SurveyCreate';
 export { default as ToastProvider } from './src/components/toast/ToastProvider';
 export { default as SuccessMessagePortal } from './src/components/successMesage/SuccessMessagePortal';
 export { default as Answer } from './src/components/answer/AnswerPage';
 
-// 🎨 Renk & Tema
+// Renk & Tema
 export * from './src/Colors/ColorEditor';
 export * from './src/Colors/colors';
 export * from './src/Colors/RenkUygulama';
 export * from './src/hooks/useThemeManager';
 
-// 🔧 Ortak bileşenler
+// Ortak bileşenler
 export * from './src/components/common/Sidebar';
 export * from './src/components/common/Header';
 export * from './src/components/common/FilterSortSearch';
 export * from './src/components/common/EditSurveyModal';
 export * from './src/components/common/SurveyCard';
 
-// 🧱 Ana komponentler
-export * from './src/components/AnketOynatıcısı';
+// Ana komponentler
+export * from './src/components/SurveyPlayer';
 export * from './src/components/Component';
 export * from './src/components/Description';
 export * from './src/components/Dropdown';
@@ -44,17 +42,17 @@ export * from './src/components/Scale';
 export * from './src/components/ShortText';
 export * from './src/components/WelcomeText';
 
-// 📦 Layout & modal bileşenleri
+// Layout & modal bileşenleri
 export * from './src/components/layouts/ModalLayout';
 export * from './src/components/modals/CreateNewGroupModal';
 export * from './src/components/modals/CreateSurveyModal';
 
-// ✅ Başarı Mesajı
+// Başarı Mesajı
 export * from './src/components/successMesage/successController';
 export * from './src/components/successMesage/SuccessMessage';
 
 
-// 📊 answer
+// answer
 export * from './src/components/answer/AnswerTable';
 export * from './src/components/answer/AnswerPage';
 export * from './src/components/answer/ChartView';
@@ -64,7 +62,7 @@ export * from './src/components/answer/ViewSwitcher';
 export * from './src/components/AnswerItem';
 
 
-// 📊 Analiz Page
+// Analiz Page
 export * from './src/components/Analiz/components/ChangeHighlights';
 export * from './src/components/Analiz/components/DateRangeSelector';
 export * from './src/components/Analiz/components/SurveyComparisonChart';
@@ -73,7 +71,7 @@ export * from './src/utils/analysisUtils';
 
 
 
-// 🎮 Kontrolcü (controller) dosyaları
+// Kontrolcü (controller) dosyaları
 export * from './src/Controller/DescriptionController';
 export * from './src/Controller/DropdownController';
 export * from './src/Controller/EmailController';
@@ -93,10 +91,10 @@ export * from './src/Controller/ScaleController';
 export * from './src/Controller/ShortTextController';
 export * from './src/Controller/WelcomeTextController';
 
-// 🧩 Items
+// Items
 export * from './src/Items/ComponentViewItems';
 
-// ⚙️ Ayar modalları
+// Ayar modalları
 export * from './src/Modal/DescriptionSettingsModal';
 export * from './src/Modal/DropdownSettingsModal';
 export * from './src/Modal/EmailSettingsModal';
@@ -115,10 +113,10 @@ export * from './src/Modal/ScaleSettingsModal';
 export * from './src/Modal/ShortTextSettingsModel';
 export * from './src/Modal/WelcomeTextSettingsModel';
 
-// 📄 Sayfalar
-export * from './src/pages/AnketListele';
+// Sayfalar
+export * from './src/pages/SurveyList';
 
-// 🧠 Utils
+// Utils
 export * from './src/utils/iconMap';
 
 

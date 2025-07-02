@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import AnketOynatıcısı from "../components/AnketOynatıcısı";
+import AnketOynatıcısı from "../components/SurveyPlayer";
 
 export default function AnketOynatıcısıWrapper({ fetchsurveyById, answersave, user }) {
   const { surveyId } = useParams();
