@@ -66,7 +66,7 @@ export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurv
 
     const handleShowQr = (id, surveyLink) => {
         const safeLink = formatSurveyLink(surveyLink);
-        const link = `${url}${safeLink ? `/${safeLink}` : ''}/${id}`;
+        const link = `${url}${safeLink ? `anket/${safeLink}` : ''}/${id}`;
         setQrData(link);
         document.getElementById('qr_modal')
     };
