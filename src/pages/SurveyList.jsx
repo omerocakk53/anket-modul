@@ -58,7 +58,7 @@ export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurv
 
     const handleCopyLink = (id, surveyLink) => {
         const safeLink = formatSurveyLink(surveyLink);
-        const link = `${url}${safeLink ? `/${safeLink}` : ''}/${id}`;
+        const link = `${url}${safeLink ? `anket/${safeLink}` : ''}/${id}`;
         navigator.clipboard.writeText(link)
             .then(() => toast.success("Anket linki panoya kopyalandı!"))
             .catch(() => toast.error("Link kopyalanamadı!"));
