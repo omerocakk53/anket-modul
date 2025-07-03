@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PaymentSettingsModal from '../Modal/PaymentSettingsModal';
-import { Toaster, toast } from 'react-hot-toast' // toast ekle
+import toast from 'react-hot-toast' // toast ekle
 
 function PaymentController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
     const [PaymentData, setPaymentData] = useState({});

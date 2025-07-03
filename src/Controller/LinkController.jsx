@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import LinkSettingsModal from '../Modal/LinkSettingsModal';
-import { Toaster, toast } from 'react-hot-toast' // toast ekle
+import toast from 'react-hot-toast' // toast ekle
 
 function LinkController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
     const [LinkData, setLinkData] = useState({});

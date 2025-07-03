@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ImageChoiceSettingsModal from '../Modal/ImageChoiceSettingsModal';
-import { Toaster, toast } from 'react-hot-toast' // toast ekle
+import toast from 'react-hot-toast' // toast ekle
 
 function ImageChoiceController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
     const [ImageChoiceData, setImageChoiceData] = useState({});

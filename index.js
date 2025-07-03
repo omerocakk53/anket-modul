@@ -1,7 +1,3 @@
-export { default as toast } from 'react-hot-toast';
-export { default as Toaster } from 'react-hot-toast';
-
-
 // Ana sayfa export
 export { default as Surveys } from './src/pages/Surveys';
 export { default as SurveyPlayerWrapper } from './src/pages/SurveyPlayerWrapper';

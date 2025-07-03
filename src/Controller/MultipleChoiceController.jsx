@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import MultipleChoiceSettingsModal from '../Modal/MultipleChoiceSettingsModal';
-import { Toaster, toast } from 'react-hot-toast' // toast ekle
+import toast from 'react-hot-toast' // toast ekle
 
 function MultipleChoiceController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
     const [MultipleChoiceData, setMultipleChoiceData] = useState({});
