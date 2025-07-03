@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { toast } from './toastUtils'; // toast ekle
+import { toast } from 'react-toastify'
 
 export default function MultipleChoice({
   title,
@@ -147,7 +147,7 @@ export default function MultipleChoice({
 
   return (
     <div>
-      
+
       {title ? (
         <>
           <label className="font-semibold text-primary-text mb-2 block">
