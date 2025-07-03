@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DropdownSettingsModal from '../Modal/DropdownSettingsModal';
-import { toast } from 'react-toastify';
+import { Toaster, toast } from 'react-hot-toast' // toast ekle
 
 function DropdownController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
     const [DropdownData, setDropdownData] = useState([]);

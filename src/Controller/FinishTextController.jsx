@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from 'react'
 
 import WelcomeTextSettingsModel from '../Modal/WelcomeTextSettingsModel';
-import { toast } from 'react-toastify';
+import { Toaster, toast } from 'react-hot-toast' // toast ekle
 
 function FinishTextController({ isOpen, setControllerOpen, items, Item, setItems, Edit, SetEdit }) {
 

@@ -32,7 +32,7 @@ import LinkController from '../Controller/LinkController';
 import RankingController from '../Controller/RankingController';
 import PaymentController from '../Controller/PaymentController';
 import MatrisController from '../Controller/MatrisController';
-import { toast } from 'react-toastify';
+import { Toaster, toast } from 'react-hot-toast' // toast ekle
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Header from './common/Header'

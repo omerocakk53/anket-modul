@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import RankingSettingsModal from '../Modal/RankingSettingsModal';
-import { toast } from 'react-toastify';
+import { Toaster, toast } from 'react-hot-toast' // toast ekle
 
 function RankingController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
     const [RankingData, setRankingData] = useState({});

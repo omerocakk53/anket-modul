@@ -1,6 +1,6 @@
 import React from 'react';
 import { IoMdClose } from 'react-icons/io';
-import { toast } from 'react-toastify';
+import { Toaster, toast } from 'react-hot-toast' // toast ekle
 
 export default function CreateNewGroupModal({
   isOpen,
