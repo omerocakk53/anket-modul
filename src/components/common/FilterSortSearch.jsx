@@ -57,7 +57,7 @@ export default function FilterSortSearch({
 
   const handleSelectMode = (mode) => {
     setSearchMode(mode);
-    toast.info(`Arama modu: ${mode === 'title' ? 'Başlık araması' : 'Etiket araması'}`);
+    toast(`Arama modu: ${mode === 'title' ? 'Başlık araması' : 'Etiket araması'}`);
     setDropdownOpen(false);
   };
 
