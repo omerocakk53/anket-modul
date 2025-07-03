@@ -149,11 +149,11 @@ export default function Anketler({ createSurvey, fetchsurveychamberById, handleL
     // Anket oluşturma işlemi (mevcut grup altında)
     const handleCreateSurveyInGroup = async () => {
         if (!selectedGroup) {
-            toast.error("Lütfen bir klasör seçin veya yeni bir klasör oluşturun.");
+            toast("Lütfen bir klasör seçin veya yeni bir klasör oluşturun.");
             return;
         }
         if (!title.trim()) {
-            toast.error("Anket başlığı boş bırakılamaz.");
+            toast("Anket başlığı boş bırakılamaz.");
             return;
         }
 
@@ -183,11 +183,11 @@ export default function Anketler({ createSurvey, fetchsurveychamberById, handleL
     // Yeni grup oluşturup anket oluşturma
     const handleCreateNewGroupAndSurvey = async () => {
         if (!newGroupName.trim()) {
-            toast.error(`Klasör adı boş bırakılamaz.`);
+            toast(`Klasör adı boş bırakılamaz.`);
             return;
         }
         if (!title.trim()) {
-            toast.error("Anket başlığı boş bırakılamaz.");
+            toast("Anket başlığı boş bırakılamaz.");
             return;
         }
 

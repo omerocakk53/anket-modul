@@ -69,7 +69,7 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
                                 setCevaplar(updatedCevaplar);
                                 toast.success("Cevap başarıyla silindi");
                             } catch {
-                                toast.error("Cevap silinemedi");
+                                toast("Cevap silinemedi");
                             } finally {
                                 setIsDeleting(false);
                             }

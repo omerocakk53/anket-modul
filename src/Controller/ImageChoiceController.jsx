@@ -7,7 +7,7 @@ function ImageChoiceController({ isOpen, setControllerOpen, items, Item, setItem
 
     useEffect(() => {
         if (!Item.id) return;
-        if (!ImageChoiceData?.title || !ImageChoiceData?.images?.length > 0) toast.error("boş değerler var");
+        if (!ImageChoiceData?.title || !ImageChoiceData?.images?.length > 0) toast("boş değerler var");
 
         const updatedItem = {
             ...Item,

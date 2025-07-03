@@ -154,7 +154,7 @@ function SurveyCreate({ updatesurvey, fetchsurveyById, updatesurveyfeature }) {
                 setIsOpen([true, item.id])
                 setItem(item); // Seçilen öğeyi ayarla
             } else {
-                toast.error("Giriş sayfası zaten var")
+                toast("Giriş sayfası zaten var")
             }
         } else if (item.id === "finish") {
             const finishItem = FinishWelcomeitems?.find(item => item.id.includes("finish"));
@@ -162,7 +162,7 @@ function SurveyCreate({ updatesurvey, fetchsurveyById, updatesurveyfeature }) {
                 setIsOpen([true, item.id])
                 setItem(item); // Seçilen öğeyi ayarla
             } else {
-                toast.error("Bitiş sayfası zaten var")
+                toast("Bitiş sayfası zaten var")
             }
         } else if (item.id !== "" && item.id !== "welcome" && item.id !== "finish") {
             setIsOpen([true, item.id])

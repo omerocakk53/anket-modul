@@ -7,7 +7,7 @@ function EmailController({ isOpen, setControllerOpen, items, Item, setItems, cou
 
     useEffect(() => {
         if (!Item.id) return;
-        if (!EmailData?.title || !EmailData.helpText) toast.error("boş değerler var");
+        if (!EmailData?.title || !EmailData.helpText) toast("boş değerler var");
 
         const updatedItem = {
             ...Item,

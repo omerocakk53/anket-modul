@@ -44,7 +44,7 @@ export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurv
                                     setRefreshKey((prev) => prev + 1);
                                     toast.success(`"${title}" anketi silindi.`);
                                 } catch (err) {
-                                    toast.error(`Silinemedi: "${title}"`);
+                                    toast(`Silinemedi: "${title}"`);
                                     console.error('Silme hatası:', err);
                                 }
                             }}
@@ -76,7 +76,7 @@ export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurv
         const link = `${url}${safeLink ? `/anket/${safeLink}` : ''}/${id}`;
         navigator.clipboard.writeText(link)
             .then(() => toast.success("Anket linki panoya kopyalandı!"))
-            .catch(() => toast.error("Link kopyalanamadı!"));
+            .catch(() => toast("Link kopyalanamadı!"));
     };
 
     const handleShowQr = (id, surveyLink) => {

@@ -7,7 +7,7 @@ function NumericController({ isOpen, setControllerOpen, items, Item, setItems, c
 
     useEffect(() => {
         if (!Item.id) return;
-        if (!NumericData?.title || !NumericData?.helpText) toast.error("boş değerler var");
+        if (!NumericData?.title || !NumericData?.helpText) toast("boş değerler var");
         const updatedItem = {
             ...Item,
             title: NumericData.title,

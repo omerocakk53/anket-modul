@@ -92,7 +92,7 @@ export default function SurveyPlayer({ surveyId, user, fetchsurveyById, answersa
         const currentValue = answers[currentItem?.id];
 
         if (isRequired(currentItem) && isEmpty(currentItem, currentValue)) {
-            toast.error("Bu alan zorunludur."); // Show error with toast
+            toast("Bu alan zorunludur."); // Show error with toast
             return;
         }
 
@@ -113,7 +113,7 @@ export default function SurveyPlayer({ surveyId, user, fetchsurveyById, answersa
                 showSuccess("Anket Cevabınız Alındı");
             } catch (err) {
                 console.error("Cevaplar kaydedilemedi:", err);
-                toast.error("Cevaplar kaydedilemedi");
+                toast("Cevaplar kaydedilemedi");
             }
         }
     };
@@ -196,7 +196,7 @@ export default function SurveyPlayer({ surveyId, user, fetchsurveyById, answersa
                 setSurvey(survey);
             } catch (err) {
                 console.error("Anket yüklenemedi:", err);
-                toast.error("Anket yüklenirken bir hata oluştu."); // Show toast for survey loading error
+                toast("Anket yüklenirken bir hata oluştu."); // Show toast for survey loading error
             } finally {
                 setLoading(false);
             }
