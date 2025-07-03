@@ -1,6 +1,6 @@
 import React from "react";
 import { IoMdClose } from "react-icons/io";
-import { toast } from '../utils/toastUtils'; // toast ekle
+import { toast } from '../../utils/toastUtils'; // toast ekle
 
 export default function CreateSurveyModal({
   isOpen,
