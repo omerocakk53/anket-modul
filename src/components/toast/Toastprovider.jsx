@@ -5,7 +5,7 @@ const ToastProvider = ({ children }) => {
     <>
       {children}
       <Toaster
-        position="top-left"
+        position="top-center"
         toastOptions={{
           duration: 2500,
           style: {
@@ -24,7 +24,7 @@ const ToastProvider = ({ children }) => {
               background: "#22c55e",       // success
               color: "#ffffff",            // primary-text (beyaz)
               fontWeight: "700",
-              boxShadow: "0 8px 15px rgba(34, 197, 94, 0.4)", 
+              boxShadow: "0 8px 15px rgba(34, 197, 94, 0.4)",
             },
           },
           error: {
@@ -34,24 +34,6 @@ const ToastProvider = ({ children }) => {
               color: "#ffffff",            // primary-text
               fontWeight: "700",
               boxShadow: "0 8px 15px rgba(239, 68, 68, 0.4)",
-            },
-          },
-          warning: {
-            duration: 3000,
-            style: {
-              background: "#eab308",       // warning
-              color: "#000077",            // primary-darktext
-              fontWeight: "700",
-              boxShadow: "0 8px 15px rgba(234, 179, 8, 0.4)",
-            },
-          },
-          info: {
-            duration: 2500,
-            style: {
-              background: "#3b82f6",       // info
-              color: "#ffffff",
-              fontWeight: "600",
-              boxShadow: "0 8px 15px rgba(59, 130, 246, 0.4)",
             },
           },
         }}
