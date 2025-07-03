@@ -16,7 +16,7 @@ export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurv
     const handleDelete = async (id, title) => {
         toast(
             (t) => (
-                <div className="flex flex-col items-center p-4 bg-white rounded-lg shadow-md max-w-sm">
+                <div className="flex flex-col items-center p-4 rounded-lg max-w-sm">
                     <p className="text-lg font-semibold mb-4 text-gray-800">
                         Anketi silmek istediğinize emin misiniz?
                     </p>
@@ -38,13 +38,13 @@ export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurv
                             }}
                             className="bg-danger text-white px-4 py-2 rounded hover:bg-danger-dark transition"
                         >
-                            Evet, Sil
+                            Evet
                         </button>
                         <button
                             onClick={() => toast.dismiss(t.id)}
                             className="bg-neutral-light text-neutral-darkest px-4 py-2 rounded hover:bg-neutral-dark transition"
                         >
-                            Vazgeç
+                            Hayır
                         </button>
                     </div>
                 </div>
