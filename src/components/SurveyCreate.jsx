@@ -145,7 +145,7 @@ function SurveyCreate({ updatesurvey, fetchsurveyById, updatesurveyfeature }) {
     // Yeni öğe ekleme işlemi
     const handleAddItem = (item) => {
         if (survey.active) {
-            toast.info("Aktif anket düzenlenemez.");
+            toast("Aktif anket düzenlenemez.");
             return;
         }
         if (item.id === "welcome") {
@@ -172,7 +172,7 @@ function SurveyCreate({ updatesurvey, fetchsurveyById, updatesurveyfeature }) {
 
     const handleEdit = (item) => {
         if (survey.active) {
-            toast.info("Aktif anket düzenlenemez.");
+            toast("Aktif anket düzenlenemez.");
             return;
         }
         const type = item.id.split("-")[0]; // örn: short_text
@@ -219,7 +219,7 @@ function SurveyCreate({ updatesurvey, fetchsurveyById, updatesurveyfeature }) {
                 {/* Sol Panel */}
                 <div>
                     <Component
-                        onAddItem={survey.active ? () => toast.info("Aktif anket düzenlenemez.") : handleAddItem}
+                        onAddItem={survey.active ? () => toast("Aktif anket düzenlenemez.") : handleAddItem}
                         sideBar={sidebarOpen}
                         setSidebarOpen={() => setSidebarOpen(false)}
                     />

@@ -28,7 +28,7 @@ export default function ImageChoice({
       } else {
         // Eğer limit aşılmamışsa, seçimi ekle
         if (MultiSelectLimit > 0 && updatedSelection.length >= MultiSelectLimit) {
-          toast.info(`Seçim limitine ulaştınız (${MultiSelectLimit} adet seçebilirsiniz).`);
+          toast(`Seçim limitine ulaştınız (${MultiSelectLimit} adet seçebilirsiniz).`);
           return;
         }
         updatedSelection.push(idx);
