@@ -52,7 +52,7 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
                                 toast.dismiss(t.id);
                                 try {
                                     setIsDeleting(true);
-                                    await cevaplariSil(surveyId, answerId);
+                                    await answerdelete(surveyId, answerId);
                                     const updatedCevaplar = await cevaplariGetir(surveyId);
                                     setCevaplar(updatedCevaplar);
                                     toast.success("Cevap başarıyla silindi");

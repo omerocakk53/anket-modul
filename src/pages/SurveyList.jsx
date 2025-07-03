@@ -25,9 +25,9 @@ export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurv
                         onClick={async () => {
                             toast.dismiss(t.id);
                             try {
-                                await deleteSurveyShareById(id);
-                                await AllAnswerDelete(id);
-                                await deleteSurveyById(id);
+                                await deletesurvey(id);
+                                await allanswerdelete(id);
+                                await deletesurveyshareById(id);
                                 setRefreshKey(prev => prev + 1);
                                 toast.success(`"${title}" anketi silindi.`);
                             } catch (err) {
