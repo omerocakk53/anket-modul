@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Toaster,toast} from 'react-hot-toast'
+import { Toaster, toast } from 'react-hot-toast'
 import Sidebar from "../components/common/Sidebar";
 import Header from "../components/common/Header";
 import FilterSortSearch from "../components/common/FilterSortSearch";
@@ -246,7 +246,29 @@ export default function Anketler({ createSurvey, fetchsurveychamberById, handleL
     return (
         <div className="flex flex-col md:flex-row h-screen bg-gradient-to-br from-primary-light to-secondary-light font-sans">
             {/* Sidebar: Mobilde gizli, tablet+ göster */}
-            <Toaster />
+            <Toaster
+                position="top-right"
+                toastOptions={{
+                    // Varsayılan stiller ve ayarlar
+                    duration: 4000,
+                    style: {
+                        fontSize: '16px',
+                        borderRadius: '8px',
+                    },
+                    success: {
+                        style: {
+                            background: 'green',
+                            color: 'white',
+                        },
+                    },
+                    error: {
+                        style: {
+                            background: 'red',
+                            color: 'white',
+                        },
+                    },
+                }}
+            />
             <Sidebar
                 className="hidden md:flex md:flex-shrink-0"
                 groupedSurveysData={groupedSurveysData}

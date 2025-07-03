@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import toast from 'react-hot-toast'
+import { Toaster, toast } from 'react-hot-toast'
 import { QRCodeCanvas, QRCodeSVG } from "qrcode.react";
 
 import SurveyCard from "../components/common/SurveyCard";
@@ -14,40 +14,55 @@ export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurv
     const url = window.location.origin;
 
     const handleDelete = async (id, title) => {
-        toast.custom((t) => (
-            <div className="flex flex-col items-center p-4 bg-white rounded-lg shadow-lg">
-                <p className="text-lg font-semibold mb-4 text-gray-800">
-                    Anketi silmek istediğinize emin misiniz?
-                </p>
-                <p className="text-sm text-gray-600 mb-6">Bu işlem geri alınamaz.</p>
-                <div className="flex gap-4">
-                    <button
-                        onClick={async () => {
-                            toast.dismiss(t.id)
-                            try {
-                                await deletesurveyshareById(id)
-                                await allanswerdelete(id)
-                                await deletesurvey(id)
-                                setRefreshKey((prev) => prev + 1)
-                                toast.success(`"${title}" anketi silindi.`)
-                            } catch (err) {
-                                toast.error(`Silinemedi: "${title}"`)
-                                console.error('Silme hatası:', err)
-                            }
-                        }}
-                        className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition"
-                    >
-                        Evet, Sil
-                    </button>
-                    <button
-                        onClick={() => toast.dismiss(t.id)}
-                        className="bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300 transition"
-                    >
-                        Vazgeç
-                    </button>
+        toast.custom((t) => {
+            // t.visible true ise toast gösteriliyor, false ise kapanıyor
+            return (
+                <div
+                    className={`
+        max-w-md w-full bg-white rounded-lg shadow-lg p-5
+        transform transition-all duration-300
+        ${t.visible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}
+        flex flex-col items-center
+      `}
+                    style={{ pointerEvents: t.visible ? 'auto' : 'none' }} // kapanırken tıklamayı engelle
+                >
+                    <p className="text-lg font-semibold mb-3 text-gray-900 text-center">
+                        Anketi silmek istediğinize emin misiniz?
+                    </p>
+                    <p className="text-sm text-gray-600 mb-6 text-center">
+                        Bu işlem geri alınamaz.
+                    </p>
+
+                    <div className="flex gap-4">
+                        <button
+                            onClick={async () => {
+                                toast.dismiss(t.id); // önce toast'u kapat
+                                try {
+                                    await deletesurveyshareById(id);
+                                    await allanswerdelete(id);
+                                    await deletesurvey(id);
+                                    setRefreshKey((prev) => prev + 1);
+                                    toast.success(`"${title}" anketi silindi.`);
+                                } catch (err) {
+                                    toast.error(`Silinemedi: "${title}"`);
+                                    console.error('Silme hatası:', err);
+                                }
+                            }}
+                            className="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded transition"
+                        >
+                            Evet, Sil
+                        </button>
+
+                        <button
+                            onClick={() => toast.dismiss(t.id)}
+                            className="bg-gray-200 hover:bg-gray-300 text-gray-700 px-5 py-2 rounded transition"
+                        >
+                            Vazgeç
+                        </button>
+                    </div>
                 </div>
-            </div>
-        ), { duration: Infinity })
+            );
+        }, { duration: Infinity });
     };
     const formatSurveyLink = (link) => {
         if (!link || typeof link !== 'string') return '';
@@ -114,6 +129,29 @@ export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurv
 
             {qrData && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-xs">
+                    <Toaster
+                        position="top-right"
+                        toastOptions={{
+                            // Varsayılan stiller ve ayarlar
+                            duration: 4000,
+                            style: {
+                                fontSize: '16px',
+                                borderRadius: '8px',
+                            },
+                            success: {
+                                style: {
+                                    background: 'green',
+                                    color: 'white',
+                                },
+                            },
+                            error: {
+                                style: {
+                                    background: 'red',
+                                    color: 'white',
+                                },
+                            },
+                        }}
+                    />
                     <div className="relative bg-white rounded-lg shadow-lg p-6 max-w-xs">
                         <button
                             className="absolute top-2 right-2 text-gray-600 hover:text-gray-800"

@@ -8,7 +8,7 @@ function ScaleController({ isOpen, setControllerOpen, items, Item, setItems, cou
 
     useEffect(() => {
         if (!Item.id) return;
-        if (!ScaleData?.title || !ScaleData?.helpText || !ScaleData?.data.min || !ScaleData?.data.max) toast.warning("boş değerler var");
+        if (!ScaleData?.title || !ScaleData?.helpText || !ScaleData?.data.min || !ScaleData?.data.max) toast.error("boş değerler var");
         const updatedItem = {
             ...Item,
             title: ScaleData.title,

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import toast from 'react-hot-toast'
+import { Toaster, toast } from 'react-hot-toast'
 import ViewSwitcher from "./ViewSwitcher";
 import FilterBar from "./FilterBar";
 import ChartView from "./ChartView";
@@ -41,45 +41,54 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
     }, [surveyId]);
 
     const handleDelete = async (answerId) => {
-        toast(
-            (t) => (
-                <div className="p-4">
-                    <p className="font-semibold text-lg mb-2">Silmek istediğinize emin misiniz?</p>
-                    <p className="text-sm mb-4 text-neutral-dark">Bu işlem geri alınamaz.</p>
-                    <div className="flex gap-3">
-                        <button
-                            onClick={async () => {
-                                toast.dismiss(t.id);
-                                try {
-                                    setIsDeleting(true);
-                                    await answerdelete(surveyId, answerId);
-                                    const updatedCevaplar = await answerget(surveyId);
-                                    setCevaplar(updatedCevaplar);
-                                    toast.success("Cevap başarıyla silindi");
-                                } catch {
-                                    toast.error("Cevap silinemedi");
-                                } finally {
-                                    setIsDeleting(false);
-                                }
-                            }}
-                            className="bg-danger text-white px-4 py-2 rounded-md"
-                            disabled={isDeleting}
-                        >
-                            Evet
-                        </button>
-                        <button
-                            onClick={() => toast.dismiss(t.id)}
-                            className="bg-gray-200 px-4 py-2 rounded-md"
-                        >
-                            Hayır
-                        </button>
-                    </div>
-                </div>
-            ),
-            { duration: 5000, closeButton: false }
-        );
-    };
+        toast.custom((t) => (
+            <div
+                className={`
+      max-w-md w-full bg-white rounded-lg shadow-lg p-5
+      transform transition-all duration-300
+      ${t.visible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}
+      flex flex-col
+    `}
+                style={{ pointerEvents: t.visible ? 'auto' : 'none' }}
+            >
+                <p className="font-semibold text-lg mb-2 text-gray-900">
+                    Silmek istediğinize emin misiniz?
+                </p>
+                <p className="text-sm mb-4 text-neutral-700">
+                    Bu işlem geri alınamaz.
+                </p>
 
+                <div className="flex gap-3 justify-end">
+                    <button
+                        onClick={async () => {
+                            toast.dismiss(t.id);
+                            try {
+                                setIsDeleting(true);
+                                await answerdelete(surveyId, answerId);
+                                const updatedCevaplar = await answerget(surveyId);
+                                setCevaplar(updatedCevaplar);
+                                toast.success("Cevap başarıyla silindi");
+                            } catch {
+                                toast.error("Cevap silinemedi");
+                            } finally {
+                                setIsDeleting(false);
+                            }
+                        }}
+                        className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md transition"
+                        disabled={isDeleting}
+                    >
+                        Evet
+                    </button>
+                    <button
+                        onClick={() => toast.dismiss(t.id)}
+                        className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-md transition"
+                    >
+                        Hayır
+                    </button>
+                </div>
+            </div>
+        ), { duration: Infinity })
+    };
 
     const filteredCevaplar = (selectedView === "Tablo" || selectedView === "Grafik")
         ? cevaplar?.filter((cevap) => {
@@ -120,6 +129,29 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
 
     return (
         <>
+            <Toaster
+                position="top-right"
+                toastOptions={{
+                    // Varsayılan stiller ve ayarlar
+                    duration: 4000,
+                    style: {
+                        fontSize: '16px',
+                        borderRadius: '8px',
+                    },
+                    success: {
+                        style: {
+                            background: 'green',
+                            color: 'white',
+                        },
+                    },
+                    error: {
+                        style: {
+                            background: 'red',
+                            color: 'white',
+                        },
+                    },
+                }}
+            />
             <Header
                 isAnswerMode={true}
                 surveyData={survey}

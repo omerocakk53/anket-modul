@@ -42,18 +42,18 @@ export default function EditSurveyModal({ survey, onClose, onUpdate,updatesurvey
     const tag = newTag.trim();
 
     if (!tag) {
-      toast.warning("Etiket boş olamaz.");
+      toast.error("Etiket boş olamaz.");
       return;
     }
 
     if (formData.tags.includes(tag)) {
-      toast.warning("Bu etiket zaten eklenmiş.");
+      toast.error("Bu etiket zaten eklenmiş.");
       setNewTag('');
       return;
     }
 
     if (formData.tags.length >= 3) {
-      toast.warning("En fazla 3 etiket ekleyebilirsiniz.");
+      toast.error("En fazla 3 etiket ekleyebilirsiniz.");
       return;
     }
 
@@ -100,7 +100,7 @@ export default function EditSurveyModal({ survey, onClose, onUpdate,updatesurvey
     }
 
     if (errors.length > 0) {
-      errors.forEach(err => toast.warning(err));
+      errors.forEach(err => toast.error(err));
       return;
     }
 
@@ -121,7 +121,7 @@ export default function EditSurveyModal({ survey, onClose, onUpdate,updatesurvey
     });
 
     if (Object.keys(filteredData).length === 0) {
-      toast.warning("Geçerli bir değişiklik yapmadınız.");
+      toast.error("Geçerli bir değişiklik yapmadınız.");
       return;
     }
 

@@ -7,7 +7,7 @@ function MultipleChoiceController({ isOpen, setControllerOpen, items, Item, setI
 
     useEffect(() => {
         if (!Item.id) return;
-        if (!MultipleChoiceData?.title || !MultipleChoiceData?.helpText || !MultipleChoiceData?.options?.length > 0) toast.warning("boş değerler var");
+        if (!MultipleChoiceData?.title || !MultipleChoiceData?.helpText || !MultipleChoiceData?.options?.length > 0) toast.error("boş değerler var");
         const updatedItem = {
             ...Item,
             title: MultipleChoiceData.title,

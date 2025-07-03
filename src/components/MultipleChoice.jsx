@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import toast from 'react-hot-toast' // toast ekle
+import { Toaster, toast } from 'react-hot-toast' // toast ekle
 
 export default function MultipleChoice({
   title,
@@ -148,6 +148,29 @@ export default function MultipleChoice({
 
   return (
     <div>
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          // Varsayılan stiller ve ayarlar
+          duration: 4000,
+          style: {
+            fontSize: '16px',
+            borderRadius: '8px',
+          },
+          success: {
+            style: {
+              background: 'green',
+              color: 'white',
+            },
+          },
+          error: {
+            style: {
+              background: 'red',
+              color: 'white',
+            },
+          },
+        }}
+      />
       {title ? (
         <>
           <label className="font-semibold text-primary-text mb-2 block">

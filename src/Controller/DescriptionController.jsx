@@ -6,7 +6,7 @@ function DescriptionController({ isOpen, setControllerOpen, items, Item, setItem
     const [DescriptionData, setDescriptionData] = useState({});
     useEffect(() => {
         if (!Item.id) return;
-        if (!DescriptionData?.title || !DescriptionData?.helpText) toast.warning("boş değerler var");
+        if (!DescriptionData?.title || !DescriptionData?.helpText) toast.error("boş değerler var");
         const updatedItem = {
             ...Item,
             title: DescriptionData.title,
