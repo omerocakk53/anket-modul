@@ -5,7 +5,7 @@ const ToastProvider = ({ children }) => {
     <>
       {children}
       <Toaster
-        position="top-left"
+        position="top-center"
         toastOptions={{
           duration: 2500,
           style: {
@@ -23,7 +23,7 @@ const ToastProvider = ({ children }) => {
             duration: 2000,
             style: {
               background: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
-              color: "#0f172a",
+              color: "#fff",
               fontWeight: "700",
             },
           },
