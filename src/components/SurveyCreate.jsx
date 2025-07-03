@@ -117,6 +117,7 @@ function SurveyCreate({ updatesurvey, fetchsurveyById, updatesurveyfeature }) {
                 items: newItems,
                 FinishWelcomeitems,
             });
+            toast.success("Anket kaydedildi")
             setShouldReload(true); // yeniden yükleme tetiklenir
         }
     };
@@ -206,7 +207,7 @@ function SurveyCreate({ updatesurvey, fetchsurveyById, updatesurveyfeature }) {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     return (
         <>
-            
+
             <Header
                 isEditMode={true}
                 surveyData={survey}
