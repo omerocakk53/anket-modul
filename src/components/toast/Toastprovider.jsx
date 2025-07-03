@@ -5,35 +5,53 @@ const ToastProvider = ({ children }) => {
     <>
       {children}
       <Toaster
-        position="top-center"
+        position="top-left"
         toastOptions={{
           duration: 2500,
           style: {
-            background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-            color: "#fff",
+            background: "#4F46E5",         // primary
+            color: "#ffffff",              // primary-text
             fontWeight: "600",
             borderRadius: "12px",
-            boxShadow: "0 8px 15px rgba(118, 75, 162, 0.3)",
+            boxShadow: "0 8px 15px rgba(79, 70, 229, 0.4)", // primary biraz transparan gölge
             padding: "14px 24px",
             fontSize: "16px",
             letterSpacing: "0.02em",
           },
-          // Success tipi toast için ekstra stil
           success: {
             duration: 2000,
             style: {
-              background: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
-              color: "#fff",
+              background: "#22c55e",       // success
+              color: "#ffffff",            // primary-text (beyaz)
               fontWeight: "700",
+              boxShadow: "0 8px 15px rgba(34, 197, 94, 0.4)", 
             },
           },
-          // Hata tipi toast için ekstra stil
           error: {
             duration: 3000,
             style: {
-              background: "linear-gradient(135deg, #f85032 0%, #e73827 100%)",
-              color: "#fff",
+              background: "#ef4444",       // danger
+              color: "#ffffff",            // primary-text
               fontWeight: "700",
+              boxShadow: "0 8px 15px rgba(239, 68, 68, 0.4)",
+            },
+          },
+          warning: {
+            duration: 3000,
+            style: {
+              background: "#eab308",       // warning
+              color: "#000077",            // primary-darktext
+              fontWeight: "700",
+              boxShadow: "0 8px 15px rgba(234, 179, 8, 0.4)",
+            },
+          },
+          info: {
+            duration: 2500,
+            style: {
+              background: "#3b82f6",       // info
+              color: "#ffffff",
+              fontWeight: "600",
+              boxShadow: "0 8px 15px rgba(59, 130, 246, 0.4)",
             },
           },
         }}
