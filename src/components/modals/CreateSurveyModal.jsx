@@ -17,10 +17,10 @@ export default function CreateSurveyModal({
   const handleSubmitStep1 = (e) => {
     e.preventDefault();
     if (!title.trim()) {
-      toast("Anket başlığı boş bırakılamaz.");
+      toast.error("Anket başlığı boş bırakılamaz.");
       return;
     } else if (!description.trim()) {
-      toast("Anket açıklaması boş bırakılamaz.");
+      toast.error("Anket açıklaması boş bırakılamaz.");
       return;
     }
     setCurrentStep(2);

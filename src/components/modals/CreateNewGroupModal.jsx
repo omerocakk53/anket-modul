@@ -18,7 +18,7 @@ export default function CreateNewGroupModal({
   const handleSubmitStep1 = (e) => {
     e.preventDefault();
     if (!newGroupName.trim()) {
-      toast("Klasör adı boş bırakılamaz.");
+      toast.error("Klasör adı boş bırakılamaz.");
       return;
     }
     setCurrentStep(2);
@@ -27,10 +27,10 @@ export default function CreateNewGroupModal({
   const handleSubmitStep2 = (e) => {
     e.preventDefault();
     if (!title.trim()) {
-      toast("Anket başlığı boş bırakılamaz.");
+      toast.error("Anket başlığı boş bırakılamaz.");
       return;
     } else if (!description.trim()) {
-      toast("Anket açıklaması boş bırakılamaz.");
+      toast.error("Anket açıklaması boş bırakılamaz.");
       return;
     }
     setCurrentStep(3);

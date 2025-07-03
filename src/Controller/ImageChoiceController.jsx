@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import ImageChoiceSettingsModal from '../Modal/ImageChoiceSettingsModal';
-import { toast } from '../utils/toastUtils'; // toast ekle // toast ekle
+import { toast } from "react-toastify"; // toast ekle
 
 function ImageChoiceController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
     const [ImageChoiceData, setImageChoiceData] = useState({});
 
     useEffect(() => {
         if (!Item.id) return;
-        if (!ImageChoiceData?.title || !ImageChoiceData?.images?.length > 0) toast("boş değerler var");
+        if (!ImageChoiceData?.title || !ImageChoiceData?.images?.length > 0) toast.warn("boş değerler var");
 
         const updatedItem = {
             ...Item,

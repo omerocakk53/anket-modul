@@ -42,7 +42,7 @@ export default function EditSurveyModal({ survey, onClose, onUpdate, updatesurve
     const tag = newTag.trim();
 
     if (!tag) {
-      toast("Etiket boş olamaz.");
+      toast.error("Etiket boş olamaz.");
       return;
     }
 
@@ -131,7 +131,7 @@ export default function EditSurveyModal({ survey, onClose, onUpdate, updatesurve
       onUpdate(updated);
       onClose();
     } catch (error) {
-      toast("Güncelleme sırasında hata oluştu.");
+      toast.error("Güncelleme sırasında hata oluştu.");
     }
   };
 

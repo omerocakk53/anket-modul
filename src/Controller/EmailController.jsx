@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import EmailSettingsModal from '../Modal/EmailSettingsModal';
-import { toast } from '../utils/toastUtils'; // toast ekle // toast ekle
+import { toast } from "react-toastify"; // toast ekle
 
 function EmailController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
     const [EmailData, setEmailData] = useState({});
 
     useEffect(() => {
         if (!Item.id) return;
-        if (!EmailData?.title || !EmailData.helpText) toast("boş değerler var");
+        if (!EmailData?.title || !EmailData.helpText) toast.warn("boş değerler var");
 
         const updatedItem = {
             ...Item,

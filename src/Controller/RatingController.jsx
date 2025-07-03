@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import RatingSettingsModal from '../Modal/RatingSettingsModal';
-import { toast } from '../utils/toastUtils'; // toast ekle // toast ekle
+import { toast } from "react-toastify"; // toast ekle
 
 function RatingController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
     const [RatingData, setRatingData] = useState({});
 
     useEffect(() => {
         if (!Item.id) return;
-        if (!RatingData?.title || !RatingData?.helpText || !RatingData?.maxValue) toast("boş değerler var");
+        if (!RatingData?.title || !RatingData?.helpText || !RatingData?.maxValue) toast.warn("boş değerler var");
         const updatedItem = {
             ...Item,
             title: RatingData.title,

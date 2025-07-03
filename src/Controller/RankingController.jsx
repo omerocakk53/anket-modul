@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import RankingSettingsModal from '../Modal/RankingSettingsModal';
-import { toast } from '../utils/toastUtils'; // toast ekle // toast ekle
+import { toast } from "react-toastify"; // toast ekle
 
 function RankingController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
     const [RankingData, setRankingData] = useState({});
 
     useEffect(() => {
         if (!Item.id) return;
-        if (!RankingData?.title || !RankingData?.helpText || !RankingData?.options?.length > 0) toast("boş değerler var");
+        if (!RankingData?.title || !RankingData?.helpText || !RankingData?.options?.length > 0) toast.warn("boş değerler var");
         const updatedItem = {
             ...Item,
             label: Item.label,

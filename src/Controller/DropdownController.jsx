@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import DropdownSettingsModal from '../Modal/DropdownSettingsModal';
-import { toast } from '../utils/toastUtils'; // toast ekle // toast ekle
+import { toast } from "react-toastify"; // toast ekle
 
 function DropdownController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
     const [DropdownData, setDropdownData] = useState([]);
     useEffect(() => {
         if (!Item.id) return;
-        if (!DropdownData?.title || !DropdownData?.options?.length > 0) toast("boş değerler var");
+        if (!DropdownData?.title || !DropdownData?.options?.length > 0) toast.warn("boş değerler var");
 
         const updatedItem = {
             ...Item,

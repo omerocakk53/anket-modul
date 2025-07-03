@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import NumericSettingsModal from '../Modal/NumericSettingsModal';
-import { toast } from '../utils/toastUtils'; // toast ekle // toast ekle
+import { toast } from "react-toastify"; // toast ekle
 
 function NumericController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
     const [NumericData, setNumericData] = useState({});
 
     useEffect(() => {
         if (!Item.id) return;
-        if (!NumericData?.title || !NumericData?.helpText) toast("boş değerler var");
+        if (!NumericData?.title || !NumericData?.helpText) toast.warn("boş değerler var");
         const updatedItem = {
             ...Item,
             title: NumericData.title,

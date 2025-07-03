@@ -1,7 +1,7 @@
 // AnketOynatıcısı.jsx
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { toast } from '../utils/toastUtils'; // toast ekle // toast ekle // Import toast
+import { toast } from "react-toastify"; // toast ekle // Import toast
 
 import Description from './Description';
 import Dropdown from './Dropdown';
@@ -92,7 +92,7 @@ export default function SurveyPlayer({ surveyId, user, fetchsurveyById, answersa
         const currentValue = answers[currentItem?.id];
 
         if (isRequired(currentItem) && isEmpty(currentItem, currentValue)) {
-            toast("Bu alan zorunludur."); // Show error with toast
+            toast.warn("Bu alan zorunludur."); // Show error with toast
             return;
         }
 
@@ -113,7 +113,7 @@ export default function SurveyPlayer({ surveyId, user, fetchsurveyById, answersa
                 showSuccess("Anket Cevabınız Alındı");
             } catch (err) {
                 console.error("Cevaplar kaydedilemedi:", err);
-                toast("Cevaplar kaydedilemedi");
+                toast.error("Cevaplar kaydedilemedi");
             }
         }
     };
@@ -196,7 +196,7 @@ export default function SurveyPlayer({ surveyId, user, fetchsurveyById, answersa
                 setSurvey(survey);
             } catch (err) {
                 console.error("Anket yüklenemedi:", err);
-                toast("Anket yüklenirken bir hata oluştu."); // Show toast for survey loading error
+                toast.error("Anket yüklenirken bir hata oluştu."); // Show toast for survey loading error
             } finally {
                 setLoading(false);
             }

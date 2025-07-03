@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import MatrisSettingsModal from '../Modal/MatrisSettingsModal';
-import { toast } from '../utils/toastUtils'; // toast ekle // toast ekle
+import { toast } from "react-toastify"; // toast ekle
 
 function MatrisController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
     const [MatrisData, setMatrisData] = useState({});
@@ -8,7 +8,7 @@ function MatrisController({ isOpen, setControllerOpen, items, Item, setItems, co
     useEffect(() => {
         if (!Item.id) return;
         if (!MatrisData?.title || !MatrisData?.data?.rows?.length > 0 || !MatrisData?.data?.columns?.length > 0) {
-            toast("Boş değerler var");
+            toast.warn("Boş değerler var");
             return;
         }
 

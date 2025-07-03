@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import QuestionGroupSettingsModal from '../Modal/QuestionGroupSettingsModal';
-import { toast } from '../utils/toastUtils'; // toast ekle // toast ekle
+import { toast } from "react-toastify"; // toast ekle
 
 function QuestionGroupController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
     const [QuestionGroupData, setQuestionGroupData] = useState({});
 
     useEffect(() => {
         if (!Item.id) return;
-        if (!QuestionGroupData?.title || !QuestionGroupData?.helpText || !QuestionGroupData?.questions?.length > 0) toast("boş değerler var");
+        if (!QuestionGroupData?.title || !QuestionGroupData?.helpText || !QuestionGroupData?.questions?.length > 0) toast.warn("boş değerler var");
         const updatedItem = {
             ...Item,
             title: QuestionGroupData.title,

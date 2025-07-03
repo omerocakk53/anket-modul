@@ -5,7 +5,9 @@ export { default as Share } from './src/components/share/Share';
 export { default as SurveyCreate } from './src/components/SurveyCreate';
 export { default as SuccessMessagePortal } from './src/components/successMesage/SuccessMessagePortal';
 export { default as Answer } from './src/components/answer/AnswerPage';
-export { setToast } from './src/utils/toastUtils';
+export { default as ToastProvider } from './src/components/toast/Toastprovider';
+
+import 'react-toastify/ReactToastify.css';
 // Renk & Tema
 export * from './src/Colors/ColorEditor';
 export * from './src/Colors/colors';

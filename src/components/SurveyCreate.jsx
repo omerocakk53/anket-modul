@@ -32,7 +32,7 @@ import LinkController from '../Controller/LinkController';
 import RankingController from '../Controller/RankingController';
 import PaymentController from '../Controller/PaymentController';
 import MatrisController from '../Controller/MatrisController';
-import { toast } from '../utils/toastUtils'; // toast ekle // toast ekle
+import { toast } from "react-toastify"; // toast ekle
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Header from './common/Header'
@@ -145,7 +145,7 @@ function SurveyCreate({ updatesurvey, fetchsurveyById, updatesurveyfeature }) {
     // Yeni öğe ekleme işlemi
     const handleAddItem = (item) => {
         if (survey.active) {
-            toast("Aktif anket düzenlenemez.");
+            toast.warn("Aktif anket düzenlenemez.");
             return;
         }
         if (item.id === "welcome") {
@@ -154,7 +154,7 @@ function SurveyCreate({ updatesurvey, fetchsurveyById, updatesurveyfeature }) {
                 setIsOpen([true, item.id])
                 setItem(item); // Seçilen öğeyi ayarla
             } else {
-                toast("Giriş sayfası zaten var")
+                toast.warn("Giriş sayfası zaten var")
             }
         } else if (item.id === "finish") {
             const finishItem = FinishWelcomeitems?.find(item => item.id.includes("finish"));
@@ -162,7 +162,7 @@ function SurveyCreate({ updatesurvey, fetchsurveyById, updatesurveyfeature }) {
                 setIsOpen([true, item.id])
                 setItem(item); // Seçilen öğeyi ayarla
             } else {
-                toast("Bitiş sayfası zaten var")
+                toast.warn("Bitiş sayfası zaten var")
             }
         } else if (item.id !== "" && item.id !== "welcome" && item.id !== "finish") {
             setIsOpen([true, item.id])

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { toast } from '../utils/toastUtils'; // toast ekle
+import { toast } from "react-toastify";
 import Sidebar from "../components/common/Sidebar";
 import Header from "../components/common/Header";
 import FilterSortSearch from "../components/common/FilterSortSearch";
@@ -153,7 +153,7 @@ export default function Anketler({ createSurvey, fetchsurveychamberById, handleL
             return;
         }
         if (!title.trim()) {
-            toast("Anket başlığı boş bırakılamaz.");
+            toast.error("Anket başlığı boş bırakılamaz.");
             return;
         }
 
@@ -183,11 +183,11 @@ export default function Anketler({ createSurvey, fetchsurveychamberById, handleL
     // Yeni grup oluşturup anket oluşturma
     const handleCreateNewGroupAndSurvey = async () => {
         if (!newGroupName.trim()) {
-            toast(`Klasör adı boş bırakılamaz.`);
+            toast.error(`Klasör adı boş bırakılamaz.`);
             return;
         }
         if (!title.trim()) {
-            toast("Anket başlığı boş bırakılamaz.");
+            toast.error("Anket başlığı boş bırakılamaz.");
             return;
         }
 

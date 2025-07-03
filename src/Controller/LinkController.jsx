@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import LinkSettingsModal from '../Modal/LinkSettingsModal';
-import { toast } from '../utils/toastUtils'; // toast ekle // toast ekle
+import { toast } from "react-toastify"; // toast ekle
 
 function LinkController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
     const [LinkData, setLinkData] = useState({});
 
     useEffect(() => {
         if (!Item.id) return;
-        if (!LinkData?.title || !LinkData?.url) toast("boş değerler var");
+        if (!LinkData?.title || !LinkData?.url) toast.warn("boş değerler var");
         const updatedItem = {
             ...Item,
             title: LinkData.title,

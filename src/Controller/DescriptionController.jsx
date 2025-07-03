@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import DescriptionSettingsModal from '../Modal/DescriptionSettingsModal';
-import { toast } from '../utils/toastUtils'; // toast ekle // toast ekle
+import { toast } from "react-toastify"; // toast ekle
 
 function DescriptionController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
     const [DescriptionData, setDescriptionData] = useState({});
     useEffect(() => {
         if (!Item.id) return;
-        if (!DescriptionData?.title || !DescriptionData?.helpText) toast("boş değerler var");
+        if (!DescriptionData?.title || !DescriptionData?.helpText) toast.warn("boş değerler var");
         const updatedItem = {
             ...Item,
             title: DescriptionData.title,

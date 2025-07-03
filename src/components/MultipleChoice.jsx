@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { toast } from '../utils/toastUtils'; // toast ekle // toast ekle
+import { toast } from './toastUtils'; // toast ekle
 
 export default function MultipleChoice({
   title,

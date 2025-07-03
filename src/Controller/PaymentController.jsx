@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import PaymentSettingsModal from '../Modal/PaymentSettingsModal';
-import { toast } from '../utils/toastUtils'; // toast ekle // toast ekle
+import { toast } from "react-toastify"; // toast ekle
 
 function PaymentController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
     const [PaymentData, setPaymentData] = useState({});
 
     useEffect(() => {
         if (!Item.id) return;
-        if (!PaymentData?.title || !PaymentData?.helpText || !PaymentData?.amount > 0) toast("boş değerler var");
+        if (!PaymentData?.title || !PaymentData?.helpText || !PaymentData?.amount > 0) toast.warn("boş değerler var");
 
         const updatedItem = {
             ...Item,

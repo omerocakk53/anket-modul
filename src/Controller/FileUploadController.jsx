@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import FileUploadSettingsModal from '../Modal/FileUploadSettingsModal';
-import { toast } from '../utils/toastUtils'; // toast ekle // toast ekle
+import { toast } from "react-toastify"; // toast ekle
 
 function FileUploadController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
     const [FileData, setFileData] = useState({});
 
     useEffect(() => {
         if (!Item.id) return;
-        if (!FileData?.title || !FileData?.helpText) toast("boş değerler var");
+        if (!FileData?.title || !FileData?.helpText) toast.warn("boş değerler var");
 
         const updatedItem = {
             ...Item,

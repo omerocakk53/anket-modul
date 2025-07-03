@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from 'react'
 
 import LongTextSettingsModel from '../Modal/LongTextSettingsModel';
-import { toast } from '../utils/toastUtils'; // toast ekle // toast ekle
+import { toast } from "react-toastify"; // toast ekle
 
 function LongTextController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
 
@@ -11,7 +11,7 @@ function LongTextController({ isOpen, setControllerOpen, items, Item, setItems, 
     if (!Item.id) return;
 
     if (!LongText?.title || !LongText?.helpText) {
-      toast("boş değerler var")
+      toast.warn("boş değerler var")
       return;
     };
 

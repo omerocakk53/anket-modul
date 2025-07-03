@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ScaleSettingsModal from '../Modal/ScaleSettingsModal';
-import { toast } from '../utils/toastUtils'; // toast ekle // toast ekle
+import { toast } from "react-toastify"; // toast ekle
 import { data } from 'react-router-dom';
 
 function ScaleController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
@@ -8,7 +8,7 @@ function ScaleController({ isOpen, setControllerOpen, items, Item, setItems, cou
 
     useEffect(() => {
         if (!Item.id) return;
-        if (!ScaleData?.title || !ScaleData?.helpText || !ScaleData?.data.min || !ScaleData?.data.max) toast("boş değerler var");
+        if (!ScaleData?.title || !ScaleData?.helpText || !ScaleData?.data.min || !ScaleData?.data.max) toast.warn("boş değerler var");
         const updatedItem = {
             ...Item,
             title: ScaleData.title,

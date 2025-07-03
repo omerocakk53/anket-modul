@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from 'react'
 
 import WelcomeTextSettingsModel from '../Modal/WelcomeTextSettingsModel';
-import { toast } from '../utils/toastUtils'; // toast ekle // toast ekle
+import { toast } from "react-toastify"; // toast ekle
 
 function FinishTextController({ isOpen, setControllerOpen, items, Item, setItems, Edit, SetEdit }) {
 
@@ -12,7 +12,7 @@ function FinishTextController({ isOpen, setControllerOpen, items, Item, setItems
         if (!Item.id) return;
 
         if (!FinishText?.title || !FinishText?.helpText) {
-            toast("boş değerler var")
+            toast.warn("boş değerler var")
             return;
         };
 

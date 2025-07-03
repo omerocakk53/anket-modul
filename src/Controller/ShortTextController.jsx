@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import ShortTextSettingsModal from '../Modal/ShortTextSettingsModel';
-import { toast } from '../utils/toastUtils'; // toast ekle // toast ekle
+import { toast } from "react-toastify"; // toast ekle
 
 function ShortTextController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
   const [ShortText, setShortText] = useState({});

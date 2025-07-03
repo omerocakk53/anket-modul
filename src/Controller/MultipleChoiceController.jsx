@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import MultipleChoiceSettingsModal from '../Modal/MultipleChoiceSettingsModal';
-import { toast } from '../utils/toastUtils'; // toast ekle // toast ekle
+import { toast } from "react-toastify"; // toast ekle
 
 function MultipleChoiceController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
     const [MultipleChoiceData, setMultipleChoiceData] = useState({});
 
     useEffect(() => {
         if (!Item.id) return;
-        if (!MultipleChoiceData?.title || !MultipleChoiceData?.helpText || !MultipleChoiceData?.options?.length > 0) toast("boş değerler var");
+        if (!MultipleChoiceData?.title || !MultipleChoiceData?.helpText || !MultipleChoiceData?.options?.length > 0) toast.warn("boş değerler var");
         const updatedItem = {
             ...Item,
             title: MultipleChoiceData.title,
