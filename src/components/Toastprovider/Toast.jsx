@@ -2,7 +2,7 @@ import React from 'react'
 import { Toaster } from 'react-hot-toast'
 const Toast = () => {
     return (
-        <Toaster />
+        <Toaster position="top-right" />
     )
 }
 
