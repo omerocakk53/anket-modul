@@ -14,40 +14,43 @@ export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurv
     const url = window.location.origin;
 
     const handleDelete = async (id, title) => {
-        toast((t) => (
-            <div className="flex flex-col items-center p-4 bg-white rounded-lg ">
-                <p className="text-lg font-semibold mb-4 text-gray-800">
-                    Anketi silmek istediğinize emin misiniz?
-                </p>
-                <p className="text-sm text-gray-600 mb-6">Bu işlem geri alınamaz.</p>
-                <div className="flex gap-4">
-                    <button
-                        onClick={async () => {
-                            toast.dismiss(t.id);
-                            try {
-                                await deletesurvey(id);
-                                await allanswerdelete(id);
-                                await deletesurveyshareById(id);
-                                setRefreshKey(prev => prev + 1);
-                                toast.success(`"${title}" anketi silindi.`);
-                            } catch (err) {
-                                toast.error(`Silinemedi: "${title}"`);
-                                console.error("Silme hatası:", err);
-                            }
-                        }}
-                        className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition"
-                    >
-                        Evet, Sil
-                    </button>
-                    <button
-                        onClick={() => toast.dismiss(t.id)}
-                        className="bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300 transition"
-                    >
-                        Vazgeç
-                    </button>
+        toast(
+            (t) => (
+                <div className="flex flex-col items-center p-4 bg-white rounded-lg shadow-md max-w-sm">
+                    <p className="text-lg font-semibold mb-4 text-gray-800">
+                        Anketi silmek istediğinize emin misiniz?
+                    </p>
+                    <p className="text-sm text-gray-600 mb-6">Bu işlem geri alınamaz.</p>
+                    <div className="flex gap-4">
+                        <button
+                            onClick={async () => {
+                                toast.dismiss(t.id);
+                                try {
+                                    await deletesurvey(id);
+                                    await allanswerdelete(id);
+                                    await deletesurveyshareById(id);
+                                    setRefreshKey((prev) => prev + 1);
+                                    toast.success(`"${title}" anketi silindi.`);
+                                } catch (err) {
+                                    toast.error(`Silinemedi: "${title}"`);
+                                    console.error("Silme hatası:", err);
+                                }
+                            }}
+                            className="bg-danger text-white px-4 py-2 rounded hover:bg-danger-dark transition"
+                        >
+                            Evet, Sil
+                        </button>
+                        <button
+                            onClick={() => toast.dismiss(t.id)}
+                            className="bg-neutral-light text-neutral-darkest px-4 py-2 rounded hover:bg-neutral-dark transition"
+                        >
+                            Vazgeç
+                        </button>
+                    </div>
                 </div>
-            </div>
-        ), { autoClose: false });
+            ),
+            { duration: Infinity, position: "top-left", style: { zIndex: 9999 } }
+        );
     };
     const formatSurveyLink = (link) => {
         if (!link || typeof link !== 'string') return '';

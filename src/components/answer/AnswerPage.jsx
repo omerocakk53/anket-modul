@@ -43,17 +43,17 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
     const handleDelete = async (answerId) => {
         toast(
             (t) => (
-                <div className="p-4">
+                <div className="p-4 max-w-xs">
                     <p className="font-semibold text-lg mb-2">Silmek istediğinize emin misiniz?</p>
                     <p className="text-sm mb-4 text-neutral-dark">Bu işlem geri alınamaz.</p>
-                    <div className="flex gap-3">
+                    <div className="flex gap-3 justify-end">
                         <button
                             onClick={async () => {
                                 toast.dismiss(t.id);
                                 try {
                                     setIsDeleting(true);
                                     await answerdelete(surveyId, answerId);
-                                    const updatedCevaplar = await cevaplariGetir(surveyId);
+                                    const updatedCevaplar = await answerget(surveyId);
                                     setCevaplar(updatedCevaplar);
                                     toast.success("Cevap başarıyla silindi");
                                 } catch {
@@ -62,7 +62,7 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
                                     setIsDeleting(false);
                                 }
                             }}
-                            className="bg-danger text-white px-4 py-2 rounded-md"
+                            className={`bg-danger text-white px-4 py-2 rounded-md disabled:opacity-50`}
                             disabled={isDeleting}
                         >
                             Evet
@@ -76,7 +76,7 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
                     </div>
                 </div>
             ),
-            { duration: 5000, closeButton: false }
+            { duration: 5000, closeButton: false, position: "top-left", style: { zIndex: 9999 } }
         );
     };
 
