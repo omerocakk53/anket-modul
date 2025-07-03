@@ -53,9 +53,9 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
                             onClick={async () => {
                                 toast.dismiss(t.id);
                                 try {
-                                    setIsDeleting(true);
                                     await answerdelete(surveyId, answerId);
                                     const updatedCevaplar = await answerget(surveyId);
+                                    setIsDeleting(true);
                                     setCevaplar(updatedCevaplar);
                                     toast.success("Cevap başarıyla silindi");
                                 } catch {
