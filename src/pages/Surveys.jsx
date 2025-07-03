@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {toast} from 'react-hot-toast'
+import toast from 'react-hot-toast'
 import Sidebar from "../components/common/Sidebar";
 import Header from "../components/common/Header";
 import FilterSortSearch from "../components/common/FilterSortSearch";
@@ -24,7 +24,7 @@ export default function Anketler({ createSurvey, fetchsurveychamberById, handleL
 
     const [searchTerm, setSearchTerm] = useState('');
     const [searchMode, setSearchMode] = useState('title');
-    toast.success('Çalışıyor mu?')
+    toast('Çalışıyor mu?')
 
     useEffect(() => {
         if (!user) return;
