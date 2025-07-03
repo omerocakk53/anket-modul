@@ -44,9 +44,11 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
         toast(
             (t) => (
                 <div className="p-4 max-w-xs">
-                    <p className="font-semibold text-lg mb-2">Silmek istediğinize emin misiniz?</p>
-                    <p className="text-sm mb-4 text-neutral-dark">Bu işlem geri alınamaz.</p>
-                    <div className="flex gap-3 justify-end">
+                    <p className="text-lg font-semibold mb-4 text-primary-text">
+                        Cevabı silmek istediğinize emin misiniz?
+                    </p>
+                    <p className="text-sm text-primary-darktext mb-6">Bu işlem geri alınamaz.</p>
+                    <div className="flex gap-4">
                         <button
                             onClick={async () => {
                                 toast.dismiss(t.id);
@@ -62,21 +64,21 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
                                     setIsDeleting(false);
                                 }
                             }}
-                            className={`bg-danger text-white px-4 py-2 rounded-md disabled:opacity-50`}
+                            className="bg-danger text-white px-4 py-2 rounded hover:bg-danger-dark transition"
                             disabled={isDeleting}
                         >
                             Evet
                         </button>
                         <button
                             onClick={() => toast.dismiss(t.id)}
-                            className="bg-gray-200 px-4 py-2 rounded-md"
+                            className="bg-neutral-light text-neutral-darkest px-4 py-2 rounded hover:bg-neutral-dark transition"
                         >
                             Hayır
                         </button>
                     </div>
                 </div>
             ),
-            { duration: 5000, closeButton: false, position: "top-left", style: { zIndex: 9999 } }
+            { duration: 3000, closeButton: false, position: "top-left", style: { zIndex: 9999 } }
         );
     };
 

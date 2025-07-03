@@ -17,10 +17,10 @@ export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurv
         toast(
             (t) => (
                 <div className="flex flex-col items-center p-4 rounded-lg max-w-sm">
-                    <p className="text-lg font-semibold mb-4 text-gray-800">
+                    <p className="text-lg font-semibold mb-4 text-primary-text">
                         Anketi silmek istediğinize emin misiniz?
                     </p>
-                    <p className="text-sm text-gray-600 mb-6">Bu işlem geri alınamaz.</p>
+                    <p className="text-sm text-primary-darktext mb-6">Bu işlem geri alınamaz.</p>
                     <div className="flex gap-4">
                         <button
                             onClick={async () => {
@@ -49,7 +49,7 @@ export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurv
                     </div>
                 </div>
             ),
-            { duration: Infinity, position: "top-left", style: { zIndex: 9999 } }
+            { duration: 3000, closeButton: false, position: "top-left", style: { zIndex: 9999 } }
         );
     };
     const formatSurveyLink = (link) => {
