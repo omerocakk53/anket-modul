@@ -1,6 +1,3 @@
-import toast from 'react-hot-toast';
-
-
 // Ana sayfa export
 export { default as Surveys } from './src/pages/Surveys';
 export { default as SurveyPlayerWrapper } from './src/pages/SurveyPlayerWrapper';
@@ -8,6 +5,7 @@ export { default as Share } from './src/components/share/Share';
 export { default as SurveyCreate } from './src/components/SurveyCreate';
 export { default as SuccessMessagePortal } from './src/components/successMesage/SuccessMessagePortal';
 export { default as Answer } from './src/components/answer/AnswerPage';
+export { setToast } from './src/utils/toastUtils';
 // Renk & Tema
 export * from './src/Colors/ColorEditor';
 export * from './src/Colors/colors';

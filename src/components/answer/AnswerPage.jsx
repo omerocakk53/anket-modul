@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import toast from 'react-hot-toast'
+import { toast } from '../utils/toastUtils'; // toast ekle
 import ViewSwitcher from "./ViewSwitcher";
 import FilterBar from "./FilterBar";
 import ChartView from "./ChartView";

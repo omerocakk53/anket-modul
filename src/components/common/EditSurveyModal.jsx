@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FiX, FiInfo } from 'react-icons/fi';
-import toast from 'react-hot-toast' // toast ekle
+import { toast } from '../utils/toastUtils'; // toast ekle // toast ekle
 
 export default function EditSurveyModal({ survey, onClose, onUpdate, updatesurveyfeature }) {
   const [formData, setFormData] = useState({

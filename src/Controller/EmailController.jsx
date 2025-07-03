@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import EmailSettingsModal from '../Modal/EmailSettingsModal';
-import toast from 'react-hot-toast' // toast ekle
+import { toast } from '../utils/toastUtils'; // toast ekle // toast ekle
 
 function EmailController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
     const [EmailData, setEmailData] = useState({});

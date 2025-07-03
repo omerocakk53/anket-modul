@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DescriptionSettingsModal from '../Modal/DescriptionSettingsModal';
-import toast from 'react-hot-toast' // toast ekle
+import { toast } from '../utils/toastUtils'; // toast ekle // toast ekle
 
 function DescriptionController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
     const [DescriptionData, setDescriptionData] = useState({});
