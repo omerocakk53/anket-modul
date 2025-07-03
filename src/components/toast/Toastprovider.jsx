@@ -1,18 +1,18 @@
-import { ToastContainer, toast } from "react-toastify";
+import { Toaster } from "react-hot-toast";
 
 const ToastProvider = ({ children }) => {
   return (
     <>
       {children}
-      <ToastContainer
+      <Toaster
         position="top-left"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        pauseOnHover
-        draggable
-        theme="colored"
+        toastOptions={{
+          duration: 2000,
+          style: {
+            background: "#333",
+            color: "#fff",
+          },
+        }}
       />
     </>
   );

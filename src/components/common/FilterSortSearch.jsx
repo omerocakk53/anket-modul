@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FiTag, FiList, FiSearch, FiChevronDown, FiCalendar } from 'react-icons/fi';
-import { toast } from 'react-toastify'
+import { toast } from 'react-hot-toast';
 import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // temel stil
 import 'react-date-range/dist/theme/default.css'; // tema stil

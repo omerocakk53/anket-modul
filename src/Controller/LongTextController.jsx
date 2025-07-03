@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from 'react'
 
 import LongTextSettingsModel from '../Modal/LongTextSettingsModel';
-import { toast } from 'react-toastify'
+import { toast } from 'react-hot-toast';
 
 function LongTextController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
 

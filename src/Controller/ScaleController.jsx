@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ScaleSettingsModal from '../Modal/ScaleSettingsModal';
-import { toast } from 'react-toastify'
+import { toast } from 'react-hot-toast';
 import { data } from 'react-router-dom';
 
 function ScaleController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
