@@ -8,7 +8,7 @@ function MatrisController({ isOpen, setControllerOpen, items, Item, setItems, co
     useEffect(() => {
         if (!Item.id) return;
         if (!MatrisData?.title || !MatrisData?.data?.rows?.length > 0 || !MatrisData?.data?.columns?.length > 0) {
-            toast.warn("Boş değerler var");
+            toast.error("Boş değerler var");
             return;
         }
 

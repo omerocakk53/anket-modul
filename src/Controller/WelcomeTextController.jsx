@@ -17,7 +17,7 @@ function WelcomeTextController({ isOpen, setControllerOpen, items, Item, setItem
         };
 
         if (!WelcomeText?.title || !WelcomeText?.helpText) {
-            toast.warn("boş değerler var")
+            toast.error("boş değerler var")
             return;
         };
 

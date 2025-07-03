@@ -11,7 +11,7 @@ function LongTextController({ isOpen, setControllerOpen, items, Item, setItems, 
     if (!Item.id) return;
 
     if (!LongText?.title || !LongText?.helpText) {
-      toast.warn("boş değerler var")
+      toast.error("boş değerler var")
       return;
     };
 

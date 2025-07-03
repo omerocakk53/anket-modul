@@ -224,7 +224,7 @@ export default function Anketler({ createSurvey, fetchsurveychamberById, handleL
     const openCreateSurveyModal = () => {
         const validGroupNames = Object.keys(groupedSurveysData).filter(name => name !== "Geçersiz Grup Adı");
         if (validGroupNames.length === 0) {
-            toast.warn("Önce bir klasör oluşturmanız gerekiyor!");
+            toast.error("Önce bir klasör oluşturmanız gerekiyor!");
             openCreateNewGroupModal();
             return;
         }

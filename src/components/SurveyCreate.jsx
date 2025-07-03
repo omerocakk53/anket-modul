@@ -145,7 +145,7 @@ function SurveyCreate({ updatesurvey, fetchsurveyById, updatesurveyfeature }) {
     // Yeni öğe ekleme işlemi
     const handleAddItem = (item) => {
         if (survey.active) {
-            toast.warn("Aktif anket düzenlenemez.");
+            toast.error("Aktif anket düzenlenemez.");
             return;
         }
         if (item.id === "welcome") {
@@ -154,7 +154,7 @@ function SurveyCreate({ updatesurvey, fetchsurveyById, updatesurveyfeature }) {
                 setIsOpen([true, item.id])
                 setItem(item); // Seçilen öğeyi ayarla
             } else {
-                toast.warn("Giriş sayfası zaten var")
+                toast.error("Giriş sayfası zaten var")
             }
         } else if (item.id === "finish") {
             const finishItem = FinishWelcomeitems?.find(item => item.id.includes("finish"));
@@ -162,7 +162,7 @@ function SurveyCreate({ updatesurvey, fetchsurveyById, updatesurveyfeature }) {
                 setIsOpen([true, item.id])
                 setItem(item); // Seçilen öğeyi ayarla
             } else {
-                toast.warn("Bitiş sayfası zaten var")
+                toast.error("Bitiş sayfası zaten var")
             }
         } else if (item.id !== "" && item.id !== "welcome" && item.id !== "finish") {
             setIsOpen([true, item.id])

@@ -7,7 +7,7 @@ function RatingController({ isOpen, setControllerOpen, items, Item, setItems, co
 
     useEffect(() => {
         if (!Item.id) return;
-        if (!RatingData?.title || !RatingData?.helpText || !RatingData?.maxValue) toast.warn("boş değerler var");
+        if (!RatingData?.title || !RatingData?.helpText || !RatingData?.maxValue) toast.error("boş değerler var");
         const updatedItem = {
             ...Item,
             title: RatingData.title,

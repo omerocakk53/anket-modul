@@ -92,7 +92,7 @@ export default function SurveyPlayer({ surveyId, user, fetchsurveyById, answersa
         const currentValue = answers[currentItem?.id];
 
         if (isRequired(currentItem) && isEmpty(currentItem, currentValue)) {
-            toast.warn("Bu alan zorunludur."); // Show error with toast
+            toast.error("Bu alan zorunludur."); // Show error with toast
             return;
         }
 
