@@ -30,29 +30,7 @@ export default function CreateSurveyModal({
 
   return (
     <div className="fixed inset-0 z-50 bg-black/40 flex items-center justify-center">
-      <Toaster
-        position="top-right"
-        toastOptions={{
-          // Varsayılan stiller ve ayarlar
-          duration: 4000,
-          style: {
-            fontSize: '16px',
-            borderRadius: '8px',
-          },
-          success: {
-            style: {
-              background: 'green',
-              color: 'white',
-            },
-          },
-          error: {
-            style: {
-              background: 'red',
-              color: 'white',
-            },
-          },
-        }}
-      />
+      
       <div className="bg-white w-full max-w-xl rounded-2xl shadow-2xl p-8 relative animate-fade-in">
         <button
           onClick={onClose}

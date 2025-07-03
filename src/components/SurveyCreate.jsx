@@ -200,12 +200,13 @@ function SurveyCreate({ updatesurvey, fetchsurveyById, updatesurveyfeature }) {
         setEdit(false);
     };
     function yonlendir() {
-        navigate('/anket',{replace: true });
+        navigate('/anket', { replace: true });
     }
 
     const [sidebarOpen, setSidebarOpen] = useState(false);
     return (
         <>
+            
             <Header
                 isEditMode={true}
                 surveyData={survey}

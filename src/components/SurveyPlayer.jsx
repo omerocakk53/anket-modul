@@ -109,7 +109,7 @@ export default function SurveyPlayer({ surveyId, user, fetchsurveyById, answersa
                         value: value
                     };
                 });
-                await answersave(surveyId, user.name,  formattedAnswers);
+                await answersave(surveyId, user.name, formattedAnswers);
                 showSuccess("Anket Cevabınız Alındı");
             } catch (err) {
                 console.error("Cevaplar kaydedilemedi:", err);
@@ -231,6 +231,7 @@ export default function SurveyPlayer({ surveyId, user, fetchsurveyById, answersa
 
     return (
         <div className="w-screen h-screen overflow-hidden flex items-center justify-center">
+            
             <div className="w-full h-full bg-neutral-dark shadow-lg rounded-md relative flex flex-col">
                 {submitted ? (
                     <></>

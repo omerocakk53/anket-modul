@@ -246,29 +246,7 @@ export default function Anketler({ createSurvey, fetchsurveychamberById, handleL
     return (
         <div className="flex flex-col md:flex-row h-screen bg-gradient-to-br from-primary-light to-secondary-light font-sans">
             {/* Sidebar: Mobilde gizli, tablet+ göster */}
-            <Toaster
-                position="top-right"
-                toastOptions={{
-                    // Varsayılan stiller ve ayarlar
-                    duration: 4000,
-                    style: {
-                        fontSize: '16px',
-                        borderRadius: '8px',
-                    },
-                    success: {
-                        style: {
-                            background: 'green',
-                            color: 'white',
-                        },
-                    },
-                    error: {
-                        style: {
-                            background: 'red',
-                            color: 'white',
-                        },
-                    },
-                }}
-            />
+            
             <Sidebar
                 className="hidden md:flex md:flex-shrink-0"
                 groupedSurveysData={groupedSurveysData}

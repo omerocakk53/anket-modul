@@ -39,7 +39,6 @@ export default function MultipleChoice({
 
   // "Hepsi" ve "Hiçbiri" mantığı
   const handleSelect = (opt) => {
-    console.log("Seçilen:", opt);
     let currentValue = isMulti ? (Array.isArray(value) ? [...value] : []) : value;
 
     // "Hiçbiri" seçildiyse
@@ -148,29 +147,7 @@ export default function MultipleChoice({
 
   return (
     <div>
-      <Toaster
-        position="top-right"
-        toastOptions={{
-          // Varsayılan stiller ve ayarlar
-          duration: 4000,
-          style: {
-            fontSize: '16px',
-            borderRadius: '8px',
-          },
-          success: {
-            style: {
-              background: 'green',
-              color: 'white',
-            },
-          },
-          error: {
-            style: {
-              background: 'red',
-              color: 'white',
-            },
-          },
-        }}
-      />
+      
       {title ? (
         <>
           <label className="font-semibold text-primary-text mb-2 block">

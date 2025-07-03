@@ -129,29 +129,7 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
 
     return (
         <>
-            <Toaster
-                position="top-right"
-                toastOptions={{
-                    // Varsayılan stiller ve ayarlar
-                    duration: 4000,
-                    style: {
-                        fontSize: '16px',
-                        borderRadius: '8px',
-                    },
-                    success: {
-                        style: {
-                            background: 'green',
-                            color: 'white',
-                        },
-                    },
-                    error: {
-                        style: {
-                            background: 'red',
-                            color: 'white',
-                        },
-                    },
-                }}
-            />
+            
             <Header
                 isAnswerMode={true}
                 surveyData={survey}

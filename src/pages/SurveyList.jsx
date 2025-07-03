@@ -129,29 +129,6 @@ export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurv
 
             {qrData && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-xs">
-                    <Toaster
-                        position="top-right"
-                        toastOptions={{
-                            // Varsayılan stiller ve ayarlar
-                            duration: 4000,
-                            style: {
-                                fontSize: '16px',
-                                borderRadius: '8px',
-                            },
-                            success: {
-                                style: {
-                                    background: 'green',
-                                    color: 'white',
-                                },
-                            },
-                            error: {
-                                style: {
-                                    background: 'red',
-                                    color: 'white',
-                                },
-                            },
-                        }}
-                    />
                     <div className="relative bg-white rounded-lg shadow-lg p-6 max-w-xs">
                         <button
                             className="absolute top-2 right-2 text-gray-600 hover:text-gray-800"

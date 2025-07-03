@@ -55,29 +55,7 @@ export default function ImageChoice({
 
   return (
     <div>
-      <Toaster
-        position="top-right"
-        toastOptions={{
-          // Varsayılan stiller ve ayarlar
-          duration: 4000,
-          style: {
-            fontSize: '16px',
-            borderRadius: '8px',
-          },
-          success: {
-            style: {
-              background: 'green',
-              color: 'white',
-            },
-          },
-          error: {
-            style: {
-              background: 'red',
-              color: 'white',
-            },
-          },
-        }}
-      />
+      
       {title ? (
         <>
           <h4 className="font-semibold text-primary-text">

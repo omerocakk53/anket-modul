@@ -40,6 +40,7 @@ export default function CreateNewGroupModal({
 
   return (
     <div className="fixed inset-0 z-50 bg-black/40 flex items-center justify-center">
+      
       <div className="bg-white w-full max-w-xl rounded-2xl shadow-2xl p-8 relative animate-fade-in">
         <button
           onClick={onClose}

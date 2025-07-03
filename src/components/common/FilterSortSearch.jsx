@@ -85,6 +85,7 @@ export default function FilterSortSearch({
 
   return (
     <div className="flex items-center justify-between flex-wrap gap-4 mb-6">
+      
       <div className="flex gap-3 items-center">
 
         {/* Arama Modu */}
