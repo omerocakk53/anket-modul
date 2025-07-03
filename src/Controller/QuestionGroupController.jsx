@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import QuestionGroupSettingsModal from '../Modal/QuestionGroupSettingsModal';
-import { toast } from "react-toastify"; // toast ekle
+import { toast } from 'react-toastify'
 
 function QuestionGroupController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
     const [QuestionGroupData, setQuestionGroupData] = useState({});

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import FileUploadSettingsModal from '../Modal/FileUploadSettingsModal';
-import { toast } from "react-toastify"; // toast ekle
+import { toast } from 'react-toastify'
 
 function FileUploadController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
     const [FileData, setFileData] = useState({});

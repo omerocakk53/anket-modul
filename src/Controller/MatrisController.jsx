@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import MatrisSettingsModal from '../Modal/MatrisSettingsModal';
-import { toast } from "react-toastify"; // toast ekle
+import { toast } from 'react-toastify'
 
 function MatrisController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
     const [MatrisData, setMatrisData] = useState({});

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import RatingSettingsModal from '../Modal/RatingSettingsModal';
-import { toast } from "react-toastify"; // toast ekle
+import { toast } from 'react-toastify'
 
 function RatingController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
     const [RatingData, setRatingData] = useState({});

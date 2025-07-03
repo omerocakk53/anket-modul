@@ -7,7 +7,6 @@ export { default as SuccessMessagePortal } from './src/components/successMesage/
 export { default as Answer } from './src/components/answer/AnswerPage';
 export { default as ToastProvider } from './src/components/toast/Toastprovider';
 
-import 'react-toastify/ReactToastify.css';
 // Renk & Tema
 export * from './src/Colors/ColorEditor';
 export * from './src/Colors/colors';

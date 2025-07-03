@@ -1,7 +1,7 @@
 // AnketOynatıcısı.jsx
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { toast } from "react-toastify"; // toast ekle // Import toast
+import { toast } from 'react-toastify' // Import toast
 
 import Description from './Description';
 import Dropdown from './Dropdown';

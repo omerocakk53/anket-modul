@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import LinkSettingsModal from '../Modal/LinkSettingsModal';
-import { toast } from "react-toastify"; // toast ekle
+import { toast } from 'react-toastify'
 
 function LinkController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
     const [LinkData, setLinkData] = useState({});

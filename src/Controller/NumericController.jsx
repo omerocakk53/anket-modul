@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import NumericSettingsModal from '../Modal/NumericSettingsModal';
-import { toast } from "react-toastify"; // toast ekle
+import { toast } from 'react-toastify'
 
 function NumericController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
     const [NumericData, setNumericData] = useState({});

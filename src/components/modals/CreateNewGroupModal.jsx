@@ -1,6 +1,6 @@
 import React from 'react';
 import { IoMdClose } from 'react-icons/io';
-import {toast} from  'react-toastify'
+import { toast } from 'react-toastify'
 
 export default function CreateNewGroupModal({
   isOpen,

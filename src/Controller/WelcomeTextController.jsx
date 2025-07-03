@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from 'react'
 
 import WelcomeTextSettingsModel from '../Modal/WelcomeTextSettingsModel';
-import { toast } from "react-toastify"; // toast ekle
+import { toast } from 'react-toastify'
 
 function WelcomeTextController({ isOpen, setControllerOpen, items, Item, setItems, Edit, SetEdit }) {
 

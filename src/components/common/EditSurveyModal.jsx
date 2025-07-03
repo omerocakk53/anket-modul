@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FiX, FiInfo } from 'react-icons/fi';
-import {toast} from  'react-toastify'
+import { toast } from 'react-toastify'
 
 export default function EditSurveyModal({ survey, onClose, onUpdate, updatesurveyfeature }) {
   const [formData, setFormData] = useState({
@@ -138,7 +138,7 @@ export default function EditSurveyModal({ survey, onClose, onUpdate, updatesurve
 
   return (
     <div className="fixed inset-0 z-50 flex justify-center items-center bg-black/30 backdrop-blur-sm px-2">
-      
+
       <div className="bg-neutral-white rounded-2xl shadow-xl p-4 sm:p-6 w-full max-w-xl max-h-[90vh] overflow-y-auto relative border border-neutral-light">
 
         {/* Kapat butonu */}
