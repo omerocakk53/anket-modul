@@ -14,8 +14,8 @@ export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurv
     const url = window.location.origin;
 
     const handleDelete = async (id, title) => {
-        toast((t) => (
-            <div className="flex flex-col items-center p-4 bg-white rounded-lg ">
+        toast.custom((t) => (
+            <div className="flex flex-col items-center p-4 bg-white rounded-lg shadow-lg">
                 <p className="text-lg font-semibold mb-4 text-gray-800">
                     Anketi silmek istediğinize emin misiniz?
                 </p>
@@ -23,16 +23,16 @@ export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurv
                 <div className="flex gap-4">
                     <button
                         onClick={async () => {
-                            toast.dismiss(t.id);
+                            toast.dismiss(t.id)
                             try {
-                                await deletesurveyshareById(id);
-                                await allanswerdelete(id);
-                                await deletesurvey(id);
-                                setRefreshKey(prev => prev + 1);
-                                toast.success(`"${title}" anketi silindi.`);
+                                await deletesurveyshareById(id)
+                                await allanswerdelete(id)
+                                await deletesurvey(id)
+                                setRefreshKey((prev) => prev + 1)
+                                toast.success(`"${title}" anketi silindi.`)
                             } catch (err) {
-                                toast.error(`Silinemedi: "${title}"`);
-                                console.error("Silme hatası:", err);
+                                toast.error(`Silinemedi: "${title}"`)
+                                console.error('Silme hatası:', err)
                             }
                         }}
                         className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition"
@@ -47,7 +47,7 @@ export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurv
                     </button>
                 </div>
             </div>
-        ), { autoClose: false });
+        ), { duration: Infinity })
     };
     const formatSurveyLink = (link) => {
         if (!link || typeof link !== 'string') return '';
