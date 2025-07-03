@@ -1,4 +1,6 @@
-import { Toaster, toast } from 'react-hot-toast';
+export { default as toast } from 'react-hot-toast';
+export { default as Toaster } from 'react-hot-toast';
+
 
 // Ana sayfa export
 export { default as Surveys } from './src/pages/Surveys';
