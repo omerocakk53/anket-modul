@@ -5,6 +5,7 @@ export { default as Share } from './src/components/share/Share';
 export { default as SurveyCreate } from './src/components/SurveyCreate';
 export { default as SuccessMessagePortal } from './src/components/successMesage/SuccessMessagePortal';
 export { default as Answer } from './src/components/answer/AnswerPage';
+export { default as Toaster } from './src/components/Toastprovider/Toast';
 
 // Renk & Tema
 export * from './src/Colors/ColorEditor';
