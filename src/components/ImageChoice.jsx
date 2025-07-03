@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { toast } from "react-toastify"; // toast ekle
+import toast from 'react-hot-toast' // toast ekle
 
 export default function ImageChoice({
   title,
