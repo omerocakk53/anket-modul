@@ -24,7 +24,7 @@ export default function Anketler({ createSurvey, fetchsurveychamberById, handleL
 
     const [searchTerm, setSearchTerm] = useState('');
     const [searchMode, setSearchMode] = useState('title');
-
+    toast.success('Çalışıyor mu?')
 
     useEffect(() => {
         if (!user) return;
