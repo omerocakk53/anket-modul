@@ -101,7 +101,7 @@ export default function SurveyCard({ survey, handleDelete, handleCopyLink, handl
     hidden md:flex 
   `}
             >
-                <div className="absolute right-[7px] top-[7px]">
+                <div className="absolute right-[7px] bottom-[7px]">
                     <button
                         onClick={handleNavigateToShare}
                         className="flex items-center justify-center gap-1 px-3 py-2 text-sm font-medium rounded-md text-primary-text bg-primary hover:bg-primary-dark transition duration-200 hover:scale-105 shadow-sm hover:shadow-lg"
@@ -155,7 +155,7 @@ export default function SurveyCard({ survey, handleDelete, handleCopyLink, handl
                 </div>
             </div>
             <div className="space-y-3 md:hidden">
-                <div className="absolute right-[7px] bottom-[7px]">
+                <div className="absolute right-[7px] top-[7px]">
                     <button
                         onClick={handleNavigateToShare}
                         className="flex items-center justify-center gap-1 px-3 py-2 text-sm font-medium rounded-md text-primary-text bg-primary hover:bg-primary-dark transition duration-200 hover:scale-105 shadow-sm hover:shadow-lg"
