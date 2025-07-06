@@ -143,7 +143,7 @@ export default function EditSurveyModal({ survey, onClose, onUpdate, updatesurve
     if (formData.link && !/^[a-zA-Z0-9-_'']+$/.test(formData.link.trim())) {
       errors.push('Link yalnızca "a-z", "A-Z", "0-9", "-", "_" karakterlerini içerebilir.');
     }
-    if (formData.activePeriodDates.length === 0) {
+    if (formData.activePeriodDates.length === 0 && survey.surveyType === 'MemberSatisfaction') {
       errors.push('En az bir aktif tarih aralığı eklemelisiniz.');
     }
     if (errors.length > 0) {
@@ -164,7 +164,7 @@ export default function EditSurveyModal({ survey, onClose, onUpdate, updatesurve
         filteredData[key] = value;
       } else if (key === 'link' && typeof value === 'string' && value.trim().length >= minCharLimit) {
         filteredData[key] = value.trim();
-      } else if (key === 'activePeriodDates' && Array.isArray(value) && value.length > 0) {
+      } else if (key === 'activePeriodDates' && Array.isArray(value) && value.length > 0 && survey.surveyType === 'MemberSatisfaction') {
         filteredData[key] = value;
       }
     });
