@@ -45,7 +45,6 @@ export default function Anketler({
     useEffect(() => {
         if (!chamber && !userId) return;
         const loadSurveys = async () => {
-            console.log("chamber", chamber);
             try {
                 let data;
                 if (user?.role === 'superAdmin') {
