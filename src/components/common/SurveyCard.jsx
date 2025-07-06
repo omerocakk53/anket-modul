@@ -3,6 +3,7 @@ import { FiEdit, FiLink, FiTrash2, FiBarChart2, FiCalendar, FiXCircle, FiCheckCi
 import { RiSurveyLine } from 'react-icons/ri';
 import { AiOutlineQrcode } from 'react-icons/ai';
 import { TbLocationShare } from "react-icons/tb";
+import { MdOutlineFeaturedPlayList } from 'react-icons/md';
 
 export default function SurveyCard({ survey, handleDelete, handleCopyLink, handleShowQr, navigate }) {
     const [isHovered, setIsHovered] = useState(false);
@@ -90,13 +91,7 @@ export default function SurveyCard({ survey, handleDelete, handleCopyLink, handl
                         <><p className="text-sm text-neutral-500 mb-8">Henüz etiket yok.</p></>
                     )}
                 </div>
-                {/* Mobil buton bloğu */}
-
             </div>
-
-
-
-            {/* Alt Kısım: Açıklama veya Aksiyonlar */}
             <div
                 className={`
     absolute inset-0 flex flex-col justify-center items-center gap-3
@@ -198,8 +193,10 @@ export default function SurveyCard({ survey, handleDelete, handleCopyLink, handl
                     </button>
                 </div>
             </div>
-            {/* Oluşturulma Tarihi (sol altta) */}
-            <div className="mt-5 text-xs text-neutral-dark flex flex-col space-y-0.5 gap-2 w-[200px] sm:w-[175px] ">
+            <div className="mt-5 text-xs text-neutral-dark flex flex-col space-y-0.5 gap-2 w-[%80]">
+                <span className="flex items-center gap-3 border border-primary px-1 rounded-xl text-primary-dark"><MdOutlineFeaturedPlayList /> {survey.surveyType ? (survey.surveyType == "Normal" ? "Serbest Anket" : survey.surveyType == "MemberSatisfaction" ? "Üye Memnuniyet Anketi" : "Anket Tipi Yok") : "Anket Tipi Yok"}</span>
+            </div>
+            <div className="mt-5 text-xs text-neutral-dark flex flex-col space-y-0.5 gap-2 w-[%80]">
                 <span className="flex items-center gap-3 border border-primary px-1 rounded-xl text-primary-dark"> <FiCalendar /> {formattedCreatedAt}</span>
                 <span className="flex items-center gap-3 border border-primary px-1 rounded-xl text-primary-dark"><FiEdit /> {formattedLastModified}</span>
             </div>

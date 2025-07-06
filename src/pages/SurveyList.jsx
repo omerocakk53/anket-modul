@@ -144,14 +144,14 @@ export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurv
                         <div className="mt-6 flex justify-center space-x-4">
                             <button
                                 onClick={handleDownloadPng}
-                                className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-secondary to-primary-darktext text-white text-sm font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
+                                className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r bg-primary-darktext text-white text-sm font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
                             >
                                 PNG İndir
                             </button>
 
                             <button
                                 onClick={handleDownloadSvg}
-                                className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-secondary to-primary-darktext text-white text-sm font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
+                                className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r bg-primary-darktext text-white text-sm font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
                             >
                                 SVG İndir
                             </button>
