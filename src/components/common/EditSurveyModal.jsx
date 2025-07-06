@@ -234,23 +234,39 @@ export default function EditSurveyModal({ survey, onClose, onUpdate, updatesurve
 
               <div className="space-y-2">
                 {formData.activePeriodDates.map((period, index) => (
-                  <div key={index} className="flex items-center justify-between bg-gray-100 p-2 rounded mb-2">
+                  <div
+                    key={index}
+                    className="flex items-center justify-between bg-gray-100 p-3 rounded mb-3 shadow-sm"
+                  >
                     <div>
-                      <p className="text-sm">
-                        <strong>Başlangıç:</strong> {new Date(period.startDate).toLocaleDateString()} &nbsp;
-                        <strong>Bitiş:</strong> {new Date(period.endDate).toLocaleDateString()}
+                      <p className="text-sm font-semibold">
+                        <strong>Başlangıç:</strong>{' '}
+                        {new Date(period.startDate).toLocaleDateString('tr-TR')}
                       </p>
-                      <p className="text-xs">
-                        <strong>Durum:</strong> {period.active ? 'Aktif' : 'Pasif'}
+                      <p className="text-sm font-semibold">
+                        <strong>Bitiş:</strong>{' '}
+                        {new Date(period.endDate).toLocaleString('tr-TR', {
+                          day: '2-digit', month: '2-digit', year: 'numeric',
+                          hour: '2-digit', minute: '2-digit', second: '2-digit'
+                        })}
                       </p>
+
+                      <div className={`flex items-center gap-1 px-2 py-0.5 rounded-full border font-medium shrink-0 mt-1
+                        ${period.active
+                          ? 'text-green-600 bg-green-100 border-green-600'
+                          : 'text-red-600 bg-red-100 border-red-600'}`}>
+                        {period.active ? <FiCheckCircle size={16} /> : <FiXCircle size={16} />}
+                        {period.active ? "Aktif" : "Pasif"}
+                      </div>
                     </div>
+
                     <button
                       type="button"
                       onClick={() => handleRemovePeriod(index)}
-                      className="text-danger hover:text-danger-dark"
+                      className="text-red-600 hover:text-red-800 transition"
                       title="Bu partı kaldır"
                     >
-                      <FiX size={18} />
+                      <FiX size={20} />
                     </button>
                   </div>
                 ))}
