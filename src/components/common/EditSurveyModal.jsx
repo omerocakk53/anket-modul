@@ -51,7 +51,14 @@ export default function EditSurveyModal({ survey, onClose, onUpdate, updatesurve
 
     setFormData(prev => ({
       ...prev,
-      activePeriodDates: [...prev.activePeriodDates, { startDate, endDate }]
+      activePeriodDates: [
+        ...prev.activePeriodDates,
+        {
+          startDate,
+          endDate,
+          active: new Date() >= new Date(startDate) && new Date() <= new Date(endDate)
+        }
+      ]
     }));
 
     setNewPeriod({ startDate: '', endDate: '' });
@@ -116,8 +123,8 @@ export default function EditSurveyModal({ survey, onClose, onUpdate, updatesurve
     if (formData.link && !/^[a-zA-Z0-9-_'']+$/.test(formData.link.trim())) {
       errors.push('Link yalnızca "a-z", "A-Z", "0-9", "-", "_" karakterlerini içerebilir.');
     }
-    if (formData.activePeriodDates.length > 0) {
-      errors.push('Aktif tarihleri boş olamaz.');
+    if (formData.activePeriodDates.length === 0) {
+      errors.push('En az bir aktif tarih aralığı eklemelisiniz.');
     }
     if (errors.length > 0) {
       errors.forEach(err => toast(err));
@@ -205,26 +212,27 @@ export default function EditSurveyModal({ survey, onClose, onUpdate, updatesurve
                 <button type="button" onClick={handleAddPeriod} className="bg-primary text-white px-4 rounded">Ekle</button>
               </div>
 
-              <ul className="space-y-1 text-sm">
-                {formData.activePeriodDates.map((period, index) => (
-                  <li key={index} className="flex justify-between bg-neutral-100 p-2 rounded">
-                    <span>
-                      {new Date(period.startDate).toLocaleString()} → {new Date(period.endDate).toLocaleString()}
-                    </span>
-                    <button
-                      type="button"
-                      onClick={() =>
-                        setFormData(prev => ({
-                          ...prev,
-                          activePeriodDates: prev.activePeriodDates.filter((_, i) => i !== index)
-                        }))
-                      }
+              <div className="space-y-2">
+                {formData.activePeriodDates.map((period, index) => {
+                  const now = new Date();
+                  const isActive = now >= new Date(period.startDate) && now <= new Date(period.endDate);
+
+                  return (
+                    <div
+                      key={index}
+                      className="flex justify-between items-center bg-neutral-100 p-2 rounded"
                     >
-                      <FiX className="text-danger" />
-                    </button>
-                  </li>
-                ))}
-              </ul>
+                      <div className="flex flex-col text-sm">
+                        <span className="font-medium">Part {index + 1}</span>
+                        <span>{new Date(period.startDate).toLocaleString()} → {new Date(period.endDate).toLocaleString()}</span>
+                      </div>
+                      <span className={`text-xs px-2 py-1 rounded ${isActive ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800'}`}>
+                        {isActive ? 'Aktif' : 'Pasif'}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           )}
 
