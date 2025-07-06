@@ -85,7 +85,7 @@ export default function FilterSortSearch({
 
   return (
     <div className="flex items-center justify-between flex-wrap gap-4 mb-6">
-      
+
       <div className="flex gap-3 items-center">
 
         {/* Arama Modu */}
@@ -200,7 +200,7 @@ export default function FilterSortSearch({
       )}
 
       {/* Arama kutusu */}
-      <div className="relative w-full max-w-sm flex items-center">
+      <div className="relative w-full max-w-sm">
         <input
           type="text"
           value={searchText}
@@ -208,7 +208,7 @@ export default function FilterSortSearch({
           placeholder="Ara..."
           className="w-full pl-10 pr-4 py-2 text-sm border border-neutral-light rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary text-neutral-darkest"
         />
-        <FiSearch className="absolute left-3 transform -translate-y-1/2 text-primary w-4 h-4" />
+        <FiSearch className="absolute left-3 top-[25px] transform -translate-y-1/2 text-primary w-4 h-4" />
       </div>
     </div>
   );
