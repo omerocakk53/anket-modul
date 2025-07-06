@@ -18,7 +18,6 @@ export default function AnswerTable({ cevaplar, sorular, onDelete, isDeleting })
           key={cevap._id || idx}
           className="bg-white p-4 rounded-lg shadow-md relative"
         >
-          {/* Sil Butonu */}
           <button
             onClick={() => onDelete(cevap._id)}
             disabled={isDeleting}
@@ -27,13 +26,9 @@ export default function AnswerTable({ cevaplar, sorular, onDelete, isDeleting })
           >
             <FiTrash2 size={18} />
           </button>
-
-          {/* Başlık */}
           <h4 className="text-md font-bold text-neutral-darkest mb-4 pr-8">
             Cevap İd: #{idx + 1} <br /> Cevap Tarihi: {new Date(cevap.createdAt).toLocaleString("tr-TR")} <br />  Cevaplayan İd: {cevap._id} <br /> Cevaplayan İsmi: {cevap.userName}
           </h4>
-
-          {/* Cevaplar */}
           <div className="divide-y">
             {sorular.map((soru, i) => {
               const ans = cevap.answers.find((a) => a.itemType === soru.type);

@@ -115,6 +115,14 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
         : cevaplar;
 
 
+    const DenemefilteredCevaplar = cevaplar.filter((cevap) => {
+        const startDate = new Date(survey.startDate);
+        const endDate = new Date(survey.endDate);
+        const cevapDate = new Date(cevap.createdAt);
+        return cevapDate >= startDate && cevapDate <= endDate;
+    });
+
+
     function yonlendir() {
         navigate('/anket', { replace: true });
     }
@@ -147,7 +155,7 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
                     <>
                         {selectedView === "Tablo" && (
                             <AnswerTable
-                                cevaplar={filteredCevaplar}
+                                cevaplar={DenemefilteredCevaplar}
                                 sorular={sorular}
                                 onDelete={handleDelete}
                                 isDeleting={isDeleting}
