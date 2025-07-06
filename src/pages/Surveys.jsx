@@ -19,20 +19,15 @@ export default function Anketler({
     const [chamber, setChamber] = useState(null);
     const [userId, setUserId] = useState(null);
     const [username, setUsername] = useState("");
-
     const [refreshKey, setRefreshKey] = useState(0);
     const [allSurveys, setAllSurveys] = useState([]);
     const [groupedSurveysData, setGroupedSurveysData] = useState({});
     const [selectedGroup, setSelectedGroup] = useState(null);
-
     const [searchTerm, setSearchTerm] = useState("");
     const [searchMode, setSearchMode] = useState("title");
     const [sortBy, setSortBy] = useState(null);
     const [sortOrder, setSortOrder] = useState("asc");
     const [dateRange, setDateRange] = useState({ startDate: "", endDate: "" });
-
-    const [isGroupModalOpen, setIsGroupModalOpen] = useState(false);
-    const [isSurveyModalOpen, setIsSurveyModalOpen] = useState(false);
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalMode, setModalMode] = useState("survey"); // "survey" veya "group"
@@ -143,7 +138,7 @@ export default function Anketler({
         });
 
 
-    const handleCreateSurveyInGroup = async ({ title, description }) => {
+    const handleCreateSurveyInGroup = async ({ title, description, surveyType }) => {
         if (!selectedGroup) {
             toast.error("Lütfen bir klasör seçin veya yeni bir klasör oluşturun.");
             return;
@@ -160,8 +155,9 @@ export default function Anketler({
                 userId: userId,
                 description: description.trim(),
                 group: selectedGroup,
+                surveyType: surveyType,
             };
-            
+
             const createdSurvey = await createSurvey(surveyData);
             if (createdSurvey) {
                 toast.success("Anket Oluşturuldu: " + title);
@@ -173,7 +169,7 @@ export default function Anketler({
     };
 
     // CreateNewGroupModal’dan gelen data ile yeni grup + anket oluştur
-    const handleCreateNewGroupAndSurvey = async ({ newGroupName, title, description }) => {
+    const handleCreateNewGroupAndSurvey = async ({ newGroupName, title, description, surveyType }) => {
         if (!newGroupName.trim()) {
             toast.error("Klasör adı boş bırakılamaz.");
             return;
@@ -190,6 +186,7 @@ export default function Anketler({
                 chamber: chamber,
                 userId: userId,
                 group: newGroupName.trim(),
+                surveyType: surveyType,
             };
 
             const createdSurvey = await createSurvey(surveyData);
