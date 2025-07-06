@@ -5,6 +5,8 @@ import { FaPoll } from 'react-icons/fa';
 import { IoColorFillOutline } from "react-icons/io5";
 import { CiMenuKebab } from 'react-icons/ci';
 import { IoMdClose } from 'react-icons/io';
+import { MdOutlineFeaturedPlayList } from 'react-icons/md';
+import { GiCryoChamber } from 'react-icons/gi';
 
 export default function Header({
     isEditMode = false,
@@ -13,10 +15,10 @@ export default function Header({
     onBackToMain,
     selectedGroup,
     onUpdateSurvey,
-    UserId,
     Sidebar,
     isShareMode,
-    updatesurveyfeature
+    updatesurveyfeature,
+    chamberName
 }) {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     useEffect(() => {
@@ -78,8 +80,14 @@ export default function Header({
                                     {new Date(surveyData.lastModified).toLocaleDateString("tr-TR")}
                                 </span>
                             </div>
+                            <div className="flex items-center gap-1 border border-primary px-2 py-0.5 rounded-full text-primary-dark shrink-0">
+                                <MdOutlineFeaturedPlayList size={14} />
+                                <span>
+                                    {survey.surveyType ? (survey.surveyType == "Normal" ? "Normal Anket" : survey.surveyType == "MemberSatisfaction" ? "Üye Memnuniyet Anketi" : "Anket Tipi Yok") : "Anket Tipi Yok"}
+                                </span>
+                            </div>
                             <div className={`flex items-center gap-1 px-2 py-0.5 rounded-full border font-medium shrink-0
-        ${surveyData.active ? 'text-success bg-success/10 border-success' : 'text-danger bg-danger/10 border-danger'}`}>
+                                ${surveyData.active ? 'text-success bg-success/10 border-success' : 'text-danger bg-danger/10 border-danger'}`}>
                                 {surveyData.active ? <FiCheckCircle size={14} /> : <FiXCircle size={14} />}
                                 {surveyData.active ? "Açık" : "Kapalı"}
                             </div>
@@ -163,6 +171,12 @@ export default function Header({
                                     {new Date(surveyData.lastModified).toLocaleDateString("tr-TR")}
                                 </span>
                             </div>
+                            <div className="flex items-center gap-1 border border-primary px-2 py-0.5 rounded-full text-primary-dark shrink-0">
+                                <MdOutlineFeaturedPlayList size={14} />
+                                <span>
+                                    {survey.surveyType ? (survey.surveyType == "Normal" ? "Normal Anket" : survey.surveyType == "MemberSatisfaction" ? "Üye Memnuniyet Anketi" : "Anket Tipi Yok") : "Anket Tipi Yok"}
+                                </span>
+                            </div>
                             <div className={`flex items-center gap-1 px-2 py-0.5 rounded-full border font-medium shrink-0
                             ${surveyData.active ? 'text-success bg-success/10 border-success' : 'text-danger bg-danger/10 border-danger'}`}>
                                 {surveyData.active ? <FiCheckCircle size={14} /> : <FiXCircle size={14} />}
@@ -222,6 +236,12 @@ export default function Header({
                                     {new Date(surveyData.lastModified).toLocaleDateString("tr-TR")}
                                 </span>
                             </div>
+                            <div className="flex items-center gap-1 border border-primary px-2 py-0.5 rounded-full text-primary-dark shrink-0">
+                                <MdOutlineFeaturedPlayList size={14} />
+                                <span>
+                                    {survey.surveyType ? (survey.surveyType == "Normal" ? "Normal Anket" : survey.surveyType == "MemberSatisfaction" ? "Üye Memnuniyet Anketi" : "Anket Tipi Yok") : "Anket Tipi Yok"}
+                                </span>
+                            </div>
                             <div className={`flex items-center gap-1 px-2 py-0.5 rounded-full border font-medium shrink-0
                             ${surveyData.active ? 'text-success bg-success/10 border-success' : 'text-danger bg-danger/10 border-danger'}`}>
                                 {surveyData.active ? <FiCheckCircle size={14} /> : <FiXCircle size={14} />}
@@ -238,7 +258,11 @@ export default function Header({
         <header className="flex items-center justify-between p-6 bg-neutral-white border-b border-neutral shadow-sm">
             <div className="flex items-center gap-3 px-1 rounded-xl text-primary-dark text-2xl">
                 <FiFolder />
-                <span>{selectedGroup || 'Belirtilmemiş'}</span>
+                <span>{selectedGroup || 'Klasör İsmi Yok'}</span>
+            </div>
+            <div className="flex items-center gap-3 px-1 rounded-xl text-primary-dark text-2xl">
+                <GiCryoChamber />
+                <span>{chamberName || 'Oda İsmi Yok'}</span>
             </div>
             <div className="flex items-center space-x-4">
                 <button

@@ -15,6 +15,7 @@ export default function Anketler({
     deletesurveyshareById,
     allanswerdelete,
     user,
+    chamberName
 }) {
     const [chamber, setChamber] = useState(null);
     const [userId, setUserId] = useState(null);
@@ -235,8 +236,7 @@ export default function Anketler({
             <div className="flex-1 flex flex-col bg-neutral-light min-h-screen">
                 <Header
                     selectedGroup={selectedGroup}
-                    chamber={chamber}
-                    UserId={userId}
+                    chamberName={chamberName}
                     Sidebar={(sidebar) => {
                         setSidebarOpen(sidebar);
                     }}
