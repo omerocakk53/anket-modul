@@ -5,8 +5,7 @@ import Sidebar from "../components/common/Sidebar";
 import Header from "../components/common/Header";
 import FilterSortSearch from "../components/common/FilterSortSearch";
 import AnketListele from "./SurveyList";
-import CreateSurveyModal from "../components/modals/CreateSurveyModal";
-import CreateNewGroupModal from "../components/modals/CreateNewGroupModal";
+import CreateSurveyOrGroupModal from "../components/modals/CreateSurveyOrGroupModal";
 
 export default function Anketler({
     createSurvey,
@@ -35,7 +34,8 @@ export default function Anketler({
     const [isGroupModalOpen, setIsGroupModalOpen] = useState(false);
     const [isSurveyModalOpen, setIsSurveyModalOpen] = useState(false);
     const [sidebarOpen, setSidebarOpen] = useState(false);
-
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalMode, setModalMode] = useState("survey"); 
     useEffect(() => {
         if (user) {
             setChamber(user.chamber);
@@ -142,7 +142,7 @@ export default function Anketler({
             return sortOrder === "asc" ? compareResult : -compareResult;
         });
 
-    // CreateSurveyModal’dan gelen data ile anket oluştur
+
     const handleCreateSurveyInGroup = async ({ title, description }) => {
         if (!selectedGroup) {
             toast.error("Lütfen bir klasör seçin veya yeni bir klasör oluşturun.");
@@ -157,8 +157,6 @@ export default function Anketler({
             const surveyData = {
                 title: title.trim(),
                 description: description.trim(),
-                chamber,
-                userId,
                 group: selectedGroup,
             };
 
@@ -187,8 +185,6 @@ export default function Anketler({
             const surveyData = {
                 title: title.trim(),
                 description: description.trim(),
-                chamber,
-                userId,
                 group: newGroupName.trim(),
             };
 
@@ -203,7 +199,6 @@ export default function Anketler({
         }
     };
 
-    // Modal açma fonksiyonları
     const openCreateSurveyModal = () => {
         const validGroupNames = Object.keys(groupedSurveysData).filter(
             (name) => name !== "Geçersiz Grup Adı"
@@ -213,11 +208,13 @@ export default function Anketler({
             openCreateNewGroupModal();
             return;
         }
-        setIsSurveyModalOpen(true);
+        setModalMode("survey");
+        setIsModalOpen(true);
     };
 
     const openCreateNewGroupModal = () => {
-        setIsGroupModalOpen(true);
+        setModalMode("group");
+        setIsModalOpen(true);
     };
 
     return (
@@ -291,15 +288,12 @@ export default function Anketler({
                 </main>
             </div>
 
-            <CreateSurveyModal
-                isOpen={isSurveyModalOpen}
-                onClose={() => setIsSurveyModalOpen(false)}
-                onCreate={handleCreateSurveyInGroup}
-            />
-            <CreateNewGroupModal
-                isOpen={isGroupModalOpen}
-                onClose={() => setIsGroupModalOpen(false)}
-                onCreate={handleCreateNewGroupAndSurvey}
+            <CreateSurveyOrGroupModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                mode={modalMode}
+                selectedGroup={selectedGroup}
+                onCreate={modalMode === "group" ? handleCreateNewGroupAndSurvey : handleCreateSurveyInGroup}
             />
         </div>
     );
