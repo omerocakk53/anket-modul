@@ -186,23 +186,41 @@ export default function EditSurveyModal({ survey, onClose, onUpdate, updatesurve
         <form onSubmit={handleSubmit} className="space-y-5">
           {/* Sadece MemberSatisfaction için tarih */}
           {survey.surveyType === 'MemberSatisfaction' && (
-            <div className="space-y-3">
-              <h3 className="font-medium">Tarih Periyotları</h3>
-              <div className="flex gap-3">
-                <input type="datetime-local" value={newStartDate} onChange={(e) => setNewStartDate(e.target.value)} className="border p-2 rounded" />
-                <input type="datetime-local" value={newEndDate} onChange={(e) => setNewEndDate(e.target.value)} className="border p-2 rounded" />
-                <button type="button" onClick={handleAddPeriod} className="bg-primary text-white px-4 rounded hover:bg-secondary">Ekle</button>
+            <div>
+              <label className="block text-sm font-medium text-primary-dark mb-1">Aktif Tarih Aralıkları</label>
+
+              <div className="flex gap-2 mb-2">
+                <input
+                  type="datetime-local"
+                  value={newPeriod.startDate}
+                  onChange={(e) => setNewPeriod(prev => ({ ...prev, startDate: e.target.value }))}
+                  className="w-full p-2 border rounded-lg"
+                />
+                <input
+                  type="datetime-local"
+                  value={newPeriod.endDate}
+                  onChange={(e) => setNewPeriod(prev => ({ ...prev, endDate: e.target.value }))}
+                  className="w-full p-2 border rounded-lg"
+                />
+                <button type="button" onClick={handleAddPeriod} className="bg-primary text-white px-4 rounded">Ekle</button>
               </div>
 
-              <ul className="space-y-2">
+              <ul className="space-y-1 text-sm">
                 {formData.activePeriodDates.map((period, index) => (
                   <li key={index} className="flex justify-between bg-neutral-100 p-2 rounded">
-                    <div className="text-sm">
-                      <p>Başlangıç: {new Date(period.startDate).toLocaleString()}</p>
-                      <p>Bitiş: {new Date(period.endDate).toLocaleString()}</p>
-                    </div>
-                    <button onClick={() => handleRemovePeriod(index)} type="button" className="text-red-600 hover:text-red-800">
-                      <FiX size={18} />
+                    <span>
+                      {new Date(period.startDate).toLocaleString()} → {new Date(period.endDate).toLocaleString()}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setFormData(prev => ({
+                          ...prev,
+                          activePeriodDates: prev.activePeriodDates.filter((_, i) => i !== index)
+                        }))
+                      }
+                    >
+                      <FiX className="text-danger" />
                     </button>
                   </li>
                 ))}
