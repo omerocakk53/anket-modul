@@ -200,7 +200,7 @@ export default function FilterSortSearch({
       )}
 
       {/* Arama kutusu */}
-      <div className="relative w-full max-w-sm">
+      <div className="relative w-full max-w-sm flex items-center">
         <input
           type="text"
           value={searchText}
@@ -208,7 +208,7 @@ export default function FilterSortSearch({
           placeholder="Ara..."
           className="w-full pl-10 pr-4 py-2 text-sm border border-neutral-light rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary text-neutral-darkest"
         />
-        <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary w-4 h-4" />
+        <FiSearch className="absolute left-3 transform -translate-y-1/2 text-primary w-4 h-4" />
       </div>
     </div>
   );
