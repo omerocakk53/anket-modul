@@ -47,7 +47,7 @@ export default function SurveyCard({ survey, handleDelete, handleCopyLink, handl
     return (
         <div
             className="bg-neutral-white rounded-lg shadow-md border border-neutral p-6 flex flex-col justify-between
-                       relative overflow-hidden cursor-pointer h-[420px] sm:h-70
+                       relative overflow-hidden cursor-pointer h-[450px] sm:h-70
                        hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
@@ -101,7 +101,7 @@ export default function SurveyCard({ survey, handleDelete, handleCopyLink, handl
     hidden md:flex 
   `}
             >
-                <div className="absolute right-[7px] bottom-[7px]">
+                <div className="absolute right-[7px] top-[7px]">
                     <button
                         onClick={handleNavigateToShare}
                         className="flex items-center justify-center gap-1 px-3 py-2 text-sm font-medium rounded-md text-primary-text bg-primary hover:bg-primary-dark transition duration-200 hover:scale-105 shadow-sm hover:shadow-lg"
@@ -194,7 +194,7 @@ export default function SurveyCard({ survey, handleDelete, handleCopyLink, handl
                 </div>
             </div>
             <div className="mt-5 text-xs text-neutral-dark flex flex-col space-y-0.5 gap-2 w-[%80]">
-                <span className="flex items-center gap-3 border border-primary px-1 rounded-xl text-primary-dark"><MdOutlineFeaturedPlayList /> {survey.surveyType ? (survey.surveyType == "Normal" ? "Serbest Anket" : survey.surveyType == "MemberSatisfaction" ? "Üye Memnuniyet Anketi" : "Anket Tipi Yok") : "Anket Tipi Yok"}</span>
+                <span className="flex items-center gap-3 border border-primary px-1 rounded-xl text-primary-dark"><MdOutlineFeaturedPlayList /> {survey.surveyType ? (survey.surveyType == "Normal" ? "Normal Anket" : survey.surveyType == "MemberSatisfaction" ? "Üye Memnuniyet Anketi" : "Anket Tipi Yok") : "Anket Tipi Yok"}</span>
             </div>
             <div className="mt-5 text-xs text-neutral-dark flex flex-col space-y-0.5 gap-2 w-[%80]">
                 <span className="flex items-center gap-3 border border-primary px-1 rounded-xl text-primary-dark"> <FiCalendar /> {formattedCreatedAt}</span>
