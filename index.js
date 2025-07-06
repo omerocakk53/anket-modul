@@ -44,8 +44,7 @@ export * from './src/components/WelcomeText';
 
 // Layout & modal bileşenleri
 export * from './src/components/layouts/ModalLayout';
-export * from './src/components/modals/CreateNewGroupModal';
-export * from './src/components/modals/CreateSurveyModal';
+export * from './src/components/modals/CreateSurveyOrGroupModal';
 
 // Başarı Mesajı
 export * from './src/components/successMesage/successController';
