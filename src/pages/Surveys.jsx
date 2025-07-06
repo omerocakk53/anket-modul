@@ -35,7 +35,7 @@ export default function Anketler({
     const [isSurveyModalOpen, setIsSurveyModalOpen] = useState(false);
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [modalMode, setModalMode] = useState("survey"); 
+    const [modalMode, setModalMode] = useState("survey"); // "survey" veya "group"
     useEffect(() => {
         if (user) {
             setChamber(user.chamber);
@@ -156,10 +156,12 @@ export default function Anketler({
         try {
             const surveyData = {
                 title: title.trim(),
+                chamber: chamber,
+                userId: userId,
                 description: description.trim(),
                 group: selectedGroup,
             };
-
+            
             const createdSurvey = await createSurvey(surveyData);
             if (createdSurvey) {
                 toast.success("Anket Oluşturuldu: " + title);
@@ -185,6 +187,8 @@ export default function Anketler({
             const surveyData = {
                 title: title.trim(),
                 description: description.trim(),
+                chamber: chamber,
+                userId: userId,
                 group: newGroupName.trim(),
             };
 
