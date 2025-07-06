@@ -139,6 +139,7 @@ export default function Anketler({
 
 
     const handleCreateSurveyInGroup = async ({ title, description, surveyType }) => {
+        console.log(surveyType)
         if (!selectedGroup) {
             toast.error("Lütfen bir klasör seçin veya yeni bir klasör oluşturun.");
             return;
@@ -170,6 +171,7 @@ export default function Anketler({
 
     // CreateNewGroupModal’dan gelen data ile yeni grup + anket oluştur
     const handleCreateNewGroupAndSurvey = async ({ newGroupName, title, description, surveyType }) => {
+        consıole.log(surveyType)
         if (!newGroupName.trim()) {
             toast.error("Klasör adı boş bırakılamaz.");
             return;
