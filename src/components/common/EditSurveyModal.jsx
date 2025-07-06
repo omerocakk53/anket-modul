@@ -44,25 +44,38 @@ export default function EditSurveyModal({ survey, onClose, onUpdate, updatesurve
     setNewTag(e.target.value);
   };
   const handleAddPeriod = () => {
-    const { startDate, endDate } = newPeriod;
+    if (!newPeriod.startDate || !newPeriod.endDate) {
+      toast.error("Başlangıç ve bitiş tarihleri gerekli.");
+      return;
+    }
 
-    if (!startDate || !endDate) return toast.error("Tarih alanları boş olamaz.");
-    if (new Date(startDate) >= new Date(endDate)) return toast.error("Başlangıç tarihi bitiş tarihinden küçük olmalı.");
+    const start = new Date(newPeriod.startDate);
+    const end = new Date(newPeriod.endDate);
 
+    if (end < start) {
+      toast.error("Bitiş tarihi başlangıçtan küçük olamaz.");
+      return;
+    }
+
+    // Son eklenen part varsa ona göre kontrol et
+    if (formData.activePeriodDates.length > 0) {
+      const lastEndDate = new Date(formData.activePeriodDates[formData.activePeriodDates.length - 1].endDate);
+      if (start < lastEndDate) {
+        toast.error("Yeni başlangıç tarihi önceki bitiş tarihinden küçük olamaz.");
+        return;
+      }
+    }
+
+    // Yeni partı ekle
     setFormData(prev => ({
       ...prev,
-      activePeriodDates: [
-        ...prev.activePeriodDates,
-        {
-          startDate,
-          endDate,
-          active: new Date() >= new Date(startDate) && new Date() <= new Date(endDate)
-        }
-      ]
+      activePeriodDates: [...prev.activePeriodDates, { ...newPeriod, active: true }],
     }));
 
+    // Formu sıfırla (örneğin:)
     setNewPeriod({ startDate: '', endDate: '' });
   };
+
   const handleRemovePeriod = (indexToRemove) => {
     setFormData(prev => ({
       ...prev,
