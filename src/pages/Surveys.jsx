@@ -45,15 +45,17 @@ export default function Anketler({
     useEffect(() => {
         if (!chamber && !userId) return;
         const loadSurveys = async () => {
+            console.log("chamber", chamber);
             try {
                 let data;
                 if (user?.role === 'superAdmin') {
                     data = await fetchallsurvey();
                 } else if (user?.role === 'admin') {
                     data = await fetchsurveychamberById(chamber);
+                } else {
+                    return toast.error("Kullanıcı yetkisi bulunamadı.", { duration: 9999 });
                 }
                 setAllSurveys(data);
-
                 const grouped = data.reduce((acc, survey) => {
                     const groupName = survey.group?.trim() || "Geçersiz Klasör Adı";
                     if (!acc[groupName]) acc[groupName] = [];
