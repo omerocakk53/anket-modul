@@ -256,13 +256,15 @@ export default function Header({
     // Ana sayfa header
     return (
         <header className="flex items-center justify-between p-6 bg-neutral-white border-b border-neutral shadow-sm">
-            <div className="flex items-center gap-3 px-1 rounded-xl text-primary-dark text-2xl">
-                <FiFolder />
-                <span>{selectedGroup || 'Klasör İsmi Yok'}</span>
-            </div>
-            <div className="flex items-center gap-3 px-1 rounded-xl text-primary-dark text-2xl">
-                <GiCryoChamber />
-                <span>{chamberName || 'Oda İsmi Yok'}</span>
+            <div className='flex items-center justify-start'>
+                <div className="flex items-center gap-3 px-1 rounded-xl text-primary-dark text-2xl">
+                    <FiFolder />
+                    <span>{selectedGroup || 'Klasör İsmi Yok'}</span>
+                </div>
+                <div className="flex items-center gap-3 px-1 rounded-xl text-primary-dark text-2xl">
+                    <GiCryoChamber />
+                    <span>{chamberName || 'Oda İsmi Yok'}</span>
+                </div>
             </div>
             <div className="flex items-center space-x-4">
                 <button
