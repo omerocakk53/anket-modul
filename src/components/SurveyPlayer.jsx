@@ -218,7 +218,6 @@ export default function SurveyPlayer({ surveyId, user, fetchsurveyById, answersa
     }
 
     if (survey.active || (user?.role === 'admin' || user?.role === 'superAdmin')) {
-        // Survey ön izleme ekranını göster
     } else {
         return (
             <div className="w-screen h-screen flex items-center justify-center">

@@ -10,6 +10,7 @@ import CreateSurveyOrGroupModal from "../components/modals/CreateSurveyOrGroupMo
 export default function Anketler({
     createSurvey,
     fetchsurveychamberById,
+    fetchallsurvey,
     handleLogout,
     deletesurvey,
     deletesurveyshareById,
@@ -42,10 +43,15 @@ export default function Anketler({
 
     // Anketleri yükle ve gruplandır
     useEffect(() => {
-        if (!chamber || !userId) return;
+        if (!chamber && !userId) return;
         const loadSurveys = async () => {
             try {
-                const data = await fetchsurveychamberById(chamber);
+                let data;
+                if (user?.role === 'superAdmin') {
+                    data = await fetchallsurvey();
+                } else {
+                    data = await fetchsurveychamberById(chamber);
+                }
                 setAllSurveys(data);
 
                 const grouped = data.reduce((acc, survey) => {
