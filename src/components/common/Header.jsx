@@ -83,7 +83,7 @@ export default function Header({
                             <div className="flex items-center gap-1 border border-primary px-2 py-0.5 rounded-full text-primary-dark shrink-0">
                                 <MdOutlineFeaturedPlayList size={14} />
                                 <span>
-                                    {survey.surveyType ? (survey.surveyType == "Normal" ? "Normal Anket" : survey.surveyType == "MemberSatisfaction" ? "Üye Memnuniyet Anketi" : "Anket Tipi Yok") : "Anket Tipi Yok"}
+                                    {surveyData.surveyType ? (surveyData.surveyType == "Normal" ? "Normal Anket" : surveyData.surveyType == "MemberSatisfaction" ? "Üye Memnuniyet Anketi" : "Anket Tipi Yok") : "Anket Tipi Yok"}
                                 </span>
                             </div>
                             <div className={`flex items-center gap-1 px-2 py-0.5 rounded-full border font-medium shrink-0
@@ -174,7 +174,7 @@ export default function Header({
                             <div className="flex items-center gap-1 border border-primary px-2 py-0.5 rounded-full text-primary-dark shrink-0">
                                 <MdOutlineFeaturedPlayList size={14} />
                                 <span>
-                                    {survey.surveyType ? (survey.surveyType == "Normal" ? "Normal Anket" : survey.surveyType == "MemberSatisfaction" ? "Üye Memnuniyet Anketi" : "Anket Tipi Yok") : "Anket Tipi Yok"}
+                                    {surveyData.surveyType ? (surveyData.surveyType == "Normal" ? "Normal Anket" : surveyData.surveyType == "MemberSatisfaction" ? "Üye Memnuniyet Anketi" : "Anket Tipi Yok") : "Anket Tipi Yok"}
                                 </span>
                             </div>
                             <div className={`flex items-center gap-1 px-2 py-0.5 rounded-full border font-medium shrink-0
@@ -239,7 +239,7 @@ export default function Header({
                             <div className="flex items-center gap-1 border border-primary px-2 py-0.5 rounded-full text-primary-dark shrink-0">
                                 <MdOutlineFeaturedPlayList size={14} />
                                 <span>
-                                    {survey.surveyType ? (survey.surveyType == "Normal" ? "Normal Anket" : survey.surveyType == "MemberSatisfaction" ? "Üye Memnuniyet Anketi" : "Anket Tipi Yok") : "Anket Tipi Yok"}
+                                    {surveyData.surveyType ? (surveyData.surveyType == "Normal" ? "Normal Anket" : surveyData.surveyType == "MemberSatisfaction" ? "Üye Memnuniyet Anketi" : "Anket Tipi Yok") : "Anket Tipi Yok"}
                                 </span>
                             </div>
                             <div className={`flex items-center gap-1 px-2 py-0.5 rounded-full border font-medium shrink-0
