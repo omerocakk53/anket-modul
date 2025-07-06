@@ -47,7 +47,7 @@ export default function SurveyCard({ survey, handleDelete, handleCopyLink, handl
     return (
         <div
             className="bg-neutral-white rounded-lg shadow-md border border-neutral p-6 flex flex-col justify-between
-                       relative overflow-hidden cursor-pointer h-[450px] sm:h-70
+                       relative overflow-hidden cursor-pointer h-[450px] sm:h-[420px]
                        hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
