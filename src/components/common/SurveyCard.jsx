@@ -47,7 +47,7 @@ export default function SurveyCard({ survey, handleDelete, handleCopyLink, handl
     return (
         <div
             className="bg-neutral-white rounded-lg shadow-md border border-neutral p-6 flex flex-col justify-between
-                       relative overflow-hidden cursor-pointer h-[450px] sm:h-[420px]
+                       relative overflow-hidden cursor-pointer h-[450px] sm:h-[340px]
                        hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
@@ -193,10 +193,10 @@ export default function SurveyCard({ survey, handleDelete, handleCopyLink, handl
                     </button>
                 </div>
             </div>
-            <div className="mt-5 text-xs text-neutral-dark flex flex-col space-y-0.5 gap-2 w-[%80]">
+            <div className="mt-5 text-xs text-neutral-dark flex flex-col space-y-0.5 gap-2 w-[101%]">
                 <span className="flex items-center gap-3 border border-primary px-1 rounded-xl text-primary-dark"><MdOutlineFeaturedPlayList /> {survey.surveyType ? (survey.surveyType == "Normal" ? "Normal Anket" : survey.surveyType == "MemberSatisfaction" ? "Üye Memnuniyet Anketi" : "Anket Tipi Yok") : "Anket Tipi Yok"}</span>
             </div>
-            <div className="mt-5 text-xs text-neutral-dark flex flex-col space-y-0.5 gap-2 w-[%80]">
+            <div className="mt-5 text-xs text-neutral-dark flex flex-col space-y-0.5 gap-2 w-[101%]">
                 <span className="flex items-center gap-3 border border-primary px-1 rounded-xl text-primary-dark"> <FiCalendar /> {formattedCreatedAt}</span>
                 <span className="flex items-center gap-3 border border-primary px-1 rounded-xl text-primary-dark"><FiEdit /> {formattedLastModified}</span>
             </div>
