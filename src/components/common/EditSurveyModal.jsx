@@ -63,6 +63,13 @@ export default function EditSurveyModal({ survey, onClose, onUpdate, updatesurve
 
     setNewPeriod({ startDate: '', endDate: '' });
   };
+  const handleRemovePeriod = (indexToRemove) => {
+    setFormData(prev => ({
+      ...prev,
+      activePeriodDates: prev.activePeriodDates.filter((_, index) => index !== indexToRemove),
+    }));
+  };
+
   const handleAddTag = () => {
     const tag = newTag.trim();
 
@@ -213,25 +220,27 @@ export default function EditSurveyModal({ survey, onClose, onUpdate, updatesurve
               </div>
 
               <div className="space-y-2">
-                {formData.activePeriodDates.map((period, index) => {
-                  const now = new Date();
-                  const isActive = now >= new Date(period.startDate) && now <= new Date(period.endDate);
-
-                  return (
-                    <div
-                      key={index}
-                      className="flex justify-between items-center bg-neutral-100 p-2 rounded"
-                    >
-                      <div className="flex flex-col text-sm">
-                        <span className="font-medium">Part {index + 1}</span>
-                        <span>{new Date(period.startDate).toLocaleString()} → {new Date(period.endDate).toLocaleString()}</span>
-                      </div>
-                      <span className={`text-xs px-2 py-1 rounded ${isActive ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800'}`}>
-                        {isActive ? 'Aktif' : 'Pasif'}
-                      </span>
+                {formData.activePeriodDates.map((period, index) => (
+                  <div key={index} className="flex items-center justify-between bg-gray-100 p-2 rounded mb-2">
+                    <div>
+                      <p className="text-sm">
+                        <strong>Başlangıç:</strong> {new Date(period.startDate).toLocaleDateString()} &nbsp;
+                        <strong>Bitiş:</strong> {new Date(period.endDate).toLocaleDateString()}
+                      </p>
+                      <p className="text-xs">
+                        <strong>Durum:</strong> {period.active ? 'Aktif' : 'Pasif'}
+                      </p>
                     </div>
-                  );
-                })}
+                    <button
+                      type="button"
+                      onClick={() => handleRemovePeriod(index)}
+                      className="text-danger hover:text-danger-dark"
+                      title="Bu partı kaldır"
+                    >
+                      <FiX size={18} />
+                    </button>
+                  </div>
+                ))}
               </div>
             </div>
           )}
