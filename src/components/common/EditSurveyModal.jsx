@@ -233,43 +233,47 @@ export default function EditSurveyModal({ survey, onClose, onUpdate, updatesurve
               </div>
 
               <div className="space-y-2">
-                {formData.activePeriodDates.map((period, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center justify-between bg-gray-100 p-3 rounded mb-3 shadow-sm"
-                  >
-                    <div>
-                      <p className="text-sm font-semibold">
-                        <strong>Başlangıç:</strong>{' '}
-                        {new Date(period.startDate).toLocaleDateString('tr-TR')}
-                      </p>
-                      <p className="text-sm font-semibold">
-                        <strong>Bitiş:</strong>{' '}
-                        {new Date(period.endDate).toLocaleString('tr-TR', {
-                          day: '2-digit', month: '2-digit', year: 'numeric',
-                          hour: '2-digit', minute: '2-digit', second: '2-digit'
-                        })}
-                      </p>
+                {formData.activePeriodDates.map((period, index) => {
+                  const now = new Date();
+                  const isActive = new Date(period.endDate) > now;
 
-                      <div className={`flex items-center gap-1 px-2 py-0.5 rounded-full border font-medium shrink-0 mt-1
-                        ${period.active
-                          ? 'text-green-600 bg-green-100 border-green-600'
-                          : 'text-red-600 bg-red-100 border-red-600'}`}>
-                        {period.active ? <FiCheckCircle size={16} /> : <FiXCircle size={16} />}
-                        {period.active ? "Aktif" : "Pasif"}
-                      </div>
-                    </div>
+                  const startDate = new Date(period.startDate).toLocaleDateString();
+                  const endDate = new Date(period.endDate).toLocaleString(); // saat:dakika:saniye dahil
 
-                    <button
-                      type="button"
-                      onClick={() => handleRemovePeriod(index)}
-                      className="text-red-600 hover:text-red-800 transition"
-                      title="Bu partı kaldır"
+                  return (
+                    <div
+                      key={index}
+                      className={`flex items-center justify-between bg-gray-100 p-2 rounded mb-2 border ${isActive
+                        ? 'border-success bg-success/5 text-success'
+                        : 'border-danger bg-danger/5 text-danger'
+                        }`}
                     >
-                      <FiX size={20} />
-                    </button>
-                  </div>
-                ))}
+                      <div>
+                        <p className="text-sm">
+                          <strong>Başlangıç:</strong> {startDate} &nbsp;
+                          <strong>Bitiş:</strong> {endDate}
+                        </p>
+                        <div
+                          className={`flex items-center gap-1 px-2 py-0.5 rounded-full border font-medium text-xs mt-1
+                            ${isActive
+                              ? 'text-success bg-success/10 border-success'
+                              : 'text-danger bg-danger/10 border-danger'
+                            }`}
+                        >
+                          {isActive ? 'Aktif' : 'Pasif'}
+                        </div>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => handleRemovePeriod(index)}
+                        className="text-danger hover:text-danger-dark"
+                        title="Bu partı kaldır"
+                      >
+                        <FiX size={18} />
+                      </button>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           )}
