@@ -43,7 +43,7 @@ export default function CreateSurveyOrGroupModal({
     const data = {
       title: title.trim(),
       description: description.trim(),
-      surveyType,
+      surveyType: surveyType,
     };
 
     if (mode === "group") {
