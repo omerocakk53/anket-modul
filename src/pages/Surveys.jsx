@@ -49,7 +49,7 @@ export default function Anketler({
                 let data;
                 if (user?.role === 'superAdmin') {
                     data = await fetchallsurvey();
-                } else {
+                } else if (user?.role === 'admin') {
                     data = await fetchsurveychamberById(chamber);
                 }
                 setAllSurveys(data);
