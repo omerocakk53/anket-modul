@@ -135,7 +135,7 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
 
                 <select value={dateRange} onChange={(e) => setDateRange(e.target.value)}>
                     <option value="">Tüm Tarihler</option>
-                    {survey.activePeriodDates.map((period) => (
+                    {survey.activePeriodDates?.map((period) => (
                         <option value={period._id}>
                             {formatDate(period.startDate)} - {formatDate(period.endDate)}
                         </option>
