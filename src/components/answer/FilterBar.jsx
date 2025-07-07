@@ -22,22 +22,24 @@ export default function FilterBar({ search, setSearch, dateRange, setDateRange }
 
     return (
         <div className="flex flex-col md:flex-row items-center justify-between mb-4 space-y-4 md:space-y-0 md:space-x-4 bg-neutral-white p-4 rounded-lg shadow-sm border border-neutral-light">
-            <input
-                type="text"
-                placeholder="Cevapları ara..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="w-full md:w-1/3 p-2 border rounded-lg"
-            />
-            <button
-                onClick={() => {
-                    setSearch("");
-                    setDateRange({ start: "", end: "" });
-                }}
-                className="bg-neutral-light text-neutral-darkest px-4 py-2 rounded-lg hover:bg-neutral-lighter transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-                Filtreleri Temizle
-            </button>
+            <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
+                <input
+                    type="text"
+                    placeholder="Cevapları ara..."
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    className="w-full md:w-1/3 p-2 border rounded-lg"
+                />
+                <button
+                    onClick={() => {
+                        setSearch("");
+                        setDateRange({ start: "", end: "" });
+                    }}
+                    className="bg-neutral-light text-neutral-darkest px-4 py-2 rounded-lg hover:bg-neutral-lighter transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                    Filtreleri Temizle
+                </button>
+            </div>
 
             <div>
                 <DateRange
