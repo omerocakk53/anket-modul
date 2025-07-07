@@ -133,14 +133,36 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
             />
             <div className="container mx-auto p-4 space-y-4 mt-4">
 
-                <select value={dateRange} onChange={(e) => setDateRange(e.target.value)}>
-                    <option value="">Tüm Tarihler</option>
-                    {survey.activePeriodDates?.map((period) => (
-                        <option value={period._id}>
-                            {formatDate(period.startDate)} - {formatDate(period.endDate)}
-                        </option>
-                    ))}
-                </select>
+                {survey.surveyType === "MemberSatisfaction" && (
+                    <select
+                        className="block w-full max-w-xs p-2 border border-neutral-light rounded-md shadow-sm focus:ring-primary focus:border-primary"
+                        value={
+                            survey.activePeriodDates?.find(
+                                (p) => p.startDate === dateRange.start && p.endDate === dateRange.end
+                            )?._id || ""
+                        }
+                        onChange={(e) => {
+                            const selectedPeriodId = e.target.value;
+                            if (!selectedPeriodId) {
+                                setDateRange({ start: "", end: "" });
+                                return;
+                            }
+                            const period = survey.activePeriodDates?.find(
+                                (p) => p._id === selectedPeriodId
+                            );
+                            if (period) {
+                                setDateRange({ start: period.startDate, end: period.endDate });
+                            }
+                        }}
+                    >
+                        <option value="">Tüm Periyotlar</option>
+                        {survey.activePeriodDates?.map((period) => (
+                            <option key={period._id} value={period._id}>
+                                {formatDate(period.startDate)} - {formatDate(period.endDate)}
+                            </option>
+                        ))}
+                    </select>
+                )}
 
                 <ViewSwitcher selectedView={selectedView} setSelectedView={setSelectedView} />
                 {selectedView === "Tablo" || selectedView === "Grafik" ? (
