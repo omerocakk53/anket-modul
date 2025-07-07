@@ -8,9 +8,9 @@ const chartTypes = [
 
 export default function ChartSelector({ chartType, setChartType }) {
   return (
-    <div className="mt-4">
+    <div className="mb-6 flex flex-col items-start">
       <label className="block font-semibold mb-2">Grafik Tipi:</label>
-      <div className="flex gap-4">
+      <div className="flex gap-4 flex-wrap items-center">
         {chartTypes.map((type) => (
           <label key={type.id} className="flex items-center gap-2 cursor-pointer">
             <input

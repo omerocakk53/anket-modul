@@ -2,10 +2,10 @@ import React from "react";
 
 export default function QuestionSelector({ items, selectedQuestionId, setSelectedQuestionId }) {
   return (
-    <div>
-      <label className="block font-semibold mb-1">Soru Seçiniz:</label>
+    <div className="mb-6 flex flex-col items-start">
+      <label className="block font-semibold mb-2 ">Soru Seçiniz:</label>
       <select
-        className="p-2 border rounded w-full max-w-xs"
+        className="p-2 border rounded w-full max-w-xs bg-white text-gray-800"
         value={selectedQuestionId}
         onChange={(e) => setSelectedQuestionId(e.target.value)}
       >
@@ -19,3 +19,4 @@ export default function QuestionSelector({ items, selectedQuestionId, setSelecte
     </div>
   );
 }
+

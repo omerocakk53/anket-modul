@@ -20,17 +20,12 @@ export default function TimeFilter({ dateRange, setDateRange, groupBy, setGroupB
   ];
 
   return (
-    <div className="mt-6 flex flex-col md:flex-row md:items-center md:gap-8">
+    <div className="mt-6 flex flex-col md:flex-row md:items-center md:gap-8 bg-gray-50 p-4 rounded-lg shadow-sm">
       <div>
         <label className="block font-semibold mb-2">Tarih Aralığı Seçiniz:</label>
         <DateRange
           ranges={ranges}
-          onChange={(item) => {
-            setDateRange({
-              startDate: item.selection.startDate,
-              endDate: item.selection.endDate,
-            });
-          }}
+          onChange={(item) => setDateRange({ startDate: item.selection.startDate, endDate: item.selection.endDate })}
           locale={tr}
           maxDate={new Date()}
           rangeColors={["#3b82f6"]}
@@ -56,3 +51,4 @@ export default function TimeFilter({ dateRange, setDateRange, groupBy, setGroupB
     </div>
   );
 }
+

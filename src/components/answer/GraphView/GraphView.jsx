@@ -26,8 +26,8 @@ export default function GraphView({ allAnswers, survey }) {
 
 
   return (
-    <div className="p-6 max-w-5xl mx-auto space-y-6">
-      <h1 className="text-2xl font-bold mb-4">İleri Düzey Anket Analizi ve Grafikleme</h1>
+    <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg mt-8 mb-8 border border-gray-200">
+      <h1 className="text-3xl font-bold mb-4 text-center">Anket Analizi ve Grafikleme</h1>
 
       {/* Soru Seçimi */}
       <QuestionSelector
@@ -62,3 +62,4 @@ export default function GraphView({ allAnswers, survey }) {
     </div>
   );
 }
+
