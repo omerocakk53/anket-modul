@@ -56,7 +56,7 @@ export default function GraphView({ allAnswers, survey }) {
       >
         <option value="">Soru seçiniz</option>
         {numericQuestions.map((q) => (
-          <option key={q.itemId} value={q.itemId}>
+          <option key={q.type} value={q.type}>
             {q.label}
           </option>
         ))}
