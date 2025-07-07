@@ -132,7 +132,6 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
                 Sidebar={() => { }}
             />
             <div className="container mx-auto p-4 space-y-4 mt-4">
-
                 {survey.surveyType === "MemberSatisfaction" && (
                     <select
                         className="block w-full max-w-xs p-2 border border-neutral-light rounded-md shadow-sm focus:ring-primary focus:border-primary"
@@ -156,14 +155,13 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
                         }}
                     >
                         <option value="">Tüm Periyotlar</option>
-                        {survey.activePeriodDates?.map((period) => (
+                        {survey.activePeriodDates?.map((period, index) => (
                             <option key={period._id} value={period._id}>
-                                {formatDate(period.startDate)} - {formatDate(period.endDate)}
+                                Periyot {index + 1} - {formatDate(period.startDate)} - {formatDate(period.endDate)}
                             </option>
                         ))}
                     </select>
                 )}
-
                 <ViewSwitcher selectedView={selectedView} setSelectedView={setSelectedView} />
                 {selectedView === "Tablo" || selectedView === "Grafik" ? (
                     <FilterBar
