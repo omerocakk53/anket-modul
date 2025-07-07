@@ -21,7 +21,7 @@ export default function FilterBar({ search, setSearch, dateRange, setDateRange }
     };
 
     return (
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
+        <div className="flex flex-col md:flex-row items-center justify-between mb-4 space-y-4 md:space-y-0 md:space-x-4">
             <input
                 type="text"
                 placeholder="Cevapları ara..."
@@ -34,7 +34,7 @@ export default function FilterBar({ search, setSearch, dateRange, setDateRange }
                     setSearch("");
                     setDateRange({ start: "", end: "" });
                 }}
-                className="text-sm underline text-blue-600 mt-2"
+                className="bg-neutral-light text-neutral-darkest px-4 py-2 rounded-lg hover:bg-neutral-lighter transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
                 Filtreleri Temizle
             </button>

@@ -124,6 +124,7 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
     };
     return (
         <>
+
             <Header
                 isAnswerMode={true}
                 surveyData={survey}
@@ -161,6 +162,15 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
                         ))}
                     </select>
                 )}
+                <ViewSwitcher selectedView={selectedView} setSelectedView={setSelectedView} />
+                {selectedView === "Tablo" || selectedView === "Grafik" ? (
+                    <FilterBar
+                        search={search}
+                        setSearch={setSearch}
+                        dateRange={dateRange}
+                        setDateRange={setDateRange}
+                    />
+                ) : (<></>)}
                 {filteredCevaplar.length === 0 ? (
                     <div className="bg-neutral-white border border-neutral-DEFAULT rounded-lg p-6 text-center text-neutral-dark">
                         <p className="text-lg font-semibold mb-2">Gösterilecek cevap bulunamadı.</p>
@@ -176,12 +186,16 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
                                 isDeleting={isDeleting}
                             />
                         )}
+
+
                         {selectedView === "Grafik" && (
                             <ChartView allAnswers={filteredCevaplar} />
                         )}
+
                         {selectedView === "Karşılaştırma" && (
                             <ComparisonPage allAnswers={cevaplar} />
                         )}
+
                     </>
                 )}
             </div>
