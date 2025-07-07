@@ -103,7 +103,6 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
         const date = new Date(dateString);
         return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
     };
-    console.log(survey.activePeriodDates);
     return (
         <>
 
@@ -124,7 +123,7 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
                     />
 
                         {survey.activePeriodDates && (
-                            <Select
+                            <select
                                 value={dateRange}
                                 onChange={(e) => setDateRange(e.target.value)}
                                 options={[
