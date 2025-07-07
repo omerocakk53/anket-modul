@@ -39,7 +39,7 @@ export default function FilterBar({ search, setSearch, dateRange, setDateRange }
                 Filtreleri Temizle
             </button>
 
-            <div className="w-full md:w-1/3">
+            <div>
                 <DateRange
                     ranges={[{
                         startDate: dateRange.start || new Date(),
@@ -51,7 +51,6 @@ export default function FilterBar({ search, setSearch, dateRange, setDateRange }
                     minDate={new Date("2020-01-01")}
                     rangeColors={["#3b82f6"]}
                     locale={tr}
-                    showDateDisplay={false}
                 />
             </div>
         </div>
