@@ -4,10 +4,10 @@ import {
 } from "recharts";
 
 const typeLabels = {
-  Numeric: "Sayısal Cevap",
+  Numeric: "Numara",
   Scale: "Derecelendirme",
   Rating: "Puanlama",
-};
+};;
 
 export default function GraphView({ allAnswers, survey }) {
   const [selectedQuestionId, setSelectedQuestionId] = useState("");
@@ -29,12 +29,10 @@ export default function GraphView({ allAnswers, survey }) {
     });
   });
 
-  const numericQuestions = survey.items
-    .filter((item) => item.type === "Numeric" || item.type === "Scale" || item.type === "Rating")
-    .map((item) => ({
-      ...item,
-      label: `${typeLabels[item.type]} - ${item.title}`,
-    }));
+  const numericQuestions = Array.from(questionMap.values()).map((q) => ({
+    ...q,
+    label: `${typeLabels[q.itemType]} - ${q.title}`,
+  }));
 
   const chartData = allAnswers
     .map((entry) => {
@@ -56,7 +54,7 @@ export default function GraphView({ allAnswers, survey }) {
       >
         <option value="">Soru seçiniz</option>
         {numericQuestions.map((q) => (
-          <option key={q.type} value={q.type}>
+          <option key={q.itemId} value={q.itemId}>
             {q.label}
           </option>
         ))}
