@@ -31,7 +31,7 @@ export default function GraphView({ allAnswers, survey }) {
 
   const numericQuestions = Array.from(questionMap.values()).map((q) => ({
     ...q,
-    label: `${typeLabels[q.itemType]} - ${q.title}`,
+    label: `${typeLabels[q.itemType]} - ${survey.items.find((i) => i.id === q.itemId)?.title}`,
   }));
 
   const chartData = allAnswers
