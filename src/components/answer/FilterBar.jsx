@@ -21,7 +21,7 @@ export default function FilterBar({ search, setSearch, dateRange, setDateRange }
     };
 
     return (
-        <div className="flex flex-col md:flex-row items-center justify-between mb-4 space-y-4 md:space-y-0 md:space-x-4">
+        <div className="flex flex-col md:flex-row items-center justify-between mb-4 space-y-4 md:space-y-0 md:space-x-4 bg-neutral-white p-4 rounded-lg shadow-sm border border-neutral-light">
             <input
                 type="text"
                 placeholder="Cevapları ara..."
@@ -41,6 +41,7 @@ export default function FilterBar({ search, setSearch, dateRange, setDateRange }
 
             <div>
                 <DateRange
+                    className="bg-white rounded-lg shadow-md"
                     ranges={[{
                         startDate: dateRange.start || new Date(),
                         endDate: dateRange.end || new Date(),
