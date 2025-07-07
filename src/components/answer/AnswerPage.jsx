@@ -187,13 +187,12 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
                             />
                         )}
 
-
                         {selectedView === "Grafik" && (
-                            <ChartView allAnswers={filteredCevaplar} />
+                            <ChartView allAnswers={filteredCevaplar} survey={survey} />
                         )}
 
-                        {selectedView === "Karşılaştırma" && (
-                            <ComparisonPage allAnswers={cevaplar} />
+                        {selectedView === "Analiz" && (
+                            <ComparisonPage allAnswers={cevaplar} survey={survey} />
                         )}
 
                     </>

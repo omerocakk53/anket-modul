@@ -10,7 +10,7 @@ const typeLabels = {
   Rating: "Puanlama",
 };
 
-export default function GraphView({ allAnswers }) {
+export default function GraphView({ allAnswers, survey }) {
   const [selectedQuestionId, setSelectedQuestionId] = useState("");
   const numericTypes = ["Numeric", "Scale", "Rating"];
 

@@ -128,7 +128,7 @@ export default function ComparisonPage({ allAnswers }) {
 
     return (
         <div className="p-6 max-w-5xl mx-auto space-y-6">
-            <h1 className="text-2xl font-bold mb-4">Memnuniyet Anketleri Karşılaştırma</h1>
+            <h1 className="text-2xl font-bold mb-4">Memnuniyet Anketleri Analiz</h1>
 
             <div className="flex justify-between flex-wrap">
                 <div>
@@ -138,10 +138,9 @@ export default function ComparisonPage({ allAnswers }) {
                         onChange={(item) => setSurvey1Range([item.survey1 || item.selection])}
                         maxDate={new Date()}
                         rangeColors={["#3b82f6"]}
-                        locale={tr} // ← Türkçe olarak ayarlıyoruz
+                        locale={tr}
                     />
                 </div>
-
                 <div>
                     <h2 className="font-semibold mb-2">2. Anket Tarih Aralığı</h2>
                     <DateRange
@@ -149,7 +148,7 @@ export default function ComparisonPage({ allAnswers }) {
                         onChange={(item) => setSurvey2Range([item.survey2 || item.selection])}
                         maxDate={new Date()}
                         rangeColors={["#10b981"]}
-                        locale={tr} // ← Türkçe olarak ayarlıyoruz
+                        locale={tr}
                     />
                 </div>
             </div>

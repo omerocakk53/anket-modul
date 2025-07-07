@@ -1,5 +1,5 @@
 export default function ViewSwitcher({ selectedView, setSelectedView }) {
-  const views = ["Tablo", "Grafik", "Karşılaştırma"];
+  const views = ["Tablo", "Grafik", "Analiz"];
 
   return (
     <div className="flex gap-4 mb-4">

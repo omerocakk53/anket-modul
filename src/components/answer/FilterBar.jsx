@@ -39,7 +39,7 @@ export default function FilterBar({ search, setSearch, dateRange, setDateRange }
                 Filtreleri Temizle
             </button>
 
-            <div>
+            <div className="w-full md:w-1/3">
                 <DateRange
                     ranges={[{
                         startDate: dateRange.start || new Date(),
