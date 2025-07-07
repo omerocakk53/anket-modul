@@ -118,7 +118,10 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
     function yonlendir() {
         navigate('/anket', { replace: true });
     }
-
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
+    };
     return (
         <>
 
@@ -128,20 +131,18 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
                 onBackToMain={() => yonlendir()}
                 Sidebar={() => { }}
             />
-            <div className="max-w-6xl mx-auto p-6 bg-neutral-light rounded-lg shadow-inner">
+            <div className="container mx-auto p-4 space-y-4 mt-4">
 
                 <select value={dateRange} onChange={(e) => setDateRange(e.target.value)}>
                     <option value="">Tüm Tarihler</option>
-                    {
-                        survey.activePeriodDates?.map((period, index) => (
-                            <option key={index} value={index}>
-                                {period.startDate} - {period.endDate}
-                            </option>
-                        ))
-                    }
+                    {survey.activePeriodDates.map((period) => (
+                        <option value={period._id}>
+                            {formatDate(period.startDate)} - {formatDate(period.endDate)}
+                        </option>
+                    ))}
                 </select>
 
-                {/* <ViewSwitcher selectedView={selectedView} setSelectedView={setSelectedView} />
+                <ViewSwitcher selectedView={selectedView} setSelectedView={setSelectedView} />
                 {selectedView === "Tablo" || selectedView === "Grafik" ? (
                     <FilterBar
                         search={search}
@@ -176,7 +177,7 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
                         )}
 
                     </>
-                )} */}
+                )}
             </div>
         </>
     );
