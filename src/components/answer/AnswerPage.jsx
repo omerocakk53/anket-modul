@@ -120,7 +120,7 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
     }
     
 
-    console.log(filteredCevaplar)
+    console.log(survey, cevaplar, sorular, search, dateRange, selectedView, isDeleting, filteredCevaplar)
 
 
     return (
