@@ -4,10 +4,10 @@ import {
 } from "recharts";
 
 const typeLabels = {
-  Numeric: "Numara",
+  Numeric: "Sayısal Cevap",
   Scale: "Derecelendirme",
   Rating: "Puanlama",
-};;
+};
 
 export default function GraphView({ allAnswers, survey }) {
   const [selectedQuestionId, setSelectedQuestionId] = useState("");
@@ -33,7 +33,7 @@ export default function GraphView({ allAnswers, survey }) {
     .filter((item) => item.type === "Numeric" || item.type === "Scale" || item.type === "Rating")
     .map((item) => ({
       ...item,
-      label: `${item.title}`,
+      label: `${typeLabels[item.type]} - ${item.title}`,
     }));
 
   const chartData = allAnswers
