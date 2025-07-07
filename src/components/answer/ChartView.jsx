@@ -3,12 +3,11 @@ import {
   BarChart, Bar, XAxis, YAxis, Tooltip, Legend, CartesianGrid, ResponsiveContainer,
 } from "recharts";
 
-// Türlere göre Türkçe etiket karşılıkları
 const typeLabels = {
   Numeric: "Numara",
   Scale: "Derecelendirme",
   Rating: "Puanlama",
-};
+};;
 
 export default function GraphView({ allAnswers, survey }) {
   const [selectedQuestionId, setSelectedQuestionId] = useState("");
@@ -30,7 +29,12 @@ export default function GraphView({ allAnswers, survey }) {
     });
   });
 
-  const numericQuestions = Array.from(questionMap.values());
+  const numericQuestions = survey.items
+    .filter((item) => item.type === "Numeric" || item.type === "Scale" || item.type === "Rating")
+    .map((item) => ({
+      ...item,
+      label: `${item.title}`,
+    }));
 
   const chartData = allAnswers
     .map((entry) => {
@@ -51,14 +55,11 @@ export default function GraphView({ allAnswers, survey }) {
         className="p-2 border rounded"
       >
         <option value="">Soru seçiniz</option>
-        {numericQuestions.map((q) => {
-          const label = typeLabels[q.itemType] || q.itemType;
-          return (
-            <option key={q.itemId} value={q.itemId}>
-              {label} ({q.itemType})
-            </option>
-          );
-        })}
+        {numericQuestions.map((q) => (
+          <option key={q.itemId} value={q.itemId}>
+            {q.label}
+          </option>
+        ))}
       </select>
 
       {selectedQuestionId && chartData.length > 0 ? (
