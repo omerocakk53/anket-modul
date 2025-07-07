@@ -6,6 +6,7 @@ import FilterBar from "./FilterBar";
 import ChartView from "./ChartView";
 import AnswerTable from "./AnswerTable";
 import ComparisonPage from "./ComparisonPage";
+import GraphView from "./GraphView/GraphView";
 import Header from "../common/Header";
 
 export default function AnswerPage({ answerget, answerdelete, fetchsurveyById }) {
@@ -191,10 +192,10 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
                             <ChartView allAnswers={filteredCevaplar} survey={survey} />
                         )}
 
-                        {selectedView === "Analiz" && (
+                        {/* {selectedView === "Analiz" && (
                             <ComparisonPage allAnswers={cevaplar} survey={survey} />
-                        )}
-
+                        )} */}
+                        {selectedView === "Analiz" && <GraphView allAnswers={filteredCevaplar} survey={survey} />}
                     </>
                 )}
             </div>

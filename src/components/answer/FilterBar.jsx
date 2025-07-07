@@ -40,7 +40,6 @@ export default function FilterBar({ search, setSearch, dateRange, setDateRange }
                     Filtreleri Temizle
                 </button>
             </div>
-
             <div>
                 <DateRange
                     className="bg-white rounded-lg shadow-md"

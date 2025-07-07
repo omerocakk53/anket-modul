@@ -12,14 +12,15 @@ import {
 } from "recharts";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
-import { tr } from 'date-fns/locale'; // Türkçe locale'i import et
+import { tr } from 'date-fns/locale';
+
 const typeLabels = {
     Numeric: "Numara",
     Scale: "Derecelendirme",
     Rating: "Puanlama",
 };
 
-export default function ComparisonPage({ allAnswers }) {
+export default function ComparisonPage({ allAnswers, survey }) {
     const numericTypes = ["Numeric", "Scale", "Rating"];
 
     // Tarih aralıkları state, varsayılan 1 günlük
@@ -43,8 +44,6 @@ export default function ComparisonPage({ allAnswers }) {
         return [{ startDate: start, endDate: end, key: range[0].key }];
     };
 
-
-
     // Sayısal soruları bul
     const questionMap = new Map();
 
@@ -61,7 +60,10 @@ export default function ComparisonPage({ allAnswers }) {
         });
     });
 
-    const numericQuestions = Array.from(questionMap.values());
+    const numericQuestions = Array.from(questionMap.values()).map((q) => ({
+        ...q,
+        label: `${typeLabels[q.itemType]} - ${survey.items.find((i) => i.id === q.itemId)?.title}`,
+    }));
 
     // Verilen tarih aralığında seçilen sorunun sayısal cevaplarını al
     const getAvgByQuestionInRange = (range) => {
@@ -139,6 +141,7 @@ export default function ComparisonPage({ allAnswers }) {
                         maxDate={new Date()}
                         rangeColors={["#3b82f6"]}
                         locale={tr}
+                        className="bg-white rounded-lg shadow-md"
                     />
                 </div>
                 <div>
@@ -149,6 +152,7 @@ export default function ComparisonPage({ allAnswers }) {
                         maxDate={new Date()}
                         rangeColors={["#10b981"]}
                         locale={tr}
+                        className="bg-white rounded-lg shadow-md"
                     />
                 </div>
             </div>
@@ -195,3 +199,4 @@ export default function ComparisonPage({ allAnswers }) {
         </div>
     );
 }
+

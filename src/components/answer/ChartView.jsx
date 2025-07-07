@@ -7,7 +7,7 @@ const typeLabels = {
   Numeric: "Numara",
   Scale: "Derecelendirme",
   Rating: "Puanlama",
-};;
+};
 
 export default function GraphView({ allAnswers, survey }) {
   const [selectedQuestionId, setSelectedQuestionId] = useState("");
