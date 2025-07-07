@@ -118,6 +118,10 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
     function yonlendir() {
         navigate('/anket', { replace: true });
     }
+    
+
+    console.log(filteredCevaplar)
+
 
     return (
         <>
@@ -128,7 +132,7 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
                 onBackToMain={() => yonlendir()}
                 Sidebar={() => { }}
             />
-            <div className="max-w-6xl mx-auto p-6 bg-neutral-light rounded-lg shadow-inner">
+            {/* <div className="max-w-6xl mx-auto p-6 bg-neutral-light rounded-lg shadow-inner">
                 <ViewSwitcher selectedView={selectedView} setSelectedView={setSelectedView} />
                 {selectedView === "Tablo" || selectedView === "Grafik" ? (
                     <FilterBar
@@ -165,7 +169,7 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
 
                     </>
                 )}
-            </div>
+            </div> */}
         </>
     );
 }
