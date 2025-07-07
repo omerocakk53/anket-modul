@@ -85,13 +85,32 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
     const filteredCevaplar = (selectedView === "Tablo" || selectedView === "Grafik")
         ? cevaplar?.filter((cevap) => {
             const created = new Date(cevap.createdAt);
-            const selectedPeriod = survey.activePeriodDates.find((period) => period._id === dateRange);
-            if (selectedPeriod) {
-                const start = new Date(selectedPeriod.startDate);
-                const end = new Date(selectedPeriod.endDate);
-                return created >= start && created <= end;
-            }
-            return true; // Tüm tarihler seçili ise
+            const start = dateRange.start ? new Date(dateRange.start) : null;
+            const end = dateRange.end ? new Date(dateRange.end) : null;
+
+            const dateInRange =
+                (!start || created >= start) && (!end || created <= end);
+
+            const textMatch = cevap.answers.some((answer) => {
+                const val = answer.value;
+                if (typeof val === "string") {
+                    return val.toLowerCase().includes(search.toLowerCase());
+                } else if (typeof val === "object" && val !== null) {
+                    const findMatch = (obj) =>
+                        Object.values(obj).some((innerVal) => {
+                            if (typeof innerVal === "string") {
+                                return innerVal.toLowerCase().includes(search.toLowerCase());
+                            } else if (typeof innerVal === "object" && innerVal !== null) {
+                                return findMatch(innerVal);
+                            }
+                            return false;
+                        });
+                    return findMatch(val);
+                }
+                return false;
+            });
+
+            return dateInRange || textMatch;
         })
         : cevaplar;
 
@@ -99,10 +118,7 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
     function yonlendir() {
         navigate('/anket', { replace: true });
     }
-    const formatDate = (dateString) => {
-        const date = new Date(dateString);
-        return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
-    };
+
     return (
         <>
 
@@ -113,29 +129,26 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
                 Sidebar={() => { }}
             />
             <div className="max-w-6xl mx-auto p-6 bg-neutral-light rounded-lg shadow-inner">
-                <ViewSwitcher selectedView={selectedView} setSelectedView={setSelectedView} />
+
+                <select value={dateRange} onChange={(e) => setDateRange(e.target.value)}>
+                    <option value="">Tüm Tarihler</option>
+                    {
+                        survey.activePeriodDates?.map((period, index) => (
+                            <option key={index} value={index}>
+                                {period.startDate} - {period.endDate}
+                            </option>
+                        ))
+                    }
+                </select>
+
+                {/* <ViewSwitcher selectedView={selectedView} setSelectedView={setSelectedView} />
                 {selectedView === "Tablo" || selectedView === "Grafik" ? (
-                    <><FilterBar
+                    <FilterBar
                         search={search}
                         setSearch={setSearch}
                         dateRange={dateRange}
                         setDateRange={setDateRange}
                     />
-
-                        {survey.activePeriodDates && (
-                            <select
-                                value={dateRange}
-                                onChange={(e) => setDateRange(e.target.value)}
-                                options={[
-                                    { value: "", label: "Tüm Tarihler" },
-                                    ...survey.activePeriodDates.map((period, index) => ({
-                                        value: "period " + index + 1,
-                                        label: `${formatDate(period.startDate)} - ${formatDate(period.endDate)}`,
-                                    })),
-                                ]}
-                            />
-                        )}
-                    </>
                 ) : (<></>)}
                 {filteredCevaplar.length === 0 ? (
                     <div className="bg-neutral-white border border-neutral-DEFAULT rounded-lg p-6 text-center text-neutral-dark">
@@ -163,7 +176,7 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
                         )}
 
                     </>
-                )}
+                )} */}
             </div>
         </>
     );
