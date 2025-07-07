@@ -99,7 +99,10 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
     function yonlendir() {
         navigate('/anket', { replace: true });
     }
-
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
+    };
     return (
         <>
 
@@ -124,9 +127,9 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
                             onChange={(e) => setDateRange(e.target.value)}
                             options={[
                                 { value: "", label: "Tüm Tarihler" },
-                                ...survey.activePeriodDates.map((period) => ({
-                                    value: period._id,
-                                    label: `${period.startDate} - ${period.endDate}`,
+                                ...survey.activePeriodDates?.map((period, index) => ({
+                                    value: "part " + index + 1,
+                                    label: `${formatDate(period.startDate)} - ${formatDate(period.endDate)}`,
                                 })),
                             ]}
                         />
