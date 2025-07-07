@@ -103,6 +103,7 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
         const date = new Date(dateString);
         return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
     };
+    console.log(survey.activePeriodDates);
     return (
         <>
 
@@ -122,17 +123,19 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
                         setDateRange={setDateRange}
                     />
 
-                        <select
-                            value={dateRange}
-                            onChange={(e) => setDateRange(e.target.value)}
-                            options={[
-                                { value: "", label: "Tüm Tarihler" },
-                                ...survey.activePeriodDates?.map((period, index) => ({
-                                    value: "part " + index + 1,
-                                    label: `${formatDate(period.startDate)} - ${formatDate(period.endDate)}`,
-                                })),
-                            ]}
-                        />
+                        {survey.activePeriodDates && (
+                            <Select
+                                value={dateRange}
+                                onChange={(e) => setDateRange(e.target.value)}
+                                options={[
+                                    { value: "", label: "Tüm Tarihler" },
+                                    ...survey.activePeriodDates.map((period, index) => ({
+                                        value: "period " + index + 1,
+                                        label: `${formatDate(period.startDate)} - ${formatDate(period.endDate)}`,
+                                    })),
+                                ]}
+                            />
+                        )}
                     </>
                 ) : (<></>)}
                 {filteredCevaplar.length === 0 ? (
