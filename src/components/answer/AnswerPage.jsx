@@ -1,45 +1,45 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from 'react-hot-toast';
-import ViewSwitcher from "./ViewSwitcher";
-import FilterBar from "./FilterBar";
-import ChartView from "./ChartView";
-import AnswerTable from "./AnswerTable";
-import ComparisonPage from "./ComparisonPage";
-import GraphView from "./GraphView/GraphView";
 import Header from "../common/Header";
+import AnswerTable from "./answer.components/AnswerTable";
+import AnswerContentDisplay from "./answer.components/AnswerContentDisplay";
+import ViewSelector from "./answer.components/ViewSelector";
 
 export default function AnswerPage({ answerget, answerdelete, fetchsurveyById }) {
     const { surveyId } = useParams();
     const [cevaplar, setCevaplar] = useState([]);
     const [sorular, setSorular] = useState([]);
-    const [search, setSearch] = useState("");
-    const [dateRange, setDateRange] = useState({ start: "", end: "" });
-    const [selectedView, setSelectedView] = useState("Tablo");
-    const [isDeleting, setIsDeleting] = useState(false);
     const [survey, setSurvey] = useState({});
+    const [isDeleting, setIsDeleting] = useState(false);
+
+    // useNavigate hook to programmatically navigate to another page
     const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchSurveyAndAnswers = async () => {
             try {
-                const [cevapData, survey] = await Promise.all([
-                    answerget(surveyId),
+                const [surveyData, answersData] = await Promise.all([
                     fetchsurveyById(surveyId),
+                    answerget(surveyId),
                 ]);
-                setSurvey(survey);
-                setCevaplar(cevapData);
-                setSorular([
-                    ...survey.FinishWelcomeitems.filter((q) => q.id.includes("welcome")),
-                    ...survey.items,
-                    ...survey.FinishWelcomeitems.filter((q) => q.id.includes("finish")),
-                ]);
-            } catch (err) {
-                console.error("Veri getirilemedi:", err);
+                setSurvey(surveyData);
+                setCevaplar(answersData);
+            } catch (error) {
+                console.error(error);
             }
         };
-        fetchData();
+
+        fetchSurveyAndAnswers();
     }, [surveyId]);
+
+    useEffect(() => {
+        if (survey && survey.items) {
+            const sorular = survey.items.map(item => item.text);
+            setSorular(sorular);
+        }
+    }, [survey]);
+
 
     const handleDelete = async (answerId) => {
         toast(
@@ -83,122 +83,20 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
         );
     };
 
-    const filteredCevaplar = (selectedView === "Tablo" || selectedView === "Grafik")
-        ? cevaplar?.filter((cevap) => {
-            const created = new Date(cevap.createdAt);
-            const start = dateRange.start ? new Date(dateRange.start) : null;
-            const end = dateRange.end ? new Date(dateRange.end) : null;
-
-            const dateInRange =
-                (!start || created >= start) && (!end || created <= end);
-
-            const textMatch = cevap.answers.some((answer) => {
-                const val = answer.value;
-                if (typeof val === "string") {
-                    return val.toLowerCase().includes(search.toLowerCase());
-                } else if (typeof val === "object" && val !== null) {
-                    const findMatch = (obj) =>
-                        Object.values(obj).some((innerVal) => {
-                            if (typeof innerVal === "string") {
-                                return innerVal.toLowerCase().includes(search.toLowerCase());
-                            } else if (typeof innerVal === "object" && innerVal !== null) {
-                                return findMatch(innerVal);
-                            }
-                            return false;
-                        });
-                    return findMatch(val);
-                }
-                return false;
-            });
-
-            return dateInRange || textMatch;
-        })
-        : cevaplar;
-
-
     function yonlendir() {
         navigate('/anket', { replace: true });
     }
-    const formatDate = (dateString) => {
-        const date = new Date(dateString);
-        return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
-    };
+
     return (
         <>
-
             <Header
                 isAnswerMode={true}
                 surveyData={survey}
                 onBackToMain={() => yonlendir()}
                 Sidebar={() => { }}
             />
-            <div className="container mx-auto p-4 space-y-4 mt-4">
-                {survey.surveyType === "MemberSatisfaction" && (
-                    <select
-                        className="block w-full max-w-xs p-2 border border-neutral-light rounded-md shadow-sm focus:ring-primary focus:border-primary"
-                        value={
-                            survey.activePeriodDates?.find(
-                                (p) => p.startDate === dateRange.start && p.endDate === dateRange.end
-                            )?._id || ""
-                        }
-                        onChange={(e) => {
-                            const selectedPeriodId = e.target.value;
-                            if (!selectedPeriodId) {
-                                setDateRange({ start: "", end: "" });
-                                return;
-                            }
-                            const period = survey.activePeriodDates?.find(
-                                (p) => p._id === selectedPeriodId
-                            );
-                            if (period) {
-                                setDateRange({ start: period.startDate, end: period.endDate });
-                            }
-                        }}
-                    >
-                        <option value="">Tüm Periyotlar</option>
-                        {survey.activePeriodDates?.map((period, index) => (
-                            <option key={period._id} value={period._id}>
-                                Periyot {index + 1} - {formatDate(period.startDate)} - {formatDate(period.endDate)}
-                            </option>
-                        ))}
-                    </select>
-                )}
-                <ViewSwitcher selectedView={selectedView} setSelectedView={setSelectedView} />
-                {selectedView === "Tablo" || selectedView === "Grafik" ? (
-                    <FilterBar
-                        search={search}
-                        setSearch={setSearch}
-                        dateRange={dateRange}
-                        setDateRange={setDateRange}
-                    />
-                ) : (<></>)}
-                {filteredCevaplar.length === 0 ? (
-                    <div className="bg-neutral-white border border-neutral-DEFAULT rounded-lg p-6 text-center text-neutral-dark">
-                        <p className="text-lg font-semibold mb-2">Gösterilecek cevap bulunamadı.</p>
-                        <p className="text-sm">Tarih aralığı veya arama kriterlerini değiştirin.</p>
-                    </div>
-                ) : (
-                    <>
-                        {selectedView === "Tablo" && (
-                            <AnswerTable
-                                cevaplar={filteredCevaplar}
-                                sorular={sorular}
-                                onDelete={handleDelete}
-                                isDeleting={isDeleting}
-                            />
-                        )}
-
-                        {selectedView === "Grafik" && (
-                            <ChartView allAnswers={filteredCevaplar} survey={survey} />
-                        )}
-
-                        {/* {selectedView === "Analiz" && (
-                            <ComparisonPage allAnswers={cevaplar} survey={survey} />
-                        )} */}
-                        {selectedView === "Analiz" && <GraphView allAnswers={filteredCevaplar} survey={survey} />}
-                    </>
-                )}
-            </div>
+            <ViewSelector survey={survey} cevaplar={cevaplar} handleDelete={handleDelete} />
         </>
     );
+
 }

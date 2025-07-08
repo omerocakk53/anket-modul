@@ -4,18 +4,19 @@ import postcss from 'rollup-plugin-postcss';
 import autoprefixer from 'autoprefixer';
 import babel from '@rollup/plugin-babel';
 import url from '@rollup/plugin-url';
+import path from 'path';
 
 export default {
-  input: './index.js',
+  input: './index.js', // genelde src'den başlatman daha doğru
   output: [
     {
-      file: 'dist/index.cjs.js',
+      file: 'dist/dist/index.cjs.js', // build çıktısı dist/dist içine
       format: 'cjs',
       exports: 'named',
       sourcemap: true,
     },
     {
-      file: 'dist/index.esm.js',
+      file: 'dist/dist/index.esm.js',
       format: 'esm',
       exports: 'named',
       sourcemap: true,
@@ -36,19 +37,13 @@ export default {
     babel({
       exclude: 'node_modules/**',
       babelHelpers: 'bundled',
-      presets: [
-        ['@babel/preset-react', { runtime: 'automatic' }]
-      ],
+      presets: [['@babel/preset-react', { runtime: 'automatic' }]],
       extensions: ['.js', '.jsx'],
     }),
     url({
       include: ['**/*.mp3'],
-      limit: 0, // base64'e çevirme, dosya olarak bırak
+      limit: 0,
     }),
   ],
-  external: [
-    "react",
-    "react-dom",
-    "react-router-dom"
-  ]
+  external: ['react', 'react-dom', 'react-router-dom','react-hot-toast'],
 };
