@@ -1,10 +1,10 @@
 import React, { useRef, useEffect } from 'react';
 import { Chart, registerables } from 'chart.js';
-import getAnswerCounts from '../analysis/hooks/getanswerCounts'; // Cevap sayımlarını hesaplayan fonksiyon
-
+import getAnswerCounts from '../analysis/hooks/getanswerCounts'; 
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+Chart.register(...registerables, ChartDataLabels);
 Chart.register(...registerables);
 
-// Renk paleti
 const COLORS = [
     '#4caf50', '#2196f3', '#ff9800', '#e91e63', '#9c27b0', '#00bcd4', '#ffc107', '#8bc34a', '#f44336', '#607d8b'
 ];
@@ -31,7 +31,7 @@ function VerticalBarChart({ data, rawCounts }) {
                 }]
             },
             options: {
-                indexAxis: 'x', // Dikey bar (column)
+                indexAxis: 'x',
                 plugins: {
                     legend: { display: false },
                     tooltip: {
@@ -46,6 +46,16 @@ function VerticalBarChart({ data, rawCounts }) {
                                 );
                             }
                         }
+                    },
+                    datalabels: {
+                        color: '#fff',
+                        font: {
+                            weight: 'bold',
+                            size: 12
+                        },
+                        align: 'start',
+                        offset: -5,
+                        formatter: (value) => value
                     }
                 },
                 scales: {
@@ -63,7 +73,6 @@ function VerticalBarChart({ data, rawCounts }) {
 
 function AnswerAnalysis({ survey, answers }) {
     if (!survey?.items || !Array.isArray(answers)) return null;
-
     const analyzableTypes = [
         'MultipleChoice',
         'Dropdown',
@@ -73,6 +82,32 @@ function AnswerAnalysis({ survey, answers }) {
         'Numeric',
         'Matris',
     ];
+    console.log(
+        survey.items
+            .filter(q => analyzableTypes.includes(q.type))
+            .map((question) => {
+                const { counts, rawCounts } = getAnswerCounts(question, answers);
+                return (
+                    <div
+                        className="p-4 rounded shadow-md mx-auto"
+                        key={question.id}
+                        style={{
+                            marginBottom: 32,
+                            maxWidth: 600,
+                            width: '100%',
+                            boxSizing: 'border-box'
+                        }}
+                    >
+                        <h4>
+                            {question.type} - {question.title}
+                        </h4>
+                        <div style={{ width: '100%', height: '37%' }}>
+                            <VerticalBarChart data={counts} rawCounts={rawCounts} />
+                        </div>
+                    </div>
+                );
+            })
+    )
 
     return (
         <div className="p-4 bg-white rounded shadow-md">

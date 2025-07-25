@@ -1,20 +1,16 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { toast } from 'react-hot-toast';
+import { toast } from 'react-toastify';
 import Header from "../common/Header";
-import AnswerTable from "./answer.components/AnswerTable";
-import AnswerContentDisplay from "./answer.components/AnswerContentDisplay";
 import ViewSelector from "./answer.components/ViewSelector";
 
-export default function AnswerPage({ answerget, answerdelete, fetchsurveyById }) {
+export default function AnswerPage({ answerget, fetchsurveyById, answerdelete }) {
     const { surveyId } = useParams();
     const [cevaplar, setCevaplar] = useState([]);
-    const [sorular, setSorular] = useState([]);
     const [survey, setSurvey] = useState({});
     const [isDeleting, setIsDeleting] = useState(false);
-
-    // useNavigate hook to programmatically navigate to another page
     const navigate = useNavigate();
+
 
     useEffect(() => {
         const fetchSurveyAndAnswers = async () => {
@@ -33,14 +29,6 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
         fetchSurveyAndAnswers();
     }, [surveyId]);
 
-    useEffect(() => {
-        if (survey && survey.items) {
-            const sorular = survey.items.map(item => item.text);
-            setSorular(sorular);
-        }
-    }, [survey]);
-
-
     const handleDelete = async (answerId) => {
         toast(
             (t) => (
@@ -55,12 +43,12 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
                                 toast.dismiss(t.id);
                                 try {
                                     await answerdelete(surveyId, answerId);
-                                    const updatedCevaplar = await answerget(surveyId);
+                                    const updatedCevaplar = await fetchsurveyById(surveyId);
                                     setIsDeleting(true);
                                     setCevaplar(updatedCevaplar);
                                     toast.success("Cevap başarıyla silindi");
                                 } catch {
-                                    toast.error("Cevap silinemedi");
+                                    toast.warning("Cevap silinemedi");
                                 } finally {
                                     setIsDeleting(false);
                                 }
@@ -95,7 +83,7 @@ export default function AnswerPage({ answerget, answerdelete, fetchsurveyById })
                 onBackToMain={() => yonlendir()}
                 Sidebar={() => { }}
             />
-            <ViewSelector survey={survey} cevaplar={cevaplar} handleDelete={handleDelete} />
+            <ViewSelector survey={survey} cevaplar={cevaplar} handleDelete={handleDelete} answerDelete={answerdelete} />
         </>
     );
 

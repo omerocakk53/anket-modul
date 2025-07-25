@@ -8,7 +8,7 @@ export default function getAnswerCounts(question, allAnswers) {
         if (!answerObj) return;
 
         const answer = {
-            user: userAnswer.userName,
+            user: userAnswer._id,
             date: userAnswer.createdAt,
             value: answerObj.value,
         };
@@ -22,7 +22,7 @@ export default function getAnswerCounts(question, allAnswers) {
                 if (val) {
                     counts[val] = counts[val] || { count: 0, users: [] };
                     counts[val].count += 1;
-                    counts[val].users.push({ user: userAnswer.userName, date: userAnswer.createdAt });
+                    counts[val].users.push({ user: userAnswer._id, date: userAnswer.createdAt });
                 }
             });
         } else if (type === 'ImageChoice') {
@@ -33,7 +33,7 @@ export default function getAnswerCounts(question, allAnswers) {
                 if (title) {
                     counts[title] = counts[title] || { count: 0, users: [] };
                     counts[title].count += 1;
-                    counts[title].users.push({ user: userAnswer.userName, date: userAnswer.createdAt });
+                    counts[title].users.push({ user: userAnswer._id, date: userAnswer.createdAt });
                 }
             });
         } else if (type === 'Scale' || type === 'Rating' || type === 'Numeric') {
@@ -41,7 +41,7 @@ export default function getAnswerCounts(question, allAnswers) {
             if (val !== undefined && val !== null) {
                 counts[val] = counts[val] || { count: 0, users: [] };
                 counts[val].count += 1;
-                counts[val].users.push({ user: userAnswer.userName, date: userAnswer.createdAt });
+                counts[val].users.push({ user: userAnswer._id, date: userAnswer.createdAt });
             }
         } else if (type === 'Matris') {
             const val = answerObj.value;
@@ -50,7 +50,7 @@ export default function getAnswerCounts(question, allAnswers) {
                     const key = `${row}: ${colVal}`;
                     counts[key] = counts[key] || { count: 0, users: [] };
                     counts[key].count += 1;
-                    counts[key].users.push({ user: userAnswer.userName, date: userAnswer.createdAt });
+                    counts[key].users.push({ user: userAnswer._id, date: userAnswer.createdAt });
                 });
             }
         }

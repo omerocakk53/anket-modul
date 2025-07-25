@@ -2,11 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { FiHelpCircle, FiBell, FiArrowLeft, FiEdit, FiCalendar, FiCheckCircle, FiXCircle, FiFolder } from 'react-icons/fi';
 import EditSurveyModal from './EditSurveyModal';
 import { FaPoll } from 'react-icons/fa';
-import { IoColorFillOutline } from "react-icons/io5";
 import { CiMenuKebab } from 'react-icons/ci';
-import { IoMdClose } from 'react-icons/io';
 import { MdOutlineFeaturedPlayList } from 'react-icons/md';
-import { GiCryoChamber } from 'react-icons/gi';
 
 export default function Header({
     isEditMode = false,
@@ -30,8 +27,6 @@ export default function Header({
             <>
                 <header className="bg-neutral/0 shadow-sm mb-4">
                     <div className="px-3 py-2 sm:px-6 sm:py-3 space-y-2">
-
-                        {/* Logo ve Menü Butonu */}
                         <div className="flex items-center justify-between">
                             <div className="flex items-center gap-2 text-primary font-bold text-lg">
                                 <FaPoll className="h-6 w-6 animate-pulse-slow" />
@@ -260,10 +255,6 @@ export default function Header({
                 <div className="flex items-center gap-3 px-1 rounded-xl text-primary-dark text-2xl">
                     <FiFolder />
                     <span>{selectedGroup || 'Klasör İsmi Yok'}</span>
-                </div>
-                <div className="flex items-center gap-3 px-1 rounded-xl text-primary-dark text-2xl">
-                    <GiCryoChamber />
-                    <span>{chamberName || 'Oda İsmi Yok'}</span>
                 </div>
             </div>
             <div className="flex items-center space-x-4">

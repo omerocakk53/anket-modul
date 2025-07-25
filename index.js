@@ -7,16 +7,39 @@ export { default as SuccessMessagePortal } from './src/components/successMesage/
 export { default as Answer } from './src/components/answer/AnswerPage';
 export { default as ToastProvider } from './src/components/toast/Toastprovider';
 
-// Answer
-export * from './src/components/answer/answer.components/ViewSelector';
-export * from './src/components/answer/answer.components/AnswerContentDisplay';
-export * from './src/components/answer/answer.components/AnswerTable';
-export * from './src/components/answer/answer.components/AnswerGraph';
-export * from './src/components/answer/answer.components/AnswerAnalysis';
-// Answer Controller
-export * from './src/components/answer/analysis/hooks/getanswerCounts';
 // Answer Pages
 export * from './src/components/answer/AnswerPage';
+export * from './src/components/answer/analysis/analysisController';
+export * from './src/components/answer/analysis/choiceUtils';
+export * from './src/components/answer/analysis/matrixUtils';
+export * from './src/components/answer/analysis/numericUtils';
+export * from './src/components/answer/analysis/hooks/getanswerCounts';
+export * from './src/components/answer/analysis/hooks/useFingerprint';
+export * from './src/components/answer/analysis/hooks/satisfaction';
+export * from './src/components/answer/answer.components/AnswerAnalysis';
+export * from './src/components/answer/answer.components/AnswerComparison';
+export * from './src/components/answer/answer.components/AnswerScales';
+export * from './src/components/answer/answer.components/ViewSelector';
+export * from './src/components/answer/answer.components/AnswerAnalysisComponent/AnswerAnalysis';
+export * from './src/components/answer/answer.components/AnswerAnalysisComponent/AnswerChartCard';
+export * from './src/components/answer/answer.components/AnswerAnalysisComponent/AnswerChartSwitcher';
+export * from './src/components/answer/answer.components/AnswerAnalysisComponent/ColorPickerRow';
+export * from './src/components/answer/answer.components/AnswerAnalysisComponent/QuestionFilter';
+export * from './src/components/answer/answer.components/AnswerAnalysisComponent/ToggleableSection';
+export * from './src/components/answer/answer.components/AnswerTableComponent/AnswerTable';
+export * from './src/components/answer/answer.components/AnswerTableComponent/ColumnToggler';
+export * from './src/components/answer/answer.components/AnswerTableComponent/DateFilter';
+export * from './src/components/answer/answer.components/AnswerTableComponent/ExportButtons';
+export * from './src/components/answer/answer.components/AnswerTableComponent/PaginationControls';
+export * from './src/components/answer/answer.components/AnswerTableComponent/TextSearch';
+export * from './src/components/answer/answer.components/AnswerTableComponent/TableWrapper';
+export * from './src/components/answer/answer.components/AnswerCompareComponent/ComparisonView/ItemUserDeltaChart/ItemUserDeltaChart';
+export * from './src/components/answer/answer.components/AnswerCompareComponent/ComparisonView/ItemUserDeltaTable';
+export * from './src/components/answer/answer.components/AnswerCompareComponent/DateSelector';
+export * from './src/components/answer/answer.components/AnswerCompareComponent/PeriotSelector';
+export * from './src/components/answer/answer.components/AnswerCompareComponent/utils/SurveyComparison';
+export * from './src/components/answer/answer.components/AnswerCompareComponent/utils/UserSurveyComparison';
+export * from './src/components/answer/answer.components/AnswerCompareComponent/popUp/Modal';
 
 // Renk & Tema
 export * from './src/Colors/ColorEditor';
