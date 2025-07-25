@@ -2,10 +2,10 @@
   "name": "@omerocakk53/anket-modul",
   "version": "2.0.23",
   "description": "Yeniden kullanılabilir React anket modülü",
-  "main": "./index.cjs.js",
-  "module": "./index.esm.js",
-  "types": "./index.d.ts",
-  "style": "./styles.css",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/index.d.ts",
+  "style": "./dist/styles.css",
   "files": [
     "./dist"
   ],

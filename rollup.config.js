@@ -4,13 +4,12 @@ import postcss from 'rollup-plugin-postcss';
 import autoprefixer from 'autoprefixer';
 import babel from '@rollup/plugin-babel';
 import url from '@rollup/plugin-url';
-import path from 'path';
 
 export default {
-  input: './index.js', // genelde src'den başlatman daha doğru
+  input: './index.js', 
   output: [
     {
-      file: 'dist/index.cjs.js', // build çıktısı dist/dist içine
+      file: 'dist/index.cjs.js', 
       format: 'cjs',
       exports: 'named',
       sourcemap: true,
@@ -21,18 +20,6 @@ export default {
       exports: 'named',
       sourcemap: true,
     },
-    // {
-    //   file: 'dist/dist/index.cjs.js', // build çıktısı dist/dist içine
-    //   format: 'cjs',
-    //   exports: 'named',
-    //   sourcemap: true,
-    // },
-    // {
-    //   file: 'dist/dist/index.esm.js',
-    //   format: 'esm',
-    //   exports: 'named',
-    //   sourcemap: true,
-    // },
   ],
   plugins: [
     resolve({
