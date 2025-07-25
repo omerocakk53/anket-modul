@@ -10,17 +10,29 @@ export default {
   input: './index.js', // genelde src'den başlatman daha doğru
   output: [
     {
-      file: 'dist/dist/index.cjs.js', // build çıktısı dist/dist içine
+      file: 'dist/index.cjs.js', // build çıktısı dist/dist içine
       format: 'cjs',
       exports: 'named',
       sourcemap: true,
     },
     {
-      file: 'dist/dist/index.esm.js',
+      file: 'dist/index.esm.js',
       format: 'esm',
       exports: 'named',
       sourcemap: true,
     },
+    // {
+    //   file: 'dist/dist/index.cjs.js', // build çıktısı dist/dist içine
+    //   format: 'cjs',
+    //   exports: 'named',
+    //   sourcemap: true,
+    // },
+    // {
+    //   file: 'dist/dist/index.esm.js',
+    //   format: 'esm',
+    //   exports: 'named',
+    //   sourcemap: true,
+    // },
   ],
   plugins: [
     resolve({

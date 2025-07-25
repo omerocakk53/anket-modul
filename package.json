@@ -2,15 +2,15 @@
   "name": "@omerocakk53/anket-modul",
   "version": "2.0.23",
   "description": "Yeniden kullanılabilir React anket modülü",
-  "main": "./dist/index.cjs.js",
-  "module": "./dist/index.esm.js",
-  "types": "./dist/index.d.ts",
-  "style": "./dist/styles.css",
+  "main": "./index.cjs.js",
+  "module": "./index.esm.js",
+  "types": "./index.d.ts",
+  "style": "./styles.css",
   "files": [
     "./dist"
   ],
   "scripts": {
-    "build:css": "tailwindcss -i ./styles/tailwind.css -o ./dist/dist/styles.css --minify",
+    "build:css": "tailwindcss -i ./styles/tailwind.css -o ./dist/styles.css --minify",
     "build:js": "rollup -c",
     "build": "pnpm run build:css && pnpm run build:js",
     "clean": "rm -rf dist",
@@ -64,7 +64,6 @@
     "dom-to-image": "^2.6.0",
     "file-saver": "^2.0.5",
     "framer-motion": "^12.19.3",
-    "my-library": "link:../../../AppData/Local/pnpm/global/5/node_modules/my-library",
     "qrcode.react": "^4.2.0",
     "rc-input-number": "^9.5.0",
     "rc-slider": "^11.1.8",
