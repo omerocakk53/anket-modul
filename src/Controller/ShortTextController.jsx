@@ -6,7 +6,6 @@ function ShortTextController({ isOpen, setControllerOpen, items, Item, setItems,
   const [ShortText, setShortText] = useState({});
   useEffect(() => {
     if (Array.isArray(Item) && Item.length === 0 || Object.keys(ShortText).length === 0) {
-      return;
     } else {
       if (!Item.id || !ShortText?.title) { toast.warning("boş değerler var") };
     }
