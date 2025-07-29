@@ -250,6 +250,7 @@ function SurveyCreate({ updatesurvey, fetchsurveyById, updatesurveyfeature }) {
                             count={edit ? " Oluşturulma değeri " + isOpen[2] : items?.length + 1}
                             SetEdit={(deger) => setEdit(deger)}
                             Edit={edit}
+                            SurveyType={survey.surveyType}
                         />
                     );
                 })}

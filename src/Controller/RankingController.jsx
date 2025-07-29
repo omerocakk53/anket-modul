@@ -7,7 +7,7 @@ function RankingController({ isOpen, setControllerOpen, items, Item, setItems, c
 
     useEffect(() => {
         if (!Item.id) return;
-        if (!RankingData?.title || !RankingData?.helpText || !RankingData?.options?.length > 0) toast.error("boş değerler var");
+        if (!RankingData?.title  || !RankingData?.options?.length > 0) {  toast.warning("boş değerler var")};
         const updatedItem = {
             ...Item,
             label: Item.label,

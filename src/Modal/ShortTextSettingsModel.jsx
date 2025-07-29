@@ -38,7 +38,7 @@ function ShortTextModal({ isOpen, onClose, onSave, onChange, initialData, count 
   if (!isOpen) return null;
 
   const leftPanel = (
-    <div className="space-y-4">
+    <div className="space-y-2">
       <h2 className="text-lg font-bold">Soru Ayarları</h2>
       <div>
         <label className="block text-sm font-medium mb-1">Başlık</label>
@@ -50,7 +50,7 @@ function ShortTextModal({ isOpen, onClose, onSave, onChange, initialData, count 
         />
       </div>
       <div>
-        <label className="block text-sm font-medium mb-1">Yardım Metni</label>
+        <label className="block text-sm font-medium mb-1">Yardım Metni (isteğe bağlı)</label>
         <input
           type="text"
           className="w-full border rounded p-2"

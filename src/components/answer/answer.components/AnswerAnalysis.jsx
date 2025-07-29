@@ -82,32 +82,6 @@ function AnswerAnalysis({ survey, answers }) {
         'Numeric',
         'Matris',
     ];
-    console.log(
-        survey.items
-            .filter(q => analyzableTypes.includes(q.type))
-            .map((question) => {
-                const { counts, rawCounts } = getAnswerCounts(question, answers);
-                return (
-                    <div
-                        className="p-4 rounded shadow-md mx-auto"
-                        key={question.id}
-                        style={{
-                            marginBottom: 32,
-                            maxWidth: 600,
-                            width: '100%',
-                            boxSizing: 'border-box'
-                        }}
-                    >
-                        <h4>
-                            {question.type} - {question.title}
-                        </h4>
-                        <div style={{ width: '100%', height: '37%' }}>
-                            <VerticalBarChart data={counts} rawCounts={rawCounts} />
-                        </div>
-                    </div>
-                );
-            })
-    )
 
     return (
         <div className="p-4 bg-white rounded shadow-md">

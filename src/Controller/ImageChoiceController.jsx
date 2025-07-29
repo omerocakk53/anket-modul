@@ -7,7 +7,7 @@ function ImageChoiceController({ isOpen, setControllerOpen, items, Item, setItem
 
     useEffect(() => {
         if (!Item.id) return;
-        if (!ImageChoiceData?.title || !ImageChoiceData?.images?.length > 0) toast.error("boş değerler var");
+        if (!ImageChoiceData?.title || !ImageChoiceData?.images?.length > 0) {  toast.warning("boş değerler var")};
 
         const updatedItem = {
             ...Item,
@@ -33,7 +33,6 @@ function ImageChoiceController({ isOpen, setControllerOpen, items, Item, setItem
                 ...updatedItem,
                 id: Item.id + '-' + count,
             };
-            console.log("Oluşturuldu", ...items, newItem)
             setItems([...items, newItem]);
             toast.success("Yeni bileşen eklendi");
         }

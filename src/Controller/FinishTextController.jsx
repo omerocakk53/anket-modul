@@ -11,9 +11,8 @@ function FinishTextController({ isOpen, setControllerOpen, items, Item, setItems
     useEffect(() => {
         if (!Item.id) return;
 
-        if (!FinishText?.title || !FinishText?.helpText) {
-            toast.error("boş değerler var")
-            return;
+        if (!FinishText?.title) {
+            toast.warning("boş değerler var")
         };
 
         const updatedItem = {

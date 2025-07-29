@@ -35,15 +35,14 @@ function LinkSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
 
   if (!isOpen) return null;
   const leftPanel = (
-    <div className="space-y-4">
+    <div className="space-y-2">
       <h2 className="text-lg font-bold">Soru Ayarları</h2>
       <div>
         <label className="block text-sm font-medium mb-1">Başlık</label>
         <input className="w-full border rounded p-2" value={title} onChange={(e) => setTitle(e.target.value)} />
       </div>
       <div>
-        <label className="block text-sm font-medium mb-1">Yardım Metni</label>
-        <input className="w-full border rounded p-2" value={helpText} onChange={(e) => setHelpText(e.target.value)} />
+        <label className="block text-sm font-medium mb-1">Yardım Metni (isteğe bağlı)</label>  <input className="w-full border rounded p-2" value={helpText} onChange={(e) => setHelpText(e.target.value)} />
       </div>
 
       <div>

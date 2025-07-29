@@ -7,7 +7,7 @@ function FileUploadController({ isOpen, setControllerOpen, items, Item, setItems
 
     useEffect(() => {
         if (!Item.id) return;
-        if (!FileData?.title || !FileData?.helpText) toast.error("boş değerler var");
+        if (!FileData?.title ) {  toast.warning("boş değerler var")};
 
         const updatedItem = {
             ...Item,

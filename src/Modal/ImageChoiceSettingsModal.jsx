@@ -59,7 +59,6 @@ function ImageChoiceSettingsModal({
   };
 
   const handleSave = () => {
-    console.log("geldi")
     onSave({
       title,
       helpText,

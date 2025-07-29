@@ -5,8 +5,12 @@ import { toast } from 'react-hot-toast';
 function ShortTextController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
   const [ShortText, setShortText] = useState({});
   useEffect(() => {
-    if (!Item.id || !ShortText?.title || !ShortText?.helpText) return;
-
+    if (Array.isArray(Item) && Item.length === 0 || Object.keys(ShortText).length === 0) {
+      return;
+    } else {
+      if (!Item.id || !ShortText?.title) { toast.warning("boş değerler var") };
+    }
+ 
     const updatedItem = {
       ...Item,
       title: ShortText.title,
@@ -23,6 +27,9 @@ function ShortTextController({ isOpen, setControllerOpen, items, Item, setItems,
       toast.success("Bileşen güncellendi");
       SetEdit(false);
     } else {
+      // İlk Bu render Edildiği İçin Burdaki SetItem tarafı gereksiz çalışıyor o yüzden sadece 
+      // bu komponenet e kontrol ekledim gereksiz çalışmaması için
+      if (!updatedItem.title) return;
       const newItem = {
         ...updatedItem,
         id: Item.id + '-' + count,

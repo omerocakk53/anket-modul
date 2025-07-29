@@ -34,7 +34,6 @@ function AnswerAnalysis({ survey, answers }) {
       <div className='flex flex-wrap justify-center gap-5'>
         {filteredQuestions.map(question => {
           const { counts, rawCounts } = getAnswerCounts(question, filteredAnswers);
-          console.log(question,counts,rawCounts);
           return (
             <AnswerChartCard
               key={question.id}

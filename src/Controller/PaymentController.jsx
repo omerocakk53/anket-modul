@@ -7,7 +7,7 @@ function PaymentController({ isOpen, setControllerOpen, items, Item, setItems, c
 
     useEffect(() => {
         if (!Item.id) return;
-        if (!PaymentData?.title || !PaymentData?.helpText || !PaymentData?.amount > 0) toast.error("boş değerler var");
+        if (!PaymentData?.title ||  !PaymentData?.amount > 0) {  toast.warning("boş değerler var")};
 
         const updatedItem = {
             ...Item,

@@ -6,7 +6,7 @@ function DropdownController({ isOpen, setControllerOpen, items, Item, setItems, 
     const [DropdownData, setDropdownData] = useState([]);
     useEffect(() => {
         if (!Item.id) return;
-        if (!DropdownData?.title || !DropdownData?.options?.length > 0) toast.error("boş değerler var");
+        if (!DropdownData?.title || !DropdownData?.options?.length > 0){  toast.warning("boş değerler var")};
 
         const updatedItem = {
             ...Item,

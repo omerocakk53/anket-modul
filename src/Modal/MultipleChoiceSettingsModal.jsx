@@ -93,7 +93,7 @@ function MultipleChoiceSettingsModal({ isOpen, onClose, onSave, initialData, cou
 
       <div>
         <label className="block text-sm font-medium mb-1" htmlFor="helpText">
-          Yardım Metni
+          Yardım Metni (isteğe bağlı)
         </label>
         <input
           id="helpText"

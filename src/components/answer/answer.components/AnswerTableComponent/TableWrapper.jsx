@@ -5,9 +5,9 @@ import ColumnToggler from './ColumnToggler';
 import TextSearch from './TextSearch';
 import DateFilter from './DateFilter';
 import AnswerTable from './AnswerTable';
+import { FiFilter } from 'react-icons/fi';
 
-const TableWrapper = ({ survey, answers, onDelete, answerDelete }) => {
-    console.log( answers)
+const TableWrapper = ({ survey, answers, onDelete }) => {
     const allColumns = useMemo(() => [
         { key: '_id', label: 'ID' },
         { key: 'createdAt', label: 'Tarih' },
@@ -24,15 +24,13 @@ const TableWrapper = ({ survey, answers, onDelete, answerDelete }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(10);
 
-    // Filtreleme
     const filtered = useMemo(() => {
+        if (!Array.isArray(answers) || answers.length === 0) return [];
         return answers.filter(ans => {
-            // Tarih filtresi
             const t = new Date(ans.createdAt);
             if (startDate && t < startDate) return false;
             if (endDate && t > endDate) return false;
 
-            // Metin filtresi
             if (searchText) {
                 const haystack = JSON.stringify(ans).toLowerCase();
                 if (!haystack.includes(searchText.toLowerCase())) return false;
@@ -41,55 +39,45 @@ const TableWrapper = ({ survey, answers, onDelete, answerDelete }) => {
         });
     }, [answers, searchText, startDate, endDate]);
 
-    // Sayfalama
     const totalPages = Math.ceil(filtered.length / pageSize);
     const pageData = useMemo(() => {
         const start = (currentPage - 1) * pageSize;
         return filtered.slice(start, start + pageSize);
     }, [filtered, currentPage, pageSize]);
 
-    // Export verisi
-    const exportData = useMemo(() => {
-        return filtered.map(ans => {
-            const row = {
-                ID: ans._id,
-                Tarih: new Date(ans.createdAt).toLocaleString()
-            };
-            survey.items.forEach(item => {
-                const a = ans.answers.find(a => a.itemId === item.id);
-                row[item.title] = a ? (Array.isArray(a.value) ? a.value.join(', ') : a.value ?? '') : '';
-            });
-            return row;
-        });
-    }, [filtered, survey]);
-
     return (
-        <div className="p-6 bg-white rounded-2xl shadow-xl w-full max-w-7xl mx-auto space-y-6">
-            <div>
-                <ExportButtons data={exportData} filename="anket_yanitlari" />
-            </div>
-            <div className="flex items-center justify-between gap-2">
-                <div>
-                    <TextSearch searchText={searchText} setSearchText={setSearchText} />
-                    <DateFilter
-                        startDate={startDate}
-                        setStartDate={setStartDate}
-                        endDate={endDate}
-                        setEndDate={setEndDate}
-                    />
+        <div className="p-6 rounded-2xl shadow-xl bg-white w-full mx-auto space-y-6">
+            <div className="flex justify-between items-start gap-4 w-full">
+                <div className="grid gap-4">
+                    <div className="w-full">
+                        <TextSearch searchText={searchText} setSearchText={setSearchText} />
+                    </div>
+                    <div className="w-full">
+                        <DateFilter
+                            startDate={startDate}
+                            setStartDate={setStartDate}
+                            endDate={endDate}
+                            setEndDate={setEndDate}
+                        />
+                    </div>
+                    <div className="w-full">
+                        <ColumnToggler
+                            columns={allColumns}
+                            visibleColumns={visibleColumns}
+                            setVisibleColumns={setVisibleColumns}
+                        />
+                    </div>
                 </div>
-                <ColumnToggler
-                    columns={allColumns}
-                    visibleColumns={visibleColumns}
-                    setVisibleColumns={setVisibleColumns}
-                />
+                <div className="flex-shrink-0">
+                    <ExportButtons answers={filtered} survey={survey} />
+                </div>
             </div>
+
             <AnswerTable
                 survey={survey}
                 answers={pageData}
                 visibleColumns={visibleColumns}
                 onDelete={onDelete}
-                answerDelete={answerDelete}
             />
             <PaginationControls
                 currentPage={currentPage}

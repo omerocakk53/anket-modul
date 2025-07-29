@@ -36,7 +36,7 @@ function PaymentSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
   if (!isOpen) return null;
 
   const leftPanel = (
-    <div className="space-y-4">
+    <div className="space-y-2">
       <h2 className="text-lg font-bold">Ödeme Alanı Ayarları</h2>
 
       {/* Başlık */}
@@ -52,8 +52,7 @@ function PaymentSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
 
       {/* Yardım Metni */}
       <div>
-        <label className="block text-sm font-medium mb-1">Yardım Metni</label>
-        <input
+        <label className="block text-sm font-medium mb-1">Yardım Metni (isteğe bağlı)</label>  <input
           className="w-full border rounded p-2"
           value={helpText}
           onChange={(e) => setHelpText(e.target.value)}

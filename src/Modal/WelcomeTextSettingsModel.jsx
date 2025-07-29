@@ -5,8 +5,6 @@ import ModalLayout from "../components/layouts/ModalLayout";
 function WelcomeTextSettingsModel({ isOpen, onClose, onSave, onChange, initialData }) {
     const [title, setTitle] = useState("");
     const [helpText, setHelpText] = useState("");
-    const [SurveyNumberVisible, setSurveyNumberVisible] = useState(true);
-
     useEffect(() => {
         onChange?.({ title, helpText });
     }, [title, helpText]);
@@ -18,7 +16,7 @@ function WelcomeTextSettingsModel({ isOpen, onClose, onSave, onChange, initialDa
 
     if (!isOpen) return null;
     const leftPanel = (
-        <div className="space-y-4">
+        <div className="space-y-2">
             <h2 className="text-lg font-bold">Hoşgeldiniz Metni Ayarları</h2>
 
             <div>
@@ -33,7 +31,7 @@ function WelcomeTextSettingsModel({ isOpen, onClose, onSave, onChange, initialDa
             </div>
 
             <div>
-                <label className="block text-sm font-medium mb-1">Alt Mesaj</label>
+                <label className="block text-sm font-medium mb-1">Alt Mesaj (isteğe bağlı)</label>
                 <input
                     type="text"
                     className="w-full border rounded p-2"

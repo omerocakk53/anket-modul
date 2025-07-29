@@ -17,7 +17,7 @@ export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurv
         toast(
             (t) => (
                 <div className="flex flex-col items-center p-4 rounded-lg max-w-sm">
-                    <p className="text-lg font-semibold mb-4 text-primary-text">
+                    <p className="text-lg font-semibold mb-4 text-primary-darktext">
                         Anketi silmek istediğinize emin misiniz?
                     </p>
                     <p className="text-sm text-primary-darktext mb-6">Bu işlem geri alınamaz.</p>

@@ -7,7 +7,7 @@ function LinkController({ isOpen, setControllerOpen, items, Item, setItems, coun
 
     useEffect(() => {
         if (!Item.id) return;
-        if (!LinkData?.title || !LinkData?.url) toast.error("boş değerler var");
+        if (!LinkData?.title || !LinkData?.url){  toast.warning("boş değerler var")};
         const updatedItem = {
             ...Item,
             title: LinkData.title,

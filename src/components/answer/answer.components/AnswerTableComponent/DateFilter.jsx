@@ -2,15 +2,31 @@ import React from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { tr } from 'date-fns/locale';
-
+import { FiCalendar, FiXCircle } from 'react-icons/fi';
 const DateFilter = ({ startDate, endDate, setStartDate, setEndDate }) => {
+  const clearFilters = () => {
+    setStartDate(null);
+    setEndDate(null);
+  };
   return (
-    <div className="my-4 p-4 border border-gray-200 rounded-2xl shadow-sm bg-white max-w-xl mx-auto h-[160px]">
-      <h3 className="font-semibold text-lg mb-3 text-gray-700">Tarih Filtreleme</h3>
+    <div className="flex-1 bg-white border border-gray-200 rounded-2xl shadow-md p-5 mx-auto max-w-xl">
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-2">
+          <FiCalendar className="text-blue-500 text-xl" />
+          <h3 className="font-semibold text-lg text-gray-700">Tarih Filtreleme</h3>
+        </div>
+        <button
+          onClick={clearFilters}
+          className="flex items-center gap-1 text-red-500 hover:text-red-600 transition-colors text-sm font-medium"
+        >
+          <FiXCircle />
+          Temizle
+        </button>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-600 mb-1">
-            Başlangıç Tarihi
+          <label className="text-sm font-medium text-gray-600 mb-1 flex items-center gap-1">
+            Başlangıç
           </label>
           <DatePicker
             selected={startDate}
@@ -19,12 +35,16 @@ const DateFilter = ({ startDate, endDate, setStartDate, setEndDate }) => {
             startDate={startDate}
             endDate={endDate}
             locale={tr}
-            className="w-full px-3 py-2 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            dateFormat="dd/MM/yyyy"
+            placeholderText="Başlangıç tarihi"
+            className="w-full px-3 py-2 border border-gray-300 rounded-xl shadow-sm 
+                   focus:outline-none focus:ring-2 focus:ring-blue-500 
+                   focus:border-blue-500"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-600 mb-1">
-            Bitiş Tarihi
+          <label className="text-sm font-medium text-gray-600 mb-1 flex items-center gap-1">
+            Bitiş
           </label>
           <DatePicker
             selected={endDate}
@@ -34,7 +54,11 @@ const DateFilter = ({ startDate, endDate, setStartDate, setEndDate }) => {
             endDate={endDate}
             minDate={startDate}
             locale={tr}
-            className="w-full px-3 py-2 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            dateFormat="dd/MM/yyyy"
+            placeholderText="Bitiş tarihi"
+            className="w-full px-3 py-2 border border-gray-300 rounded-xl shadow-sm 
+                   focus:outline-none focus:ring-2 focus:ring-blue-500 
+                   focus:border-blue-500"
           />
         </div>
       </div>

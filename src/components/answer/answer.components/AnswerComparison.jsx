@@ -61,10 +61,6 @@ export default function AnswerComparison({ survey, answers }) {
         [survey, answers, surveyPeriod1, surveyPeriod2]
     );
 
-
-    console.log("MixedSurvey", MixedSurvey);
-
-
     const handleDateSelectorChange = ({ surveyPeriod1, surveyPeriod2 }) => {
         setSurveyPeriod1(surveyPeriod1);
         setSurveyPeriod2(surveyPeriod2);

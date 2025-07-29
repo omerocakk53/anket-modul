@@ -7,12 +7,24 @@ import { PiScalesLight } from "react-icons/pi";
 import AnswerScales from './AnswerScales';
 import TableWrapper from './AnswerTableComponent/TableWrapper';
 import AnswerComparison from './AnswerComparison';
-const ViewSelector = ({ survey, cevaplar, handleDelete, answerDelete }) => {
+import { FiAlertCircle } from 'react-icons/fi';
+const ViewSelector = ({ survey, answers, handleDelete }) => {
     const [viewType, setViewType] = useState('scales');
 
     const handleViewChange = (newViewType) => {
         setViewType(newViewType);
     };
+    const NoAnswers = () => (
+        <div className="max-w-md mx-auto mt-12 p-6 bg-white rounded-xl shadow-lg flex items-center space-x-6">
+            <div className="flex-shrink-0 rounded-full p-4 relative">
+                <FiAlertCircle color='red' size={48} />
+            </div>
+            <div>
+                <h2 className="text-xl text-blue-600 mb-1">Gösterilecek Cevap Yok</h2>
+                <p className="text-md text-gray-500">Henüz bu bölüm için veri bulunmamaktadır.</p>
+            </div>
+        </div>
+    );
 
     return (
         <div>
@@ -44,29 +56,40 @@ const ViewSelector = ({ survey, cevaplar, handleDelete, answerDelete }) => {
             </div>
 
             {viewType === 'scales' && (
-                <AnswerScales
-                    shareData={{}}
-                />
+                answers.length > 0 ? (
+                    <AnswerScales
+                        shareData={{}}
+                    />) : (
+                    <NoAnswers />
+                )
             )}
             {viewType === 'graph' && (
-                <AnswerAnalysis
-                    survey={survey}
-                    answers={cevaplar}
-                />
+                answers.length > 0 ? (
+                    <AnswerAnalysis
+                        survey={survey}
+                        answers={answers}
+                    />) : (
+                    <NoAnswers />
+                )
             )}
             {viewType === 'table' && (
-                <TableWrapper
-                    survey={survey}
-                    answers={cevaplar}
-                    onDelete={handleDelete}
-                    answerDelete={answerDelete}
-                />
+                answers.length > 0 ? (
+                    <TableWrapper
+                        survey={survey}
+                        answers={answers}
+                        onDelete={handleDelete}
+                    />) : (
+                    <NoAnswers />
+                )
             )}
             {viewType === 'compare' && (
-                <AnswerComparison
-                    survey={survey}
-                    answers={cevaplar}
-                />
+                answers.length > 0 ? (
+                    <AnswerComparison
+                        survey={survey}
+                        answers={answers}
+                    />) : (
+                    <NoAnswers />
+                )
             )}
         </div>
     );

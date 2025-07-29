@@ -2,40 +2,45 @@ import React from 'react';
 import { FiChevronsLeft, FiChevronLeft, FiChevronRight, FiChevronsRight } from 'react-icons/fi';
 
 const PaginationControls = ({ currentPage, totalPages, pageSize, onPageChange, onPageSizeChange }) => {
+  const buttonClass = (disabled) =>
+    `flex items-center justify-center w-9 h-9 rounded-lg border text-gray-600 shadow-sm
+     transition-all duration-200 hover:bg-blue-50 hover:text-blue-600 
+     ${disabled ? 'opacity-40 cursor-not-allowed' : 'bg-white'}`;
+
   return (
-    <div className="flex flex-col md:flex-row justify-between items-center my-6 gap-4">
+    <div className="flex flex-col md:flex-row justify-between items-center my-6 gap-4 bg-white p-4 rounded-xl shadow-sm border border-gray-100">
       {/* Sayfalama Butonları */}
       <div className="flex items-center flex-wrap gap-2">
         <button
           onClick={() => onPageChange(1)}
           disabled={currentPage === 1}
-          className="pagination-btn"
+          className={buttonClass(currentPage === 1)}
         >
           <FiChevronsLeft />
         </button>
         <button
           onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className="pagination-btn"
+          className={buttonClass(currentPage === 1)}
         >
           <FiChevronLeft />
         </button>
 
-        <span className="text-sm font-medium px-2 text-gray-700">
+        <span className="text-sm font-medium px-2 text-gray-700 bg-gray-50 py-1 rounded-lg border border-gray-200">
           Sayfa <span className="font-semibold">{currentPage}</span> / {totalPages}
         </span>
 
         <button
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className="pagination-btn"
+          className={buttonClass(currentPage === totalPages)}
         >
           <FiChevronRight />
         </button>
         <button
           onClick={() => onPageChange(totalPages)}
           disabled={currentPage === totalPages}
-          className="pagination-btn"
+          className={buttonClass(currentPage === totalPages)}
         >
           <FiChevronsRight />
         </button>
@@ -49,7 +54,8 @@ const PaginationControls = ({ currentPage, totalPages, pageSize, onPageChange, o
         <select
           value={pageSize}
           onChange={(e) => onPageSizeChange(Number(e.target.value))}
-          className="border border-gray-300 px-2 py-1 rounded-xl shadow-sm focus:ring-blue-500 focus:border-blue-500 outline-none"
+          className="border border-gray-300 px-3 py-1.5 rounded-lg shadow-sm bg-white 
+                     focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none text-sm"
         >
           {[10, 20, 30, 50, 100].map((size) => (
             <option key={size} value={size}>

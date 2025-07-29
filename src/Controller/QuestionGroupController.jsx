@@ -7,7 +7,7 @@ function QuestionGroupController({ isOpen, setControllerOpen, items, Item, setIt
 
     useEffect(() => {
         if (!Item.id) return;
-        if (!QuestionGroupData?.title || !QuestionGroupData?.helpText || !QuestionGroupData?.questions?.length > 0) toast.error("boş değerler var");
+        if (!QuestionGroupData?.title  || !QuestionGroupData?.questions?.length > 0) {  toast.warning("boş değerler var")};
         const updatedItem = {
             ...Item,
             title: QuestionGroupData.title,

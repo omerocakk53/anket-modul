@@ -6,6 +6,7 @@ export { default as SurveyCreate } from './src/components/SurveyCreate';
 export { default as SuccessMessagePortal } from './src/components/successMesage/SuccessMessagePortal';
 export { default as Answer } from './src/components/answer/AnswerPage';
 export { default as ToastProvider } from './src/components/toast/Toastprovider';
+export { default as AnswerSheet } from './src/components/answer/answer.components/AnswerTableComponent/AnswerSheet';
 
 // Answer Pages
 export * from './src/components/answer/AnswerPage';
@@ -33,13 +34,19 @@ export * from './src/components/answer/answer.components/AnswerTableComponent/Ex
 export * from './src/components/answer/answer.components/AnswerTableComponent/PaginationControls';
 export * from './src/components/answer/answer.components/AnswerTableComponent/TextSearch';
 export * from './src/components/answer/answer.components/AnswerTableComponent/TableWrapper';
-export * from './src/components/answer/answer.components/AnswerCompareComponent/ComparisonView/ItemUserDeltaChart/ItemUserDeltaChart';
-export * from './src/components/answer/answer.components/AnswerCompareComponent/ComparisonView/ItemUserDeltaTable';
 export * from './src/components/answer/answer.components/AnswerCompareComponent/DateSelector';
 export * from './src/components/answer/answer.components/AnswerCompareComponent/PeriotSelector';
 export * from './src/components/answer/answer.components/AnswerCompareComponent/utils/SurveyComparison';
 export * from './src/components/answer/answer.components/AnswerCompareComponent/utils/UserSurveyComparison';
 export * from './src/components/answer/answer.components/AnswerCompareComponent/popUp/Modal';
+export * from './src/components/answer/answer.components/AnswerCompareComponent/ComparisonView/MixedItemUserDeltaTable';
+export * from './src/components/answer/answer.components/AnswerCompareComponent/ComparisonView/MixedChart/MixedChart';
+export * from './src/components/answer/answer.components/AnswerCompareComponent/ComparisonView/ItemUserDeltaTable';
+export * from './src/components/answer/answer.components/AnswerCompareComponent/ComparisonView/ItemUserDeltaChart/ChartWrapper';
+export * from './src/components/answer/answer.components/AnswerCompareComponent/ComparisonView/ItemUserDeltaChart/ItemUserDeltaChart';
+export * from './src/components/answer/answer.components/AnswerCompareComponent/ComparisonView/ItemUserDeltaChart/chartDataUtils';
+export * from './src/components/answer/answer.components/AnswerCompareComponent/ComparisonView/ItemUserDeltaChart/chartOptions';
+
 
 // Renk & Tema
 export * from './src/Colors/ColorEditor';
