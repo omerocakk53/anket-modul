@@ -35,7 +35,7 @@ export default function SurveyPlayer({ surveyId, user, fetchsurveyById, answersa
 
     const views = async (surveyId, userId) => {
         try {
-            const response = await viewsCount(surveyId, userId);
+            const response = await viewsCount(surveyId);
             if (response.message) {
                 toast.error(response.message);
             }
@@ -43,10 +43,9 @@ export default function SurveyPlayer({ surveyId, user, fetchsurveyById, answersa
             console.error(error);
         }
     };
-
     useEffect(() => {
-        views(surveyId, user.id);
-    }, [surveyId, user.id]);
+        views(surveyId);
+    }, [surveyId]);
 
     const handleChange = (id, value) => {
         setAnswers(prev => {
