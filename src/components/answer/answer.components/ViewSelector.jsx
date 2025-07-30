@@ -81,6 +81,7 @@ const ViewSelector = ({ survey, answers, handleDelete }) => {
             )}
             {viewType === 'graph' && (
                 answers.length > 0 ? (
+                    
                     <AnswerAnalysis
                         survey={survey}
                         answers={answers}

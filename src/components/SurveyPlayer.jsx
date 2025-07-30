@@ -45,8 +45,8 @@ export default function SurveyPlayer({ surveyId, user, fetchsurveyById, answersa
     };
 
     useEffect(() => {
-        views(surveyId, user._id);
-    }, [surveyId, user._id]);
+        views(surveyId, user.id);
+    }, [surveyId, user.id]);
 
     const handleChange = (id, value) => {
         setAnswers(prev => {
