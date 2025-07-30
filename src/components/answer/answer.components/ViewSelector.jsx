@@ -26,6 +26,21 @@ const ViewSelector = ({ survey, answers, handleDelete }) => {
         </div>
     );
 
+    const averageAnswerTime = answers.length > 0
+        ? (() => {
+            const totalSeconds = answers.reduce((acc, ans) => {
+                return acc + (ans.responseTime.minutes * 60 + ans.responseTime.seconds);
+            }, 0);
+            const avgSeconds = totalSeconds / answers.length;
+            const avgMinutes = Math.floor(avgSeconds / 60);
+            const remainingSeconds = Math.floor(avgSeconds % 60);
+            if (avgMinutes === 0 && remainingSeconds === 0) return "0 dk 0 sn";
+            if (avgMinutes > 0 && remainingSeconds === 0) return `${avgMinutes} dk`;
+            if (avgMinutes === 0 && remainingSeconds > 0) return `${remainingSeconds} sn`;
+            return `${avgMinutes} dk ${remainingSeconds} sn`;
+        })()
+        : "0 dk 0 sn";
+
     return (
         <div>
             <div className="flex p-4 gap-4 mb-4">
@@ -54,14 +69,15 @@ const ViewSelector = ({ survey, answers, handleDelete }) => {
                     <div className="flex items-center gap-2"><MdCompare size={20} /> Karşılaştırma</div>
                 </button>
             </div>
-
             {viewType === 'scales' && (
-                answers.length > 0 ? (
-                    <AnswerScales
-                        shareData={{}}
-                    />) : (
-                    <NoAnswers />
-                )
+                <AnswerScales
+                    shareData={{
+                        viewCount: survey.numberViews?.length,
+                        answerCount: answers?.length,
+                        answerRate: ((answers?.length / survey.numberViews?.length) * 100).toFixed(0) == 'NaN' ? '0%' : ((answers?.length / survey.numberViews?.length) * 100).toFixed(0) + '%',
+                        averageAnswerTime
+                    }}
+                />
             )}
             {viewType === 'graph' && (
                 answers.length > 0 ? (

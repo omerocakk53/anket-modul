@@ -1,8 +1,7 @@
 // AnketOynatıcısı.jsx
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { toast } from 'react-hot-toast'; // Import toast
-
+import { toast } from 'react-hot-toast';
 import Description from './Description';
 import Dropdown from './Dropdown';
 import Email from './Email';
@@ -23,14 +22,31 @@ import ShortText from './ShortText';
 import WelcomeText from './WelcomeText';
 import { showSuccess } from "./successMesage/successController";
 
-export default function SurveyPlayer({ surveyId, user, fetchsurveyById, answersave }) {
+export default function SurveyPlayer({ surveyId, user, fetchsurveyById, answersave, viewsCount }) {
     const [data, setData] = useState([]);
     const [survey, setSurvey] = useState([]);
     const [loading, setLoading] = useState(true);
     const [answers, setAnswers] = useState({});
     const [currentIndex, setCurrentIndex] = useState(0);
     const [submitted, setSubmitted] = useState(false);
+    const [startDate] = useState(new Date());
     const currentItem = data[currentIndex];
+
+
+    const views = async (surveyId, userId) => {
+        try {
+            const response = await viewsCount(surveyId, userId);
+            if (response.message) {
+                toast.error(response.message);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    useEffect(() => {
+        views(surveyId, user._id);
+    }, [surveyId, user._id]);
 
     const handleChange = (id, value) => {
         setAnswers(prev => {
@@ -92,13 +108,18 @@ export default function SurveyPlayer({ surveyId, user, fetchsurveyById, answersa
         const currentValue = answers[currentItem?.id];
 
         if (isRequired(currentItem) && isEmpty(currentItem, currentValue)) {
-            toast.error("Bu alan zorunludur."); // Show error with toast
+            toast.error("Bu alan zorunludur.");
             return;
         }
 
         if (currentIndex < data.length - 1) {
             setCurrentIndex(currentIndex + 1);
         } else {
+            const finishedAt = new Date();
+            const diffMs = finishedAt.getTime() - startDate.getTime();
+            const diffSec = Math.floor(diffMs / 1000);
+            const minutes = Math.floor(diffSec / 60);
+            const seconds = diffSec % 60;
             setSubmitted(true);
             try {
                 const formattedAnswers = Object.entries(answers).map(([id, value]) => {
@@ -109,8 +130,15 @@ export default function SurveyPlayer({ surveyId, user, fetchsurveyById, answersa
                         value: value
                     };
                 });
-                await answersave(surveyId, user.name, formattedAnswers);
-                showSuccess("Anket Cevabınız Alındı");
+                const response = await answersave(surveyId, user.name, {
+                    minutes: minutes,
+                    seconds: seconds
+                }, formattedAnswers);
+                if (response.message) {
+                    toast.error(response.message);
+                } else {
+                    showSuccess("Anket Cevabınız Alındı");
+                }
             } catch (err) {
                 console.error("Cevaplar kaydedilemedi:", err);
                 toast.error("Cevaplar kaydedilemedi");

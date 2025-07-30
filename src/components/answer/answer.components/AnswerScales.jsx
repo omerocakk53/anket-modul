@@ -14,13 +14,14 @@ import { FaTable, FaChartPie, FaChartBar } from 'react-icons/fa';
 
 ChartJS.register(ArcElement, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
 
-function AnswerScales({shareData}) {
-  const [metrics] = useState([
-    { name: 'Görüntüleme sayısı', value: 0 },
-    { name: 'Yanıt sayısı', value: 0 },
-    { name: 'Yanıt Oranı', value: '0%' },
-    { name: 'Ortalama Yanıtlama Süresi', value: '00:00' },
-  ]);
+function AnswerScales({ shareData }) {
+
+  const metrics = [
+    { name: 'Görüntüleme sayısı', value: shareData.viewCount },
+    { name: 'Yanıt sayısı', value: shareData.answerCount },
+    { name: 'Yanıt Oranı', value: shareData.answerRate },
+    { name: 'Ortalama Yanıtlama Süresi', value: shareData.averageAnswerTime }
+  ];
 
   const deviceLabels = ['Cep Telefonu', 'Tablet', 'Bilgisayar', 'Başka'];
   const deviceData = [0, 0, 0, 0];
@@ -112,7 +113,6 @@ function AnswerScales({shareData}) {
 
   return (
     <div className='p-6 flex flex-col items-center gap-8 w-full max-w-6xl mx-auto'>
-      {/* METRİK PANELİ */}
       <ul className='grid grid-cols-2 md:grid-cols-4 gap-6 w-full bg-white shadow p-6 rounded-xl border'>
         {metrics.map((metric, i) => (
           <li key={i} className='text-center'>
@@ -121,31 +121,29 @@ function AnswerScales({shareData}) {
           </li>
         ))}
       </ul>
-
-      {/* CİHAZLAR */}
-      <div className='w-full max-w-2xl bg-white shadow rounded-xl p-6'>
-        <div className='flex justify-between items-center mb-4'>
-          <h2 className='text-lg font-semibold text-gray-800'>Cihazlar</h2>
-          <div className='flex gap-2'>
-            <button onClick={() => setDeviceView('table')} className='hover:text-blue-500 text-gray-600'><FaTable size={18} /></button>
-            <button onClick={() => setDeviceView('pie')} className='hover:text-blue-500 text-gray-600'><FaChartPie size={18} /></button>
-            <button onClick={() => setDeviceView('bar')} className='hover:text-blue-500 text-gray-600'><FaChartBar size={18} /></button>
+      <div className='flex gap-3 w-full'>
+        <div className='w-full max-w-2xl bg-white shadow rounded-xl p-6'>
+          <div className='flex justify-between items-center mb-4'>
+            <h2 className='text-lg font-semibold text-gray-800'>Cihazlar</h2>
+            <div className='flex gap-2'>
+              <button onClick={() => setDeviceView('table')} className='hover:text-blue-500 text-gray-600'><FaTable size={18} /></button>
+              <button onClick={() => setDeviceView('pie')} className='hover:text-blue-500 text-gray-600'><FaChartPie size={18} /></button>
+              <button onClick={() => setDeviceView('bar')} className='hover:text-blue-500 text-gray-600'><FaChartBar size={18} /></button>
+            </div>
           </div>
+          {renderChartView(deviceView, deviceLabels, deviceData)}
         </div>
-        {renderChartView(deviceView, deviceLabels, deviceData)}
-      </div>
-
-      {/* DAĞITIM AĞLARI */}
-      <div className='w-full max-w-2xl bg-white shadow rounded-xl p-6'>
-        <div className='flex justify-between items-center mb-4'>
-          <h2 className='text-lg font-semibold text-gray-800'>Dağıtım Ağları</h2>
-          <div className='flex gap-2'>
-            <button onClick={() => setDistributionView('table')} className='hover:text-blue-500 text-gray-600'><FaTable size={18} /></button>
-            <button onClick={() => setDistributionView('pie')} className='hover:text-blue-500 text-gray-600'><FaChartPie size={18} /></button>
-            <button onClick={() => setDistributionView('bar')} className='hover:text-blue-500 text-gray-600'><FaChartBar size={18} /></button>
+        <div className='w-full max-w-2xl bg-white shadow rounded-xl p-6'>
+          <div className='flex justify-between items-center mb-4'>
+            <h2 className='text-lg font-semibold text-gray-800'>Dağıtım Ağları</h2>
+            <div className='flex gap-2'>
+              <button onClick={() => setDistributionView('table')} className='hover:text-blue-500 text-gray-600'><FaTable size={18} /></button>
+              <button onClick={() => setDistributionView('pie')} className='hover:text-blue-500 text-gray-600'><FaChartPie size={18} /></button>
+              <button onClick={() => setDistributionView('bar')} className='hover:text-blue-500 text-gray-600'><FaChartBar size={18} /></button>
+            </div>
           </div>
+          {renderChartView(distributionView, distributionLabels, distributionData)}
         </div>
-        {renderChartView(distributionView, distributionLabels, distributionData)}
       </div>
     </div>
   );

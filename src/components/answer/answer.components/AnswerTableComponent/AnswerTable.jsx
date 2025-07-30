@@ -120,7 +120,7 @@ const AnswerTable = ({ survey, answers, visibleColumns, onDelete }) => {
           </div>
 
           <div className="overflow-x-auto overflow-y-auto border border-gray-200 rounded-2xl shadow-md max-h-[500px] w-full bg-white">
-            <table className="table-fixed min-w-full text-sm text-gray-700">
+            <table className="table-fixed min-w-full text-sm text-gray-700 bg-white">
               <thead className="bg-gradient-to-r from-blue-50 to-blue-100 text-gray-700 sticky top-0 z-10 shadow-sm text-xs">
                 <tr>
                   <th className="w-10 p-3">
