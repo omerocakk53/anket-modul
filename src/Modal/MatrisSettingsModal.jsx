@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaTrash } from 'react-icons/fa';
-import Matris from "../components/Matris";
-import ModalLayout from "../components/layouts/ModalLayout";
+import Matris from "../components/Items/Matris";
+import ModalLayout from "../components/Layouts/ModalLayout";
 
 function MatrisSettingsModal({ isOpen, onClose, onSave, initialData, count, surveyType }) {
   const [title, setTitle] = useState("");
@@ -9,7 +9,6 @@ function MatrisSettingsModal({ isOpen, onClose, onSave, initialData, count, surv
   const [complusory, setComplusory] = useState(true);
   const [rows, setRows] = useState([]);
   const [columns, setColumns] = useState([]);
-  const [allowCustomValue, setAllowCustomValue] = useState(false);
   const [value, setValue] = useState({});
   const [SurveyNumberVisible, setSurveyNumberVisible] = useState(true);
   const [MemberSatificaitonMatris, setMemberSatificaitonMatris] = useState(false);
@@ -69,7 +68,6 @@ function MatrisSettingsModal({ isOpen, onClose, onSave, initialData, count, surv
         columns,
       },
       complusory,
-      allowCustomValue,
       SurveyNumberVisible,
       MemberSatificaitonMatris
     });
@@ -87,7 +85,6 @@ function MatrisSettingsModal({ isOpen, onClose, onSave, initialData, count, surv
       setComplusory(initialData?.complusory ?? true);
       setColumns(Array.isArray(initialData?.data?.columns) ? initialData.data.columns : []);
       setRows(Array.isArray(initialData?.data?.rows) ? initialData.data.rows : []);
-      setAllowCustomValue(initialData?.allowCustomValue || false);
       setSurveyNumberVisible(initialData?.SurveyNumberVisible)
       setMemberSatificaitonMatris(initialData?.MemberSatificaitonMatris)
     } else {
@@ -96,7 +93,6 @@ function MatrisSettingsModal({ isOpen, onClose, onSave, initialData, count, surv
       setComplusory(true);
       setColumns([]);
       setRows([]);
-      setAllowCustomValue(false);
       setSurveyNumberVisible(true);
       setMemberSatificaitonMatris(false)
     }
@@ -105,7 +101,7 @@ function MatrisSettingsModal({ isOpen, onClose, onSave, initialData, count, surv
 
   if (!isOpen) return null;
   const leftPanel = (
-    <div className="space-y-2">
+    <div className="space-y-2 mb-24">
       <h2 className="text-lg font-bold">Soru Ayarları</h2>
       <div>
         <label className="block text-sm font-medium mb-1">Başlık</label>
@@ -122,7 +118,6 @@ function MatrisSettingsModal({ isOpen, onClose, onSave, initialData, count, surv
           onChange={(e) => setHelpText(e.target.value)}
         />
       </div>
-
       <div>
         <label className="block text-sm font-medium mb-1">Satırlar</label>
         {rows.map((r, idx) => (
@@ -144,7 +139,6 @@ function MatrisSettingsModal({ isOpen, onClose, onSave, initialData, count, surv
         <button className="mt-2 text-blue-600" onClick={addRow}>
           + Satır Ekle
         </button>
-
         {
           !(surveyType === "MemberSatisfaction" && MemberSatificaitonMatris) && (
             <>
@@ -198,26 +192,6 @@ function MatrisSettingsModal({ isOpen, onClose, onSave, initialData, count, surv
             </div>
           )
         }
-      </div>
-      <div className="flex items-center space-x-3">
-        <label
-          className="text-sm font-medium text-primary-dark select-none cursor-pointer"
-          onClick={() => setAllowCustomValue(prev => !prev)}
-        >
-          Tablo Görünümü (Değer Girişli)
-        </label>
-        <button
-          type="button"
-          aria-pressed={allowCustomValue}
-          onClick={() => setAllowCustomValue(prev => !prev)}
-          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${allowCustomValue ? 'bg-primary' : 'bg-neutral-light'
-            }`}
-        >
-          <div
-            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${allowCustomValue ? 'translate-x-6' : 'translate-x-0'
-              }`}
-          />
-        </button>
       </div>
       <div className="flex items-center space-x-3">
         <label
@@ -300,14 +274,11 @@ function MatrisSettingsModal({ isOpen, onClose, onSave, initialData, count, surv
       id={"matris-" + count}
       value={value}
       onChange={(value) => { setValue(value) }}
-      allowCustomValue={allowCustomValue}
       count={count}
       SurveyNumberVisible={SurveyNumberVisible}
     />
   );
-
   return <ModalLayout leftPanel={leftPanel} rightPanel={rightPanel} />;
-
 }
 
 export default MatrisSettingsModal;

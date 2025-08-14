@@ -1,143 +1,168 @@
-// Ana sayfa export
-export { default as Surveys } from './src/pages/Surveys';
-export { default as SurveyPlayerWrapper } from './src/pages/SurveyPlayerWrapper';
-export { default as Share } from './src/components/share/Share';
-export { default as SurveyCreate } from './src/components/SurveyCreate';
-export { default as SuccessMessagePortal } from './src/components/successMesage/SuccessMessagePortal';
-export { default as Answer } from './src/components/answer/AnswerPage';
-export { default as ToastProvider } from './src/components/toast/Toastprovider';
-export { default as AnswerSheet } from './src/components/answer/answer.components/AnswerTableComponent/AnswerSheet';
+// 🔥 Auto-generated barrel file
+// DO NOT EDIT MANUALLY
 
-// Answer Pages
-export * from './src/components/answer/AnswerPage';
-export * from './src/components/answer/analysis/analysisController';
-export * from './src/components/answer/analysis/choiceUtils';
-export * from './src/components/answer/analysis/matrixUtils';
-export * from './src/components/answer/analysis/numericUtils';
-export * from './src/components/answer/analysis/hooks/getanswerCounts';
-export * from './src/components/answer/analysis/hooks/useFingerprint';
-export * from './src/components/answer/analysis/hooks/satisfaction';
-export * from './src/components/answer/answer.components/AnswerAnalysis';
-export * from './src/components/answer/answer.components/AnswerComparison';
-export * from './src/components/answer/answer.components/AnswerScales';
-export * from './src/components/answer/answer.components/ViewSelector';
-export * from './src/components/answer/answer.components/AnswerAnalysisComponent/AnswerAnalysis';
-export * from './src/components/answer/answer.components/AnswerAnalysisComponent/AnswerChartCard';
-export * from './src/components/answer/answer.components/AnswerAnalysisComponent/AnswerChartSwitcher';
-export * from './src/components/answer/answer.components/AnswerAnalysisComponent/ColorPickerRow';
-export * from './src/components/answer/answer.components/AnswerAnalysisComponent/QuestionFilter';
-export * from './src/components/answer/answer.components/AnswerAnalysisComponent/ToggleableSection';
-export * from './src/components/answer/answer.components/AnswerTableComponent/AnswerTable';
-export * from './src/components/answer/answer.components/AnswerTableComponent/ColumnToggler';
-export * from './src/components/answer/answer.components/AnswerTableComponent/DateFilter';
-export * from './src/components/answer/answer.components/AnswerTableComponent/ExportButtons';
-export * from './src/components/answer/answer.components/AnswerTableComponent/PaginationControls';
-export * from './src/components/answer/answer.components/AnswerTableComponent/TextSearch';
-export * from './src/components/answer/answer.components/AnswerTableComponent/TableWrapper';
-export * from './src/components/answer/answer.components/AnswerCompareComponent/DateSelector';
-export * from './src/components/answer/answer.components/AnswerCompareComponent/PeriotSelector';
-export * from './src/components/answer/answer.components/AnswerCompareComponent/utils/SurveyComparison';
-export * from './src/components/answer/answer.components/AnswerCompareComponent/utils/UserSurveyComparison';
-export * from './src/components/answer/answer.components/AnswerCompareComponent/popUp/Modal';
-export * from './src/components/answer/answer.components/AnswerCompareComponent/ComparisonView/MixedItemUserDeltaTable';
-export * from './src/components/answer/answer.components/AnswerCompareComponent/ComparisonView/MixedChart/MixedChart';
-export * from './src/components/answer/answer.components/AnswerCompareComponent/ComparisonView/ItemUserDeltaTable';
-export * from './src/components/answer/answer.components/AnswerCompareComponent/ComparisonView/ItemUserDeltaChart/ChartWrapper';
-export * from './src/components/answer/answer.components/AnswerCompareComponent/ComparisonView/ItemUserDeltaChart/ItemUserDeltaChart';
-export * from './src/components/answer/answer.components/AnswerCompareComponent/ComparisonView/ItemUserDeltaChart/chartDataUtils';
-export * from './src/components/answer/answer.components/AnswerCompareComponent/ComparisonView/ItemUserDeltaChart/chartOptions';
+// Default Exports
+export { default as Surveys } from './src/pages/Surveys.jsx';
+export { default as SurveyPlayerWrapper } from './src/pages/SurveyPlayerWrapper.jsx';
+export { default as SurveyList } from './src/pages/SurveyList.jsx';
+export { default as SurveyCreate } from './src/Components/SurveyCreate/index.jsx';
+export { default as SuccessMessagePortal } from './src/Components/SuccessMesage/SuccessMessagePortal.jsx';
+export { default as AnswerSheet } from './src/Components/Answer/answer.components/AnswerTableComponent/AnswerSheet.jsx';
+export { default as ToastProvider } from './src/Components/Toast/Toastprovider.jsx';
+export { default as Share } from './src/Components/Share/Share.jsx';
+export { default as Answer } from './src/components/answer/AnswerPage.jsx';
 
-
-// Renk & Tema
-export * from './src/Colors/ColorEditor';
-export * from './src/Colors/colors';
-export * from './src/Colors/RenkUygulama';
-export * from './src/hooks/useThemeManager';
-
-// Ortak bileşenler
-export * from './src/components/common/Sidebar';
-export * from './src/components/common/Header';
-export * from './src/components/common/FilterSortSearch';
-export * from './src/components/common/EditSurveyModal';
-export * from './src/components/common/SurveyCard';
-
-// Ana komponentler
-export * from './src/components/SurveyPlayer';
-export * from './src/components/Component';
-export * from './src/components/Description';
-export * from './src/components/Dropdown';
-export * from './src/components/Email';
-export * from './src/components/FileUpload';
-export * from './src/components/FinishText';
-export * from './src/components/ImageChoice';
-export * from './src/components/Link';
-export * from './src/components/LongText';
-export * from './src/components/Matris';
-export * from './src/components/MultipleChoice';
-export * from './src/components/Numeric';
-export * from './src/components/Payment';
-export * from './src/components/QuestionGroup';
-export * from './src/components/Ranking';
-export * from './src/components/Rating';
-export * from './src/components/Scale';
-export * from './src/components/ShortText';
-export * from './src/components/WelcomeText';
-
-// Layout & modal bileşenleri
-export * from './src/components/layouts/ModalLayout';
-export * from './src/components/modals/CreateSurveyOrGroupModal';
-
-// Başarı Mesajı
-export * from './src/components/successMesage/successController';
-export * from './src/components/successMesage/SuccessMessage';
-
-
-// Kontrolcü (controller) dosyaları
-export * from './src/Controller/DescriptionController';
-export * from './src/Controller/DropdownController';
-export * from './src/Controller/EmailController';
-export * from './src/Controller/FileUploadController';
-export * from './src/Controller/FinishTextController';
-export * from './src/Controller/ImageChoiceController';
-export * from './src/Controller/LinkController';
-export * from './src/Controller/LongTextController';
-export * from './src/Controller/MatrisController';
-export * from './src/Controller/MultipleChoiceController';
-export * from './src/Controller/NumericController';
-export * from './src/Controller/PaymentController';
-export * from './src/Controller/QuestionGroupController';
-export * from './src/Controller/RankingController';
-export * from './src/Controller/RatingController';
-export * from './src/Controller/ScaleController';
-export * from './src/Controller/ShortTextController';
-export * from './src/Controller/WelcomeTextController';
-
-// Items
-export * from './src/Items/ComponentViewItems';
-
-// Ayar modalları
-export * from './src/Modal/DescriptionSettingsModal';
-export * from './src/Modal/DropdownSettingsModal';
-export * from './src/Modal/EmailSettingsModal';
-export * from './src/Modal/FileUploadSettingsModal';
-export * from './src/Modal/ImageChoiceSettingsModal';
-export * from './src/Modal/LinkSettingsModal';
-export * from './src/Modal/LongTextSettingsModel';
-export * from './src/Modal/MatrisSettingsModal';
-export * from './src/Modal/MultipleChoiceSettingsModal';
-export * from './src/Modal/NumericSettingsModal';
-export * from './src/Modal/PaymentSettingsModal';
-export * from './src/Modal/QuestionGroupSettingsModal';
-export * from './src/Modal/RankingSettingsModal';
-export * from './src/Modal/RatingSettingsModal';
-export * from './src/Modal/ScaleSettingsModal';
-export * from './src/Modal/ShortTextSettingsModel';
-export * from './src/Modal/WelcomeTextSettingsModel';
-
-// Sayfalar
-export * from './src/pages/SurveyList';
-
-// Utils
-export * from './src/utils/iconMap';
-
-
+// Wildcard Exports
+export * from './src/utils/iconMap.js';
+export * from './src/Modal/WelcomeTextSettingsModel.jsx';
+export * from './src/Modal/TableSettingsModal.jsx';
+export * from './src/Modal/ShortTextSettingsModel.jsx';
+export * from './src/Modal/ScaleSettingsModal.jsx';
+export * from './src/Modal/RatingSettingsModal.jsx';
+export * from './src/Modal/RankingSettingsModal.jsx';
+export * from './src/Modal/QuestionGroupSettingsModal.jsx';
+export * from './src/Modal/PaymentSettingsModal.jsx';
+export * from './src/Modal/NumericSettingsModal.jsx';
+export * from './src/Modal/MultipleChoiceSettingsModal.jsx';
+export * from './src/Modal/MatrisSettingsModal.jsx';
+export * from './src/Modal/LongTextSettingsModel.jsx';
+export * from './src/Modal/LinkSettingsModal.jsx';
+export * from './src/Modal/ImageChoiceSettingsModal.jsx';
+export * from './src/Modal/FileUploadSettingsModal.jsx';
+export * from './src/Modal/EmailSettingsModal.jsx';
+export * from './src/Modal/DropdownSettingsModal.jsx';
+export * from './src/Modal/DescriptionSettingsModal.jsx';
+export * from './src/Items/ComponentViewItems.jsx';
+export * from './src/hooks/useThemeManager.js';
+export * from './src/Controller/WelcomeTextController.jsx';
+export * from './src/Controller/TableController.jsx';
+export * from './src/Controller/ShortTextController.jsx';
+export * from './src/Controller/ScaleController.jsx';
+export * from './src/Controller/RatingController.jsx';
+export * from './src/Controller/RankingController.jsx';
+export * from './src/Controller/QuestionGroupController.jsx';
+export * from './src/Controller/PaymentController.jsx';
+export * from './src/Controller/NumericController.jsx';
+export * from './src/Controller/MultipleChoiceController.jsx';
+export * from './src/Controller/MatrisController.jsx';
+export * from './src/Controller/LongTextController.jsx';
+export * from './src/Controller/LinkController.jsx';
+export * from './src/Controller/ImageChoiceController.jsx';
+export * from './src/Controller/FinishTextController.jsx';
+export * from './src/Controller/FileUploadController.jsx';
+export * from './src/Controller/EmailController.jsx';
+export * from './src/Controller/DropdownController.jsx';
+export * from './src/Controller/DescriptionController.jsx';
+export * from './src/Colors/RenkUygulama.jsx';
+export * from './src/Colors/colors.js';
+export * from './src/Colors/ColorEditor.jsx';
+export * from './src/components/Component.jsx';
+export * from './src/components/Toast/Toastprovider.jsx';
+export * from './src/components/SurveyPlayer/SurveyEmpty.jsx';
+export * from './src/components/SurveyPlayer/SurveyClosed.jsx';
+export * from './src/components/SurveyPlayer/QuestionRenderer.jsx';
+export * from './src/components/SurveyPlayer/QuestionProgress.jsx';
+export * from './src/components/SurveyPlayer/NavigationButtons.jsx';
+export * from './src/components/SurveyPlayer/Loading.jsx';
+export * from './src/components/SurveyPlayer/index.jsx';
+export * from './src/components/SurveyCreate/SidebarPanel.jsx';
+export * from './src/components/SurveyCreate/RightPanel.jsx';
+export * from './src/components/SurveyCreate/index.jsx';
+export * from './src/components/SuccessMesage/SuccessMessagePortal.jsx';
+export * from './src/components/SuccessMesage/SuccessMessage.jsx';
+export * from './src/components/SuccessMesage/successController.js';
+export * from './src/components/Share/Share.jsx';
+export * from './src/components/Layouts/ModalLayout.jsx';
+export * from './src/components/Modals/TemplateSurveyModal.jsx';
+export * from './src/components/Modals/FixSurveyCard.jsx';
+export * from './src/components/Modals/CreateSurveyOrGroupModal.jsx';
+export * from './src/components/Logic/QuestionsGuidancePopUp.jsx';
+export * from './src/components/Common/Sidebar.jsx';
+export * from './src/components/Common/Header.jsx';
+export * from './src/components/Common/FilterSortSearch.jsx';
+export * from './src/components/Common/EditSurveyModal.jsx';
+export * from './src/components/Items/WelcomeText.jsx';
+export * from './src/components/Items/Table.jsx';
+export * from './src/components/Items/ShortText.jsx';
+export * from './src/components/Items/Scale.jsx';
+export * from './src/components/Items/Rating.jsx';
+export * from './src/components/Items/Ranking.jsx';
+export * from './src/components/Items/QuestionGroup.jsx';
+export * from './src/components/Items/Payment.jsx';
+export * from './src/components/Items/Numeric.jsx';
+export * from './src/components/Items/MultipleChoice.jsx';
+export * from './src/components/Items/Matris.jsx';
+export * from './src/components/Items/LongText.jsx';
+export * from './src/components/Items/Link.jsx';
+export * from './src/components/Items/ImageChoice.jsx';
+export * from './src/components/Items/FinishText.jsx';
+export * from './src/components/Items/FileUpload.jsx';
+export * from './src/components/Items/Email.jsx';
+export * from './src/components/Items/Dropdown.jsx';
+export * from './src/components/Items/Description.jsx';
+export * from './src/components/answer/AnswerItem.jsx';
+export * from './src/components/Surveys/components/EmptyState.jsx';
+export * from './src/components/Surveys/utils/surveyFilters.js';
+export * from './src/components/Surveys/hooks/useSurveys.js';
+export * from './src/components/Surveys/hooks/useSurveyActions.js';
+export * from './src/components/SurveyPlayer/utils/submitAnswers.js';
+export * from './src/components/SurveyPlayer/utils/AnswerLogic.js';
+export * from './src/components/SurveyPlayer/hook/useSurveyNavigation.js';
+export * from './src/components/SurveyPlayer/hook/useSurveyLoader.js';
+export * from './src/components/SurveyCreate/utils/controllerList.js';
+export * from './src/components/SurveyCreate/hooks/useSurveyLoader.js';
+export * from './src/components/SurveyCreate/hooks/useGuidance.js';
+export * from './src/components/SurveyCreate/hooks/useDragAndDrop.js';
+export * from './src/components/Share/hooks/useShareData.js';
+export * from './src/components/Share/components/SocialShareButtons.jsx';
+export * from './src/components/Share/components/ShareSettings.jsx';
+export * from './src/components/Share/components/OpenGraphPreview.jsx';
+export * from './src/components/Common/SurveyCard/SurveyTags.jsx';
+export * from './src/components/Common/SurveyCard/SurveyHeader.jsx';
+export * from './src/components/Common/SurveyCard/SurveyFooter.jsx';
+export * from './src/components/Common/SurveyCard/SurveyActions.jsx';
+export * from './src/components/Common/SurveyCard/index.jsx';
+export * from './src/components/answer/answer.components/ViewSelector.jsx';
+export * from './src/components/answer/answer.components/AnswerScales.jsx';
+export * from './src/components/answer/answer.components/AnswerComparison.jsx';
+export * from './src/components/answer/answer.components/AnswerAnalysis.jsx';
+export * from './src/components/answer/analysis/numericUtils.js';
+export * from './src/components/answer/analysis/matrixUtils.js';
+export * from './src/components/answer/analysis/choiceUtils.js';
+export * from './src/components/answer/analysis/analysisController.js';
+export * from './src/components/answer/answer.components/AnswerAnalysisComponent/ToggleableSection.jsx';
+export * from './src/components/answer/answer.components/AnswerAnalysisComponent/QuestionFilter.jsx';
+export * from './src/components/answer/answer.components/AnswerAnalysisComponent/ColorPickerRow.jsx';
+export * from './src/components/answer/answer.components/AnswerAnalysisComponent/AnswerChartCard.jsx';
+export * from './src/components/answer/answer.components/AnswerAnalysisComponent/AnswerAnalysis.jsx';
+export * from './src/components/answer/answer.components/AnswerCompareComponent/PeriotSelector.jsx';
+export * from './src/components/answer/answer.components/AnswerCompareComponent/DateSelector.jsx';
+export * from './src/components/answer/answer.components/AnswerTableComponent/TextSearch.jsx';
+export * from './src/components/answer/answer.components/AnswerTableComponent/TableWrapper.jsx';
+export * from './src/components/answer/answer.components/AnswerTableComponent/PaginationControls.jsx';
+export * from './src/components/answer/answer.components/AnswerTableComponent/ExportButtons.jsx';
+export * from './src/components/answer/answer.components/AnswerTableComponent/DateFilter.jsx';
+export * from './src/components/answer/answer.components/AnswerTableComponent/ColumnToggler.jsx';
+export * from './src/components/answer/answer.components/AnswerTableComponent/AnswerTable.jsx';
+export * from './src/components/answer/answer.components/AnswerTableComponent/AnswerSheet.jsx';
+export * from './src/components/answer/analysis/hooks/useFingerprint.js';
+export * from './src/components/answer/analysis/hooks/satisfaction.js';
+export * from './src/components/answer/analysis/hooks/getanswerCounts.js';
+export * from './src/components/answer/answer.components/AnswerAnalysisComponent/answerChartSwitcher/TableRenderer.jsx';
+export * from './src/components/answer/answer.components/AnswerAnalysisComponent/answerChartSwitcher/MatrixTable.jsx';
+export * from './src/components/answer/answer.components/AnswerAnalysisComponent/answerChartSwitcher/index.jsx';
+export * from './src/components/answer/answer.components/AnswerAnalysisComponent/answerChartSwitcher/CustomTable.jsx';
+export * from './src/components/answer/answer.components/AnswerAnalysisComponent/answerChartSwitcher/ChartRenderer.jsx';
+export * from './src/components/answer/answer.components/AnswerCompareComponent/utils/UserSurveyComparison.js';
+export * from './src/components/answer/answer.components/AnswerCompareComponent/utils/SurveyComparison.js';
+export * from './src/components/answer/answer.components/AnswerCompareComponent/utils/MixedSurveyComparison.js';
+export * from './src/components/answer/answer.components/AnswerCompareComponent/popUp/Modal.jsx';
+export * from './src/components/answer/answer.components/AnswerCompareComponent/ComparisonView/MixedItemUserDeltaTable.jsx';
+export * from './src/components/answer/answer.components/AnswerCompareComponent/ComparisonView/ItemUserDeltaTable.jsx';
+export * from './src/components/answer/answer.components/AnswerAnalysisComponent/answerChartSwitcher/hooks/useDownload.js';
+export * from './src/components/answer/answer.components/AnswerAnalysisComponent/answerChartSwitcher/hooks/useChartOptions.js';
+export * from './src/components/answer/answer.components/AnswerCompareComponent/ComparisonView/MixedChart/MixedChart.jsx';
+export * from './src/components/answer/answer.components/AnswerCompareComponent/ComparisonView/ItemUserDeltaChart/ItemUserDeltaChart.jsx';
+export * from './src/components/answer/answer.components/AnswerCompareComponent/ComparisonView/ItemUserDeltaChart/ChartWrapper.jsx';
+export * from './src/components/answer/answer.components/AnswerCompareComponent/ComparisonView/ItemUserDeltaChart/chartOptions.js';
+export * from './src/components/answer/answer.components/AnswerCompareComponent/ComparisonView/ItemUserDeltaChart/chartDataUtils.js';

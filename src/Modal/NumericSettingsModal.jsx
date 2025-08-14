@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Numeric from "../components/Numeric"; // Preview için doğrudan Numeric bileşeni kullanıyoruz
-import ModalLayout from "../components/layouts/ModalLayout";
+import Numeric from "../components/Items/Numeric";
+import ModalLayout from "../components/Layouts/ModalLayout";
 import InputNumber from "rc-input-number";
 import "rc-input-number/assets/index.css";
 function NumericSettingsModal({ isOpen, onClose, onSave, initialData, count }) {

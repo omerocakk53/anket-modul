@@ -55,7 +55,7 @@ const PaginationControls = ({ currentPage, totalPages, pageSize, onPageChange, o
           value={pageSize}
           onChange={(e) => onPageSizeChange(Number(e.target.value))}
           className="border border-gray-300 px-3 py-1.5 rounded-lg shadow-sm bg-white 
-                     focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none text-sm"
+          focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none text-sm"
         >
           {[10, 20, 30, 50, 100].map((size) => (
             <option key={size} value={size}>

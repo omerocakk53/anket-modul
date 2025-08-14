@@ -2,7 +2,8 @@ export default function getAnswerCounts(question, allAnswers) {
     const { id, type } = question;
     const counts = {};
     const answers = [];
-
+    let resultTableData = null; 
+    
     allAnswers.forEach(userAnswer => {
         const answerObj = userAnswer.answers.find(a => a.itemId === id);
         if (!answerObj) return;
@@ -53,14 +54,44 @@ export default function getAnswerCounts(question, allAnswers) {
                     counts[key].users.push({ user: userAnswer._id, date: userAnswer.createdAt });
                 });
             }
+        } else if (type === 'Table') {
+            const val = answerObj.value;
+            if (val && typeof val === 'object') {
+                const rows = Object.keys(val);
+                const columns = Array.from(
+                    new Set(rows.flatMap((row) => Object.keys(val[row] || {})))
+                );
+
+                const valueMatrix = rows.map((row) =>
+                    columns.map((col) => val[row]?.[col] || "")
+                );
+
+                rows.forEach((row) => {
+                    Object.entries(val[row] || {}).forEach(([col, cellValue]) => {
+                        const key = `${row}: ${col}`;
+                        counts[key] = counts[key] || { count: 0, users: [] };
+                        counts[key].count += 1;
+                        counts[key].users.push({
+                            user: userAnswer._id,
+                            date: userAnswer.createdAt,
+                        });
+                    });
+                });
+
+                // Table için ek veri
+                resultTableData = {
+                    rows,
+                    columns,
+                    value: valueMatrix,
+                };
+            }
         }
     });
 
-    // Dönüşüm: {cevap: {count, users}} -> {cevap: count}, ayrıca users listesini de döndür
     const simpleCounts = {};
     Object.entries(counts).forEach(([k, v]) => {
         simpleCounts[k] = v.count;
     });
 
-    return { counts: simpleCounts, answers, rawCounts: counts };
+    return { counts: simpleCounts, answers, rawCounts: counts, tableData: resultTableData };
 }

@@ -5,10 +5,10 @@ import { useNavigate } from "react-router-dom";
 import { toast } from 'react-hot-toast';;
 import { QRCodeCanvas, QRCodeSVG } from "qrcode.react";
 
-import SurveyCard from "../components/common/SurveyCard";
+import SurveyCard from "../components/Common/SurveyCard/index.jsx";
 import { IoMdClose } from "react-icons/io";
 
-export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurvey, deletesurveyshareById, allanswerdelete }) {
+export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurvey, deletesurveyshareById, allanswerdelete, updatesurveyfeature }) {
     const [qrData, setQrData] = useState(null);
     const navigate = useNavigate();
     const url = window.location.origin;
@@ -61,7 +61,7 @@ export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurv
 
     const handleCopyLink = (id, surveyLink) => {
         const safeLink = formatSurveyLink(surveyLink);
-        const link = `${url}${safeLink ? `/anket/${safeLink}` : ''}/${id}`;
+        const link = `${url}${safeLink ? `/anket/${safeLink}` : ''}`;
         navigator.clipboard.writeText(link)
             .then(() => toast.success("Anket linki panoya kopyalandı!"))
             .catch(() => toast("Link kopyalanamadı!"));
@@ -69,7 +69,7 @@ export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurv
 
     const handleShowQr = (id, surveyLink) => {
         const safeLink = formatSurveyLink(surveyLink);
-        const link = `${url}${safeLink ? `/anket/${safeLink}` : ''}/${id}`;
+        const link = `${url}${safeLink ? `/anket/${safeLink}` : ''}`;
         setQrData(link);
         document.getElementById('qr_modal')
     };
@@ -112,11 +112,12 @@ export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurv
                     handleCopyLink={handleCopyLink}
                     handleShowQr={handleShowQr}
                     navigate={navigate}
+                    updatesurveyfeature={updatesurveyfeature}
                 />
             ))}
 
             {qrData && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-xs">
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
                     <div className="relative bg-white rounded-lg shadow-lg p-6 max-w-xs">
                         <button
                             className="absolute top-2 right-2 text-gray-600 hover:text-gray-800"

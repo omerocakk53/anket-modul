@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FiPlus, FiFolderPlus, FiLogOut, FiFolder } from 'react-icons/fi';
 import { FaPoll } from 'react-icons/fa';
 import { IoMdClose } from 'react-icons/io';
+import { MdAutoFixNormal } from 'react-icons/md';
 
 export default function Sidebar({
     groupedSurveysData,
@@ -11,7 +12,9 @@ export default function Sidebar({
     handleLogout,
     openCreateSurveyModal,
     openCreateNewGroupModal,
-    sidebar // dışarıdan gelen prop
+    sidebar,
+    user,
+    fixsurvey
 }) {
 
     const [isVisible, setIsVisible] = useState(sidebar); // DOM'da görünüyor mu
@@ -34,15 +37,12 @@ export default function Sidebar({
 
     return (
         <div className={`xl:flex flex-col w-72 bg-neutral-white border-r border-neutral shadow-lg z-10  ${isVisible ? `absolute w-full ${animationClass}` : "hidden"}`}>
-            {/* Logo ve Başlık */}
             <div className="p-6 border-b border-neutral bg-primary text-neutral-white flex items-center justify-center">
                 <FaPoll className="h-8 w-8 mr-3 animate-pulse-slow" />
                 <h1 className="text-2xl font-extrabold tracking-tight animate-fade-in-slide">
                     OdaAnket
                 </h1>
             </div>
-
-            {/* Yeni Anket Oluştur Butonu */}
             <div className="p-6 border-b border-neutral-light flex justify-between">
                 <button
                     className="flex items-center gap-1 px-4 py-2 text-sm text-primary-dark border border-primary rounded hover:bg-primary hover:text-white transition"
@@ -58,8 +58,6 @@ export default function Sidebar({
                     <IoMdClose className="hover:text-danger" size={24} />
                 </button>) : (<></>)}
             </div>
-
-            {/* Klasörler Listesi */}
             <nav className="flex-1 overflow-y-auto p-4 space-y-2">
                 <h2 className="text-xs font-bold text-neutral-dark mb-3 px-2">Klasörler</h2>
                 <ul className="space-y-1">
@@ -72,7 +70,15 @@ export default function Sidebar({
                             Yeni Klasör Oluştur
                         </button>
                     </li>
-
+                    <li>
+                        <button
+                            className="w-full text-left px-4 py-2 rounded-lg text-neutral-darkest hover:bg-neutral-light hover:text-primary transition-colors duration-200 flex items-center gap-3 font-medium"
+                            onClick={fixsurvey}
+                        >
+                            <MdAutoFixNormal className={`h-5 w-5`} />
+                            Anket Şablonları
+                        </button>
+                    </li>
                     {validGroupNames.length === 0 ? (
                         <li className="px-4 py-2 text-sm text-neutral-dark">Henüz klasör oluşturulmadı.</li>
                     ) : (
@@ -96,8 +102,6 @@ export default function Sidebar({
                     )}
                 </ul>
             </nav>
-
-            {/* Kullanıcı Bilgisi ve Çıkış */}
             <div className="p-6 border-t border-neutral-light mt-auto">
                 <div className="flex items-center justify-between text-neutral-darkest mb-3">
                     <div className="flex items-center gap-2">
@@ -108,13 +112,6 @@ export default function Sidebar({
                         </div>
                         <span className="font-medium text-sm truncate">{username || 'Kullanıcı'}</span>
                     </div>
-                    {/* <button
-                        onClick={handleLogout}
-                        className="flex items-center gap-2 px-3 py-1 text-sm text-danger border border-danger rounded hover:bg-danger hover:text-white transition"
-                    >
-                        Çıkış
-                        <FiLogOut className="h-5 w-5" />
-                    </button> */}
                 </div>
             </div>
         </div>

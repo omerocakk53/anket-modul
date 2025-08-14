@@ -21,24 +21,6 @@ function MixedChart({ item, ItemTip, color = ['#60a5fa', '#34d399'], ChartType =
   const dataItem = item.find(d => d.itemId === ItemTip);
   if (!dataItem) return null;
 
-  // Tabloya uyarlanabilir genel yapı:
-  // dataItem, periyot1 ve periyot2 değerleri, eğer varsa 'value1', 'value2' gibi.
-
-  // Örneğin MixedSurveyComparison yapısına göre:
-  // {
-  //   itemId, itemType, title,
-  //   period1Value, period2Value,
-  //   period1ValueRaw, period2ValueRaw,  // senin Mixed yapında olabilir
-  //   // veya user bazlı değişimler de olabilir.
-  // }
-
-  // Burada basitçe bar, pie, line grafik yapacağız.
-
-  // Örnek data oluşturma:
-  // Eğer item.changes veya kullanıcı bazlı değilse, direkt period1 ve period2 verisini gösterelim.
-  // Bizim MixedSurveyComparison yapısına göre:
-  // item.changes varsa kullanıcı bazlı, yoksa aggregate.
-
   let chartData = [];
 
   if (dataItem.changes) {
@@ -55,8 +37,6 @@ function MixedChart({ item, ItemTip, color = ['#60a5fa', '#34d399'], ChartType =
       { name: "Periyot 2", value: dataItem.period2Value ?? 0 },
     ];
   }
-
-  // Grafik çizimleri:
 
   switch (ChartType) {
     case "pie":

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import AnswerChartSwitcher from './AnswerChartSwitcher';
+import AnswerChartSwitcher from './answerChartSwitcher/index';
 import ToggleableSection from './ToggleableSection';
 
-function AnswerChartCard({ question, counts, rawCounts }) {
+function AnswerChartCard({ question, counts, rawCounts, tableData }) {
   const [isVisible, setIsVisible] = useState(true);
   const [viewType, setViewType] = useState('bar');
-
+  console.log(question,counts,rawCounts);
   return (
     <ToggleableSection
       title={`${question.title} (${question.type})`}
@@ -23,6 +23,7 @@ function AnswerChartCard({ question, counts, rawCounts }) {
             questionData={question.data}
             questionMemberSatificaitonMatris={question.MemberSatificaitonMatris}
             questionType={question.type}
+            tableData={tableData}
           />
         </div>
       )}

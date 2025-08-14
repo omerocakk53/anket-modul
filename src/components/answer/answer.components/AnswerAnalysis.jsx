@@ -81,6 +81,7 @@ function AnswerAnalysis({ survey, answers }) {
         'Rating',
         'Numeric',
         'Matris',
+        'Table',
     ];
 
     return (

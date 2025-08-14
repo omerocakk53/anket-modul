@@ -41,14 +41,30 @@ export function analyzeSurveyAnswers(survey, answersA, answersB) {
       };
     }
 
-    if (question.type === 'Matris') {
+    if (['Matris'].includes(type)) {
       // answersA ve answersB, iki farklı tarih aralığından gelen cevap dizileri
       const countsA = analyzeMatrixAnswers(answersA, question);
       const countsB = analyzeMatrixAnswers(answersB, question);
 
       return {
         question,
-        type: 'Matris',
+        type: question.type,
+        mostA: findMatrixMostSelected(countsA),  // Tarih 1 için her satırdaki en çok seçilen sütun
+        mostB: findMatrixMostSelected(countsB),  // Tarih 2 için aynı şekilde
+        chartData: {
+          matrix: true,
+          cellData: generateMatrixCellData(countsA, countsB), // Grafik için veriler
+        },
+      };
+    }
+
+    if (['Table'].includes(type)) {
+      const countsA = analyzeMatrixAnswers(answersA, question);
+      const countsB = analyzeMatrixAnswers(answersB, question);
+
+      return {
+        question,
+        type: question.type,
         mostA: findMatrixMostSelected(countsA),  // Tarih 1 için her satırdaki en çok seçilen sütun
         mostB: findMatrixMostSelected(countsB),  // Tarih 2 için aynı şekilde
         chartData: {

@@ -8,7 +8,7 @@ function MatrisController({ isOpen, setControllerOpen, items, Item, setItems, co
     useEffect(() => {
         if (!Item.id) return;
         if (!MatrisData?.title || (!MatrisData.MemberSatificaitonMatris && (!MatrisData?.data?.rows?.length > 0 || !MatrisData?.data?.columns?.length > 0))) {
-            toast.warning("boş değerler var")
+            toast.error("boş değerler var")
         }
 
         const updatedItem = {
@@ -20,7 +20,6 @@ function MatrisController({ isOpen, setControllerOpen, items, Item, setItems, co
                 columns: MatrisData.data.columns,
             },
             complusory: MatrisData.complusory,
-            allowCustomValue: MatrisData.allowCustomValue || false,
             SurveyNumberVisible: MatrisData.SurveyNumberVisible,
             MemberSatificaitonMatris: MatrisData.MemberSatificaitonMatris
         };

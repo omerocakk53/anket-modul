@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Description from "../components/Description";
-import ModalLayout from "../components/layouts/ModalLayout";
+import Description from "../components/Items/Description";
+import ModalLayout from "../components/Layouts/ModalLayout";
 
 function DescriptionSettingsModal({ isOpen, onClose, onSave, onChange, initialData, count }) {
   const [title, setTitle] = useState("");

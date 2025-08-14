@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { FaTrash } from "react-icons/fa";
-import MultipleChoice from "../components/MultipleChoice";
+import MultipleChoice from "../components/Items/MultipleChoice";
 import InputNumber from 'rc-input-number';
 import 'rc-input-number/assets/index.css';
-import ModalLayout from "../components/layouts/ModalLayout";
+import ModalLayout from "../components/Layouts/ModalLayout";
 
 function MultipleChoiceSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
   const [title, setTitle] = useState("");

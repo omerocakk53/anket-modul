@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import ScaleSettingsModal from '../Modal/ScaleSettingsModal';
 import { toast } from 'react-hot-toast';
-import { data } from 'react-router-dom';
 
 function ScaleController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
     const [ScaleData, setScaleData] = useState({});
 
     useEffect(() => {
         if (!Item.id) return;
-        if (!ScaleData?.title  || !ScaleData?.data.min || !ScaleData?.data.max) {  toast.warning("boş değerler var")};
+        if (!ScaleData?.title  || !ScaleData?.data.min || !ScaleData?.data.max) {  toast.error("boş değerler var")};
         const updatedItem = {
             ...Item,
             title: ScaleData.title,

@@ -5,7 +5,6 @@ import ColumnToggler from './ColumnToggler';
 import TextSearch from './TextSearch';
 import DateFilter from './DateFilter';
 import AnswerTable from './AnswerTable';
-import { FiFilter } from 'react-icons/fi';
 
 const TableWrapper = ({ survey, answers, onDelete }) => {
     const allColumns = useMemo(() => [

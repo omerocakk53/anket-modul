@@ -54,9 +54,9 @@ const ExportButtons = ({ answers = [], survey = {} }) => {
                 )
                 .join(", ")
             : formatValue(matched.value); // Tekli seçimler için de formatValue kullan
-        } else if (item.type === "Matris" && typeof matched.value === "object") {
+        } else if (item.type === "Matris" || item.type === "Table" && typeof matched.value === "object") {
           Object.entries(matched.value).forEach(([k, v]) => {
-            const colName = `${item.title || "Matris"} - ${k}`; // Matris başlığı ve sütun adı
+            const colName = `${item.title || item.type} - ${k}`; // Matris başlığı ve sütun adı
             row[colName] = formatValue(v);
           });
         } else {

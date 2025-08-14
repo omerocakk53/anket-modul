@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FiX, FiInfo, FiCheckCircle, FiXCircle } from 'react-icons/fi';
+import { FiX, FiInfo } from 'react-icons/fi';
 import { toast } from 'react-hot-toast';
 
 export default function EditSurveyModal({ survey, onClose, onUpdate, updatesurveyfeature }) {
@@ -123,67 +123,23 @@ export default function EditSurveyModal({ survey, onClose, onUpdate, updatesurve
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const minCharLimit = 2;
     const errors = [];
-
-    // Form alanlarını kontrol et
-    if (formData.title && formData.title.trim().length < minCharLimit) {
-      errors.push('Anket başlığı en az 2 karakter olmalı.');
-    }
-    if (formData.description && formData.description.trim().length < minCharLimit) {
-      errors.push('Açıklama en az 2 karakter olmalı.');
-    }
-    if (formData.group && formData.group.trim().length < minCharLimit) {
-      errors.push('Klasör adı en az 2 karakter olmalı.');
-    }
-    if (formData.link && formData.link.trim().length < minCharLimit) {
-      errors.push('Link en az 2 karakter olmalı.');
-    }
-    if (formData.link && !/^[a-zA-Z0-9-_'']+$/.test(formData.link.trim())) {
+    if (formData.link && !/^[a-zA-Z0-9-_]+$/.test(formData.link.trim())) {
       errors.push('Link yalnızca "a-z", "A-Z", "0-9", "-", "_" karakterlerini içerebilir.');
-    }
-    if (formData.activePeriodDates.length === 0 && survey.surveyType === 'MemberSatisfaction') {
-      errors.push('En az bir aktif tarih aralığı eklemelisiniz.');
     }
     if (errors.length > 0) {
       errors.forEach(err => toast(err));
       return;
     }
-
-    // Boş veya geçersiz alanları filtrele
-    const filteredData = {};
-    Object.entries(formData).forEach(([key, value]) => {
-      if (typeof value === 'string') {
-        if (value.trim().length >= minCharLimit) {
-          filteredData[key] = value.trim();
-        }
-      } else if (key === 'tags' && Array.isArray(value) && value.length > 0) {
-        filteredData[key] = value;
-      } else if (typeof value === 'boolean') {
-        filteredData[key] = value;
-      } else if (key === 'link' && typeof value === 'string' && value.trim().length >= minCharLimit) {
-        filteredData[key] = value.trim();
-      } else if (key === 'activePeriodDates' && Array.isArray(value) && value.length > 0 && survey.surveyType === 'MemberSatisfaction') {
-        filteredData[key] = value;
-      }
-    });
-
-    if (Object.keys(filteredData).length === 0) {
-      toast("Geçerli bir değişiklik yapmadınız.");
-      return;
-    }
-
     try {
-      const updated = await updatesurveyfeature(survey._id, filteredData);
+      const updated = await updatesurveyfeature(survey._id, formData);
       toast.success("Anket Güncellendi");
       onUpdate(updated);
       onClose();
     } catch (error) {
-      toast.error("Güncelleme sırasında hata oluştu.");
+      toast.error(error.response.data.message);
     }
   };
-
 
   return (
     <div className="fixed inset-0 z-50 flex justify-center items-center bg-black/30 backdrop-blur-sm px-2">

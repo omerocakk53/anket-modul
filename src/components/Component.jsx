@@ -19,6 +19,7 @@ const items = [
   { id: 'file_upload', type: 'FileUpload', iconKey: 'FaFileUpload', label: 'Dosya Yükleme' },
   { id: 'payment', type: 'Payment', iconKey: 'FaMoneyBillWave', label: 'Ödeme' },
   { id: 'matris', type: 'Matris', iconKey: 'FaTable', label: 'Matris' },
+  { id: 'table', type: 'Table', iconKey: 'FaTable', label: 'Tablo' },
   { id: 'finish', type: 'Finish', iconKey: 'MdOutlineWavingHand', label: 'Bitiş Sayfası' },
 ];
 

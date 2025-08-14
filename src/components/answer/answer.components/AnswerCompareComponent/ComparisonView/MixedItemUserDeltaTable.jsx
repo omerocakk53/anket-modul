@@ -38,6 +38,15 @@ function MixedItemUserDeltaTable({ item, ItemTip, ref }) {
           </div>
         ));
       }
+      
+      if(itemType === "Table"){
+         console.log(value)        
+         return value.split(",").map((pair, i) => (
+          <div key={i}>
+            <span className="font-medium">{pair.trim()}</span>
+          </div>
+        ));
+      }
 
       return value;
     } catch (e) {
@@ -72,6 +81,7 @@ function MixedItemUserDeltaTable({ item, ItemTip, ref }) {
                 </thead>
                 <tbody>
                   {itemData.changes.map((change, index) => {
+                    console.log(change)
                     return (
                       <tr key={index} className="border-t">
                         <td className="px-4 py-2">{change.userName}</td>

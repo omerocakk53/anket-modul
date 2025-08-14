@@ -15,7 +15,7 @@
     "build": "pnpm run build:css && pnpm run build:js",
     "clean": "rm -rf dist",
     "prepare": "pnpm build",
-    "dev": "rollup -c --watch"
+    "dev": "pnpm run build:css && rollup -c --watch"
   },
   "repository": {
     "type": "git",
@@ -65,6 +65,8 @@
     "dom-to-image": "^2.6.0",
     "file-saver": "^2.0.5",
     "framer-motion": "^12.19.3",
+    "glob": "^11.0.3",
+    "glob-promise": "^6.0.7",
     "qrcode.react": "^4.2.0",
     "rc-input-number": "^9.5.0",
     "rc-slider": "^11.1.8",

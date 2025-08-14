@@ -12,7 +12,7 @@ function FinishTextController({ isOpen, setControllerOpen, items, Item, setItems
         if (!Item.id) return;
 
         if (!FinishText?.title) {
-            toast.warning("boş değerler var")
+            toast.error("boş değerler var")
         };
 
         const updatedItem = {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Payment from "../components/Payment";
-import ModalLayout from "../components/layouts/ModalLayout";
+import Payment from "../components/Items/Payment";
+import ModalLayout from "../components/Layouts/ModalLayout";
 
 function PaymentSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
   const [title, setTitle] = useState("");

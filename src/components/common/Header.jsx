@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { FiHelpCircle, FiBell, FiArrowLeft, FiEdit, FiCalendar, FiCheckCircle, FiXCircle, FiFolder } from 'react-icons/fi';
+import { FiHelpCircle, FiBell, FiArrowLeft, FiEdit, FiCalendar, FiCheckCircle, FiXCircle, FiFolder, FiEye } from 'react-icons/fi';
 import EditSurveyModal from './EditSurveyModal';
 import { FaPoll } from 'react-icons/fa';
 import { CiMenuKebab } from 'react-icons/ci';
 import { MdOutlineFeaturedPlayList } from 'react-icons/md';
-
+import { useNavigate } from 'react-router-dom';
 export default function Header({
     isEditMode = false,
     isAnswerMode = false,
@@ -22,6 +22,7 @@ export default function Header({
         Sidebar(sidebarOpen)
     }, [sidebarOpen])
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const navigate = useNavigate();
     if (isEditMode) {
         return (
             <>
@@ -88,14 +89,20 @@ export default function Header({
                             </div>
                         </div>
 
-                        {/* Düzenle Butonu */}
-                        <div className="flex">
+                        <div className="flex gap-2">
                             <button
                                 onClick={() => setIsModalOpen(true)}
                                 className="flex items-center gap-1 px-3 py-1 text-xs font-medium border rounded text-primary-dark border-primary hover:bg-primary hover:text-white transition"
                             >
                                 <FiEdit size={14} />
                                 Düzenle
+                            </button>
+                            <button
+                                onClick={() => { navigate(`/anket/${surveyData.link}/${true}`) }}
+                                className="flex items-center gap-1 px-3 py-1 text-xs font-medium border rounded text-primary-dark border-primary hover:bg-primary hover:text-white transition"
+                            >
+                                <FiEye size={14} />
+                                Ön İzle
                             </button>
                         </div>
                     </div>

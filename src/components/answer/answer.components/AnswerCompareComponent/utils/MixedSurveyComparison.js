@@ -12,6 +12,20 @@ function flattenAnswerValue(itemType, value) {
       .join(", ");
   }
 
+  if (itemType === "Table" && typeof value === "object" && !Array.isArray(value)) {
+    return Object.entries(value)
+      .map(([rowName, cols]) => {
+        if (typeof cols === "object" && cols !== null) {
+          const colValues = Object.entries(cols)
+            .map(([colName, cellValue]) => `${colName}: ${cellValue}`)
+            .join(", ");
+          return `${rowName} => { ${colValues} }`;
+        }
+        return `${rowName}: ${cols}`;
+      })
+      .join(" | ");
+  }
+
   if (itemType === "ImageChoice" && Array.isArray(value)) {
     return value
       .map((v) => (typeof v === "object" && v.title ? v.title : JSON.stringify(v)))

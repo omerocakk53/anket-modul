@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaTrash } from "react-icons/fa";
-import QuestionGroup from "../components/QuestionGroup";
-import ModalLayout from "../components/layouts/ModalLayout";
+import QuestionGroup from "../components/Items/QuestionGroup";
+import ModalLayout from "../components/Layouts/ModalLayout";
 function QuestionGroupSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
   const [title, setTitle] = useState("");
   const [helpText, setHelpText] = useState("");
@@ -50,7 +50,7 @@ function QuestionGroupSettingsModal({ isOpen, onClose, onSave, initialData, coun
 
   if (!isOpen) return null;
   const leftPanel = (
-    <div className="space-y-2">
+    <div className="space-y-2 mb-24">
       <h2 className="text-lg font-bold">Soru Grubu Ayarları</h2>
 
       <div>

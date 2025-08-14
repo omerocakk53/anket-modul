@@ -4,7 +4,7 @@ import AnswerChartCard from './AnswerChartCard';
 import getAnswerCounts from '../../analysis/hooks/getanswerCounts';
 
 const analyzableTypes = [
-  'MultipleChoice', 'Dropdown', 'ImageChoice', 'Scale', 'Rating', 'Numeric', 'Matris'
+  'MultipleChoice', 'Dropdown', 'ImageChoice', 'Scale', 'Rating', 'Numeric', 'Matris', 'Table',
 ];
 
 function AnswerAnalysis({ survey, answers }) {
@@ -33,13 +33,14 @@ function AnswerAnalysis({ survey, answers }) {
       <QuestionFilter searchTerm={searchTerm} setSearchTerm={setSearchTerm} dateRange={dateRange} setDateRange={setDateRange} />
       <div className='flex flex-wrap justify-center gap-5'>
         {filteredQuestions.map(question => {
-          const { counts, rawCounts } = getAnswerCounts(question, filteredAnswers);
+          const { counts, rawCounts , tableData } = getAnswerCounts(question, filteredAnswers);
           return (
             <AnswerChartCard
               key={question.id}
               question={question}
               counts={counts}
               rawCounts={rawCounts}
+              tableData={tableData}
             />
           );
         })}

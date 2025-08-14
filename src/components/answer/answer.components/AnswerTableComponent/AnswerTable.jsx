@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FaExternalLinkAlt, FaTrash } from 'react-icons/fa';
 import { toast } from 'react-hot-toast';
 import AnswerSheet from './AnswerSheet';
+import { object } from 'framer-motion/client';
 
 const AnswerTable = ({ survey, answers, visibleColumns, onDelete }) => {
   const [selected, setSelected] = useState([]);
@@ -36,6 +37,7 @@ const AnswerTable = ({ survey, answers, visibleColumns, onDelete }) => {
       return new Date(ans[columnKey]).toLocaleString("tr-TR");
     }
     const answer = ans.answers.find((a) => a.itemId === columnKey);
+    console.log(answer)
     if (!answer) return '-';
     switch (answer.itemType) {
       case 'MultipleChoice':
@@ -85,6 +87,24 @@ const AnswerTable = ({ survey, answers, visibleColumns, onDelete }) => {
               <div key={row}>
                 <span className="font-semibold">{row}:</span> {val}
               </div>
+            ))}
+          </div>
+        );
+      case 'Table':
+        return (
+          <div className="space-y-1 text-xs">
+            {Object.entries(answer.value).map(([key, obj]) => (
+              <>
+              <div key={key}>
+                <span className="font-semibold">{key}:</span>
+                {Object.entries(obj).map(([row, value]) => (
+                  <div key={row}>
+                    <span className="font-semibold">{row}:</span> {value}
+                  </div>
+                ))}
+              </div>
+              <hr />
+              </>
             ))}
           </div>
         );

@@ -1,5 +1,4 @@
 import { React, useState, useEffect } from 'react'
-
 import WelcomeTextSettingsModel from '../Modal/WelcomeTextSettingsModel';
 import { toast } from 'react-hot-toast';
 
@@ -17,7 +16,7 @@ function WelcomeTextController({ isOpen, setControllerOpen, items, Item, setItem
         };
 
         if (!WelcomeText?.title) {
-            toast.warning("boş değerler var")
+            toast.error("boş değerler var")
         };
 
         if (Edit) {

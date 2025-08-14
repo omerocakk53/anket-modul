@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Scale from "../components/Scale";
-import ModalLayout from "../components/layouts/ModalLayout";
+import Scale from "../components/Items/Scale";
+import ModalLayout from "../components/Layouts/ModalLayout";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css"; // Slider stilini ekle
 

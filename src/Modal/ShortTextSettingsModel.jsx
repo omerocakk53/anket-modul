@@ -1,7 +1,7 @@
 // src/components/QuestionSettingsModal.jsx
 import { React, useState, useEffect } from "react";
-import ShortText from "../components/ShortText";
-import ModalLayout from "../components/layouts/ModalLayout";
+import ShortText from "../components/Items/ShortText";
+import ModalLayout from "../components/Layouts/ModalLayout";
 import InputNumber from 'rc-input-number';
 import 'rc-input-number/assets/index.css';
 function ShortTextModal({ isOpen, onClose, onSave, onChange, initialData, count }) {
