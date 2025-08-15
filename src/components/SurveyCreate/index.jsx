@@ -13,7 +13,7 @@ import useDragAndDrop from './hooks/useDragAndDrop';
 import useGuidance from './hooks/useGuidance';
 import controllerList from './utils/controllerList';
 
-function SurveyCreate({ updatesurvey, fetchsurveyById, updatesurveyfeature }) {
+function SurveyCreate({ updatesurvey, fetchsurveyById, updatesurveyfeature}) {
     const navigate = useNavigate();
     const { surveyId } = useParams();
 

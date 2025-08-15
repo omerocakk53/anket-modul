@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from 'react'
 
-import WelcomeTextSettingsModel from '../Modal/WelcomeTextSettingsModel';
+import FinishTextSettingsModel from '../Modal/FinishTextSettingsModel';
 import { toast } from 'react-hot-toast';
 
 function FinishTextController({ isOpen, setControllerOpen, items, Item, setItems, Edit, SetEdit }) {
@@ -38,7 +38,7 @@ function FinishTextController({ isOpen, setControllerOpen, items, Item, setItems
 
     return (
         <>
-            <WelcomeTextSettingsModel
+            <FinishTextSettingsModel
                 isOpen={isOpen}
                 onClose={() => {setControllerOpen(false); SetEdit(false) }}
                 onSave={(FinishTextData) => { setFinishText(FinishTextData) }}

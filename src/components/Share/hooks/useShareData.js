@@ -4,7 +4,7 @@ export default function useShareData({ surveyId, fetchsurveyById, getsurveyshare
   const [survey, setSurvey] = useState({});
   const [shareData, setShareData] = useState({});
   const fileInputRef = useRef(null);
-  const BASE_URL = window.location.origin;
+  const BASE_URL = "http://localhost:3000";
 
   useEffect(() => {
     const fetchData = async () => {

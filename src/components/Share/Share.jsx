@@ -24,10 +24,10 @@ function Share({ fetchsurveyById, savesurveyshare, getsurveyshare }) {
     savesurveyshare,
   });
 
-  const surveyLink = `${BASE_URL}/v1/survey/s/${survey.link}`;
-
+  const surveyLink = `${BASE_URL}/p/${survey.link}`;
+   
   const goBack = () => navigate("/anket", { replace: true });
-
+  
   return (
     <>
       <Header isShareMode={true} surveyData={survey} onBackToMain={goBack} Sidebar={() => { }} />
