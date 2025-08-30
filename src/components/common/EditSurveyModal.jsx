@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FiX, FiInfo } from 'react-icons/fi';
 import { toast } from 'react-hot-toast';
 
-export default function EditSurveyModal({ survey, onClose, onUpdate, updatesurveyfeature }) {
+export default function EditSurveyModal({ surveys, survey, onClose, onUpdate, updatesurveyfeature }) {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -30,6 +30,8 @@ export default function EditSurveyModal({ survey, onClose, onUpdate, updatesurve
       activePeriodDates: survey.activePeriodDates || [], // → burası eklendi
     });
   }, [survey]);
+
+  const [isNewGroup, setIsNewGroup] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -259,16 +261,56 @@ export default function EditSurveyModal({ survey, onClose, onUpdate, updatesurve
             />
           </div>
 
-          {/* Klasör Adı */}
+          {/* Klasör Adı (Group) */}
           <div>
-            <label className="block text-sm font-medium text-primary-dark mb-1">Klasör Adı</label>
-            <input
-              name="group"
-              value={formData.group}
-              onChange={handleChange}
-              placeholder={survey.group || 'Klasör adı'}
-              className="w-full p-2 border rounded-lg border-neutral-light focus:outline-none focus:ring-2 focus:ring-primary-light"
-            />
+            <label className="block text-sm font-medium text-primary-dark mb-1">
+              Klasör Adı
+            </label>
+
+            {(() => {
+              const groupOptions = [
+                ...new Set(surveys.map((s) => s.group).filter(Boolean)),
+              ];
+
+              return (
+                <>
+                  <select
+                    value={isNewGroup ? "__new" : formData.group}
+                    onChange={(e) => {
+                      if (e.target.value === "__new") {
+                        setIsNewGroup(true);
+                        setFormData((prev) => ({ ...prev, group: "" })); // yeni grup için boş başlat
+                      } else {
+                        setIsNewGroup(false);
+                        setFormData((prev) => ({ ...prev, group: e.target.value }));
+                      }
+                    }}
+                    className="w-full p-2 border rounded-lg border-neutral-light focus:outline-none focus:ring-2 focus:ring-primary-light"
+                  >
+                    <option value="">Grup Seçiniz</option>
+                    {groupOptions.map((g) => (
+                      <option key={g} value={g}>
+                        {g}
+                      </option>
+                    ))}
+                    <option value="__new">+ Yeni Grup Oluştur</option>
+                  </select>
+
+                  {/* Eğer yeni grup oluştur seçildiyse input çıkar */}
+                  {isNewGroup && (
+                    <input
+                      type="text"
+                      value={formData.group}
+                      placeholder="Yeni grup adı giriniz"
+                      onChange={(e) =>
+                        setFormData((prev) => ({ ...prev, group: e.target.value }))
+                      }
+                      className="mt-2 w-full p-2 border rounded-lg border-neutral-light focus:outline-none focus:ring-2 focus:ring-primary-light"
+                    />
+                  )}
+                </>
+              );
+            })()}
           </div>
           {/* Link Adresi */}
           <div>

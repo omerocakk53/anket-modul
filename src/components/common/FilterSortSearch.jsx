@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { FiTag, FiList, FiSearch, FiChevronDown, FiCalendar } from 'react-icons/fi';
+import { FiTag, FiList, FiSearch, FiChevronDown, FiCalendar, FiHelpCircle } from 'react-icons/fi';
 import { toast } from 'react-hot-toast';
 import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // temel stil
@@ -7,13 +7,14 @@ import 'react-date-range/dist/theme/default.css'; // tema stil
 import { tr } from 'date-fns/locale'; // Türkçe locale'i import et
 export default function FilterSortSearch({
   onSearch,
-  onSort,
   searchMode,
   setSearchMode,
   sortBy,
   setSortBy,
   sortOrder,
   setSortOrder,
+  active,
+  setActive,
   dateRange,
   setDateRange
 }) {
@@ -68,6 +69,14 @@ export default function FilterSortSearch({
 
   const handleOrderToggle = () => {
     setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc');
+  };
+
+  const handleActiveToggle = () => {
+    setActive(prev => {
+      if (prev === 'active') return 'passive';
+      if (prev === 'passive') return null;
+      return 'active';
+    });
   };
 
   const handleRangeChange = (ranges) => {
@@ -157,15 +166,56 @@ export default function FilterSortSearch({
         <button
           onClick={handleOrderToggle}
           className={`px-3 py-1.5 text-sm border rounded-lg transition 
-    ${sortOrder === 'asc'
+            ${sortOrder === 'asc'
               ? 'hover:text-primary-text text-success border-success hover:bg-success/80'
               : 'hover:text-primary-text text-danger border-danger hover:bg-danger/80'}
-  `}
+  
+            `}
         >
           {sortOrder === 'asc' ? 'Artan ↑' : 'Azalan ↓'}
         </button>
-      </div>
 
+        <div className='flex items-center gap-1'>
+          <button
+            onClick={handleActiveToggle}
+            className={`px-3 py-1 text-sm border rounded-lg transition 
+              ${active === 'active'
+                ? 'hover:text-primary-text text-success border-success hover:bg-success'
+                : active === 'passive'
+                  ? 'hover:text-primary-text text-danger border-danger hover:bg-danger'
+                  : 'hover:text-primary-text text-primary border-primary hover:bg-primary'
+              }
+          `}
+          >
+            <span>
+              {active === 'active'
+                ? 'Aktif Anketler'
+                : active === 'passive'
+                  ? 'Pasif Anketler'
+                  : 'Tüm Anketler'}
+            </span>
+          </button>
+          <div className="relative inline-block group">
+            <button className={`btn btn-ghost btn-circle hover:text-primary animate-pulse ${active === 'active'
+              ? 'text-success border-success'
+              : active === 'passive'
+                ? 'text-danger border-danger'
+                : 'text-primary border-primary'
+              }`}>
+              <FiHelpCircle size={18} />
+            </button>
+            <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-3 py-1 rounded whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity z-50">
+              <span>
+                {active === 'active'
+                  ? 'Aktif Anketleri Listele'
+                  : active === 'passive'
+                    ? 'Pasif Anketleri Listele'
+                    : 'Tüm Anketleri Listele'}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
       {/* Tarih filtresi */}
       {sortBy === 'createTime' && (
         <div className="relative w-full max-w-md">

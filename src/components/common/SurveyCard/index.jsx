@@ -5,9 +5,13 @@ import SurveyActions from './SurveyActions';
 import SurveyFooter from './SurveyFooter';
 import toast from 'react-hot-toast';
 
-export default function SurveyCard({ key, survey, handleDelete, handleCopyLink, handleShowQr, navigate, updatesurveyfeature }) {
+export default function SurveyCard({ setRefreshKey,user,createTemplate, allSurveys, survey, createSurvey, handleDelete, handleCopyLink, handleShowQr, navigate, updatesurveyfeature }) {
 
-  const [active, setActive] = useState(survey.active);
+  const [active, setActive] = useState();
+
+  useEffect(() => {
+    setActive(survey.active);
+  }, [survey]);
 
   const handleSubmit = async () => {
     try {
@@ -23,23 +27,26 @@ export default function SurveyCard({ key, survey, handleDelete, handleCopyLink, 
 
   return (
     <div
-      key={key}
       className="bg-white/90 backdrop-blur-xs rounded-lg shadow-md p-4 flex flex-col gap-3"
     >
       <SurveyHeader title={survey.title} description={survey.description} active={active} handleActiveSurvey={handleSubmit} />
       <SurveyTags tags={survey.tags} />
+      <SurveyFooter
+        createdAt={survey.createdAt}
+        lastModified={survey.lastModified}
+        surveyType={survey.surveyType}
+      />
       <SurveyActions
+        setRefreshKey={setRefreshKey}
+        createSurvey={createSurvey}
+        surveys={allSurveys}
         survey={survey}
         navigate={navigate}
         handleDelete={handleDelete}
         handleCopyLink={handleCopyLink}
         handleShowQr={handleShowQr}
-
-      />
-      <SurveyFooter
-        createdAt={survey.createdAt}
-        lastModified={survey.lastModified}
-        surveyType={survey.surveyType}
+        createTemplate={createTemplate}
+        user={user}
       />
     </div>
   );

@@ -76,7 +76,7 @@ export default function Sidebar({
                             onClick={fixsurvey}
                         >
                             <MdAutoFixNormal className={`h-5 w-5`} />
-                            Anket Şablonları
+                            Anket Sihirbazı
                         </button>
                     </li>
                     {validGroupNames.length === 0 ? (

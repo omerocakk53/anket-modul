@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
 import toast from 'react-hot-toast';
 
@@ -13,16 +13,17 @@ import useDragAndDrop from './hooks/useDragAndDrop';
 import useGuidance from './hooks/useGuidance';
 import controllerList from './utils/controllerList';
 
-function SurveyCreate({ updatesurvey, fetchsurveyById, updatesurveyfeature}) {
+function SurveyCreate({ updatesurvey, fetchsurveyById, updatesurveyfeature, fetchsurveychamberById }) {
     const navigate = useNavigate();
     const { surveyId } = useParams();
 
     const {
+        surveys, setSurveys,
         survey, setSurvey, items, setItems,
         finishWelcomeItems, setFinishWelcomeItems,
         variables, setVariables,
         shouldReload, setShouldReload
-    } = useSurveyLoader(fetchsurveyById, surveyId);
+    } = useSurveyLoader(fetchsurveyById, fetchsurveychamberById, surveyId);
 
     const { handleDragEnd, handleDelete, handleDeleteWelcomeFinish } = useDragAndDrop({
         items, setItems, finishWelcomeItems, setFinishWelcomeItems,
@@ -67,6 +68,7 @@ function SurveyCreate({ updatesurvey, fetchsurveyById, updatesurveyfeature}) {
         <>
             <Header
                 isEditMode
+                surveys={surveys}
                 surveyData={survey}
                 onBackToMain={yonlendir}
                 selectedGroup="Anketler"

@@ -13,6 +13,7 @@ export default function useSurveyActions({
     surveyType,
     tags,
     items,
+    FinishWelcomeitems,
     selectedGroup,
   }) => {
     if (!selectedGroup) {
@@ -35,6 +36,10 @@ export default function useSurveyActions({
         tags: tags || [],
         items: items || [],
       };
+
+      if (FinishWelcomeitems) {
+        surveyData.FinishWelcomeitems = FinishWelcomeitems;
+      }
 
       const createdSurvey = await createSurvey(surveyData);
       if (createdSurvey) {

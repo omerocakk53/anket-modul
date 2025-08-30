@@ -4,11 +4,21 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-hot-toast';;
 import { QRCodeCanvas, QRCodeSVG } from "qrcode.react";
-
 import SurveyCard from "../components/Common/SurveyCard/index.jsx";
 import { IoMdClose } from "react-icons/io";
 
-export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurvey, deletesurveyshareById, allanswerdelete, updatesurveyfeature }) {
+export default function AnketListele(props) {
+    const {
+        allSurveys,
+        user,
+        createTemplate,
+        visibleSurveys, setRefreshKey,
+        createSurvey, deletesurvey,
+        deletesurveyshareById,
+        allanswerdelete,
+        updatesurveyfeature
+    } = props;
+
     const [qrData, setQrData] = useState(null);
     const navigate = useNavigate();
     const url = window.location.origin;
@@ -104,16 +114,22 @@ export default function AnketListele({ visibleSurveys, setRefreshKey, deletesurv
 
     return (
         <>
-            {visibleSurveys?.map(survey => (
-                <SurveyCard
-                    key={survey._id}
-                    survey={survey}
-                    handleDelete={handleDelete}
-                    handleCopyLink={handleCopyLink}
-                    handleShowQr={handleShowQr}
-                    navigate={navigate}
-                    updatesurveyfeature={updatesurveyfeature}
-                />
+            {visibleSurveys?.map((survey, idx) => (
+                <div key={idx}>
+                    <SurveyCard
+                        setRefreshKey={setRefreshKey}
+                        createSurvey={createSurvey}
+                        allSurveys={allSurveys}
+                        survey={survey}
+                        navigate={navigate}
+                        handleDelete={handleDelete}
+                        handleCopyLink={handleCopyLink}
+                        handleShowQr={handleShowQr}
+                        updatesurveyfeature={updatesurveyfeature}
+                        createTemplate={createTemplate}
+                        user={user}
+                    />
+                </div>
             ))}
 
             {qrData && (

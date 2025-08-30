@@ -24,7 +24,7 @@ export default function SurveyFooter({ createdAt, lastModified, surveyType }) {
     };
 
     return (
-        <div className="mt-5 text-xs text-neutral-dark flex flex-col space-y-0.5 gap-2 w-[101%]">
+        <div className="text-xs text-neutral-dark flex flex-col space-y-0.5 gap-2 w-[101%]">
             <span className="flex items-center gap-3 border border-primary px-1 rounded-xl text-primary-dark">
                 <MdOutlineFeaturedPlayList /> {getSurveyTypeText(surveyType)}
             </span>

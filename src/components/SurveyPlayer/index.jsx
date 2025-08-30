@@ -14,15 +14,6 @@ import { submitAnswers } from './utils/submitAnswers';
 export default function SurveyPlayer({ slug, tester, user, fetchsurveyById, answersave, viewsCount, fetchallsurvey }) {
     const [answers, setAnswers] = useState({});
     const [startDate] = useState(new Date());
-    // Yalnızca surveyId varsa viewsCount fonksiyonunu çağır
-    useEffect(() => {
-        if (tester) return;  // tester true ise çalıştırma
-        viewsCount(surveyId).catch(console.error);
-    }, [viewsCount, tester]);
-    const wrappedSubmitAnswers = async (...args) => {
-        if (tester) return; // tester ise submit işlemi yapılmaz
-        return submitAnswers(...args);
-    };
     // Hook çağrılarını koşulsuz, en üstte yapıyoruz
     const {
         surveyId,
@@ -31,7 +22,20 @@ export default function SurveyPlayer({ slug, tester, user, fetchsurveyById, answ
         variables,
         loadingSurveys,
         loadingSurveyData
-    } = useSurveyBySlug(slug, fetchallsurvey, fetchsurveyById);
+    } = useSurveyBySlug(slug, fetchallsurvey, fetchsurveyById); 
+                                                                  
+    if (!survey) return null;
+
+    // Yalnızca surveyId varsa viewsCount fonksiyonunu çağır
+    useEffect(() => {
+        if (tester) return;  // tester true ise çalıştırma
+        viewsCount(surveyId).catch(console.error);
+    }, [viewsCount, tester,surveyId]);
+
+    const wrappedSubmitAnswers = async (...args) => {
+        if (tester) return; // tester ise submit işlemi yapılmaz
+        return submitAnswers(...args);
+    };
 
     const {
         currentIndex,

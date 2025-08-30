@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { FaExternalLinkAlt, FaTrash } from 'react-icons/fa';
 import { toast } from 'react-hot-toast';
 import AnswerSheet from './AnswerSheet';
-import { object } from 'framer-motion/client';
 
 const AnswerTable = ({ survey, answers, visibleColumns, onDelete }) => {
   const [selected, setSelected] = useState([]);
@@ -141,7 +140,7 @@ const AnswerTable = ({ survey, answers, visibleColumns, onDelete }) => {
 
           <div className="overflow-x-auto overflow-y-auto border border-gray-200 rounded-2xl shadow-md max-h-[500px] w-full bg-white">
             <table className="table-fixed min-w-full text-sm text-gray-700 bg-white">
-              <thead className="bg-gradient-to-r from-blue-50 to-blue-100 text-gray-700 sticky top-0 z-10 shadow-sm text-xs">
+              <thead className="bg-white text-gray-700 sticky top-0 z-20 shadow-sm text-xs">
                 <tr>
                   <th className="w-10 p-3">
                     <input
@@ -151,7 +150,7 @@ const AnswerTable = ({ survey, answers, visibleColumns, onDelete }) => {
                       className="accent-blue-500"
                     />
                   </th>
-                  <th className="sticky z-10 left-0 bg-white p-3 font-semibold w-36 border-r">
+                  <th className="sticky left-0 bg-white p-3 font-semibold w-36 border-r">
                     Kullanıcı Adı
                   </th>
                   <th className="p-3 text-center w-32">Cevap Kağıdı</th>

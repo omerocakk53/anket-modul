@@ -30,18 +30,26 @@ function MixedItemUserDeltaTable({ item, ItemTip, ref }) {
         ));
       }
 
+      if (itemType === "Dropdown") {
+        return (
+          <span
+            className="inline-block px-2 py-1 m-1 text-sm bg-blue-100 text-blue-800 rounded-full"
+          >
+            {value}
+          </span>
+        );
+      }
+
       if (itemType === "Matris") {
-        // ör: "1: 2, 2: 1" formatındaki veriyi liste yap
         return value.split(",").map((pair, i) => (
           <div key={i}>
             <span className="font-medium">{pair.trim()}</span>
           </div>
         ));
       }
-      
-      if(itemType === "Table"){
-         console.log(value)        
-         return value.split(",").map((pair, i) => (
+
+      if (itemType === "Table") {
+        return value.split(",").map((pair, i) => (
           <div key={i}>
             <span className="font-medium">{pair.trim()}</span>
           </div>
@@ -53,6 +61,61 @@ function MixedItemUserDeltaTable({ item, ItemTip, ref }) {
       return value;
     }
   }
+
+  const MostLessValues = (itemType, changes) => {
+    const period1Data = changes.map(c => c.period1Value);
+    const period2Data = changes.map(c => c.period2Value);
+
+    // Frekans hesaplayan yardımcı fonksiyon
+    const findMostAndLeast = (arr) => {
+      const frequency = {};
+
+      arr.forEach(value => {
+        if (!value) return;
+        frequency[value] = (frequency[value] || 0) + 1;
+      });
+
+      const total = arr.filter(Boolean).length;
+      if (total === 0) {
+        return { most: [], least: [] };
+      }
+
+      const maxCount = Math.max(...Object.values(frequency));
+      const minCount = Math.min(...Object.values(frequency));
+
+      // En çok çıkanların listesi
+      const most = Object.entries(frequency)
+        .filter(([_, count]) => count === maxCount)
+        .map(([value, count]) => ({
+          value,
+          count,
+          percent: ((count / total) * 100).toFixed(1),
+        }));
+
+      // En az çıkanların listesi
+      const least = Object.entries(frequency)
+        .filter(([_, count]) => count === minCount)
+        .map(([value, count]) => ({
+          value,
+          count,
+          percent: ((count / total) * 100).toFixed(1),
+        }));
+
+      return { most, least };
+    };
+
+    const result1 = findMostAndLeast(period1Data);
+    const result2 = findMostAndLeast(period2Data);
+
+    console.log(result1, result2);
+
+    return {
+      mostValue1: result1.most,   // Array olacak
+      leastValue1: result1.least,
+      mostValue2: result2.most,
+      leastValue2: result2.least,
+    };
+  };
 
 
   return (
@@ -70,6 +133,50 @@ function MixedItemUserDeltaTable({ item, ItemTip, ref }) {
               {itemData.title} ({itemData.itemType})
             </h3>
 
+            {(itemData.itemType !== "LongText" &&
+              itemData.itemType !== "ShortText" &&
+              itemData.itemType !== "QuestionsGroup" &&
+              itemData.itemType !== "Numeric" &&
+              itemData.itemType !== "Email" &&
+              itemData.itemType !== "FileUpload") && (() => {
+                const { mostValue1, leastValue1, mostValue2, leastValue2 } =
+                  MostLessValues(itemData.itemType, itemData.changes);
+
+                const renderRow = (label, dataArray) => (
+                  <li className="flex flex-col gap-1 bg-gray-50 px-3 py-2 rounded-lg shadow-sm hover:bg-gray-100 transition">
+                    <span className="text-sm font-medium text-gray-700">{label}</span>
+                    <div className="flex flex-wrap gap-2">
+                      {dataArray.map((data, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-center gap-2 bg-white px-2 py-1 rounded-lg shadow-sm border"
+                        >
+                          <span className="inline-block px-2 py-1 text-xs font-semibold bg-blue-100 text-blue-800 rounded-full">
+                            {data.value}
+                          </span>
+                          <span className="text-xs text-gray-600">
+                            {data.count} kişi – %{data.percent}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </li>
+                );
+
+                return (
+                  <div className="p-4 border border-gray-200 rounded-xl bg-white shadow-md">
+                    <h4 className="text-sm font-semibold text-gray-800 mb-3">Seçim Analizi</h4>
+                    <ul className="space-y-3">
+                      {renderRow("Periyot 1'de en çok seçilen", mostValue1)}
+                      {renderRow("Periyot 1'de en az seçilen", leastValue1)}
+                      {renderRow("Periyot 2'de en çok seçilen", mostValue2)}
+                      {renderRow("Periyot 2'de en az seçilen", leastValue2)}
+                    </ul>
+                  </div>
+                );
+              })()}
+
+
             <div className="overflow-x-auto p-5">
               <table className="min-w-full text-sm text-gray-700">
                 <thead className="bg-gray-100">
@@ -81,7 +188,6 @@ function MixedItemUserDeltaTable({ item, ItemTip, ref }) {
                 </thead>
                 <tbody>
                   {itemData.changes.map((change, index) => {
-                    console.log(change)
                     return (
                       <tr key={index} className="border-t">
                         <td className="px-4 py-2">{change.userName}</td>

@@ -161,7 +161,6 @@ export * from './src/components/answer/answer.components/AnswerCompareComponent/
 export * from './src/components/answer/answer.components/AnswerCompareComponent/ComparisonView/ItemUserDeltaTable.jsx';
 export * from './src/components/answer/answer.components/AnswerAnalysisComponent/answerChartSwitcher/hooks/useDownload.js';
 export * from './src/components/answer/answer.components/AnswerAnalysisComponent/answerChartSwitcher/hooks/useChartOptions.js';
-export * from './src/components/answer/answer.components/AnswerCompareComponent/ComparisonView/MixedChart/MixedChart.jsx';
 export * from './src/components/answer/answer.components/AnswerCompareComponent/ComparisonView/ItemUserDeltaChart/ItemUserDeltaChart.jsx';
 export * from './src/components/answer/answer.components/AnswerCompareComponent/ComparisonView/ItemUserDeltaChart/ChartWrapper.jsx';
 export * from './src/components/answer/answer.components/AnswerCompareComponent/ComparisonView/ItemUserDeltaChart/chartOptions.js';

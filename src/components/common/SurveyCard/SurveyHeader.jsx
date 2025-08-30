@@ -4,34 +4,6 @@ import { FiCheckCircle, FiHelpCircle, FiXCircle } from "react-icons/fi";
 export default function SurveyHeader({ title, description, active, handleActiveSurvey }) {
     return (
         <div>
-            <style>
-                {`.custom-tooltip-wrapper {
-  position: relative;
-  display: inline-block;
-}
-
-.custom-tooltip-text {
-  position: absolute;
-  bottom: -35px; 
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: black;
-  color: white;
-  padding: 6px 12px;
-  font-size: 12px;
-  border-radius: 4px;
-  white-space: nowrap;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.2s ease-in-out;
-  z-index: 50;
-}
-
-.custom-tooltip-wrapper:hover .custom-tooltip-text {
-  opacity: 1;
-  visibility: visible;
-}`}
-            </style>
             <h3 className="text-xl font-bold text-neutral-darkest truncate">{title}</h3>
             <h3 className="text-sm text-neutral-darkest truncate">{description}</h3>
             <div className="flex items-center gap-3">
@@ -45,12 +17,12 @@ export default function SurveyHeader({ title, description, active, handleActiveS
                         {active ? <FiCheckCircle size={14} /> : <FiXCircle size={14} />}
                     </div>
                 </div>
-
-                <div className="custom-tooltip-wrapper">
+                <div className="relative inline-block group">
                     <button className="btn btn-ghost btn-circle text-neutral-dark hover:text-primary mt-2 animate-pulse">
                         <FiHelpCircle size={20} />
                     </button>
-                    <div className="custom-tooltip-text ">
+
+                    <div className="absolute -bottom-9 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-3 py-1 rounded whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity z-50">
                         Durumu Değiştirmek İçin Tıklayınız
                     </div>
                 </div>

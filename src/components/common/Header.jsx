@@ -9,6 +9,7 @@ export default function Header({
     isEditMode = false,
     isAnswerMode = false,
     surveyData = {},
+    surveys,
     onBackToMain,
     selectedGroup,
     onUpdateSurvey,
@@ -110,6 +111,7 @@ export default function Header({
                     {/* Modal */}
                     {isModalOpen && (
                         <EditSurveyModal
+                            surveys={surveys}
                             survey={surveyData}
                             onClose={() => setIsModalOpen(false)}
                             onUpdate={(updated) => {

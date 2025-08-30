@@ -21,7 +21,11 @@ export default function Surveys(props) {
     chamberName,
     fetchallsurvey,
     fetchsurveychamberById,
-    updatesurveyfeature
+    updatesurveyfeature,
+    createsurveytemplate,
+    getallsurveytemplate,
+    deletesurveytemplateId,
+    getChamberId,
   } = props;
 
   const [username, setUsername] = useState("");
@@ -33,7 +37,9 @@ export default function Surveys(props) {
   const [searchMode, setSearchMode] = useState("title");
   const [sortBy, setSortBy] = useState(null);
   const [sortOrder, setSortOrder] = useState("asc");
+  const [active, setActive] = useState(null);
   const [dateRange, setDateRange] = useState({ startDate: "", endDate: "" });
+  const [templateData, setTemplateData] = useState(null);
 
   const {
     allSurveys,
@@ -41,7 +47,7 @@ export default function Surveys(props) {
     selectedGroup,
     setSelectedGroup,
     setRefreshKey,
-  } = useSurveys({ user, fetchallsurvey, fetchsurveychamberById  });
+  } = useSurveys({ user, fetchallsurvey, fetchsurveychamberById });
 
   const { createSurveyInGroup, createNewGroupAndSurvey, createSurveyFromTemplate } =
     useSurveyActions({
@@ -63,6 +69,7 @@ export default function Surveys(props) {
     searchMode,
     sortBy,
     sortOrder,
+    active,
     dateRange
   );
 
@@ -86,13 +93,11 @@ export default function Surveys(props) {
         sidebar={sidebarOpen}
         user={user}
       />
-
       <div className="flex-1 flex flex-col bg-neutral-light min-h-screen">
         <Header selectedGroup={selectedGroup} chamberName={chamberName} Sidebar={setSidebarOpen} />
         <main className="flex-1 p-4 md:p-8 bg-neutral-light overflow-y-auto">
           <FilterSortSearch
             onSearch={(t) => setSearchTerm(t)}
-            onSort={setSortBy}
             searchMode={searchMode}
             setSearchMode={setSearchMode}
             sortBy={sortBy}
@@ -101,18 +106,23 @@ export default function Surveys(props) {
             setSortOrder={setSortOrder}
             dateRange={dateRange}
             setDateRange={setDateRange}
+            active={active}
+            setActive={setActive}
           />
           <hr className="mb-5 border-none h-[1px] rounded-xl bg-neutral-darkest" />
-
           {selectedGroup ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
               <AnketListele
+                allSurveys={allSurveys}
                 visibleSurveys={visibleSurveys}
                 setRefreshKey={setRefreshKey}
                 deletesurvey={deletesurvey}
                 deletesurveyshareById={deletesurveyshareById}
                 allanswerdelete={allanswerdelete}
+                createSurvey={createSurvey}
                 updatesurveyfeature={updatesurveyfeature}
+                user={user}
+                createTemplate={setTemplateData}
               />
             </div>
           ) : (
@@ -127,15 +137,23 @@ export default function Surveys(props) {
         mode={modalMode}
         selectedGroup={selectedGroup}
         onCreate={
-          modalMode === "group"
+          isModalOpen &&
+            modalMode === "group"
             ? createNewGroupAndSurvey
             : (data) => createSurveyInGroup({ ...data, selectedGroup })
         }
       />
       <TemplateSurveyModal
+        getallsurveytemplate={getallsurveytemplate}
+        deletesurveytemplateId={deletesurveytemplateId}
         isOpen={isFixModalOpen}
         onClose={() => setIsFixModalOpen(false)}
         onSelectTemplate={(data) => createSurveyFromTemplate(data, selectedGroup)}
+        user={user}
+        templateData={templateData}
+        createsurveytemplate={createsurveytemplate}
+        animateisOpen={setIsFixModalOpen}
+        getChamberId={getChamberId}
       />
     </div>
   );

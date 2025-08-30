@@ -5,6 +5,7 @@ export function filterAndSortSurveys(
   searchMode,
   sortBy,
   sortOrder,
+  active,
   dateRange
 ) {
   return surveys
@@ -17,6 +18,14 @@ export function filterAndSortSurveys(
       } else {
         return s.tags && s.tags.some((tag) => tag.toLowerCase().includes(searchTerm));
       }
+    })
+    .filter((s) => {
+      // active filtre
+      if (!active) return true;
+      if (active === null) return s;
+      if (active === "active") return s.active === true;
+      if (active === "passive") return s.active === false;
+      return true;
     })
     .filter((s) => {
       if (sortBy === "createTime" && (dateRange.startDate || dateRange.endDate)) {

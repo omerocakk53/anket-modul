@@ -3,6 +3,17 @@ module.exports = {
   content: [
     './src/**/*.{js,jsx,ts,tsx}',
   ],
+  variants: {
+    extend: {
+      fontWeight: ['hover', 'focus', 'responsive'],
+      opacity: ['hover', 'group-hover'],
+      borderColor: ['hover', 'focus'],
+      margin: ['first', 'last'],
+      backgroundColor: ['odd', 'even'],
+      scale: ['hover', 'active', 'group-hover'],
+      translate: ['hover', 'active', 'group-hover'],
+    },
+  },
   theme: {
     extend: {
       colors: {

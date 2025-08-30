@@ -12,7 +12,6 @@ import { PiChartBarDuotone, PiChartBarHorizontalDuotone, PiChartLine } from "rea
 import ColorPickerRow from "./AnswerAnalysisComponent/ColorPickerRow.jsx";
 import domtoimage from 'dom-to-image';
 import MixedItemUserDeltaTable from "./AnswerCompareComponent/ComparisonView/MixedItemUserDeltaTable.jsx";
-import MixedChart from "./AnswerCompareComponent/ComparisonView/MixedChart/MixedChart.jsx";
 export default function AnswerComparison({ survey, answers }) {
     const [surveyPeriod1, setSurveyPeriod1] = useState({});
     const [surveyPeriod2, setSurveyPeriod2] = useState({});
@@ -168,15 +167,13 @@ export default function AnswerComparison({ survey, answers }) {
                             return (
                                 <button
                                     key={key}
-                                    onClick={() => !isDisabled && setViewType(key)}
-                                    disabled={isDisabled}
-                                    className={`p-2 rounded-md transition
-          ${ViewType === key ? 'bg-blue-100 text-blue-700 font-semibold' : 'text-gray-600'}
-          ${isDisabled ? 'opacity-40 cursor-not-allowed' : 'hover:bg-gray-100'}
-        `}
+                                    onClick={() => setViewType(key)}
+                                    className={`p-2 rounded-md transition ${isDisabled ? 'opacity-40 cursor-not-allowed' : 'hover:bg-gray-100'}
+                                    ${ViewType === key ? 'bg-blue-100 text-blue-700 font-semibold' : 'text-gray-600'}`}
                                     aria-label={label}
                                     title={label}
                                     type="button"
+                                    disabled={isDisabled}
                                 >
                                     {icon}
                                 </button>
@@ -221,11 +218,13 @@ export default function AnswerComparison({ survey, answers }) {
                             </>
                         ) : (
                             <>
-                                <MixedItemUserDeltaTable
-                                    item={MixedSurvey}      // MixedSurveyComparison sonucu tablo için
-                                    ItemTip={selectedItemId}
-                                    ref={tableRef}
-                                />
+                                {ViewType === "table" && (
+                                    <MixedItemUserDeltaTable
+                                        item={MixedSurvey}      // MixedSurveyComparison sonucu tablo için
+                                        ItemTip={selectedItemId}
+                                        ref={tableRef}
+                                    />
+                                )}
                             </>
                         )
                     ) : (
