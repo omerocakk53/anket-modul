@@ -7,19 +7,17 @@ Amaç; anket oluşturma, düzenleme, paylaşma ve sonuçları yönetilebilir hal
 
 #  Proje Yapısı
 
-AnaDosyalar
-
-
-Colors 
+---
+# Colors 
   
    colors.js
 
    ColorEditor.jsx
   
    RenkUygulama.jsx
-   
+
 ---
-components
+# components
   
    answer
 
@@ -48,27 +46,27 @@ components
    Component.jsx
 
 ---
-Controller
+# Controller
 
    Anket Soruları Controller Kodları
 
 ---
-hooks
+# hooks
 
    useThemeManager.js
 
 ---
-Items
+# Items
 
    ComponentViewItems.jsx
 
 ---
-Modal
+# Modal
 
    Anket Soruları Düzenleme Sayfaları
 
 ---
-pages
+# pages
 
    SurveyList.jsx
 
@@ -77,13 +75,13 @@ pages
    Survey.jsx
 
 ---
-utils
+# utils
 
    iconMap.js
 
 ---
 
-## 🛠️ Açıklamalar
+# Açıklamalar
 
 - **Colors** → Renk yönetimi ve tema bileşenleri  
 - **components** → Anket bileşenleri (SurveyCreate, SurveyPlayer, Toast, Modals vb.)  
