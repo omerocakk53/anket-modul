@@ -22,7 +22,7 @@ export default function SurveyHeader({ title, description, active, handleActiveS
                         <FiHelpCircle size={20} />
                     </button>
 
-                    <div className="absolute -bottom-9 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-3 py-1 rounded whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity z-50">
+                    <div className="absolute -top-3 -right-1 bg-black text-white text-xs px-3 py-1 rounded whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity z-50">
                         Durumu Değiştirmek İçin Tıklayınız
                     </div>
                 </div>

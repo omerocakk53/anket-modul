@@ -24,10 +24,10 @@ function AnswerScales({ shareData }) {
   ];
 
   const deviceLabels = ['Cep Telefonu', 'Tablet', 'Bilgisayar', 'Başka'];
-  const deviceData = [0, 0, 0, 0];
+  const deviceData = [20, 1, 10, 20];
 
   const distributionLabels = ['Twitter', 'WhatsApp', 'Telegram', 'Linkedin', 'Başka'];
-  const distributionData = [0, 0, 0, 0, 0];
+  const distributionData = [5, 20, 5, 1, 30];
 
   const [deviceView, setDeviceView] = useState('pie');
   const [distributionView, setDistributionView] = useState('pie');
@@ -50,60 +50,86 @@ function AnswerScales({ shareData }) {
     }
   };
 
-  const generateChartData = (labels, data) => ({
-    labels,
-    datasets: [
-      {
-        label: 'Veriler',
-        data,
-        backgroundColor: [
-          'rgba(54, 162, 235, 0.6)',
-          'rgba(255, 206, 86, 0.6)',
-          'rgba(75, 192, 192, 0.6)',
-          'rgba(255, 99, 132, 0.6)',
-          'rgba(153, 102, 255, 0.6)',
+  // chart utils
+  const chartColors = [
+    'rgba(54, 162, 235, 0.6)',
+    'rgba(255, 206, 86, 0.6)',
+    'rgba(75, 192, 192, 0.6)',
+    'rgba(255, 99, 132, 0.6)',
+    'rgba(153, 102, 255, 0.6)',
+    'rgba(255, 159, 64, 0.6)',
+  ];
+
+  const chartBorderColors = chartColors.map(c => c.replace("0.6", "1"));
+
+  /**
+   * Dinamik ChartJS data oluşturucu
+   * @param {Array} labels - grafik etiketleri
+   * @param {Array} data - grafik verileri
+   * @param {string} type - "pie" | "bar"
+   */
+  const generateChartData = (labels, data, type) => {
+    if (type === "pie") {
+      // Pie için tek dataset gerekir
+      return {
+        labels,
+        datasets: [
+          {
+            data,
+            backgroundColor: chartColors.slice(0, labels.length),
+            borderColor: chartBorderColors.slice(0, labels.length),
+            borderWidth: 1,
+          },
         ],
-        borderColor: [
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(255, 99, 132, 1)',
-          'rgba(153, 102, 255, 1)',
-        ],
-        borderWidth: 1,
-      },
-    ],
-  });
+      };
+    }
+
+    // Bar için her label tek bir dataset olabilir
+    return {
+      labels,
+      datasets: [
+        {
+          label: "Değerler",
+          data,
+          backgroundColor: chartColors.slice(0, labels.length),
+          borderColor: chartBorderColors.slice(0, labels.length),
+          borderWidth: 1,
+        },
+      ],
+    };
+  };
+
 
   const renderChartView = (type, labels, data) => {
-    const chartData = generateChartData(labels, data);
-    if (type === 'bar') {
+    const chartData = generateChartData(labels, data, type);
+
+    if (type === "bar") {
       return (
-        <div className='w-full h-[300px]'>
+        <div className="w-full h-[300px]">
           <Bar data={chartData} options={chartOptions} />
         </div>
       );
     }
-    if (type === 'pie') {
+    if (type === "pie") {
       return (
-        <div className='w-full h-[300px]'>
+        <div className="w-full h-[300px]">
           <Pie data={chartData} options={chartOptions} />
         </div>
       );
     }
     return (
-      <table className='w-full text-sm border border-gray-200 rounded overflow-hidden'>
-        <thead className='bg-gray-100'>
+      <table className="w-full text-sm border border-gray-200 rounded overflow-hidden">
+        <thead className="bg-gray-100">
           <tr>
-            <th className='px-3 py-2 text-left border'>Kategori</th>
-            <th className='px-3 py-2 text-left border'>Değer</th>
+            <th className="px-3 py-2 text-left border">Kategori</th>
+            <th className="px-3 py-2 text-left border">Değer</th>
           </tr>
         </thead>
         <tbody>
           {labels.map((label, i) => (
-            <tr key={i} className='hover:bg-gray-50'>
-              <td className='px-3 py-2 border'>{label}</td>
-              <td className='px-3 py-2 border'>{data[i]}</td>
+            <tr key={i} className="hover:bg-gray-50">
+              <td className="px-3 py-2 border">{label}</td>
+              <td className="px-3 py-2 border">{data[i]}</td>
             </tr>
           ))}
         </tbody>
@@ -121,7 +147,7 @@ function AnswerScales({ shareData }) {
           </li>
         ))}
       </ul>
-      <div className='flex gap-3 w-full'>
+      <div className='flex flex-col md:flex-row gap-3 w-full'>
         <div className='w-full max-w-2xl bg-white shadow rounded-xl p-6'>
           <div className='flex justify-between items-center mb-4'>
             <h2 className='text-lg font-semibold text-gray-800'>Cihazlar</h2>
