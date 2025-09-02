@@ -12,7 +12,7 @@ AnaDosyalar
 │ ├── colors.js
 │ ├── ColorEditor.jsx
 │ └── RenkUygulama.jsx
-│
+│---
 │── components
 │ ├── answer
 │ ├── Common
@@ -27,24 +27,24 @@ AnaDosyalar
 │ ├── Surveys
 │ ├── Toast
 │ └── Component.jsx
-│
+│---
 │── Controller
 │ └── Anket Soruları Controller Kodları
-│
+│---
 │── hooks
 │ └── useThemeManager.js
-│
+│---
 │── Items
 │ └── ComponentViewItems.jsx
-│
+│---
 │── Modal
 │ └── Anket Soruları Düzenleme Sayfaları
-│
+│---
 │── pages
 │ ├── SurveyList.jsx
 │ ├── SurveyPlayerWrapper.jsx
 │ └── Survey.jsx
-│
+│---
 │── utils
 │ └── iconMap.js
 
