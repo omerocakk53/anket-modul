@@ -10,12 +10,14 @@ Amaç; anket oluşturma, düzenleme, paylaşma ve sonuçları yönetilebilir hal
 AnaDosyalar
 
 
-Colors
+Colors 
+  
   colors.js
   ColorEditor.jsx
   RenkUygulama.jsx
 
 components
+  
   answer
   Common
   Items
