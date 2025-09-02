@@ -12,46 +12,74 @@ AnaDosyalar
 
 Colors 
   
-  colors.js
-  ColorEditor.jsx
-  RenkUygulama.jsx
+   colors.js
 
+   ColorEditor.jsx
+  
+   RenkUygulama.jsx
+   
+---
 components
   
-  answer
-  Common
-  Items
-  Layouts
-  Logic
-  Modals
-  Share
-  SuccessMessage
-  SurveyCreate
-  SurveyPlayer
-  Surveys
-  Toast
-  Component.jsx
+   answer
 
+   Common
+
+   Items
+
+   Layouts
+
+   Logic
+
+   Modals
+
+   Share
+
+   SuccessMessage
+
+   SurveyCreate
+
+   SurveyPlayer
+
+   Surveys
+
+   Toast
+
+   Component.jsx
+
+---
 Controller
-  Anket Soruları Controller Kodları
 
+   Anket Soruları Controller Kodları
+
+---
 hooks
-  useThemeManager.js
 
+   useThemeManager.js
+
+---
 Items
-  ComponentViewItems.jsx
 
+   ComponentViewItems.jsx
+
+---
 Modal
-  Anket Soruları Düzenleme Sayfaları
 
+   Anket Soruları Düzenleme Sayfaları
+
+---
 pages
-  SurveyList.jsx
-  SurveyPlayerWrapper.jsx
-  Survey.jsx
 
+   SurveyList.jsx
 
+   SurveyPlayerWrapper.jsx
+
+   Survey.jsx
+
+---
 utils
-  iconMap.js
+
+   iconMap.js
 
 ---
 
