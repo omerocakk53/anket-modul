@@ -5,7 +5,7 @@ Amaç; anket oluşturma, düzenleme, paylaşma ve sonuçları yönetilebilir hal
 
 ---
 
-## 📂 Proje Yapısı
+# 📂 Proje Yapısı
 
 AnaDosyalar
 │── Colors
@@ -47,8 +47,6 @@ AnaDosyalar
 │
 │── utils
 │ └── iconMap.js
-
-
 
 ---
 
