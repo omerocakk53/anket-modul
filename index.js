@@ -1,6 +1,3 @@
-// 🔥 Auto-generated barrel file
-// DO NOT EDIT MANUALLY
-
 // Default Exports
 export { default as Surveys } from './src/pages/Surveys.jsx';
 export { default as SurveyPlayerWrapper } from './src/pages/SurveyPlayerWrapper.jsx';
