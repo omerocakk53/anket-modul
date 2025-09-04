@@ -795,7 +795,7 @@ packages:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
 
-  '@rc-iconRenderComponent/mini-decimal@1.1.0':
+  '@rc-component/mini-decimal@1.1.0':
     resolution: {integrity: sha512-jS4E7T9Li2GuYwI6PyiVXmxTiM6b07rlD9Ge8uGZSCz3WlzcG5ZK7g5bbuKNeZ9pgUuPK/5guV781ujdVpm4HQ==}
     engines: {node: '>=8.x'}
 
@@ -3194,7 +3194,7 @@ snapshots:
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
-  '@rc-iconRenderComponent/mini-decimal@1.1.0':
+  '@rc-component/mini-decimal@1.1.0':
     dependencies:
       '@babel/runtime': 7.28.2
 
@@ -4240,7 +4240,7 @@ snapshots:
   rc-input-number@9.5.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
     dependencies:
       '@babel/runtime': 7.28.2
-      '@rc-iconRenderComponent/mini-decimal': 1.1.0
+      '@rc-component/mini-decimal': 1.1.0
       classnames: 2.5.1
       rc-input: 1.8.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       rc-util: 5.44.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1)

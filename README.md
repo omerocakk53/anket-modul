@@ -43,8 +43,6 @@ Amaç; anket oluşturma, düzenleme, paylaşma ve sonuçları yönetilebilir hal
 
    Toast
 
-   Component.jsx
-
 ---
 # Controller
 
