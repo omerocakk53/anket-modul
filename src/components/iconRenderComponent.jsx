@@ -25,7 +25,7 @@ const items = [
 
 import { FiX } from "react-icons/fi";
 import { useState, useEffect } from "react";
-function component({ onAddItem, sideBar, setSidebarOpen }) {
+function iconRenderComponent({ onAddItem, sideBar, setSidebarOpen }) {
   const [isClosing, setIsClosing] = useState(false);
   // Animasyonlu kapama
   useEffect(() => {
@@ -111,4 +111,4 @@ function component({ onAddItem, sideBar, setSidebarOpen }) {
   );
 }
 
-export default component;
+export default iconRenderComponent;

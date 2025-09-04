@@ -52,7 +52,7 @@ export * from './src/Controller/DescriptionController.jsx';
 export * from './src/Colors/RenkUygulama.jsx';
 export * from './src/Colors/colors.js';
 export * from './src/Colors/ColorEditor.jsx';
-export * from './src/components/component.jsx'
+export * from './src/components/iconRenderComponent.jsx'
 export * from './src/components/SurveyPlayer/SurveyEmpty.jsx';
 export * from './src/components/SurveyPlayer/SurveyClosed.jsx';
 export * from './src/components/SurveyPlayer/QuestionRenderer.jsx';
