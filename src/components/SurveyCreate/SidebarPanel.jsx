@@ -1,5 +1,5 @@
 import React from 'react';
-import Component from '../Component';
+import Component from '../component';
 import toast from 'react-hot-toast';
 
 export default function SidebarPanel({ surveyActive, handleAddItem, sidebarOpen, setSidebarOpen }) {

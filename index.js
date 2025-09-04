@@ -5,11 +5,11 @@
 export { default as Surveys } from './src/pages/Surveys.jsx';
 export { default as SurveyPlayerWrapper } from './src/pages/SurveyPlayerWrapper.jsx';
 export { default as SurveyList } from './src/pages/SurveyList.jsx';
-export { default as SurveyCreate } from './src/Components/SurveyCreate/index.jsx';
-export { default as SuccessMessagePortal } from './src/Components/SuccessMesage/SuccessMessagePortal.jsx';
-export { default as AnswerSheet } from './src/Components/Answer/answer.components/AnswerTableComponent/AnswerSheet.jsx';
-export { default as ToastProvider } from './src/Components/Toast/Toastprovider.jsx';
-export { default as Share } from './src/Components/Share/Share.jsx';
+export { default as SurveyCreate } from './src/components/SurveyCreate/index.jsx';
+export { default as SuccessMessagePortal } from './src/components/SuccessMesage/SuccessMessagePortal.jsx';
+export { default as AnswerSheet } from './src/components/answer/answer.components/AnswerTableComponent/AnswerSheet.jsx';
+export { default as ToastProvider } from './src/components/Toast/Toastprovider.jsx';
+export { default as Share } from './src/components/Share/Share.jsx';
 export { default as Answer } from './src/components/answer/AnswerPage.jsx';
 
 // Wildcard Exports
@@ -56,8 +56,7 @@ export * from './src/Controller/DescriptionController.jsx';
 export * from './src/Colors/RenkUygulama.jsx';
 export * from './src/Colors/colors.js';
 export * from './src/Colors/ColorEditor.jsx';
-export * from './src/components/Component.jsx';
-export * from './src/components/Toast/Toastprovider.jsx';
+export * from './src/components/component.jsx'
 export * from './src/components/SurveyPlayer/SurveyEmpty.jsx';
 export * from './src/components/SurveyPlayer/SurveyClosed.jsx';
 export * from './src/components/SurveyPlayer/QuestionRenderer.jsx';
@@ -67,11 +66,8 @@ export * from './src/components/SurveyPlayer/Loading.jsx';
 export * from './src/components/SurveyPlayer/index.jsx';
 export * from './src/components/SurveyCreate/SidebarPanel.jsx';
 export * from './src/components/SurveyCreate/RightPanel.jsx';
-export * from './src/components/SurveyCreate/index.jsx';
-export * from './src/components/SuccessMesage/SuccessMessagePortal.jsx';
 export * from './src/components/SuccessMesage/SuccessMessage.jsx';
 export * from './src/components/SuccessMesage/successController.js';
-export * from './src/components/Share/Share.jsx';
 export * from './src/components/Layouts/ModalLayout.jsx';
 export * from './src/components/Modals/TemplateSurveyModal.jsx';
 export * from './src/components/Modals/FixSurveyCard.jsx';
@@ -144,7 +140,6 @@ export * from './src/components/answer/answer.components/AnswerTableComponent/Ex
 export * from './src/components/answer/answer.components/AnswerTableComponent/DateFilter.jsx';
 export * from './src/components/answer/answer.components/AnswerTableComponent/ColumnToggler.jsx';
 export * from './src/components/answer/answer.components/AnswerTableComponent/AnswerTable.jsx';
-export * from './src/components/answer/answer.components/AnswerTableComponent/AnswerSheet.jsx';
 export * from './src/components/answer/analysis/hooks/useFingerprint.js';
 export * from './src/components/answer/analysis/hooks/satisfaction.js';
 export * from './src/components/answer/analysis/hooks/getanswerCounts.js';
