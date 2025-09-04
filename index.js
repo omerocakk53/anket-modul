@@ -8,7 +8,6 @@ export { default as SurveyList } from './src/pages/SurveyList.jsx';
 export { default as SurveyCreate } from './src/components/SurveyCreate/index.jsx';
 export { default as SuccessMessagePortal } from './src/components/SuccessMesage/SuccessMessagePortal.jsx';
 export { default as AnswerSheet } from './src/components/answer/answer.components/AnswerTableComponent/AnswerSheet.jsx';
-export { default as ToastProvider } from './src/components/Toast/Toastprovider.jsx';
 export { default as Share } from './src/components/Share/Share.jsx';
 export { default as Answer } from './src/components/answer/AnswerPage.jsx';
 
