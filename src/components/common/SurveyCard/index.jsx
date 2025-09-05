@@ -27,7 +27,7 @@ export default function SurveyCard({ setRefreshKey,user,createTemplate, allSurve
 
   return (
     <div
-      className="bg-white/90 backdrop-blur-xs rounded-lg shadow-md p-4 flex flex-col gap-3 min-h-[395px]"
+      className="bg-white/90 backdrop-blur-xs rounded-lg shadow-md p-4 grid gap-3 min-h-[395px]"
     >
       <SurveyHeader title={survey.title} description={survey.description} active={active} handleActiveSurvey={handleSubmit} />
       <SurveyTags tags={survey.tags} />
