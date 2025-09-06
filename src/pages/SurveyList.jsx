@@ -7,20 +7,18 @@ import { QRCodeCanvas, QRCodeSVG } from "qrcode.react";
 import SurveyCard from "../components/common/SurveyCard/index.jsx";
 import { IoMdClose } from "react-icons/io";
 
-export default function AnketListele(props) {
-  const {
-    allSurveys,
-    user,
-    createTemplate,
-    visibleSurveys,
-    setRefreshKey,
-    createSurvey,
-    deletesurvey,
-    deletesurveyshareById,
-    allanswerdelete,
-    updatesurveyfeature,
-  } = props;
-
+export default function AnketListele({
+  allSurveys,
+  user,
+  createTemplate,
+  visibleSurveys,
+  setRefreshKey,
+  createSurvey,
+  deletesurvey,
+  deletesurveyshareById,
+  allanswerdelete,
+  updatesurveyfeature,
+}) {
   const [qrData, setQrData] = useState(null);
   const navigate = useNavigate();
   const url = window.location.origin;

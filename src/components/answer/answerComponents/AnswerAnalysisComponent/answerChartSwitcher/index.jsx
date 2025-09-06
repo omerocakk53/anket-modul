@@ -10,18 +10,16 @@ import ChartRenderer from "./ChartRenderer";
 import TableRenderer from "./TableRenderer";
 import useDownload from "./hooks/useDownload";
 
-function AnswerChartSwitcher(props) {
-  const {
-    view,
-    setView,
-    labels,
-    data,
-    questionType,
-    rawCounts,
-    questionMemberSatificaitonMatris,
-    tableData,
-  } = props;
-
+function AnswerChartSwitcher({
+  view,
+  setView,
+  labels,
+  data,
+  questionType,
+  rawCounts,
+  questionMemberSatificaitonMatris,
+  tableData,
+}) {
   const [colors, setColors] = useState([
     "#4caf50",
     "#2196f3",

@@ -3,20 +3,18 @@ import { IoMdClose } from "react-icons/io";
 import FixSurveyCard from "./FixSurveyCard";
 import toast from "react-hot-toast";
 
-export default function TemplateSurveyModal(props) {
-  const {
-    user,
-    isOpen,
-    animateisOpen,
-    onClose,
-    onSelectTemplate,
-    getallsurveytemplate,
-    deletesurveytemplateId,
-    createsurveytemplate,
-    templateData,
-    getChamberId,
-  } = props;
-
+export default function TemplateSurveyModal({
+  user,
+  isOpen,
+  animateisOpen,
+  onClose,
+  onSelectTemplate,
+  getallsurveytemplate,
+  deletesurveytemplateId,
+  createsurveytemplate,
+  templateData,
+  getChamberId,
+}) {
   const [templates, setTemplates] = useState(null);
   const [chamberName, setChamberName] = useState("");
   const [edit, setEdit] = useState(false);

@@ -1,6 +1,6 @@
 {
   "name": "@omerocakk53/anket-modul",
-  "version": "2.1.10",
+  "version": "2.1.11",
   "description": "Yeniden kullanılabilir React anket modülü",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.esm.js",
