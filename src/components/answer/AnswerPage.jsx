@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from 'react-hot-toast';
-import Header from "../Common/Header";
-import ViewSelector from "./answer.components/ViewSelector";
+import Header from "../common/Header";
+import ViewSelector from "./answerComponents/ViewSelector";
 
 export default function AnswerPage({ answerget, fetchsurveyById, answerdelete }) {
     const { surveyId } = useParams();

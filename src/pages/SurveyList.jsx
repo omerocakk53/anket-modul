@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-hot-toast';;
 import { QRCodeCanvas, QRCodeSVG } from "qrcode.react";
-import SurveyCard from "../components/Common/SurveyCard/index.jsx";
+import SurveyCard from "../components/common/SurveyCard/index.jsx";
 import { IoMdClose } from "react-icons/io";
 
 export default function AnketListele(props) {

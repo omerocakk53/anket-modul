@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import Header from "../Common/Header";
+import Header from "../common/Header";
 import useShareData from "./hooks/useShareData";
 import ShareSettings from "./components/ShareSettings";
 import OpenGraphPreview from "./components/OpenGraphPreview";

@@ -1,5 +1,5 @@
 import { toast } from 'react-hot-toast';
-import { showSuccess } from "../../SuccessMesage/successController.js";
+import { showSuccess } from "../../successMesage/successController.js";
 
 export async function submitAnswers(answers, data, surveyId, user, startDate, answersave) {
     const finishedAt = new Date();

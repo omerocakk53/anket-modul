@@ -1,7 +1,7 @@
 # node modules
 node_modules/
-exportCreated.js
-client.txt
+
+scripts
 
 # build
 dist/

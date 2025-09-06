@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Sidebar from "../components/Common/Sidebar";
-import Header from "../components/Common/Header";
-import FilterSortSearch from "../components/Common/FilterSortSearch";
+import Sidebar from "../components/common/Sidebar";
+import Header from "../components/common/Header";
+import FilterSortSearch from "../components/common/FilterSortSearch";
 import AnketListele from "./SurveyList";
-import CreateSurveyOrGroupModal from "../components/Modals/CreateSurveyOrGroupModal";
-import TemplateSurveyModal from "../components/Modals/TemplateSurveyModal";
+import CreateSurveyOrGroupModal from "../components/modals/CreateSurveyOrGroupModal";
+import TemplateSurveyModal from "../components/modals/TemplateSurveyModal";
 import EmptyState from "../components/Surveys/components/EmptyState";
 import useSurveys from "../components/Surveys/hooks/useSurveys";
 import { filterAndSortSurveys } from "../components/Surveys/utils/surveyFilters";
