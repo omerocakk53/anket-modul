@@ -23,8 +23,7 @@ export default function ShortText({
   const formatPhoneNumber = (num) => {
     const digits = num.replace(/\D/g, "").slice(0, 11);
     if (digits.length <= 3) return digits;
-    if (digits.length <= 6)
-      return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+    if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
     if (digits.length <= 10)
       return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
     return `+${digits[0]} (${digits.slice(1, 4)}) ${digits.slice(4, 7)}-${digits.slice(7, 11)}`;
@@ -58,7 +57,7 @@ export default function ShortText({
       onChange(val);
     }
   };
-  
+
   // maxLength sabit sayısallar için, serbest metin için charLimit kullanılıyor
   const maxLength =
     inputType === "text"
@@ -89,13 +88,19 @@ export default function ShortText({
           <input
             id={id}
             name={id}
-            type={inputType === "tc" || inputType === "zip" ? "text" : inputType}
+            type={
+              inputType === "tc" || inputType === "zip" ? "text" : inputType
+            }
             className="border border-success bg-neutral outline-none rounded-xl p-2 w-full"
             value={value || ""}
-            inputMode={["tel", "tc", "zip"].includes(inputType) ? "numeric" : "text"}
+            inputMode={
+              ["tel", "tc", "zip"].includes(inputType) ? "numeric" : "text"
+            }
             onChange={handleChange}
             maxLength={maxLength}
-            pattern={["tel", "tc", "zip"].includes(inputType) ? "\\d*" : undefined}
+            pattern={
+              ["tel", "tc", "zip"].includes(inputType) ? "\\d*" : undefined
+            }
           />
           {remainingChars !== null && (
             <p className="text-xs text-right text-gray-500 mt-1">

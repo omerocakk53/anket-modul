@@ -1,12 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import SurveyHeader from './SurveyHeader';
-import SurveyTags from './SurveyTags';
-import SurveyActions from './SurveyActions';
-import SurveyFooter from './SurveyFooter';
-import toast from 'react-hot-toast';
+import React, { useEffect, useState } from "react";
+import SurveyHeader from "./SurveyHeader";
+import SurveyTags from "./SurveyTags";
+import SurveyActions from "./SurveyActions";
+import SurveyFooter from "./SurveyFooter";
+import toast from "react-hot-toast";
 
-export default function SurveyCard({ setRefreshKey,user,createTemplate, allSurveys, survey, createSurvey, handleDelete, handleCopyLink, handleShowQr, navigate, updatesurveyfeature }) {
-
+export default function SurveyCard({
+  setRefreshKey,
+  user,
+  createTemplate,
+  allSurveys,
+  survey,
+  createSurvey,
+  handleDelete,
+  handleCopyLink,
+  handleShowQr,
+  navigate,
+  updatesurveyfeature,
+}) {
   const [active, setActive] = useState();
 
   useEffect(() => {
@@ -19,17 +30,22 @@ export default function SurveyCard({ setRefreshKey,user,createTemplate, allSurve
         active: !active,
       });
       setActive(updated.updatedSurvey.active);
-      toast.success(`${!active ? '" ' + updated.updatedSurvey.title + ' " Aktif' : '" ' + updated.updatedSurvey.title + ' " Pasif'}`);
+      toast.success(
+        `${!active ? '" ' + updated.updatedSurvey.title + ' " Aktif' : '" ' + updated.updatedSurvey.title + ' " Pasif'}`,
+      );
     } catch (error) {
       toast.error("Güncelleme sırasında hata oluştu.");
     }
   };
 
   return (
-    <div
-      className="bg-white/90 backdrop-blur-xs rounded-lg shadow-md p-4 flex flex-col justify-between gap-3 min-h-[370px]"
-    >
-      <SurveyHeader title={survey.title} description={survey.description} active={active} handleActiveSurvey={handleSubmit} />
+    <div className="bg-white/90 backdrop-blur-xs rounded-lg shadow-md p-4 flex flex-col justify-between gap-3 min-h-[370px]">
+      <SurveyHeader
+        title={survey.title}
+        description={survey.description}
+        active={active}
+        handleActiveSurvey={handleSubmit}
+      />
       <SurveyTags tags={survey.tags} />
       <SurveyFooter
         createdAt={survey.createdAt}

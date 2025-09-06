@@ -52,7 +52,10 @@ function PaymentSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
 
       {/* Yardım Metni */}
       <div>
-        <label className="block text-sm font-medium mb-1">Yardım Metni (isteğe bağlı)</label>  <input
+        <label className="block text-sm font-medium mb-1">
+          Yardım Metni (isteğe bağlı)
+        </label>{" "}
+        <input
           className="w-full border rounded p-2"
           value={helpText}
           onChange={(e) => setHelpText(e.target.value)}
@@ -61,7 +64,9 @@ function PaymentSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
 
       {/* Tutar */}
       <div>
-        <label className="block text-sm font-medium mb-1">Tutar ({currency})</label>
+        <label className="block text-sm font-medium mb-1">
+          Tutar ({currency})
+        </label>
         <input
           type="number"
           className="w-full border rounded p-2"
@@ -90,26 +95,33 @@ function PaymentSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
       <div className="flex items-center space-x-3">
         <label
           className="text-sm font-medium text-primary-dark select-none cursor-pointer"
-          onClick={() => setSurveyNumberVisible(prev => !prev)}
+          onClick={() => setSurveyNumberVisible((prev) => !prev)}
         >
           Soru Numarası Gözüksün
         </label>
         <button
           type="button"
           aria-pressed={SurveyNumberVisible}
-          onClick={() => setSurveyNumberVisible(prev => !prev)}
-          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${SurveyNumberVisible ? 'bg-primary' : 'bg-neutral-light'}`}
+          onClick={() => setSurveyNumberVisible((prev) => !prev)}
+          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${SurveyNumberVisible ? "bg-primary" : "bg-neutral-light"}`}
         >
           <div
-            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${SurveyNumberVisible ? 'translate-x-6' : 'translate-x-0'}`}
+            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${SurveyNumberVisible ? "translate-x-6" : "translate-x-0"}`}
           />
         </button>
       </div>
 
       {/* Butonlar */}
       <div className="flex gap-2 p-5 absolute left-0 bottom-0 bg-neutral md:w-1/2 w-full ">
-        <button className="px-4 py-2 bg-gray-300 rounded" onClick={onClose}>Vazgeç</button>
-        <button className="px-4 py-2 bg-blue-500 text-white rounded" onClick={handleSave}>Kaydet</button>
+        <button className="px-4 py-2 bg-gray-300 rounded" onClick={onClose}>
+          Vazgeç
+        </button>
+        <button
+          className="px-4 py-2 bg-blue-500 text-white rounded"
+          onClick={handleSave}
+        >
+          Kaydet
+        </button>
       </div>
     </div>
   );

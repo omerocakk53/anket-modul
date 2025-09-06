@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { FiSearch } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
 
@@ -6,9 +6,9 @@ const TextSearch = ({ searchText, setSearchText }) => {
   return (
     <div className="my-4 mx-auto max-w-xl">
       <div className="relative flex items-center w-full ">
-        <FiSearch 
+        <FiSearch
           className={`absolute left-3 text-lg transition-colors duration-200 
-          ${searchText ? 'text-blue-500' : 'text-gray-400'}`} 
+          ${searchText ? "text-blue-500" : "text-gray-400"}`}
         />
         <input
           type="text"
@@ -22,7 +22,7 @@ const TextSearch = ({ searchText, setSearchText }) => {
         />
         {searchText && (
           <button
-            onClick={() => setSearchText('')}
+            onClick={() => setSearchText("")}
             className="absolute right-3 text-gray-400 hover:text-red-500 transition-colors"
           >
             <AiOutlineClose />

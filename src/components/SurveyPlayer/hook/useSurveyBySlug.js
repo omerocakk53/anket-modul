@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import useSurveyLoader from './useSurveyLoader';
+import { useState, useEffect } from "react";
+import useSurveyLoader from "./useSurveyLoader";
 
 export default function useSurveyBySlug(slug, fetchAllSurvey, fetchSurveyById) {
   const [surveyId, setSurveyId] = useState(null);
@@ -21,13 +21,16 @@ export default function useSurveyBySlug(slug, fetchAllSurvey, fetchSurveyById) {
 
   useEffect(() => {
     if (surveys.length > 0) {
-      const match = surveys.find(s => s.link === slug);
+      const match = surveys.find((s) => s.link === slug);
       if (match) setSurveyId(match._id);
     }
   }, [surveys, slug]);
 
   // useSurveyLoader her zaman çağrılıyor, ama surveyId yoksa fetch yapmıyor
-  const { data, survey, variables, loading } = useSurveyLoader(surveyId, fetchSurveyById);
+  const { data, survey, variables, loading } = useSurveyLoader(
+    surveyId,
+    fetchSurveyById,
+  );
 
   return {
     surveyId,
@@ -36,6 +39,6 @@ export default function useSurveyBySlug(slug, fetchAllSurvey, fetchSurveyById) {
     data,
     survey,
     variables,
-    loadingSurveyData: loading
+    loadingSurveyData: loading,
   };
 }

@@ -1,18 +1,26 @@
-import { React, useState, useEffect } from 'react'
+import { React, useState, useEffect } from "react";
 
-import LongTextSettingsModel from '../modal/LongTextSettingsModel';
-import { toast } from 'react-hot-toast';
+import LongTextSettingsModel from "../modal/LongTextSettingsModel";
+import { toast } from "react-hot-toast";
 
-function LongTextController({ isOpen, setControllerOpen, items, Item, setItems, count, Edit, SetEdit }) {
-
+function LongTextController({
+  isOpen,
+  setControllerOpen,
+  items,
+  Item,
+  setItems,
+  count,
+  Edit,
+  SetEdit,
+}) {
   const [LongText, setLongText] = useState({});
 
   useEffect(() => {
     if (!Item.id) return;
 
-    if (!LongText?.title ) {
-     toast.error("boş değerler var")
-    };
+    if (!LongText?.title) {
+      toast.error("boş değerler var");
+    }
 
     const updatedItem = {
       ...Item,
@@ -20,19 +28,20 @@ function LongTextController({ isOpen, setControllerOpen, items, Item, setItems, 
       helpText: LongText.helpText,
       complusory: LongText.complusory,
       SurveyNumberVisible: LongText.SurveyNumberVisible,
-      charLimit: LongText.charLimit
+      charLimit: LongText.charLimit,
     };
 
-
     if (Edit) {
-      const updatedItems = items.map((i) => (i.id === Item.id ? updatedItem : i));
+      const updatedItems = items.map((i) =>
+        i.id === Item.id ? updatedItem : i,
+      );
       setItems(updatedItems);
       toast.success("Bileşen güncellendi");
       SetEdit(false);
     } else {
       const newItem = {
         ...updatedItem,
-        id: Item.id + '-' + count,
+        id: Item.id + "-" + count,
       };
       setItems([...items, newItem]);
       toast.success("Yeni bileşen eklendi");
@@ -45,12 +54,18 @@ function LongTextController({ isOpen, setControllerOpen, items, Item, setItems, 
     <>
       <LongTextSettingsModel
         isOpen={isOpen}
-        onClose={() => { setControllerOpen(false); SetEdit(false) }}
-        onSave={(LongTextData) => { setLongText(LongTextData) }}
+        onClose={() => {
+          setControllerOpen(false);
+          SetEdit(false);
+        }}
+        onSave={(LongTextData) => {
+          setLongText(LongTextData);
+        }}
         count={count}
-        initialData={Edit ? Item : {}} />
+        initialData={Edit ? Item : {}}
+      />
     </>
-  )
+  );
 }
 
-export default LongTextController
+export default LongTextController;

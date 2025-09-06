@@ -6,10 +6,11 @@ export default function LongText({
   onChange,
   count,
   SurveyNumberVisible,
-  charLimit
+  charLimit,
 }) {
   // Kalan karakter sayısını hesapla
-  const remainingChars = charLimit > 0 ? charLimit - (value?.length || 0) : null;
+  const remainingChars =
+    charLimit > 0 ? charLimit - (value?.length || 0) : null;
 
   // Change handler: charLimit varsa sınırlı değiştir
   const handleChange = (e) => {

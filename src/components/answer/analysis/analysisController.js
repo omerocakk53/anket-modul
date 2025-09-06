@@ -1,28 +1,26 @@
-
 import {
   analyzeChoiceCounts,
   generateChoiceChartData,
   generatePieData,
-  sortChoiceCounts
-} from './choiceUtils';
+  sortChoiceCounts,
+} from "./choiceUtils";
 
-import {
-  analyzeAverage
-} from './numericUtils';
+import { analyzeAverage } from "./numericUtils";
 
 import {
   analyzeMatrixAnswers,
   generateMatrixCellData,
-  findMatrixMostSelected
-} from './matrixUtils';
+  findMatrixMostSelected,
+} from "./matrixUtils";
 
 export function analyzeSurveyAnswers(survey, answersA, answersB) {
-  if (!survey?.items || !Array.isArray(answersA) || !Array.isArray(answersB)) return [];
+  if (!survey?.items || !Array.isArray(answersA) || !Array.isArray(answersB))
+    return [];
 
-  return survey.items.map(question => {
+  return survey.items.map((question) => {
     const { id, type } = question;
 
-    if (['MultipleChoice', 'Dropdown', 'ImageChoice'].includes(type)) {
+    if (["MultipleChoice", "Dropdown", "ImageChoice"].includes(type)) {
       const analysisA = analyzeChoiceCounts(answersA, question);
       const analysisB = analyzeChoiceCounts(answersB, question);
       return {
@@ -41,7 +39,7 @@ export function analyzeSurveyAnswers(survey, answersA, answersB) {
       };
     }
 
-    if (['Matris'].includes(type)) {
+    if (["Matris"].includes(type)) {
       // answersA ve answersB, iki farklı tarih aralığından gelen cevap dizileri
       const countsA = analyzeMatrixAnswers(answersA, question);
       const countsB = analyzeMatrixAnswers(answersB, question);
@@ -49,8 +47,8 @@ export function analyzeSurveyAnswers(survey, answersA, answersB) {
       return {
         question,
         type: question.type,
-        mostA: findMatrixMostSelected(countsA),  // Tarih 1 için her satırdaki en çok seçilen sütun
-        mostB: findMatrixMostSelected(countsB),  // Tarih 2 için aynı şekilde
+        mostA: findMatrixMostSelected(countsA), // Tarih 1 için her satırdaki en çok seçilen sütun
+        mostB: findMatrixMostSelected(countsB), // Tarih 2 için aynı şekilde
         chartData: {
           matrix: true,
           cellData: generateMatrixCellData(countsA, countsB), // Grafik için veriler
@@ -58,15 +56,15 @@ export function analyzeSurveyAnswers(survey, answersA, answersB) {
       };
     }
 
-    if (['Table'].includes(type)) {
+    if (["Table"].includes(type)) {
       const countsA = analyzeMatrixAnswers(answersA, question);
       const countsB = analyzeMatrixAnswers(answersB, question);
 
       return {
         question,
         type: question.type,
-        mostA: findMatrixMostSelected(countsA),  // Tarih 1 için her satırdaki en çok seçilen sütun
-        mostB: findMatrixMostSelected(countsB),  // Tarih 2 için aynı şekilde
+        mostA: findMatrixMostSelected(countsA), // Tarih 1 için her satırdaki en çok seçilen sütun
+        mostB: findMatrixMostSelected(countsB), // Tarih 2 için aynı şekilde
         chartData: {
           matrix: true,
           cellData: generateMatrixCellData(countsA, countsB), // Grafik için veriler
@@ -74,15 +72,18 @@ export function analyzeSurveyAnswers(survey, answersA, answersB) {
       };
     }
 
-
-
-    if (['Numeric', 'Rating', 'Scale'].includes(type)) {
+    if (["Numeric", "Rating", "Scale"].includes(type)) {
       const avgA = analyzeAverage(answersA, id);
       const avgB = analyzeAverage(answersB, id);
       const difference = avgB - avgA;
-      const percentChange = avgA !== 0 ? ((difference / avgA) * 100).toFixed(1) : (avgB > 0 ? '∞' : '0');
+      const percentChange =
+        avgA !== 0
+          ? ((difference / avgA) * 100).toFixed(1)
+          : avgB > 0
+            ? "∞"
+            : "0";
 
-      return ({
+      return {
         question,
         type,
         avgA,
@@ -92,19 +93,26 @@ export function analyzeSurveyAnswers(survey, answersA, answersB) {
         chartData: {
           numeric: true,
           data: [
-            { name: question.title || question.label, 'Tarih 1': avgA, 'Tarih 2': avgB },
+            {
+              name: question.title || question.label,
+              "Tarih 1": avgA,
+              "Tarih 2": avgB,
+            },
           ],
           diffData: [
-            { name: question.title || question.label, 'Fark (%)': parseFloat(percentChange) },
+            {
+              name: question.title || question.label,
+              "Fark (%)": parseFloat(percentChange),
+            },
           ],
         },
-      });
+      };
     }
 
     return {
       question,
       type,
-      message: 'Bu tip için analiz tanımlı değil.'
+      message: "Bu tip için analiz tanımlı değil.",
     };
   });
 }

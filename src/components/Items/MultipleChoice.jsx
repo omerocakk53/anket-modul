@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { toast } from 'react-hot-toast';
+import { toast } from "react-hot-toast";
 
 export default function MultipleChoice({
   title,
@@ -14,19 +14,15 @@ export default function MultipleChoice({
   HorizontalDesign,
   MultiselectActive,
   MultiSelectLimit,
-  fixedOptions = [] // default olarak boş dizi
+  fixedOptions = [], // default olarak boş dizi
 }) {
   const isMulti = !!MultiselectActive;
 
   // value çoklu seçimde dizi, tek seçimde string/null olabilir
-  const actualValue = isMulti
-    ? Array.isArray(value)
-      ? value
-      : []
-    : value;
+  const actualValue = isMulti ? (Array.isArray(value) ? value : []) : value;
 
   const [customOption, setCustomOption] = useState(
-    !isMulti && typeof value === "string" ? value : ""
+    !isMulti && typeof value === "string" ? value : "",
   );
 
   // Kullanıcı inputa yazdıkça customOption ve onChange güncellenir
@@ -39,7 +35,11 @@ export default function MultipleChoice({
 
   // "Hepsi" ve "Hiçbiri" mantığı
   const handleSelect = (opt) => {
-    let currentValue = isMulti ? (Array.isArray(value) ? [...value] : []) : value;
+    let currentValue = isMulti
+      ? Array.isArray(value)
+        ? [...value]
+        : []
+      : value;
 
     // "Hiçbiri" seçildiyse
     if (opt === "Hiçbiri") {
@@ -94,18 +94,13 @@ export default function MultipleChoice({
     }
   };
 
-
-
-
-
-
-
   // Buton stilleri
   const buttonBaseClasses =
     "cursor-pointer px-5 py-1 rounded-lg text-lg select-none transition-colors duration-200 border";
 
   const selectedClasses = "bg-primary text-white border-primary";
-  const unselectedClasses = "bg-neutral border-neutral-dark hover:bg-neutral-dark";
+  const unselectedClasses =
+    "bg-neutral border-neutral-dark hover:bg-neutral-dark";
 
   // Layout
   const containerClasses = HorizontalDesign
@@ -115,12 +110,12 @@ export default function MultipleChoice({
   // "Hepsi" Seçeneğini fixedOptions'a Dahil Et
   const allOptions = [
     ...options,
-    ...((fixedOptions || []).filter((opt) => !(isMulti && opt === "Hepsi")))
+    ...(fixedOptions || []).filter((opt) => !(isMulti && opt === "Hepsi")),
   ];
 
-
   // "Hepsi" Seçeneği Eklenmeli mi?
-  const isAllSelected = options.length > 0 && options.every(opt => actualValue?.includes(opt));
+  const isAllSelected =
+    options.length > 0 && options.every((opt) => actualValue?.includes(opt));
 
   useEffect(() => {
     if (!isMulti) return;
@@ -133,21 +128,14 @@ export default function MultipleChoice({
     }
   }, [value, options]);
 
-
-
-
-
-
   // "Hepsi" seçeneği render edildiğinde, onun da seçili görünmesi için kontrol yapalım
   const allOptionsIncludingHepsi =
     isAllSelected && !actualValue.includes("Hepsi")
       ? [...allOptions, "Hepsi"]
       : allOptions;
 
-
   return (
     <div>
-
       {title ? (
         <>
           <label className="font-semibold text-primary-text mb-2 block">

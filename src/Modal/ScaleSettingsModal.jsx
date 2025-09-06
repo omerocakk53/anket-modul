@@ -22,7 +22,7 @@ function ScaleSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
         max,
       },
       complusory,
-      SurveyNumberVisible
+      SurveyNumberVisible,
     });
 
     setTitle("");
@@ -38,14 +38,14 @@ function ScaleSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
       setComplusory(initialData?.complusory ?? true);
       setMin(initialData?.data?.min || 1);
       setMax(initialData?.data?.max || 5);
-      setSurveyNumberVisible(initialData?.SurveyNumberVisible)
+      setSurveyNumberVisible(initialData?.SurveyNumberVisible);
     } else {
       setTitle("");
       setHelpText("");
       setComplusory(true);
       setMin(1);
       setMax(5);
-      setSurveyNumberVisible(true)
+      setSurveyNumberVisible(true);
     }
   }, [initialData]);
 
@@ -66,7 +66,10 @@ function ScaleSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-1">Yardım Metni (isteğe bağlı)</label>  <input
+        <label className="block text-sm font-medium mb-1">
+          Yardım Metni (isteğe bağlı)
+        </label>{" "}
+        <input
           className="w-full border rounded p-2"
           value={helpText}
           onChange={(e) => setHelpText(e.target.value)}
@@ -106,20 +109,22 @@ function ScaleSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
       <div className="flex items-center space-x-3">
         <label
           className="text-sm font-medium text-primary-dark select-none cursor-pointer"
-          onClick={() => setComplusory(prev => !prev)}
+          onClick={() => setComplusory((prev) => !prev)}
         >
           Zorunlu alan
         </label>
         <button
           type="button"
           aria-pressed={complusory}
-          onClick={() => setComplusory(prev => !prev)}
-          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${complusory ? 'bg-primary' : 'bg-neutral-light'
-            }`}
+          onClick={() => setComplusory((prev) => !prev)}
+          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${
+            complusory ? "bg-primary" : "bg-neutral-light"
+          }`}
         >
           <div
-            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${complusory ? 'translate-x-6' : 'translate-x-0'
-              }`}
+            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${
+              complusory ? "translate-x-6" : "translate-x-0"
+            }`}
           />
         </button>
       </div>
@@ -127,20 +132,22 @@ function ScaleSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
       <div className="flex items-center space-x-3">
         <label
           className="text-sm font-medium text-primary-dark select-none cursor-pointer"
-          onClick={() => setSurveyNumberVisible(prev => !prev)}
+          onClick={() => setSurveyNumberVisible((prev) => !prev)}
         >
           Soru Numarası Gözüksün
         </label>
         <button
           type="button"
           aria-pressed={SurveyNumberVisible}
-          onClick={() => setSurveyNumberVisible(prev => !prev)}
-          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${SurveyNumberVisible ? 'bg-primary' : 'bg-neutral-light'
-            }`}
+          onClick={() => setSurveyNumberVisible((prev) => !prev)}
+          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${
+            SurveyNumberVisible ? "bg-primary" : "bg-neutral-light"
+          }`}
         >
           <div
-            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${SurveyNumberVisible ? 'translate-x-6' : 'translate-x-0'
-              }`}
+            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${
+              SurveyNumberVisible ? "translate-x-6" : "translate-x-0"
+            }`}
           />
         </button>
       </div>
@@ -149,7 +156,10 @@ function ScaleSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
         <button className="px-4 py-2 bg-gray-300 rounded" onClick={onClose}>
           Vazgeç
         </button>
-        <button className="px-4 py-2 bg-blue-500 text-white rounded" onClick={handleSave}>
+        <button
+          className="px-4 py-2 bg-blue-500 text-white rounded"
+          onClick={handleSave}
+        >
           Kaydet
         </button>
       </div>
@@ -162,7 +172,9 @@ function ScaleSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
       helpText={helpText}
       data={{ min, max }}
       count={count}
-      onChange={(value) => { setValue(value) }}
+      onChange={(value) => {
+        setValue(value);
+      }}
       value={value}
       SurveyNumberVisible={SurveyNumberVisible}
     />

@@ -6,7 +6,7 @@ export function filterAndSortSurveys(
   sortBy,
   sortOrder,
   active,
-  dateRange
+  dateRange,
 ) {
   return surveys
     .filter((s) => s.group === selectedGroup)
@@ -16,7 +16,9 @@ export function filterAndSortSurveys(
       if (searchMode === "title") {
         return s.title.toLowerCase().includes(searchTerm);
       } else {
-        return s.tags && s.tags.some((tag) => tag.toLowerCase().includes(searchTerm));
+        return (
+          s.tags && s.tags.some((tag) => tag.toLowerCase().includes(searchTerm))
+        );
       }
     })
     .filter((s) => {
@@ -28,7 +30,10 @@ export function filterAndSortSurveys(
       return true;
     })
     .filter((s) => {
-      if (sortBy === "createTime" && (dateRange.startDate || dateRange.endDate)) {
+      if (
+        sortBy === "createTime" &&
+        (dateRange.startDate || dateRange.endDate)
+      ) {
         const created = new Date(s.createdAt).getTime();
         const start = dateRange.startDate
           ? new Date(dateRange.startDate).getTime()

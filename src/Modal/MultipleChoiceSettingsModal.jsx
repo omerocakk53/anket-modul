@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { FaTrash } from "react-icons/fa";
 import MultipleChoice from "../components/Items/MultipleChoice";
-import InputNumber from 'rc-input-number';
-import 'rc-input-number/assets/index.css';
+import InputNumber from "rc-input-number";
+import "rc-input-number/assets/index.css";
 import ModalLayout from "../components/layouts/ModalLayout";
 
-function MultipleChoiceSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
+function MultipleChoiceSettingsModal({
+  isOpen,
+  onClose,
+  onSave,
+  initialData,
+  count,
+}) {
   const [title, setTitle] = useState("");
   const [helpText, setHelpText] = useState("");
   const [options, setOptions] = useState([]);
@@ -24,11 +30,11 @@ function MultipleChoiceSettingsModal({ isOpen, onClose, onSave, initialData, cou
       setComplusory(initialData.complusory ?? true);
       setOptions(Array.isArray(initialData.options) ? initialData.options : []);
       setAllowCustomOption(initialData.allowCustomOption || false);
-      setSurveyNumberVisible(initialData?.SurveyNumberVisible)
-      setHorizontalDesign(initialData?.HorizontalDesign)
-      setMultiselectActive(initialData?.MultiselectActive)
-      setMultiSelectLimit(initialData?.MultiSelectLimit)
-      setFixedOptions(initialData?.fixedOptions)
+      setSurveyNumberVisible(initialData?.SurveyNumberVisible);
+      setHorizontalDesign(initialData?.HorizontalDesign);
+      setMultiselectActive(initialData?.MultiselectActive);
+      setMultiSelectLimit(initialData?.MultiSelectLimit);
+      setFixedOptions(initialData?.fixedOptions);
     } else {
       setTitle("");
       setHelpText("");
@@ -37,9 +43,9 @@ function MultipleChoiceSettingsModal({ isOpen, onClose, onSave, initialData, cou
       setAllowCustomOption(false);
       setHorizontalDesign(false);
       setMultiselectActive(false);
-      setSurveyNumberVisible(true)
-      setMultiSelectLimit(0)
-      setFixedOptions([])
+      setSurveyNumberVisible(true);
+      setMultiSelectLimit(0);
+      setFixedOptions([]);
     }
   }, [initialData]);
 
@@ -60,10 +66,23 @@ function MultipleChoiceSettingsModal({ isOpen, onClose, onSave, initialData, cou
   };
   const addOption = () => setOptions([...options, ""]);
 
-  const removeOption = (index) => setOptions(options.filter((_, i) => i !== index));
+  const removeOption = (index) =>
+    setOptions(options.filter((_, i) => i !== index));
 
   const handleSave = () => {
-    onSave({ title, helpText, count, options, allowCustomOption, complusory, SurveyNumberVisible, HorizontalDesign, MultiselectActive, MultiSelectLimit, fixedOptions });
+    onSave({
+      title,
+      helpText,
+      count,
+      options,
+      allowCustomOption,
+      complusory,
+      SurveyNumberVisible,
+      HorizontalDesign,
+      MultiselectActive,
+      MultiSelectLimit,
+      fixedOptions,
+    });
     setTitle("");
     setHelpText("");
     setOptions([]);
@@ -104,15 +123,22 @@ function MultipleChoiceSettingsModal({ isOpen, onClose, onSave, initialData, cou
         />
       </div>
       <div>
-        <label className="block text-sm font-medium mb-1">Sabit Seçenek Ekle</label>
-        <select onChange={handleDropdownChange} className="w-full border rounded p-2">
+        <label className="block text-sm font-medium mb-1">
+          Sabit Seçenek Ekle
+        </label>
+        <select
+          onChange={handleDropdownChange}
+          className="w-full border rounded p-2"
+        >
           <option value="">Seçenek Seçin...</option>
           <option value="Hepsi">Hepsi</option>
           <option value="Hiçbiri">Hiçbiri</option>
         </select>
       </div>
       <div>
-        <label className="block text-sm font-medium mb-1">Sabit Seçenekler</label>
+        <label className="block text-sm font-medium mb-1">
+          Sabit Seçenekler
+        </label>
         <div>
           {fixedOptions.map((opt, idx) => (
             <div key={idx} className="flex items-center gap-2 mb-2">
@@ -161,105 +187,115 @@ function MultipleChoiceSettingsModal({ isOpen, onClose, onSave, initialData, cou
       <div className="flex items-center space-x-3">
         <label
           className="text-sm font-medium text-primary-dark select-none cursor-pointer"
-          onClick={() => setHorizontalDesign(prev => !prev)}
+          onClick={() => setHorizontalDesign((prev) => !prev)}
         >
           Yatay Sırala
         </label>
         <button
           type="button"
           aria-pressed={HorizontalDesign}
-          onClick={() => setHorizontalDesign(prev => !prev)}
-          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${HorizontalDesign ? 'bg-primary' : 'bg-neutral-light'
-            }`}
+          onClick={() => setHorizontalDesign((prev) => !prev)}
+          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${
+            HorizontalDesign ? "bg-primary" : "bg-neutral-light"
+          }`}
         >
           <div
-            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${HorizontalDesign ? 'translate-x-6' : 'translate-x-0'
-              }`}
+            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${
+              HorizontalDesign ? "translate-x-6" : "translate-x-0"
+            }`}
           />
         </button>
       </div>
       <div className="flex items-center space-x-3">
         <label
           className="text-sm font-medium text-primary-dark select-none cursor-pointer"
-          onClick={() => setAllowCustomOption(prev => !prev)}
+          onClick={() => setAllowCustomOption((prev) => !prev)}
         >
           Cevaplayan kişi seçenek ekleyebilsin
         </label>
         <button
           type="button"
           aria-pressed={complusory}
-          onClick={() => setAllowCustomOption(prev => !prev)}
-          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${allowCustomOption ? 'bg-primary' : 'bg-neutral-light'
-            }`}
+          onClick={() => setAllowCustomOption((prev) => !prev)}
+          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${
+            allowCustomOption ? "bg-primary" : "bg-neutral-light"
+          }`}
         >
           <div
-            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${allowCustomOption ? 'translate-x-6' : 'translate-x-0'
-              }`}
+            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${
+              allowCustomOption ? "translate-x-6" : "translate-x-0"
+            }`}
           />
         </button>
       </div>
       <div className="flex items-center space-x-3">
         <label
           className="text-sm font-medium text-primary-dark select-none cursor-pointer"
-          onClick={() => setComplusory(prev => !prev)}
+          onClick={() => setComplusory((prev) => !prev)}
         >
           Zorunlu alan
         </label>
         <button
           type="button"
           aria-pressed={complusory}
-          onClick={() => setComplusory(prev => !prev)}
-          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${complusory ? 'bg-primary' : 'bg-neutral-light'
-            }`}
+          onClick={() => setComplusory((prev) => !prev)}
+          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${
+            complusory ? "bg-primary" : "bg-neutral-light"
+          }`}
         >
           <div
-            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${complusory ? 'translate-x-6' : 'translate-x-0'
-              }`}
+            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${
+              complusory ? "translate-x-6" : "translate-x-0"
+            }`}
           />
         </button>
       </div>
       <div className="flex items-center space-x-3">
         <label
           className="text-sm font-medium text-primary-dark select-none cursor-pointer"
-          onClick={() => setSurveyNumberVisible(prev => !prev)}
+          onClick={() => setSurveyNumberVisible((prev) => !prev)}
         >
           Soru Numarası Gözüksün
         </label>
         <button
           type="button"
           aria-pressed={SurveyNumberVisible}
-          onClick={() => setSurveyNumberVisible(prev => !prev)}
-          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${SurveyNumberVisible ? 'bg-primary' : 'bg-neutral-light'
-            }`}
+          onClick={() => setSurveyNumberVisible((prev) => !prev)}
+          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${
+            SurveyNumberVisible ? "bg-primary" : "bg-neutral-light"
+          }`}
         >
           <div
-            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${SurveyNumberVisible ? 'translate-x-6' : 'translate-x-0'
-              }`}
+            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${
+              SurveyNumberVisible ? "translate-x-6" : "translate-x-0"
+            }`}
           />
         </button>
       </div>
       <div className="flex items-center space-x-3">
         <label
           className="text-sm font-medium text-primary-dark select-none cursor-pointer"
-          onClick={() => setMultiselectActive(prev => !prev)}
+          onClick={() => setMultiselectActive((prev) => !prev)}
         >
           Çoklu Seçim
         </label>
         <button
           type="button"
           aria-pressed={MultiselectActive}
-          onClick={() => setMultiselectActive(prev => !prev)}
-          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${MultiselectActive ? 'bg-primary' : 'bg-neutral-light'
-            }`}
+          onClick={() => setMultiselectActive((prev) => !prev)}
+          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${
+            MultiselectActive ? "bg-primary" : "bg-neutral-light"
+          }`}
         >
           <div
-            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${MultiselectActive ? 'translate-x-6' : 'translate-x-0'
-              }`}
+            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${
+              MultiselectActive ? "translate-x-6" : "translate-x-0"
+            }`}
           />
         </button>
       </div>
-      {
-        MultiselectActive ? (<div>
+      {MultiselectActive ? (
+        <div>
           <label className="block text-sm font-medium mb-1 text-primary-dark">
             Çoklu Seçim Sınırı
           </label>
@@ -271,8 +307,10 @@ function MultipleChoiceSettingsModal({ isOpen, onClose, onSave, initialData, cou
             style={{ width: 120 }}
           />
           <p className="text-xs text-gray-500">0 ' ise sınırsız seçim</p>
-        </div>) : (<></>)
-      }
+        </div>
+      ) : (
+        <></>
+      )}
       <div className="flex gap-2 p-5 absolute left-0 bottom-0 bg-neutral md:w-1/2 w-full ">
         <button
           type="button"
@@ -299,7 +337,9 @@ function MultipleChoiceSettingsModal({ isOpen, onClose, onSave, initialData, cou
       fixedOptions={fixedOptions}
       allowCustomOption={allowCustomOption}
       id={null}
-      onChange={(value) => { setValue(value) }}
+      onChange={(value) => {
+        setValue(value);
+      }}
       value={value}
       count={count}
       SurveyNumberVisible={SurveyNumberVisible}

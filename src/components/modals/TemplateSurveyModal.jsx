@@ -4,9 +4,18 @@ import FixSurveyCard from "./FixSurveyCard";
 import toast from "react-hot-toast";
 
 export default function TemplateSurveyModal(props) {
-  const { user, isOpen, animateisOpen, onClose, onSelectTemplate,
+  const {
+    user,
+    isOpen,
+    animateisOpen,
+    onClose,
+    onSelectTemplate,
     getallsurveytemplate,
-    deletesurveytemplateId, createsurveytemplate, templateData, getChamberId } = props;
+    deletesurveytemplateId,
+    createsurveytemplate,
+    templateData,
+    getChamberId,
+  } = props;
 
   const [templates, setTemplates] = useState(null);
   const [chamberName, setChamberName] = useState("");
@@ -47,17 +56,21 @@ export default function TemplateSurveyModal(props) {
     };
   }, [user, getChamberId]);
 
-
   useEffect(() => {
     const goToTemplate = async (survey) => {
       try {
         const template = await createsurveytemplate(survey);
-        toast.success(template.title + " adlı anketin şablonu oluşturuldu.", { duration: 2000 });
+        toast.success(template.title + " adlı anketin şablonu oluşturuldu.", {
+          duration: 2000,
+        });
         setReload((prev) => prev + 1);
         animateisOpen(true);
         setTimeout(() => {
           if (AddAnimateRef.current) {
-            AddAnimateRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+            AddAnimateRef.current.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            });
             AddAnimateRef.current.classList.add("animate-pulse-slow");
             setTimeout(() => {
               AddAnimateRef.current.classList.remove("animate-pulse-slow");
@@ -79,31 +92,36 @@ export default function TemplateSurveyModal(props) {
   if (!isOpen || !templates) return null;
 
   const handleDelete = (id) => {
-    toast((t) => (
-      <div className="flex flex-col gap-3">
-        <span className="text-sm font-medium">Bu şablonu silmek istediğinize emin misiniz?</span>
-        <div className="flex gap-2 justify-end">
-          <button
-            onClick={() => {
-              deletesurveytemplateId(id);
-              toast.dismiss(t.id);
-              toast.success("Şablon başarıyla silindi !", { duration: 2000 });
-              // Listeyi güncelle
-              setTemplates((prev) => prev.filter((tpl) => tpl._id !== id));
-            }}
-            className="px-3 py-1 text-sm bg-danger text-white rounded-md hover:bg-red-600 transition"
-          >
-            Evet
-          </button>
-          <button
-            onClick={() => toast.dismiss(t.id)}
-            className="px-3 py-1 text-sm bg-gray-200 rounded-md hover:bg-gray-300 transition"
-          >
-            Hayır
-          </button>
+    toast(
+      (t) => (
+        <div className="flex flex-col gap-3">
+          <span className="text-sm font-medium">
+            Bu şablonu silmek istediğinize emin misiniz?
+          </span>
+          <div className="flex gap-2 justify-end">
+            <button
+              onClick={() => {
+                deletesurveytemplateId(id);
+                toast.dismiss(t.id);
+                toast.success("Şablon başarıyla silindi !", { duration: 2000 });
+                // Listeyi güncelle
+                setTemplates((prev) => prev.filter((tpl) => tpl._id !== id));
+              }}
+              className="px-3 py-1 text-sm bg-danger text-white rounded-md hover:bg-red-600 transition"
+            >
+              Evet
+            </button>
+            <button
+              onClick={() => toast.dismiss(t.id)}
+              className="px-3 py-1 text-sm bg-gray-200 rounded-md hover:bg-gray-300 transition"
+            >
+              Hayır
+            </button>
+          </div>
         </div>
-      </div>
-    ), { duration: 4000 });
+      ),
+      { duration: 4000 },
+    );
   };
 
   return (
@@ -121,7 +139,9 @@ export default function TemplateSurveyModal(props) {
         <div className="grid p-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-h-[70vh] overflow-y-auto">
           {templates.map((survey, idx) => (
             <FixSurveyCard
-              AddAnimateRef={idx === templates.length - 1 ? AddAnimateRef : null}
+              AddAnimateRef={
+                idx === templates.length - 1 ? AddAnimateRef : null
+              }
               key={survey._id}
               edit={edit}
               survey={survey}

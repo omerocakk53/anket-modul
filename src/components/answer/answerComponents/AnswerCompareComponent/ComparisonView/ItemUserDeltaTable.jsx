@@ -27,7 +27,7 @@ function ItemUserDeltaTable({ item, ItemTip = "rating-1", ref }) {
               {item.itemTitle} ({item.itemType})
             </h3>
             <div className="overflow-x-auto p-5">
-              <table  className="min-w-full text-sm text-gray-700">
+              <table className="min-w-full text-sm text-gray-700">
                 <thead className="bg-gray-100">
                   <tr>
                     <th className="px-4 py-2 text-left">Kullanıcı</th>
@@ -39,11 +39,13 @@ function ItemUserDeltaTable({ item, ItemTip = "rating-1", ref }) {
                 <tbody>
                   {item.changes.map((change, index) => {
                     const status =
-                      change.change > 0
-                        ? <FaArrowUp size={14} />
-                        : change.change < 0
-                          ? <FaArrowDown size={14} />
-                          : <FaArrowsLeftRight size={14} />;
+                      change.change > 0 ? (
+                        <FaArrowUp size={14} />
+                      ) : change.change < 0 ? (
+                        <FaArrowDown size={14} />
+                      ) : (
+                        <FaArrowsLeftRight size={14} />
+                      );
                     const className =
                       change.change > 0
                         ? "text-green-500"
@@ -76,7 +78,7 @@ function ItemUserDeltaTable({ item, ItemTip = "rating-1", ref }) {
         );
       })}
     </>
-  )
+  );
 }
 
 export default ItemUserDeltaTable;

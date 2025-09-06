@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { FaTrash } from 'react-icons/fa';
+import { FaTrash } from "react-icons/fa";
 import ModalLayout from "../components/layouts/ModalLayout";
 import Table from "../components/Items/Table";
 
-function MatrisSettingsModal({ isOpen, onClose, onSave, initialData, count, surveyType }) {
+function MatrisSettingsModal({
+  isOpen,
+  onClose,
+  onSave,
+  initialData,
+  count,
+  surveyType,
+}) {
   const [title, setTitle] = useState("");
   const [helpText, setHelpText] = useState("");
   const [complusory, setComplusory] = useState(true);
@@ -59,9 +66,15 @@ function MatrisSettingsModal({ isOpen, onClose, onSave, initialData, count, surv
       setTitle(initialData?.title || "");
       setHelpText(initialData?.helpText || "");
       setComplusory(initialData?.complusory ?? true);
-      setColumns(Array.isArray(initialData?.data?.columns) ? initialData.data.columns : []);
-      setRows(Array.isArray(initialData?.data?.rows) ? initialData.data.rows : []);
-      setSurveyNumberVisible(initialData?.SurveyNumberVisible)
+      setColumns(
+        Array.isArray(initialData?.data?.columns)
+          ? initialData.data.columns
+          : [],
+      );
+      setRows(
+        Array.isArray(initialData?.data?.rows) ? initialData.data.rows : [],
+      );
+      setSurveyNumberVisible(initialData?.SurveyNumberVisible);
     } else {
       setTitle("");
       setHelpText("");
@@ -71,7 +84,6 @@ function MatrisSettingsModal({ isOpen, onClose, onSave, initialData, count, surv
       setSurveyNumberVisible(true);
     }
   }, [initialData]);
-
 
   if (!isOpen) return null;
   const leftPanel = (
@@ -86,7 +98,10 @@ function MatrisSettingsModal({ isOpen, onClose, onSave, initialData, count, surv
         />
       </div>
       <div>
-        <label className="block text-sm font-medium mb-1">Yardım Metni (isteğe bağlı)</label>  <input
+        <label className="block text-sm font-medium mb-1">
+          Yardım Metni (isteğe bağlı)
+        </label>{" "}
+        <input
           className="w-full border rounded p-2"
           value={helpText}
           onChange={(e) => setHelpText(e.target.value)}
@@ -138,40 +153,44 @@ function MatrisSettingsModal({ isOpen, onClose, onSave, initialData, count, surv
       <div className="flex items-center space-x-3">
         <label
           className="text-sm font-medium text-primary-dark select-none cursor-pointer"
-          onClick={() => setComplusory(prev => !prev)}
+          onClick={() => setComplusory((prev) => !prev)}
         >
           Zorunlu alan
         </label>
         <button
           type="button"
           aria-pressed={complusory}
-          onClick={() => setComplusory(prev => !prev)}
-          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${complusory ? 'bg-primary' : 'bg-neutral-light'
-            }`}
+          onClick={() => setComplusory((prev) => !prev)}
+          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${
+            complusory ? "bg-primary" : "bg-neutral-light"
+          }`}
         >
           <div
-            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${complusory ? 'translate-x-6' : 'translate-x-0'
-              }`}
+            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${
+              complusory ? "translate-x-6" : "translate-x-0"
+            }`}
           />
         </button>
       </div>
       <div className="flex items-center space-x-3">
         <label
           className="text-sm font-medium text-primary-dark select-none cursor-pointer"
-          onClick={() => setSurveyNumberVisible(prev => !prev)}
+          onClick={() => setSurveyNumberVisible((prev) => !prev)}
         >
           Soru Numarası Gözüksün
         </label>
         <button
           type="button"
           aria-pressed={SurveyNumberVisible}
-          onClick={() => setSurveyNumberVisible(prev => !prev)}
-          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${SurveyNumberVisible ? 'bg-primary' : 'bg-neutral-light'
-            }`}
+          onClick={() => setSurveyNumberVisible((prev) => !prev)}
+          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${
+            SurveyNumberVisible ? "bg-primary" : "bg-neutral-light"
+          }`}
         >
           <div
-            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${SurveyNumberVisible ? 'translate-x-6' : 'translate-x-0'
-              }`}
+            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${
+              SurveyNumberVisible ? "translate-x-6" : "translate-x-0"
+            }`}
           />
         </button>
       </div>
@@ -179,7 +198,10 @@ function MatrisSettingsModal({ isOpen, onClose, onSave, initialData, count, surv
         <button className="px-4 py-2 bg-gray-300 rounded" onClick={onClose}>
           Vazgeç
         </button>
-        <button className="px-4 py-2 bg-blue-500 text-white rounded" onClick={handleSave}>
+        <button
+          className="px-4 py-2 bg-blue-500 text-white rounded"
+          onClick={handleSave}
+        >
           Kaydet
         </button>
       </div>
@@ -192,14 +214,15 @@ function MatrisSettingsModal({ isOpen, onClose, onSave, initialData, count, surv
       data={{ rows, columns }}
       id={"matris-" + count}
       value={value}
-      onChange={(value) => { setValue(value) }}
+      onChange={(value) => {
+        setValue(value);
+      }}
       count={count}
       SurveyNumberVisible={SurveyNumberVisible}
     />
   );
 
   return <ModalLayout leftPanel={leftPanel} rightPanel={rightPanel} />;
-
 }
 
 export default MatrisSettingsModal;

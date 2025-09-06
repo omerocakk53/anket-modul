@@ -21,11 +21,18 @@ const ColumnToggler = ({ columns, visibleColumns, setVisibleColumns }) => {
       <Disclosure>
         {({ open }) => (
           <div>
-            <Disclosure.Button className="rounded-2xl flex justify-between items-center w-full border-gray-200 border-b-0 max-w-xl bg-blue-50 px-4 py-3 text-left text-sm font-medium text-blue-900 hover:bg-blue-100 focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75 shadow" style={{ borderBottomLeftRadius: open ? 0 : undefined, borderBottomRightRadius: open ? 0 : undefined }}>
+            <Disclosure.Button
+              className="rounded-2xl flex justify-between items-center w-full border-gray-200 border-b-0 max-w-xl bg-blue-50 px-4 py-3 text-left text-sm font-medium text-blue-900 hover:bg-blue-100 focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75 shadow"
+              style={{
+                borderBottomLeftRadius: open ? 0 : undefined,
+                borderBottomRightRadius: open ? 0 : undefined,
+              }}
+            >
               <span>Sütunları Göster / Gizle</span>
               <BiChevronUp
-                className={`${open ? "rotate-180 transform" : ""
-                  } h-5 w-5 text-blue-500 transition-transform`}
+                className={`${
+                  open ? "rotate-180 transform" : ""
+                } h-5 w-5 text-blue-500 transition-transform`}
               />
             </Disclosure.Button>
             <Disclosure.Panel className="p-4 bg-blue-50 border-gray-200 border-t-0 rounded-b-2xl shadow max-w-4xl">

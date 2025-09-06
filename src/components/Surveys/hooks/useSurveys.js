@@ -33,7 +33,7 @@ export default function useSurveys({
         setGroupedSurveysData(grouped);
 
         const validGroups = Object.keys(grouped).filter(
-          (name) => name !== "Geçersiz Klasör Adı"
+          (name) => name !== "Geçersiz Klasör Adı",
         );
         if (!selectedGroup || !validGroups.includes(selectedGroup)) {
           setSelectedGroup(validGroups.length > 0 ? validGroups[0] : null);

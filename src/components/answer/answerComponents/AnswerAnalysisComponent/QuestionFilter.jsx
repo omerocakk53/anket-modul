@@ -1,21 +1,27 @@
-import React from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import { FiSearch, FiCalendar, FiXCircle } from 'react-icons/fi';
-import { tr } from 'date-fns/locale';
-import { AiOutlineClose } from 'react-icons/ai';
+import React from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { FiSearch, FiCalendar, FiXCircle } from "react-icons/fi";
+import { tr } from "date-fns/locale";
+import { AiOutlineClose } from "react-icons/ai";
 
-function QuestionFilter({ searchTerm, setSearchTerm, dateRange, setDateRange }) {
+function QuestionFilter({
+  searchTerm,
+  setSearchTerm,
+  dateRange,
+  setDateRange,
+}) {
   const clearFilters = () => {
-    setSearchTerm('');
+    setSearchTerm("");
     setDateRange([null, null]);
   };
   return (
     <div className="flex flex-col gap-6 mb-5 max-w-xl">
       <div className="relative flex items-center w-full">
         <FiSearch
-          className={`absolute left-3 text-lg transition-colors duration-200 ${searchTerm ? 'text-blue-500' : 'text-gray-400'
-            }`}
+          className={`absolute left-3 text-lg transition-colors duration-200 ${
+            searchTerm ? "text-blue-500" : "text-gray-400"
+          }`}
         />
         <input
           type="text"
@@ -29,7 +35,7 @@ function QuestionFilter({ searchTerm, setSearchTerm, dateRange, setDateRange }) 
         />
         {searchTerm && (
           <button
-            onClick={() => setSearchTerm('')}
+            onClick={() => setSearchTerm("")}
             className="absolute right-3 text-gray-400 hover:text-red-500 transition-colors"
           >
             <AiOutlineClose />
@@ -40,7 +46,9 @@ function QuestionFilter({ searchTerm, setSearchTerm, dateRange, setDateRange }) 
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
             <FiCalendar className="text-blue-500 text-xl" />
-            <h3 className="font-semibold text-lg text-gray-700">Tarih Filtreleme</h3>
+            <h3 className="font-semibold text-lg text-gray-700">
+              Tarih Filtreleme
+            </h3>
           </div>
           <button
             onClick={clearFilters}

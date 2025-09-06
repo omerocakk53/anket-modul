@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { toast } from 'react-hot-toast';;
+import { toast } from "react-hot-toast";
 
 export default function ImageChoice({
   title,
@@ -12,7 +12,7 @@ export default function ImageChoice({
   Design,
   MultiSelectLimit,
   MultiselectActive,
-  imageTitles
+  imageTitles,
 }) {
   const [selectedImages, setSelectedImages] = useState([]);
 
@@ -27,8 +27,13 @@ export default function ImageChoice({
         updatedSelection = updatedSelection.filter((item) => item !== idx);
       } else {
         // Eğer limit aşılmamışsa, seçimi ekle
-        if (MultiSelectLimit > 0 && updatedSelection.length >= MultiSelectLimit) {
-          toast(`Seçim limitine ulaştınız (${MultiSelectLimit} adet seçebilirsiniz).`);
+        if (
+          MultiSelectLimit > 0 &&
+          updatedSelection.length >= MultiSelectLimit
+        ) {
+          toast(
+            `Seçim limitine ulaştınız (${MultiSelectLimit} adet seçebilirsiniz).`,
+          );
           return;
         }
         updatedSelection.push(idx);
@@ -42,8 +47,8 @@ export default function ImageChoice({
     const selectedImagesData = updatedSelection.map((selectedIdx) => {
       return {
         idx: selectedIdx,
-        title: imageTitles[selectedIdx],  // Başlık bilgisi
-        url: images[selectedIdx],  // Görsel URL'si
+        title: imageTitles[selectedIdx], // Başlık bilgisi
+        url: images[selectedIdx], // Görsel URL'si
       };
     });
 
@@ -52,10 +57,8 @@ export default function ImageChoice({
     onChange(selectedImagesData); // Veriyi düzenlenmiş haliyle gönder
   };
 
-
   return (
     <div>
-      
       {title ? (
         <>
           <h4 className="font-semibold text-primary-text">

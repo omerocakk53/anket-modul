@@ -1,4 +1,13 @@
-export default function Scale({ title, helpText, data, id, value = null, onChange, count , SurveyNumberVisible}) {
+export default function Scale({
+  title,
+  helpText,
+  data,
+  id,
+  value = null,
+  onChange,
+  count,
+  SurveyNumberVisible,
+}) {
   const min = data.min;
   const max = data.max;
   const range = Array.from({ length: max - min + 1 }, (_, i) => min + i);
@@ -39,28 +48,39 @@ export default function Scale({ title, helpText, data, id, value = null, onChang
 
   return (
     <div className="p-4">
-      {title ? (<>  <label className="font-semibold text-primary-text">{
-        SurveyNumberVisible
-          ? (
-            count
-              ? (title === "" ? `${count}. Soru ${title}` : `${count}. ${title}`)
-              : (title || null)
-          )
-          : (title || null)
-      }</label>
-        <p className="text-sm text-neutral mb-2">{helpText}</p>
-        <div className="flex gap-1 p-1 rounded-lg">
-          {range.map((num) => (
-            <button
-              key={num}
-              type="button"
-              onClick={() => onChange(num)}
-              className={`w-10 h-10 rounded-lg text-black font-medium transition ${getCategoryClasses(num)}`}
-            >
-              {num}
-            </button>
-          ))}
-        </div></>) : (<><div className="flex justify-center items-center"><h1 className="text-primary-text text-xl">Tasarlamaya Başlayın</h1></div></>)}
+      {title ? (
+        <>
+          {" "}
+          <label className="font-semibold text-primary-text">
+            {SurveyNumberVisible
+              ? count
+                ? title === ""
+                  ? `${count}. Soru ${title}`
+                  : `${count}. ${title}`
+                : title || null
+              : title || null}
+          </label>
+          <p className="text-sm text-neutral mb-2">{helpText}</p>
+          <div className="flex gap-1 p-1 rounded-lg">
+            {range.map((num) => (
+              <button
+                key={num}
+                type="button"
+                onClick={() => onChange(num)}
+                className={`w-10 h-10 rounded-lg text-black font-medium transition ${getCategoryClasses(num)}`}
+              >
+                {num}
+              </button>
+            ))}
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="flex justify-center items-center">
+            <h1 className="text-primary-text text-xl">Tasarlamaya Başlayın</h1>
+          </div>
+        </>
+      )}
     </div>
   );
 }

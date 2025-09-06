@@ -1,10 +1,17 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { FiTag, FiList, FiSearch, FiChevronDown, FiCalendar, FiHelpCircle } from 'react-icons/fi';
-import { toast } from 'react-hot-toast';
-import { DateRange } from 'react-date-range';
-import 'react-date-range/dist/styles.css'; // temel stil
-import 'react-date-range/dist/theme/default.css'; // tema stil
-import { tr } from 'date-fns/locale'; // Türkçe locale'i import et
+import React, { useState, useRef, useEffect } from "react";
+import {
+  FiTag,
+  FiList,
+  FiSearch,
+  FiChevronDown,
+  FiCalendar,
+  FiHelpCircle,
+} from "react-icons/fi";
+import { toast } from "react-hot-toast";
+import { DateRange } from "react-date-range";
+import "react-date-range/dist/styles.css"; // temel stil
+import "react-date-range/dist/theme/default.css"; // tema stil
+import { tr } from "date-fns/locale"; // Türkçe locale'i import et
 export default function FilterSortSearch({
   onSearch,
   searchMode,
@@ -16,9 +23,9 @@ export default function FilterSortSearch({
   active,
   setActive,
   dateRange,
-  setDateRange
+  setDateRange,
 }) {
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [sortDropdownOpen, setSortDropdownOpen] = useState(false);
   const [calendarOpen, setCalendarOpen] = useState(false);
@@ -34,19 +41,13 @@ export default function FilterSortSearch({
 
   useEffect(() => {
     function handleClickOutside(event) {
-      if (
-        dropdownRef.current && !dropdownRef.current.contains(event.target)
-      ) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setDropdownOpen(false);
       }
-      if (
-        sortRef.current && !sortRef.current.contains(event.target)
-      ) {
+      if (sortRef.current && !sortRef.current.contains(event.target)) {
         setSortDropdownOpen(false);
       }
-      if (
-        calendarRef.current && !calendarRef.current.contains(event.target)
-      ) {
+      if (calendarRef.current && !calendarRef.current.contains(event.target)) {
         setCalendarOpen(false);
       }
     }
@@ -58,24 +59,28 @@ export default function FilterSortSearch({
 
   const handleSelectMode = (mode) => {
     setSearchMode(mode);
-    toast(`Arama modu: ${mode === 'title' ? 'Başlık araması' : 'Etiket araması'}`);
+    toast(
+      `Arama modu: ${mode === "title" ? "Başlık araması" : "Etiket araması"}`,
+    );
     setDropdownOpen(false);
   };
 
   const handleSortChange = (field) => {
     setSortBy(field);
-    toast(`Sıralama: ${field === 'title' ? 'Başlık' : field === 'tags' ? 'Etiket' : 'Oluşturulma Tarihi'}`);
+    toast(
+      `Sıralama: ${field === "title" ? "Başlık" : field === "tags" ? "Etiket" : "Oluşturulma Tarihi"}`,
+    );
   };
 
   const handleOrderToggle = () => {
-    setSortOrder(prev => prev === 'asc' ? 'desc' : 'asc');
+    setSortOrder((prev) => (prev === "asc" ? "desc" : "asc"));
   };
 
   const handleActiveToggle = () => {
-    setActive(prev => {
-      if (prev === 'active') return 'passive';
-      if (prev === 'passive') return null;
-      return 'active';
+    setActive((prev) => {
+      if (prev === "active") return "passive";
+      if (prev === "passive") return null;
+      return "active";
     });
   };
 
@@ -88,15 +93,13 @@ export default function FilterSortSearch({
   };
 
   const formatDate = (date) => {
-    if (!date) return '';
-    return date.toLocaleDateString('tr-TR');
+    if (!date) return "";
+    return date.toLocaleDateString("tr-TR");
   };
 
   return (
     <div className="flex items-center justify-between flex-wrap gap-4 mb-6">
-
       <div className="flex gap-3 items-center">
-
         {/* Arama Modu */}
         <div className="relative inline-block text-left" ref={dropdownRef}>
           <button
@@ -105,21 +108,21 @@ export default function FilterSortSearch({
             className="flex items-center gap-1 px-3 py-1.5 text-sm border border-primary-light text-primary-darktext rounded-lg hover:bg-primary-dark hover:text-primary-text transition"
           >
             <FiTag className="w-4 h-4" />
-            {searchMode === 'title' ? 'Başlık ile Ara' : 'Etiket ile Ara'}
+            {searchMode === "title" ? "Başlık ile Ara" : "Etiket ile Ara"}
             <FiChevronDown className="w-4 h-4 ml-1" />
           </button>
 
           {dropdownOpen && (
             <div className="absolute right-0 mt-2 w-40 bg-white border border-primary-light rounded-md shadow-lg z-10">
               <button
-                className={`block w-full text-left px-4 py-2 text-sm hover:bg-primary-light hover:text-primary-text ${searchMode === 'title' ? 'font-bold bg-primary-light text-primary-text' : ''}`}
-                onClick={() => handleSelectMode('title')}
+                className={`block w-full text-left px-4 py-2 text-sm hover:bg-primary-light hover:text-primary-text ${searchMode === "title" ? "font-bold bg-primary-light text-primary-text" : ""}`}
+                onClick={() => handleSelectMode("title")}
               >
                 Başlık ile Ara
               </button>
               <button
-                className={`block w-full text-left px-4 py-2 text-sm hover:bg-primary-light hover:text-primary-text ${searchMode === 'tags' ? 'font-bold bg-primary-light text-primary-text' : ''}`}
-                onClick={() => handleSelectMode('tags')}
+                className={`block w-full text-left px-4 py-2 text-sm hover:bg-primary-light hover:text-primary-text ${searchMode === "tags" ? "font-bold bg-primary-light text-primary-text" : ""}`}
+                onClick={() => handleSelectMode("tags")}
               >
                 Etiket ile Ara
               </button>
@@ -141,20 +144,20 @@ export default function FilterSortSearch({
           {sortDropdownOpen && (
             <div className="absolute right-0 mt-2 w-48 bg-white border border-secondary-light rounded-md shadow-lg z-10">
               <button
-                className={`block w-full text-left px-4 py-2 text-sm hover:bg-secondary-light hover:text-primary-text ${sortBy === 'title' ? 'font-bold bg-secondary-light text-primary-text' : ''}`}
-                onClick={() => handleSortChange('title')}
+                className={`block w-full text-left px-4 py-2 text-sm hover:bg-secondary-light hover:text-primary-text ${sortBy === "title" ? "font-bold bg-secondary-light text-primary-text" : ""}`}
+                onClick={() => handleSortChange("title")}
               >
                 Başlığa Göre
               </button>
               <button
-                className={`block w-full text-left px-4 py-2 text-sm hover:bg-secondary-light hover:text-primary-text ${sortBy === 'tags' ? 'font-bold bg-secondary-light text-primary-text' : ''}`}
-                onClick={() => handleSortChange('tags')}
+                className={`block w-full text-left px-4 py-2 text-sm hover:bg-secondary-light hover:text-primary-text ${sortBy === "tags" ? "font-bold bg-secondary-light text-primary-text" : ""}`}
+                onClick={() => handleSortChange("tags")}
               >
                 Etikete Göre
               </button>
               <button
-                className={`block w-full text-left px-4 py-2 text-sm hover:bg-secondary-light hover:text-primary-text ${sortBy === 'createTime' ? 'font-bold bg-secondary-light text-primary-text' : ''}`}
-                onClick={() => handleSortChange('createTime')}
+                className={`block w-full text-left px-4 py-2 text-sm hover:bg-secondary-light hover:text-primary-text ${sortBy === "createTime" ? "font-bold bg-secondary-light text-primary-text" : ""}`}
+                onClick={() => handleSortChange("createTime")}
               >
                 Oluşturulma Tarihine Göre
               </button>
@@ -166,58 +169,64 @@ export default function FilterSortSearch({
         <button
           onClick={handleOrderToggle}
           className={`px-3 py-1.5 text-sm border rounded-lg transition 
-            ${sortOrder === 'asc'
-              ? 'hover:text-primary-text text-success border-success hover:bg-success/80'
-              : 'hover:text-primary-text text-danger border-danger hover:bg-danger/80'}
+            ${
+              sortOrder === "asc"
+                ? "hover:text-primary-text text-success border-success hover:bg-success/80"
+                : "hover:text-primary-text text-danger border-danger hover:bg-danger/80"
+            }
   
             `}
         >
-          {sortOrder === 'asc' ? 'Artan ↑' : 'Azalan ↓'}
+          {sortOrder === "asc" ? "Artan ↑" : "Azalan ↓"}
         </button>
 
-        <div className='flex items-center gap-1'>
+        <div className="flex items-center gap-1">
           <button
             onClick={handleActiveToggle}
             className={`px-3 py-1 text-sm border rounded-lg transition 
-              ${active === 'active'
-                ? 'hover:text-primary-text text-success border-success hover:bg-success'
-                : active === 'passive'
-                  ? 'hover:text-primary-text text-danger border-danger hover:bg-danger'
-                  : 'hover:text-primary-text text-primary border-primary hover:bg-primary'
+              ${
+                active === "active"
+                  ? "hover:text-primary-text text-success border-success hover:bg-success"
+                  : active === "passive"
+                    ? "hover:text-primary-text text-danger border-danger hover:bg-danger"
+                    : "hover:text-primary-text text-primary border-primary hover:bg-primary"
               }
           `}
           >
             <span>
-              {active === 'active'
-                ? 'Aktif Anketler'
-                : active === 'passive'
-                  ? 'Pasif Anketler'
-                  : 'Tüm Anketler'}
+              {active === "active"
+                ? "Aktif Anketler"
+                : active === "passive"
+                  ? "Pasif Anketler"
+                  : "Tüm Anketler"}
             </span>
           </button>
           <div className="relative inline-block group">
-            <button className={`btn btn-ghost btn-circle hover:text-primary animate-pulse ${active === 'active'
-              ? 'text-success border-success'
-              : active === 'passive'
-                ? 'text-danger border-danger'
-                : 'text-primary border-primary'
-              }`}>
+            <button
+              className={`btn btn-ghost btn-circle hover:text-primary animate-pulse ${
+                active === "active"
+                  ? "text-success border-success"
+                  : active === "passive"
+                    ? "text-danger border-danger"
+                    : "text-primary border-primary"
+              }`}
+            >
               <FiHelpCircle size={18} />
             </button>
             <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-3 py-1 rounded whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity z-50">
               <span>
-                {active === 'active'
-                  ? 'Aktif Anketleri Listele'
-                  : active === 'passive'
-                    ? 'Pasif Anketleri Listele'
-                    : 'Tüm Anketleri Listele'}
+                {active === "active"
+                  ? "Aktif Anketleri Listele"
+                  : active === "passive"
+                    ? "Pasif Anketleri Listele"
+                    : "Tüm Anketleri Listele"}
               </span>
             </div>
           </div>
         </div>
       </div>
       {/* Tarih filtresi */}
-      {sortBy === 'createTime' && (
+      {sortBy === "createTime" && (
         <div className="relative w-full max-w-md">
           <button
             onClick={() => setCalendarOpen(!calendarOpen)}
@@ -226,20 +235,25 @@ export default function FilterSortSearch({
             <FiCalendar className="w-5 h-5" />
             {dateRange.startDate && dateRange.endDate
               ? `${formatDate(dateRange.startDate)} - ${formatDate(dateRange.endDate)}`
-              : 'Tarih Aralığı Seç'}
+              : "Tarih Aralığı Seç"}
           </button>
 
           {calendarOpen && (
-            <div ref={calendarRef} className="absolute top-full mt-2 z-20 shadow-lg rounded-lg">
+            <div
+              ref={calendarRef}
+              className="absolute top-full mt-2 z-20 shadow-lg rounded-lg"
+            >
               <DateRange
                 editableDateInputs={true}
                 onChange={handleRangeChange}
                 moveRangeOnFirstSelection={false}
-                ranges={[{
-                  startDate: dateRange.startDate || new Date(),
-                  endDate: dateRange.endDate || new Date(),
-                  key: 'selection'
-                }]}
+                ranges={[
+                  {
+                    startDate: dateRange.startDate || new Date(),
+                    endDate: dateRange.endDate || new Date(),
+                    key: "selection",
+                  },
+                ]}
                 locale={tr} // ← Türkçe olarak ayarlıyoruz
                 maxDate={new Date()}
                 className="shadow-md rounded-md"

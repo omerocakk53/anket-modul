@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { FaTrash } from "react-icons/fa";
 import ModalLayout from "../components/layouts/ModalLayout";
-import InputNumber from 'rc-input-number';
-import 'rc-input-number/assets/index.css';
+import InputNumber from "rc-input-number";
+import "rc-input-number/assets/index.css";
 import ImageChoice from "../components/Items/ImageChoice";
 
 function ImageChoiceSettingsModal({
@@ -74,7 +74,7 @@ function ImageChoiceSettingsModal({
     setImages([]);
     setImageTitles([]);
     setTitle("");
-    setSurveyNumberVisible(false)
+    setSurveyNumberVisible(false);
   };
 
   const addImage = () => {
@@ -167,32 +167,36 @@ function ImageChoiceSettingsModal({
           type="button"
           aria-pressed={Design}
           onClick={() => setHorizontalDesign((prev) => !prev)}
-          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${Design ? "bg-primary" : "bg-neutral-light"
-            }`}
+          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${
+            Design ? "bg-primary" : "bg-neutral-light"
+          }`}
         >
           <div
-            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${Design ? "translate-x-6" : "translate-x-0"
-              }`}
+            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${
+              Design ? "translate-x-6" : "translate-x-0"
+            }`}
           />
         </button>
       </div>
       <div className="flex items-center space-x-3">
         <label
           className="text-sm font-medium text-primary-dark select-none cursor-pointer"
-          onClick={() => setSurveyNumberVisible(prev => !prev)}
+          onClick={() => setSurveyNumberVisible((prev) => !prev)}
         >
           Soru Numarası Gözüksün
         </label>
         <button
           type="button"
           aria-pressed={SurveyNumberVisible}
-          onClick={() => setSurveyNumberVisible(prev => !prev)}
-          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${SurveyNumberVisible ? 'bg-primary' : 'bg-neutral-light'
-            }`}
+          onClick={() => setSurveyNumberVisible((prev) => !prev)}
+          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${
+            SurveyNumberVisible ? "bg-primary" : "bg-neutral-light"
+          }`}
         >
           <div
-            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${SurveyNumberVisible ? 'translate-x-6' : 'translate-x-0'
-              }`}
+            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${
+              SurveyNumberVisible ? "translate-x-6" : "translate-x-0"
+            }`}
           />
         </button>
       </div>
@@ -207,32 +211,36 @@ function ImageChoiceSettingsModal({
           type="button"
           aria-pressed={MultiselectActive}
           onClick={() => setMultiselectActive((prev) => !prev)}
-          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${MultiselectActive ? "bg-primary" : "bg-neutral-light"
-            }`}
+          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${
+            MultiselectActive ? "bg-primary" : "bg-neutral-light"
+          }`}
         >
           <div
-            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${MultiselectActive ? "translate-x-6" : "translate-x-0"
-              }`}
+            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${
+              MultiselectActive ? "translate-x-6" : "translate-x-0"
+            }`}
           />
         </button>
       </div>
       <div className="flex items-center space-x-3">
         <label
           className="text-sm font-medium text-primary-dark select-none cursor-pointer"
-          onClick={() => setComplusory(prev => !prev)}
+          onClick={() => setComplusory((prev) => !prev)}
         >
           Zorunlu alan
         </label>
         <button
           type="button"
           aria-pressed={complusory}
-          onClick={() => setComplusory(prev => !prev)}
-          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${complusory ? 'bg-primary' : 'bg-neutral-light'
-            }`}
+          onClick={() => setComplusory((prev) => !prev)}
+          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${
+            complusory ? "bg-primary" : "bg-neutral-light"
+          }`}
         >
           <div
-            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${complusory ? 'translate-x-6' : 'translate-x-0'
-              }`}
+            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${
+              complusory ? "translate-x-6" : "translate-x-0"
+            }`}
           />
         </button>
       </div>
@@ -253,10 +261,18 @@ function ImageChoiceSettingsModal({
       )}
 
       <div className="flex gap-2 p-5 absolute left-0 bottom-0 bg-neutral md:w-1/2 w-full">
-        <button type="button" className="px-4 py-2 bg-gray-300 rounded" onClick={onClose}>
+        <button
+          type="button"
+          className="px-4 py-2 bg-gray-300 rounded"
+          onClick={onClose}
+        >
           Vazgeç
         </button>
-        <button type="button" className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" onClick={handleSave}>
+        <button
+          type="button"
+          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+          onClick={handleSave}
+        >
           Kaydet
         </button>
       </div>
@@ -264,7 +280,19 @@ function ImageChoiceSettingsModal({
   );
 
   const rightPanel = (
-    <ImageChoice title={title} helpText={helpText} images={images} id={images} onChange={() => { }} count={count} SurveyNumberVisible={SurveyNumberVisible} Design={Design} MultiSelectLimit={MultiSelectLimit} MultiselectActive={MultiselectActive} imageTitles={imageTitles} />
+    <ImageChoice
+      title={title}
+      helpText={helpText}
+      images={images}
+      id={images}
+      onChange={() => {}}
+      count={count}
+      SurveyNumberVisible={SurveyNumberVisible}
+      Design={Design}
+      MultiSelectLimit={MultiSelectLimit}
+      MultiselectActive={MultiselectActive}
+      imageTitles={imageTitles}
+    />
   );
 
   return <ModalLayout leftPanel={leftPanel} rightPanel={rightPanel} />;

@@ -1,15 +1,24 @@
-import React from 'react';
-import Component from '../RenderComponent';
-import toast from 'react-hot-toast';
+import React from "react";
+import Component from "../RenderComponent";
+import toast from "react-hot-toast";
 
-export default function SidebarPanel({ surveyActive, handleAddItem, sidebarOpen, setSidebarOpen }) {
-    return (
-        <div>
-            <Component
-                onAddItem={surveyActive ? () => toast.error("Aktif anket düzenlenemez.") : handleAddItem}
-                sideBar={sidebarOpen}
-                setSidebarOpen={() => setSidebarOpen(false)}
-            />
-        </div>
-    );
+export default function SidebarPanel({
+  surveyActive,
+  handleAddItem,
+  sidebarOpen,
+  setSidebarOpen,
+}) {
+  return (
+    <div>
+      <Component
+        onAddItem={
+          surveyActive
+            ? () => toast.error("Aktif anket düzenlenemez.")
+            : handleAddItem
+        }
+        sideBar={sidebarOpen}
+        setSidebarOpen={() => setSidebarOpen(false)}
+      />
+    </div>
+  );
 }

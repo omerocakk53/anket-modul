@@ -1,5 +1,19 @@
 import { Tooltip } from "react-tooltip";
-import { FiHelpCircle, FiEdit, FiFileText, FiMail, FiHash, FiBarChart2, FiStar, FiChevronDown, FiCheckSquare, FiImage, FiLayers, FiFile, FiGrid } from "react-icons/fi";
+import {
+  FiHelpCircle,
+  FiEdit,
+  FiFileText,
+  FiMail,
+  FiHash,
+  FiBarChart2,
+  FiStar,
+  FiChevronDown,
+  FiCheckSquare,
+  FiImage,
+  FiLayers,
+  FiFile,
+  FiGrid,
+} from "react-icons/fi";
 
 const ICONS = {
   ShortText: FiEdit,
@@ -16,11 +30,21 @@ const ICONS = {
   FileUpload: FiFile,
 };
 
-const getLabel = (type) => ({
-  ShortText: "Kısa Metin", LongText: "Uzun Metin", Email: "E-posta", Numeric: "Sayısal",
-  Scale: "Skala", Rating: "Derecelendirme", Dropdown: "Açılır Menü", MultipleChoice: "Çoktan Seçmeli",
-  ImageChoice: "Görsel Seçimi", QuestionGroup: "Soru Grubu", Matris: "Matris", FileUpload: "Dosya Yükleme",
-}[type] || type);
+const getLabel = (type) =>
+  ({
+    ShortText: "Kısa Metin",
+    LongText: "Uzun Metin",
+    Email: "E-posta",
+    Numeric: "Sayısal",
+    Scale: "Skala",
+    Rating: "Derecelendirme",
+    Dropdown: "Açılır Menü",
+    MultipleChoice: "Çoktan Seçmeli",
+    ImageChoice: "Görsel Seçimi",
+    QuestionGroup: "Soru Grubu",
+    Matris: "Matris",
+    FileUpload: "Dosya Yükleme",
+  })[type] || type;
 
 const renderValue = (type, value) => {
   if (!value) return <em>Yanıt yok.</em>;
@@ -41,10 +65,8 @@ const renderValue = (type, value) => {
     return renderObject(value);
   }
 
-
   return <p>{value}</p>;
 };
-
 
 export default function AnswerItem({ index, soru, cevap }) {
   const Icon = ICONS[soru.iconKey || soru.itemType] || FiHelpCircle;

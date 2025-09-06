@@ -10,16 +10,16 @@ export function analyzeAverage(answers, questionId) {
   let total = 0;
   let count = 0;
 
-  answers.forEach(ansGroup => {
-    const found = ansGroup.answers?.find(a => a.itemId === questionId);
+  answers.forEach((ansGroup) => {
+    const found = ansGroup.answers?.find((a) => a.itemId === questionId);
     if (!found) return;
 
     let values = Array.isArray(found.value) ? found.value : [found.value];
-    values = values.filter(v => v !== null && v !== undefined);
+    values = values.filter((v) => v !== null && v !== undefined);
 
-    values.forEach(v => {
-      if (typeof v === 'object') {
-        Object.values(v).forEach(val => {
+    values.forEach((v) => {
+      if (typeof v === "object") {
+        Object.values(v).forEach((val) => {
           const num = parseFloat(val);
           if (!isNaN(num)) {
             total += num;

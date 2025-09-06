@@ -5,7 +5,7 @@ export default function useSurveyActions({
   chamber,
   userId,
   setRefreshKey,
-  setSelectedGroup
+  setSelectedGroup,
 }) {
   const createSurveyInGroup = async ({
     title,
@@ -78,7 +78,9 @@ export default function useSurveyActions({
 
       const createdSurvey = await createSurvey(surveyData);
       if (createdSurvey) {
-        toast.success(`"${newGroupName}" klasörü ve "${title}" anketi oluşturuldu.`);
+        toast.success(
+          `"${newGroupName}" klasörü ve "${title}" anketi oluşturuldu.`,
+        );
         setRefreshKey((prev) => prev + 1);
         setSelectedGroup(newGroupName.trim());
       }

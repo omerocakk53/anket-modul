@@ -89,7 +89,12 @@ export default function Numeric({
             }
             value={displayValue}
             onChange={handleChange}
-            maxLength={charLimit > 0 ? charLimit + (thousandSeparator ? Math.floor(charLimit / 3) : 0) : undefined} 
+            maxLength={
+              charLimit > 0
+                ? charLimit +
+                  (thousandSeparator ? Math.floor(charLimit / 3) : 0)
+                : undefined
+            }
             // maxLength'e ekstra olarak binlik ayırıcı karakterlerini ekledik (tam tamına değil ama kabaca)
           />
           {charLimit > 0 && (

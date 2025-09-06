@@ -1,8 +1,8 @@
-import React from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import { tr } from 'date-fns/locale';
-import { FiCalendar, FiXCircle } from 'react-icons/fi';
+import React from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { tr } from "date-fns/locale";
+import { FiCalendar, FiXCircle } from "react-icons/fi";
 const DateFilter = ({ startDate, endDate, setStartDate, setEndDate }) => {
   const clearFilters = () => {
     setStartDate(null);
@@ -13,7 +13,9 @@ const DateFilter = ({ startDate, endDate, setStartDate, setEndDate }) => {
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
           <FiCalendar className="text-blue-500 text-xl" />
-          <h3 className="font-semibold text-lg text-gray-700">Tarih Filtreleme</h3>
+          <h3 className="font-semibold text-lg text-gray-700">
+            Tarih Filtreleme
+          </h3>
         </div>
         <button
           onClick={clearFilters}

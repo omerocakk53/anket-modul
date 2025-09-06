@@ -1,17 +1,23 @@
-import React, { useState } from 'react';
-import { FaExternalLinkAlt, FaTrash } from 'react-icons/fa';
-import { toast } from 'react-hot-toast';
-import AnswerSheet from './AnswerSheet';
+import React, { useState } from "react";
+import { FaExternalLinkAlt, FaTrash } from "react-icons/fa";
+import { toast } from "react-hot-toast";
+import AnswerSheet from "./AnswerSheet";
 
 const AnswerTable = ({ survey, answers, visibleColumns, onDelete }) => {
   const [selected, setSelected] = useState([]);
   const [allSelected, setAllSelected] = useState(false);
-  const [RenderAnswerSheet, setRenderAnswerSheet] = useState({ status: false, id: 0 });
+  const [RenderAnswerSheet, setRenderAnswerSheet] = useState({
+    status: false,
+    id: 0,
+  });
 
-  const handleViewAnswerSheet = (status, id) => setRenderAnswerSheet({ status, id });
+  const handleViewAnswerSheet = (status, id) =>
+    setRenderAnswerSheet({ status, id });
 
   const toggleRow = (id) => {
-    setSelected((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
+    setSelected((prev) =>
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id],
+    );
   };
 
   const toggleAll = () => {
@@ -25,7 +31,7 @@ const AnswerTable = ({ survey, answers, visibleColumns, onDelete }) => {
       setSelected([]);
       setAllSelected(false);
     } catch {
-      toast.error('Silme hatası');
+      toast.error("Silme hatası");
     }
   };
 
@@ -36,10 +42,10 @@ const AnswerTable = ({ survey, answers, visibleColumns, onDelete }) => {
       return new Date(ans[columnKey]).toLocaleString("tr-TR");
     }
     const answer = ans.answers.find((a) => a.itemId === columnKey);
-    console.log(answer)
-    if (!answer) return '-';
+    console.log(answer);
+    if (!answer) return "-";
     switch (answer.itemType) {
-      case 'MultipleChoice':
+      case "MultipleChoice":
         return (
           <div className="flex flex-wrap gap-1">
             {answer.value.map((option, idx) => (
@@ -52,12 +58,16 @@ const AnswerTable = ({ survey, answers, visibleColumns, onDelete }) => {
             ))}
           </div>
         );
-      case 'ImageChoice':
+      case "ImageChoice":
         return (
           <div className="flex flex-wrap gap-2">
             {answer.value.map((img, idx) => (
               <div key={idx} className="flex items-center gap-1">
-                <img src={img.url} alt={img.title} className="w-8 h-8 rounded object-cover border" />
+                <img
+                  src={img.url}
+                  alt={img.title}
+                  className="w-8 h-8 rounded object-cover border"
+                />
                 <span className="text-xs  max-w-[100px]" title={img.title}>
                   {img.title}
                 </span>
@@ -65,7 +75,7 @@ const AnswerTable = ({ survey, answers, visibleColumns, onDelete }) => {
             ))}
           </div>
         );
-      case 'QuestionGroup':
+      case "QuestionGroup":
         return (
           <div className="space-y-1">
             {answer.value.map((group, idx) => (
@@ -79,7 +89,7 @@ const AnswerTable = ({ survey, answers, visibleColumns, onDelete }) => {
             ))}
           </div>
         );
-      case 'Matris':
+      case "Matris":
         return (
           <div className="space-y-1 text-xs">
             {Object.entries(answer.value).map(([row, val]) => (
@@ -89,20 +99,20 @@ const AnswerTable = ({ survey, answers, visibleColumns, onDelete }) => {
             ))}
           </div>
         );
-      case 'Table':
+      case "Table":
         return (
           <div className="space-y-1 text-xs">
             {Object.entries(answer.value).map(([key, obj]) => (
               <>
-              <div key={key}>
-                <span className="font-semibold">{key}:</span>
-                {Object.entries(obj).map(([row, value]) => (
-                  <div key={row}>
-                    <span className="font-semibold">{row}:</span> {value}
-                  </div>
-                ))}
-              </div>
-              <hr />
+                <div key={key}>
+                  <span className="font-semibold">{key}:</span>
+                  {Object.entries(obj).map(([row, value]) => (
+                    <div key={row}>
+                      <span className="font-semibold">{row}:</span> {value}
+                    </div>
+                  ))}
+                </div>
+                <hr />
               </>
             ))}
           </div>
@@ -132,7 +142,7 @@ const AnswerTable = ({ survey, answers, visibleColumns, onDelete }) => {
               onClick={handleDelete}
               disabled={selected.length === 0}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow 
-            ${selected.length > 0 ? 'bg-danger hover:bg-danger text-white' : 'bg-gray-200 text-gray-500 cursor-not-allowed'}`}
+            ${selected.length > 0 ? "bg-danger hover:bg-danger text-white" : "bg-gray-200 text-gray-500 cursor-not-allowed"}`}
             >
               <FaTrash /> Seçilenleri Sil {selected.length}
             </button>
@@ -154,21 +164,25 @@ const AnswerTable = ({ survey, answers, visibleColumns, onDelete }) => {
                     Kullanıcı Adı
                   </th>
                   <th className="p-3 text-center w-32">Cevap Kağıdı</th>
-                  {visibleColumns
-                    .map((c) => (
-                      <th key={c} className="p-3 whitespace-nowrap font-semibold w-35">
-                        {c === '_id' ? 'ID' : c === 'createdAt' ? 'Tarih' : (
-                          survey.items.find((i) => i.id === c)?.title || c
-                        )}
-                      </th>
-                    ))}
+                  {visibleColumns.map((c) => (
+                    <th
+                      key={c}
+                      className="p-3 whitespace-nowrap font-semibold w-35"
+                    >
+                      {c === "_id"
+                        ? "ID"
+                        : c === "createdAt"
+                          ? "Tarih"
+                          : survey.items.find((i) => i.id === c)?.title || c}
+                    </th>
+                  ))}
                 </tr>
               </thead>
               <tbody>
                 {answers.map((ans, index) => (
                   <tr
                     key={ans._id}
-                    className={`border-t ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-blue-50 transition-colors duration-200`}
+                    className={`border-t ${index % 2 === 0 ? "bg-white" : "bg-gray-50"} hover:bg-blue-50 transition-colors duration-200`}
                   >
                     <td className="p-3">
                       <input
@@ -195,12 +209,11 @@ const AnswerTable = ({ survey, answers, visibleColumns, onDelete }) => {
                         <span className="hidden sm:inline">Görüntüle</span>
                       </button>
                     </td>
-                    {visibleColumns
-                      .map((c) => (
-                        <td key={c} className="p-3 align-top">
-                          {renderAnswerValue(c, ans)}
-                        </td>
-                      ))}
+                    {visibleColumns.map((c) => (
+                      <td key={c} className="p-3 align-top">
+                        {renderAnswerValue(c, ans)}
+                      </td>
+                    ))}
                   </tr>
                 ))}
               </tbody>

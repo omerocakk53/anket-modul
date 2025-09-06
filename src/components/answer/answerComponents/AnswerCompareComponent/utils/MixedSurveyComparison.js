@@ -6,13 +6,21 @@ function flattenAnswerValue(itemType, value) {
     return value.map((v) => JSON.stringify(v)).join(", ");
   }
 
-  if (itemType === "Matris" && typeof value === "object" && !Array.isArray(value)) {
+  if (
+    itemType === "Matris" &&
+    typeof value === "object" &&
+    !Array.isArray(value)
+  ) {
     return Object.entries(value)
       .map(([k, v]) => `${k}: ${v}`)
       .join(", ");
   }
 
-  if (itemType === "Table" && typeof value === "object" && !Array.isArray(value)) {
+  if (
+    itemType === "Table" &&
+    typeof value === "object" &&
+    !Array.isArray(value)
+  ) {
     return Object.entries(value)
       .map(([rowName, cols]) => {
         if (typeof cols === "object" && cols !== null) {
@@ -28,7 +36,9 @@ function flattenAnswerValue(itemType, value) {
 
   if (itemType === "ImageChoice" && Array.isArray(value)) {
     return value
-      .map((v) => (typeof v === "object" && v.title ? v.title : JSON.stringify(v)))
+      .map((v) =>
+        typeof v === "object" && v.title ? v.title : JSON.stringify(v),
+      )
       .join(", ");
   }
 
@@ -43,7 +53,11 @@ function flattenAnswerValue(itemType, value) {
   return value;
 }
 
-export function MixedSurveyComparison(survey, answers, { surveyPeriod1, surveyPeriod2 }) {
+export function MixedSurveyComparison(
+  survey,
+  answers,
+  { surveyPeriod1, surveyPeriod2 },
+) {
   const start1 = new Date(surveyPeriod1.startDate);
   const end1 = new Date(surveyPeriod1.endDate);
   const start2 = new Date(surveyPeriod2.startDate);
@@ -85,7 +99,8 @@ export function MixedSurveyComparison(survey, answers, { surveyPeriod1, surveyPe
     const allItemIds = new Set([...Object.keys(p1), ...Object.keys(p2)]);
 
     for (const itemId of allItemIds) {
-      const itemType = p1[itemId]?.itemType || p2[itemId]?.itemType || "Unknown";
+      const itemType =
+        p1[itemId]?.itemType || p2[itemId]?.itemType || "Unknown";
       const rawVal1 = p1[itemId]?.value ?? null;
       const rawVal2 = p2[itemId]?.value ?? null;
 
@@ -121,7 +136,8 @@ export function MixedSurveyComparison(survey, answers, { surveyPeriod1, surveyPe
           period1Percent !== null && period2Percent !== null
             ? period2Percent - period1Percent
             : null;
-        change = numVal1 !== null && numVal2 !== null ? numVal2 - numVal1 : null;
+        change =
+          numVal1 !== null && numVal2 !== null ? numVal2 - numVal1 : null;
       }
 
       itemChangeMap[itemId].changes.push({

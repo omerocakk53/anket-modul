@@ -29,19 +29,21 @@ function RankingSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
     setHelpText("");
     setTitle("");
     setOptions([]);
-    setSurveyNumberVisible(initialData?.SurveyNumberVisible)
+    setSurveyNumberVisible(initialData?.SurveyNumberVisible);
   };
 
   useEffect(() => {
     if (Object.keys(initialData).length !== 0) {
       setTitle(initialData?.title || "");
       setHelpText(initialData?.helpText || "");
-      setOptions(Array.isArray(initialData?.options) ? initialData.options : []);
+      setOptions(
+        Array.isArray(initialData?.options) ? initialData.options : [],
+      );
     } else {
       setTitle("");
       setHelpText("");
       setOptions([]);
-      setSurveyNumberVisible(true)
+      setSurveyNumberVisible(true);
     }
   }, [initialData]);
 
@@ -61,7 +63,10 @@ function RankingSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-1">Yardım Metni (isteğe bağlı)</label>  <input
+        <label className="block text-sm font-medium mb-1">
+          Yardım Metni (isteğe bağlı)
+        </label>{" "}
+        <input
           className="w-full border rounded p-2"
           value={helpText}
           onChange={(e) => setHelpText(e.target.value)}
@@ -69,7 +74,9 @@ function RankingSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-1">Sıralanabilir Seçenekler</label>
+        <label className="block text-sm font-medium mb-1">
+          Sıralanabilir Seçenekler
+        </label>
         {options.map((opt, idx) => (
           <div key={idx} className="flex items-center gap-2 mb-2">
             <input
@@ -94,20 +101,22 @@ function RankingSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
       <div className="flex items-center space-x-3">
         <label
           className="text-sm font-medium text-primary-dark select-none cursor-pointer"
-          onClick={() => setSurveyNumberVisible(prev => !prev)}
+          onClick={() => setSurveyNumberVisible((prev) => !prev)}
         >
           Soru Numarası Gözüksün
         </label>
         <button
           type="button"
           aria-pressed={SurveyNumberVisible}
-          onClick={() => setSurveyNumberVisible(prev => !prev)}
-          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${SurveyNumberVisible ? 'bg-primary' : 'bg-neutral-light'
-            }`}
+          onClick={() => setSurveyNumberVisible((prev) => !prev)}
+          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${
+            SurveyNumberVisible ? "bg-primary" : "bg-neutral-light"
+          }`}
         >
           <div
-            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${SurveyNumberVisible ? 'translate-x-6' : 'translate-x-0'
-              }`}
+            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${
+              SurveyNumberVisible ? "translate-x-6" : "translate-x-0"
+            }`}
           />
         </button>
       </div>
@@ -115,18 +124,26 @@ function RankingSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
         <button className="px-4 py-2 bg-gray-300 rounded" onClick={onClose}>
           Vazgeç
         </button>
-        <button className="px-4 py-2 bg-blue-500 text-white rounded" onClick={handleSave}>
+        <button
+          className="px-4 py-2 bg-blue-500 text-white rounded"
+          onClick={handleSave}
+        >
           Kaydet
         </button>
       </div>
     </div>
   );
   const rightPanel = (
-    <Ranking title={title} helpText={helpText} options={options} count={count} SurveyNumberVisible={SurveyNumberVisible} />
+    <Ranking
+      title={title}
+      helpText={helpText}
+      options={options}
+      count={count}
+      SurveyNumberVisible={SurveyNumberVisible}
+    />
   );
 
   return <ModalLayout leftPanel={leftPanel} rightPanel={rightPanel} />;
-
 }
 
 export default RankingSettingsModal;

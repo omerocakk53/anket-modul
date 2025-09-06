@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import AnswerChartSwitcher from './answerChartSwitcher/index';
-import ToggleableSection from './ToggleableSection';
+import React, { useState } from "react";
+import AnswerChartSwitcher from "./answerChartSwitcher/index";
+import ToggleableSection from "./ToggleableSection";
 
 function AnswerChartCard({ question, counts, rawCounts, tableData }) {
   const [isVisible, setIsVisible] = useState(true);
-  const [viewType, setViewType] = useState('bar');
-  console.log(question,counts,rawCounts);
+  const [viewType, setViewType] = useState("bar");
+  console.log(question, counts, rawCounts);
   return (
     <ToggleableSection
       title={`${question.title} (${question.type})`}
@@ -13,7 +13,10 @@ function AnswerChartCard({ question, counts, rawCounts, tableData }) {
       onToggle={() => setIsVisible(!isVisible)}
     >
       {isVisible && (
-        <div className="p-4 mx-auto" style={{ minWidth: '600px', maxWidth: '100%', overflowX: 'auto' }}>
+        <div
+          className="p-4 mx-auto"
+          style={{ minWidth: "600px", maxWidth: "100%", overflowX: "auto" }}
+        >
           <AnswerChartSwitcher
             view={viewType}
             setView={setViewType}

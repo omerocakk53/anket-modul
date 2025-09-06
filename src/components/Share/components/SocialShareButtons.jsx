@@ -19,7 +19,7 @@ function SocialShareButtons({ shareData, surveyLink }) {
       name: "Telegram",
       color: "text-sky-500",
       url: `https://t.me/share/url?url=${encodeURIComponent(surveyLink)}&text=${encodeURIComponent(
-        shareData?.title
+        shareData?.title,
       )}`,
       icon: <FaTelegram size={32} />,
     },
@@ -27,7 +27,7 @@ function SocialShareButtons({ shareData, surveyLink }) {
       name: "X (Twitter)",
       color: "text-black",
       url: `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-        surveyLink
+        surveyLink,
       )}&text=${encodeURIComponent(shareData?.title)}`,
       icon: <FaSquareXTwitter size={32} />,
     },
@@ -47,7 +47,9 @@ function SocialShareButtons({ shareData, surveyLink }) {
 
   return (
     <div>
-      <h3 className="text-base md:text-lg font-semibold mb-2">Sosyal Medyada Paylaş</h3>
+      <h3 className="text-base md:text-lg font-semibold mb-2">
+        Sosyal Medyada Paylaş
+      </h3>
       <div className="flex flex-wrap gap-4 justify-start min-w-0">
         {buttons.map((btn, i) => (
           <a

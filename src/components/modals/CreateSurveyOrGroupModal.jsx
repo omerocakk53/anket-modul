@@ -30,7 +30,10 @@ export default function CreateSurveyOrGroupModal({
       toast.error("Klasör adı boş bırakılamaz.");
       return;
     }
-    if ((mode === "group" && currentStep === 2) || (mode === "survey" && currentStep === 1)) {
+    if (
+      (mode === "group" && currentStep === 2) ||
+      (mode === "survey" && currentStep === 1)
+    ) {
       if (!title.trim()) {
         toast.error("Anket başlığı boş bırakılamaz.");
         return;
@@ -74,7 +77,13 @@ export default function CreateSurveyOrGroupModal({
 
         {/* Step 1: Grup adı */}
         {mode === "group" && currentStep === 1 && (
-          <form onSubmit={(e) => { e.preventDefault(); handleNext(); }} className="space-y-6">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleNext();
+            }}
+            className="space-y-6"
+          >
             <div>
               <label className="block font-medium text-neutral-700 mb-1">
                 Yeni Klasör Adı <span className="text-red-500">*</span>
@@ -100,8 +109,15 @@ export default function CreateSurveyOrGroupModal({
         )}
 
         {/* Step 1 (survey) veya Step 2 (group): Anket bilgileri */}
-        {(mode === "survey" && currentStep === 1) || (mode === "group" && currentStep === 2) ? (
-          <form onSubmit={(e) => { e.preventDefault(); handleNext(); }} className="space-y-6">
+        {(mode === "survey" && currentStep === 1) ||
+        (mode === "group" && currentStep === 2) ? (
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleNext();
+            }}
+            className="space-y-6"
+          >
             <div>
               <label className="block font-medium text-neutral-700 mb-1">
                 Anket Başlığı <span className="text-red-500">*</span>
@@ -179,7 +195,8 @@ export default function CreateSurveyOrGroupModal({
         ) : null}
 
         {/* Onay ekranı */}
-        {((mode === "group" && currentStep === 3) || (mode === "survey" && currentStep === 2)) && (
+        {((mode === "group" && currentStep === 3) ||
+          (mode === "survey" && currentStep === 2)) && (
           <div className="space-y-6">
             <p className="text-center text-neutral-800">
               {mode === "group"
@@ -199,7 +216,9 @@ export default function CreateSurveyOrGroupModal({
               </p>
               <p>
                 <strong>Açıklama:</strong>{" "}
-                {description || <span className="italic text-neutral-500">Yok</span>}
+                {description || (
+                  <span className="italic text-neutral-500">Yok</span>
+                )}
               </p>
               <p>
                 <strong>Anket Tipi:</strong>{" "}
@@ -210,7 +229,9 @@ export default function CreateSurveyOrGroupModal({
             </div>
             <div className="flex justify-between gap-4">
               <button
-                onClick={() => setCurrentStep((prev) => (mode === "group" ? 2 : 1))}
+                onClick={() =>
+                  setCurrentStep((prev) => (mode === "group" ? 2 : 1))
+                }
                 className="border border-secondary text-secondary px-6 py-2 rounded-xl hover:bg-secondary/10 transition"
               >
                 Geri

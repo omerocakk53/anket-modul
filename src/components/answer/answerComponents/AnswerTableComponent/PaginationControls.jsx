@@ -1,11 +1,22 @@
-import React from 'react';
-import { FiChevronsLeft, FiChevronLeft, FiChevronRight, FiChevronsRight } from 'react-icons/fi';
+import React from "react";
+import {
+  FiChevronsLeft,
+  FiChevronLeft,
+  FiChevronRight,
+  FiChevronsRight,
+} from "react-icons/fi";
 
-const PaginationControls = ({ currentPage, totalPages, pageSize, onPageChange, onPageSizeChange }) => {
+const PaginationControls = ({
+  currentPage,
+  totalPages,
+  pageSize,
+  onPageChange,
+  onPageSizeChange,
+}) => {
   const buttonClass = (disabled) =>
     `flex items-center justify-center w-9 h-9 rounded-lg border text-gray-600 shadow-sm
      transition-all duration-200 hover:bg-blue-50 hover:text-blue-600 
-     ${disabled ? 'opacity-40 cursor-not-allowed' : 'bg-white'}`;
+     ${disabled ? "opacity-40 cursor-not-allowed" : "bg-white"}`;
 
   return (
     <div className="flex flex-col md:flex-row justify-between items-center my-6 gap-4 bg-white p-4 rounded-xl shadow-sm border border-gray-100">
@@ -27,7 +38,8 @@ const PaginationControls = ({ currentPage, totalPages, pageSize, onPageChange, o
         </button>
 
         <span className="text-sm font-medium px-2 text-gray-700 bg-gray-50 py-1 rounded-lg border border-gray-200">
-          Sayfa <span className="font-semibold">{currentPage}</span> / {totalPages}
+          Sayfa <span className="font-semibold">{currentPage}</span> /{" "}
+          {totalPages}
         </span>
 
         <button

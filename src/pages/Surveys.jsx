@@ -10,24 +10,22 @@ import useSurveys from "../components/Surveys/hooks/useSurveys";
 import { filterAndSortSurveys } from "../components/Surveys/utils/surveyFilters";
 import useSurveyActions from "../components/Surveys/hooks/useSurveyActions";
 
-export default function Surveys(props) {
-  const {
-    createSurvey,
-    deletesurvey,
-    deletesurveyshareById,
-    allanswerdelete,
-    handleLogout,
-    user,
-    chamberName,
-    fetchallsurvey,
-    fetchsurveychamberById,
-    updatesurveyfeature,
-    createsurveytemplate,
-    getallsurveytemplate,
-    deletesurveytemplateId,
-    getChamberId,
-  } = props;
-
+export default function Surveys(
+  createSurvey,
+  deletesurvey,
+  deletesurveyshareById,
+  allanswerdelete,
+  handleLogout,
+  user,
+  chamberName,
+  fetchallsurvey,
+  fetchsurveychamberById,
+  updatesurveyfeature,
+  createsurveytemplate,
+  getallsurveytemplate,
+  deletesurveytemplateId,
+  getChamberId,
+) {
   const [username, setUsername] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -49,14 +47,17 @@ export default function Surveys(props) {
     setRefreshKey,
   } = useSurveys({ user, fetchallsurvey, fetchsurveychamberById });
 
-  const { createSurveyInGroup, createNewGroupAndSurvey, createSurveyFromTemplate } =
-    useSurveyActions({
-      createSurvey,
-      chamber: user?.chamber,
-      userId: user?.id,
-      setRefreshKey,
-      setSelectedGroup,
-    });
+  const {
+    createSurveyInGroup,
+    createNewGroupAndSurvey,
+    createSurveyFromTemplate,
+  } = useSurveyActions({
+    createSurvey,
+    chamber: user?.chamber,
+    userId: user?.id,
+    setRefreshKey,
+    setSelectedGroup,
+  });
 
   useEffect(() => {
     if (user) setUsername(user.name);
@@ -70,7 +71,7 @@ export default function Surveys(props) {
     sortBy,
     sortOrder,
     active,
-    dateRange
+    dateRange,
   );
 
   return (
@@ -94,7 +95,11 @@ export default function Surveys(props) {
         user={user}
       />
       <div className="flex-1 flex flex-col bg-neutral-light min-h-screen">
-        <Header selectedGroup={selectedGroup} chamberName={chamberName} Sidebar={setSidebarOpen} />
+        <Header
+          selectedGroup={selectedGroup}
+          chamberName={chamberName}
+          Sidebar={setSidebarOpen}
+        />
         <main className="flex-1 p-4 md:p-8 bg-neutral-light overflow-y-auto">
           <FilterSortSearch
             onSearch={(t) => setSearchTerm(t)}
@@ -137,8 +142,7 @@ export default function Surveys(props) {
         mode={modalMode}
         selectedGroup={selectedGroup}
         onCreate={
-          isModalOpen &&
-            modalMode === "group"
+          isModalOpen && modalMode === "group"
             ? createNewGroupAndSurvey
             : (data) => createSurveyInGroup({ ...data, selectedGroup })
         }
@@ -148,7 +152,9 @@ export default function Surveys(props) {
         deletesurveytemplateId={deletesurveytemplateId}
         isOpen={isFixModalOpen}
         onClose={() => setIsFixModalOpen(false)}
-        onSelectTemplate={(data) => createSurveyFromTemplate(data, selectedGroup)}
+        onSelectTemplate={(data) =>
+          createSurveyFromTemplate(data, selectedGroup)
+        }
         user={user}
         templateData={templateData}
         createsurveytemplate={createsurveytemplate}

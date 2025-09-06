@@ -1,4 +1,8 @@
-export function UserSurveyComparison(survey, answers, { surveyPeriod1, surveyPeriod2 }) {
+export function UserSurveyComparison(
+  survey,
+  answers,
+  { surveyPeriod1, surveyPeriod2 },
+) {
   const start1 = new Date(surveyPeriod1.startDate);
   const end1 = new Date(surveyPeriod1.endDate);
   const start2 = new Date(surveyPeriod2.startDate);
@@ -45,7 +49,8 @@ export function UserSurveyComparison(survey, answers, { surveyPeriod1, surveyPer
     for (const itemId of allItemIds) {
       const val1 = p1[itemId]?.value ?? null;
       const val2 = p2[itemId]?.value ?? null;
-      const itemType = p1[itemId]?.itemType || p2[itemId]?.itemType || "Unknown";
+      const itemType =
+        p1[itemId]?.itemType || p2[itemId]?.itemType || "Unknown";
 
       // Sadece Rating ve Scale fark hesaplaması yapılır
       const isNumeric = ["Rating", "Scale"].includes(itemType);
@@ -67,9 +72,13 @@ export function UserSurveyComparison(survey, answers, { surveyPeriod1, surveyPer
         const change = isNumeric ? (val2 ?? 0) - (val1 ?? 0) : null;
 
         const percent1 =
-          isNumeric && val1 !== null && maxValue ? (val1 / maxValue) * 100 : null;
+          isNumeric && val1 !== null && maxValue
+            ? (val1 / maxValue) * 100
+            : null;
         const percent2 =
-          isNumeric && val2 !== null && maxValue ? (val2 / maxValue) * 100 : null;
+          isNumeric && val2 !== null && maxValue
+            ? (val2 / maxValue) * 100
+            : null;
         const changePercent =
           percent1 !== null && percent2 !== null ? percent2 - percent1 : null;
 

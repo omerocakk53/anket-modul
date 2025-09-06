@@ -2,9 +2,16 @@
 import { React, useState, useEffect } from "react";
 import ShortText from "../components/Items/ShortText";
 import ModalLayout from "../components/layouts/ModalLayout";
-import InputNumber from 'rc-input-number';
-import 'rc-input-number/assets/index.css';
-function ShortTextModal({ isOpen, onClose, onSave, onChange, initialData, count }) {
+import InputNumber from "rc-input-number";
+import "rc-input-number/assets/index.css";
+function ShortTextModal({
+  isOpen,
+  onClose,
+  onSave,
+  onChange,
+  initialData,
+  count,
+}) {
   const [title, setTitle] = useState("");
   const [helpText, setHelpText] = useState("");
   const [complusory, setComplusory] = useState(true);
@@ -20,20 +27,20 @@ function ShortTextModal({ isOpen, onClose, onSave, onChange, initialData, count 
   useEffect(() => {
     if (Object.keys(initialData).length != 0) {
       setTitle(initialData?.title);
-      setHelpText(initialData?.helpText)
-      setComplusory(initialData?.complusory)
-      setSurveyNumberVisible(initialData?.SurveyNumberVisible)
+      setHelpText(initialData?.helpText);
+      setComplusory(initialData?.complusory);
+      setSurveyNumberVisible(initialData?.SurveyNumberVisible);
       setInputType(initialData?.inputType || "text");
       setCharLimit(initialData?.charLimit);
     } else {
       setTitle("");
-      setHelpText("")
-      setComplusory(true)
-      setSurveyNumberVisible(true)
+      setHelpText("");
+      setComplusory(true);
+      setSurveyNumberVisible(true);
       setInputType("text");
       setCharLimit(0);
     }
-  }, [initialData])
+  }, [initialData]);
 
   if (!isOpen) return null;
 
@@ -50,7 +57,9 @@ function ShortTextModal({ isOpen, onClose, onSave, onChange, initialData, count 
         />
       </div>
       <div>
-        <label className="block text-sm font-medium mb-1">Yardım Metni (isteğe bağlı)</label>
+        <label className="block text-sm font-medium mb-1">
+          Yardım Metni (isteğe bağlı)
+        </label>
         <input
           type="text"
           className="w-full border rounded p-2"
@@ -89,40 +98,44 @@ function ShortTextModal({ isOpen, onClose, onSave, onChange, initialData, count 
       <div className="flex items-center space-x-3">
         <label
           className="text-sm font-medium text-primary-dark select-none cursor-pointer"
-          onClick={() => setComplusory(prev => !prev)}
+          onClick={() => setComplusory((prev) => !prev)}
         >
           Zorunlu alan
         </label>
         <button
           type="button"
           aria-pressed={complusory}
-          onClick={() => setComplusory(prev => !prev)}
-          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${complusory ? 'bg-primary' : 'bg-neutral-light'
-            }`}
+          onClick={() => setComplusory((prev) => !prev)}
+          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${
+            complusory ? "bg-primary" : "bg-neutral-light"
+          }`}
         >
           <div
-            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${complusory ? 'translate-x-6' : 'translate-x-0'
-              }`}
+            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${
+              complusory ? "translate-x-6" : "translate-x-0"
+            }`}
           />
         </button>
       </div>
       <div className="flex items-center space-x-3">
         <label
           className="text-sm font-medium text-primary-dark select-none cursor-pointer"
-          onClick={() => setSurveyNumberVisible(prev => !prev)}
+          onClick={() => setSurveyNumberVisible((prev) => !prev)}
         >
           Soru Numarası Gözüksün
         </label>
         <button
           type="button"
           aria-pressed={SurveyNumberVisible}
-          onClick={() => setSurveyNumberVisible(prev => !prev)}
-          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${SurveyNumberVisible ? 'bg-primary' : 'bg-neutral-light'
-            }`}
+          onClick={() => setSurveyNumberVisible((prev) => !prev)}
+          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${
+            SurveyNumberVisible ? "bg-primary" : "bg-neutral-light"
+          }`}
         >
           <div
-            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${SurveyNumberVisible ? 'translate-x-6' : 'translate-x-0'
-              }`}
+            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${
+              SurveyNumberVisible ? "translate-x-6" : "translate-x-0"
+            }`}
           />
         </button>
       </div>
@@ -133,7 +146,14 @@ function ShortTextModal({ isOpen, onClose, onSave, onChange, initialData, count 
         <button
           className="px-4 py-2 bg-blue-500 text-white rounded"
           onClick={() => {
-            onSave({ title, helpText, complusory, SurveyNumberVisible, inputType, charLimit });
+            onSave({
+              title,
+              helpText,
+              complusory,
+              SurveyNumberVisible,
+              inputType,
+              charLimit,
+            });
             setTitle("");
             setHelpText("");
           }}
@@ -145,11 +165,21 @@ function ShortTextModal({ isOpen, onClose, onSave, onChange, initialData, count 
   );
 
   const rightPanel = (
-    <ShortText title={title} helpText={helpText} onChange={(value) => { setValue(value) }} value={value} count={count} SurveyNumberVisible={SurveyNumberVisible} inputType={inputType} charLimit={charLimit} />
+    <ShortText
+      title={title}
+      helpText={helpText}
+      onChange={(value) => {
+        setValue(value);
+      }}
+      value={value}
+      count={count}
+      SurveyNumberVisible={SurveyNumberVisible}
+      inputType={inputType}
+      charLimit={charLimit}
+    />
   );
 
   return <ModalLayout leftPanel={leftPanel} rightPanel={rightPanel} />;
-
 }
 
 export default ShortTextModal;

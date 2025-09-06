@@ -25,12 +25,17 @@ function Share({ fetchsurveyById, savesurveyshare, getsurveyshare }) {
   });
 
   const surveyLink = `${BASE_URL}/p/${survey.link}`;
-   
+
   const goBack = () => navigate("/anket", { replace: true });
-  
+
   return (
     <>
-      <Header isShareMode={true} surveyData={survey} onBackToMain={goBack} Sidebar={() => { }} />
+      <Header
+        isShareMode={true}
+        surveyData={survey}
+        onBackToMain={goBack}
+        Sidebar={() => {}}
+      />
       <div className="max-w-6xl mx-auto px-4 py-8 overflow-x-hidden">
         <div className="grid gap-8 lg:grid-cols-2">
           <ShareSettings
@@ -40,8 +45,14 @@ function Share({ fetchsurveyById, savesurveyshare, getsurveyshare }) {
             fileInputRef={fileInputRef}
           />
           <div className="bg-gray-50 rounded-2xl shadow-lg p-6 md:p-8 space-y-6">
-            <h2 className="text-xl md:text-2xl font-bold text-gray-800">Open Graph Önizleme</h2>
-            <OpenGraphPreview shareData={shareData} BASE_URL={BASE_URL} surveyLink={surveyLink} />
+            <h2 className="text-xl md:text-2xl font-bold text-gray-800">
+              Open Graph Önizleme
+            </h2>
+            <OpenGraphPreview
+              shareData={shareData}
+              BASE_URL={BASE_URL}
+              surveyLink={surveyLink}
+            />
             <SocialShareButtons shareData={shareData} surveyLink={surveyLink} />
           </div>
         </div>

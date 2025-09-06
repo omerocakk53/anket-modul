@@ -1,17 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './src/**/*.{js,jsx,ts,tsx}',
-  ],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   variants: {
     extend: {
-      fontWeight: ['hover', 'focus', 'responsive'],
-      opacity: ['hover', 'group-hover'],
-      borderColor: ['hover', 'focus'],
-      margin: ['first', 'last'],
-      backgroundColor: ['odd', 'even'],
-      scale: ['hover', 'active', 'group-hover'],
-      translate: ['hover', 'active', 'group-hover'],
+      fontWeight: ["hover", "focus", "responsive"],
+      opacity: ["hover", "group-hover"],
+      borderColor: ["hover", "focus"],
+      margin: ["first", "last"],
+      backgroundColor: ["odd", "even"],
+      scale: ["hover", "active", "group-hover"],
+      translate: ["hover", "active", "group-hover"],
     },
   },
   theme: {
@@ -41,42 +39,42 @@ module.exports = {
         info: "#3b82f6",
       },
       boxShadow: {
-        glow: '0 0 15px rgba(0, 0, 0, 0.15)',
-        'glow-hover': '0 0 25px rgba(59, 130, 246, 0.5)',
+        glow: "0 0 15px rgba(0, 0, 0, 0.15)",
+        "glow-hover": "0 0 25px rgba(59, 130, 246, 0.5)",
       },
       keyframes: {
-        'pulse-slow': {
-          '0%, 100%': { opacity: '1', transform: 'scale(1)' },
-          '50%': { opacity: '0.7', transform: 'scale(1.05)' },
+        "pulse-slow": {
+          "0%, 100%": { opacity: "1", transform: "scale(1)" },
+          "50%": { opacity: "0.7", transform: "scale(1.05)" },
         },
-        'fade-in-slide': {
-          '0%': { opacity: '0', transform: 'translateX(20px)' },
-          '100%': { opacity: '1', transform: 'translateX(0)' },
+        "fade-in-slide": {
+          "0%": { opacity: "0", transform: "translateX(20px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
         },
-        'slide-in': {
-          '0%': { transform: 'translateX(100%)' },
-          '100%': { transform: 'translateX(0)' },
+        "slide-in": {
+          "0%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(0)" },
         },
-        'slide-out': {
-          '0%': { transform: 'translateX(0)' },
-          '100%': { transform: 'translateX(100%)' },
+        "slide-out": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(100%)" },
         },
-        'slide-down-in': {
-          '0%': { transform: 'translateY(-100%)' },
-          '100%': { transform: 'translateY(0)' },
+        "slide-down-in": {
+          "0%": { transform: "translateY(-100%)" },
+          "100%": { transform: "translateY(0)" },
         },
-        'slide-down-out': {
-          '0%': { transform: 'translateY(0)' },
-          '100%': { transform: 'translateY(-100%)' },
+        "slide-down-out": {
+          "0%": { transform: "translateY(0)" },
+          "100%": { transform: "translateY(-100%)" },
         },
       },
       animation: {
-        'pulse-slow': 'pulse-slow 3s infinite',
-        'fade-in-slide': 'fade-in-slide 0.6s ease-out forwards',
-        'slide-in': 'slide-in 0.4s ease-out forwards',
-        'slide-out': 'slide-out 0.4s ease-in forwards',
-        'slide-down-in': 'slide-down-in 0.4s ease-out forwards',
-        'slide-down-out': 'slide-down-out 0.4s ease-in forwards',
+        "pulse-slow": "pulse-slow 3s infinite",
+        "fade-in-slide": "fade-in-slide 0.6s ease-out forwards",
+        "slide-in": "slide-in 0.4s ease-out forwards",
+        "slide-out": "slide-out 0.4s ease-in forwards",
+        "slide-down-in": "slide-down-in 0.4s ease-out forwards",
+        "slide-down-out": "slide-down-out 0.4s ease-in forwards",
       },
     },
   },

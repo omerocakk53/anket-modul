@@ -50,11 +50,14 @@ const ExportButtons = ({ answers = [], survey = {} }) => {
           row[item.title || item.id] = Array.isArray(matched.value)
             ? matched.value
                 .map((v) =>
-                  typeof v === "object" && v.title ? v.title : v.toString()
+                  typeof v === "object" && v.title ? v.title : v.toString(),
                 )
                 .join(", ")
             : formatValue(matched.value); // Tekli seçimler için de formatValue kullan
-        } else if (item.type === "Matris" || item.type === "Table" && typeof matched.value === "object") {
+        } else if (
+          item.type === "Matris" ||
+          (item.type === "Table" && typeof matched.value === "object")
+        ) {
           Object.entries(matched.value).forEach(([k, v]) => {
             const colName = `${item.title || item.type} - ${k}`; // Matris başlığı ve sütun adı
             row[colName] = formatValue(v);
@@ -85,7 +88,7 @@ const ExportButtons = ({ answers = [], survey = {} }) => {
     const colWidths = headers.map((header) => {
       const maxLength = Math.max(
         header.length,
-        ...transformedData.map((row) => String(row[header]).length)
+        ...transformedData.map((row) => String(row[header]).length),
       );
       return { wch: Math.min(50, Math.max(15, maxLength + 2)) }; // Minimum 15, maksimum 50 karakter genişliği, 2 karakter boşluk payı
     });

@@ -1,6 +1,6 @@
 // src/hooks/useFingerprint.js
-import { useEffect, useState } from 'react';
-import FingerprintJS from '@fingerprintjs/fingerprintjs';
+import { useEffect, useState } from "react";
+import FingerprintJS from "@fingerprintjs/fingerprintjs";
 
 export function useFingerprint() {
   const [fingerprint, setFingerprint] = useState(null);

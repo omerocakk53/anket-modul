@@ -16,7 +16,15 @@ function NumericSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
   const [thousandSeparator, setThousandSeparator] = useState(false); // boolean
 
   const handleSave = () => {
-    onSave({ title, helpText, complusory, SurveyNumberVisible, allowDecimal, charLimit, thousandSeparator });
+    onSave({
+      title,
+      helpText,
+      complusory,
+      SurveyNumberVisible,
+      allowDecimal,
+      charLimit,
+      thousandSeparator,
+    });
     setTitle("");
     setHelpText("");
     setComplusory(true);
@@ -62,7 +70,10 @@ function NumericSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-1">Yardım Metni (isteğe bağlı)</label>  <input
+        <label className="block text-sm font-medium mb-1">
+          Yardım Metni (isteğe bağlı)
+        </label>{" "}
+        <input
           className="w-full border rounded p-2"
           value={helpText}
           onChange={(e) => setHelpText(e.target.value)}
@@ -80,12 +91,14 @@ function NumericSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
           type="button"
           aria-pressed={complusory}
           onClick={() => setComplusory((prev) => !prev)}
-          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${complusory ? "bg-primary" : "bg-neutral-light"
-            }`}
+          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${
+            complusory ? "bg-primary" : "bg-neutral-light"
+          }`}
         >
           <div
-            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${complusory ? "translate-x-6" : "translate-x-0"
-              }`}
+            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${
+              complusory ? "translate-x-6" : "translate-x-0"
+            }`}
           />
         </button>
       </div>
@@ -101,12 +114,14 @@ function NumericSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
           type="button"
           aria-pressed={SurveyNumberVisible}
           onClick={() => setSurveyNumberVisible((prev) => !prev)}
-          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${SurveyNumberVisible ? "bg-primary" : "bg-neutral-light"
-            }`}
+          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${
+            SurveyNumberVisible ? "bg-primary" : "bg-neutral-light"
+          }`}
         >
           <div
-            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${SurveyNumberVisible ? "translate-x-6" : "translate-x-0"
-              }`}
+            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${
+              SurveyNumberVisible ? "translate-x-6" : "translate-x-0"
+            }`}
           />
         </button>
       </div>
@@ -123,30 +138,32 @@ function NumericSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
           type="button"
           aria-pressed={allowDecimal}
           onClick={() => setAllowDecimal((prev) => !prev)}
-          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${allowDecimal ? "bg-primary" : "bg-neutral-light"
-            }`}
+          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${
+            allowDecimal ? "bg-primary" : "bg-neutral-light"
+          }`}
         >
           <div
-            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${allowDecimal ? "translate-x-6" : "translate-x-0"
-              }`}
+            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${
+              allowDecimal ? "translate-x-6" : "translate-x-0"
+            }`}
           />
         </button>
       </div>
       <div className="flex items-center space-x-3">
         <label
           className="text-sm font-medium text-primary-dark select-none cursor-pointer"
-          onClick={() => setThousandSeparator(prev => !prev)}
+          onClick={() => setThousandSeparator((prev) => !prev)}
         >
           Binlik Ayırıcı Nokta (.)
         </label>
         <button
           type="button"
           aria-pressed={thousandSeparator}
-          onClick={() => setThousandSeparator(prev => !prev)}
-          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${thousandSeparator ? 'bg-primary' : 'bg-neutral-light'}`}
+          onClick={() => setThousandSeparator((prev) => !prev)}
+          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${thousandSeparator ? "bg-primary" : "bg-neutral-light"}`}
         >
           <div
-            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${thousandSeparator ? 'translate-x-6' : 'translate-x-0'}`}
+            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${thousandSeparator ? "translate-x-6" : "translate-x-0"}`}
           />
         </button>
       </div>
@@ -167,7 +184,10 @@ function NumericSettingsModal({ isOpen, onClose, onSave, initialData, count }) {
         <button className="px-4 py-2 bg-gray-300 rounded" onClick={onClose}>
           Vazgeç
         </button>
-        <button className="px-4 py-2 bg-blue-500 text-white rounded" onClick={handleSave}>
+        <button
+          className="px-4 py-2 bg-blue-500 text-white rounded"
+          onClick={handleSave}
+        >
           Kaydet
         </button>
       </div>

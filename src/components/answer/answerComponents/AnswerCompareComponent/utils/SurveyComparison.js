@@ -1,4 +1,8 @@
-export function SurveyComparison(survey, answers, { surveyPeriod1, surveyPeriod2 }) {
+export function SurveyComparison(
+  survey,
+  answers,
+  { surveyPeriod1, surveyPeriod2 },
+) {
   const start1 = new Date(surveyPeriod1.startDate);
   const end1 = new Date(surveyPeriod1.endDate);
   const start2 = new Date(surveyPeriod2.startDate);
@@ -43,7 +47,8 @@ export function SurveyComparison(survey, answers, { surveyPeriod1, surveyPeriod2
   for (const itemId of allItemIds) {
     const p1 = period1Map[itemId] || { total: 0, count: 0 };
     const p2 = period2Map[itemId] || { total: 0, count: 0 };
-    const itemType = period1Map[itemId]?.itemType || period2Map[itemId]?.itemType || "Unknown";
+    const itemType =
+      period1Map[itemId]?.itemType || period2Map[itemId]?.itemType || "Unknown";
 
     const itemMeta = survey.items.find((i) => i.id === itemId);
     const title = itemMeta?.title || "Bilinmeyen Soru";
@@ -53,8 +58,10 @@ export function SurveyComparison(survey, answers, { surveyPeriod1, surveyPeriod2
     const period1Avg = p1.count > 0 ? p1.total / p1.count : null;
     const period2Avg = p2.count > 0 ? p2.total / p2.count : null;
 
-    const period1AvgPercent = period1Avg && maxValue ? (period1Avg / maxValue) * 100 : null;
-    const period2AvgPercent = period2Avg && maxValue ? (period2Avg / maxValue) * 100 : null;
+    const period1AvgPercent =
+      period1Avg && maxValue ? (period1Avg / maxValue) * 100 : null;
+    const period2AvgPercent =
+      period2Avg && maxValue ? (period2Avg / maxValue) * 100 : null;
 
     result.push({
       itemId,
@@ -62,7 +69,10 @@ export function SurveyComparison(survey, answers, { surveyPeriod1, surveyPeriod2
       title,
       period1Avg,
       period2Avg,
-      change: period1Avg !== null && period2Avg !== null ? period2Avg - period1Avg : null,
+      change:
+        period1Avg !== null && period2Avg !== null
+          ? period2Avg - period1Avg
+          : null,
       period1AvgPercent,
       period2AvgPercent,
       changePercent:

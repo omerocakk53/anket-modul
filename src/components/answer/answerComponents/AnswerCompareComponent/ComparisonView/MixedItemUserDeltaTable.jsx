@@ -32,9 +32,7 @@ function MixedItemUserDeltaTable({ item, ItemTip, ref }) {
 
       if (itemType === "Dropdown") {
         return (
-          <span
-            className="inline-block px-2 py-1 m-1 text-sm bg-blue-100 text-blue-800 rounded-full"
-          >
+          <span className="inline-block px-2 py-1 m-1 text-sm bg-blue-100 text-blue-800 rounded-full">
             {value}
           </span>
         );
@@ -63,14 +61,14 @@ function MixedItemUserDeltaTable({ item, ItemTip, ref }) {
   }
 
   const MostLessValues = (itemType, changes) => {
-    const period1Data = changes.map(c => c.period1Value);
-    const period2Data = changes.map(c => c.period2Value);
+    const period1Data = changes.map((c) => c.period1Value);
+    const period2Data = changes.map((c) => c.period2Value);
 
     // Frekans hesaplayan yardımcı fonksiyon
     const findMostAndLeast = (arr) => {
       const frequency = {};
 
-      arr.forEach(value => {
+      arr.forEach((value) => {
         if (!value) return;
         frequency[value] = (frequency[value] || 0) + 1;
       });
@@ -110,13 +108,12 @@ function MixedItemUserDeltaTable({ item, ItemTip, ref }) {
     console.log(result1, result2);
 
     return {
-      mostValue1: result1.most,   // Array olacak
+      mostValue1: result1.most, // Array olacak
       leastValue1: result1.least,
       mostValue2: result2.most,
       leastValue2: result2.least,
     };
   };
-
 
   return (
     <>
@@ -133,18 +130,21 @@ function MixedItemUserDeltaTable({ item, ItemTip, ref }) {
               {itemData.title} ({itemData.itemType})
             </h3>
 
-            {(itemData.itemType !== "LongText" &&
+            {itemData.itemType !== "LongText" &&
               itemData.itemType !== "ShortText" &&
               itemData.itemType !== "QuestionsGroup" &&
               itemData.itemType !== "Numeric" &&
               itemData.itemType !== "Email" &&
-              itemData.itemType !== "FileUpload") && (() => {
+              itemData.itemType !== "FileUpload" &&
+              (() => {
                 const { mostValue1, leastValue1, mostValue2, leastValue2 } =
                   MostLessValues(itemData.itemType, itemData.changes);
 
                 const renderRow = (label, dataArray) => (
                   <li className="flex flex-col gap-1 bg-gray-50 px-3 py-2 rounded-lg shadow-sm hover:bg-gray-100 transition">
-                    <span className="text-sm font-medium text-gray-700">{label}</span>
+                    <span className="text-sm font-medium text-gray-700">
+                      {label}
+                    </span>
                     <div className="flex flex-wrap gap-2">
                       {dataArray.map((data, idx) => (
                         <div
@@ -165,7 +165,9 @@ function MixedItemUserDeltaTable({ item, ItemTip, ref }) {
 
                 return (
                   <div className="p-4 border border-gray-200 rounded-xl bg-white shadow-md">
-                    <h4 className="text-sm font-semibold text-gray-800 mb-3">Seçim Analizi</h4>
+                    <h4 className="text-sm font-semibold text-gray-800 mb-3">
+                      Seçim Analizi
+                    </h4>
                     <ul className="space-y-3">
                       {renderRow("Periyot 1'de en çok seçilen", mostValue1)}
                       {renderRow("Periyot 1'de en az seçilen", leastValue1)}
@@ -175,7 +177,6 @@ function MixedItemUserDeltaTable({ item, ItemTip, ref }) {
                   </div>
                 );
               })()}
-
 
             <div className="overflow-x-auto p-5">
               <table className="min-w-full text-sm text-gray-700">
@@ -192,10 +193,16 @@ function MixedItemUserDeltaTable({ item, ItemTip, ref }) {
                       <tr key={index} className="border-t">
                         <td className="px-4 py-2">{change.userName}</td>
                         <td className="px-4 py-2 text-center align-top">
-                          {renderSpecialCell(itemData.itemType, change.period1Value)}
+                          {renderSpecialCell(
+                            itemData.itemType,
+                            change.period1Value,
+                          )}
                         </td>
                         <td className="px-4 py-2 text-center align-top">
-                          {renderSpecialCell(itemData.itemType, change.period2Value)}
+                          {renderSpecialCell(
+                            itemData.itemType,
+                            change.period2Value,
+                          )}
                         </td>
                       </tr>
                     );

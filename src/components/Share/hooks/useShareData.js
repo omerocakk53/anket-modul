@@ -1,6 +1,11 @@
 import { useEffect, useState, useRef } from "react";
 
-export default function useShareData({ surveyId, fetchsurveyById, getsurveyshare, savesurveyshare }) {
+export default function useShareData({
+  surveyId,
+  fetchsurveyById,
+  getsurveyshare,
+  savesurveyshare,
+}) {
   const [survey, setSurvey] = useState({});
   const [shareData, setShareData] = useState({});
   const fileInputRef = useRef(null);
@@ -46,7 +51,10 @@ export default function useShareData({ surveyId, fetchsurveyById, getsurveyshare
     const formData = new FormData();
     formData.append("surveyId", surveyId);
     formData.append("title", shareData.title ? shareData.title : survey.title);
-    formData.append("description", shareData.description ? shareData.description : survey.description);
+    formData.append(
+      "description",
+      shareData.description ? shareData.description : survey.description,
+    );
     if (shareData?.image) formData.append("image", shareData.image);
 
     try {

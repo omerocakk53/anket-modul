@@ -1,7 +1,10 @@
 // components/SuccessMessagePortal.jsx
 import React, { useState, useEffect } from "react";
 import SuccessMessage from "./SuccessMessage";
-import { subscribeToSuccess, unsubscribeFromSuccess } from "./successController";
+import {
+  subscribeToSuccess,
+  unsubscribeFromSuccess,
+} from "./successController";
 
 export default function SuccessMessagePortal() {
   const [messages, setMessages] = useState([]);
