@@ -10,7 +10,7 @@ import useSurveys from "../components/Surveys/hooks/useSurveys";
 import { filterAndSortSurveys } from "../components/Surveys/utils/surveyFilters";
 import useSurveyActions from "../components/Surveys/hooks/useSurveyActions";
 
-export default function Surveys(
+export default function Surveys({
   createSurvey,
   deletesurvey,
   deletesurveyshareById,
@@ -25,7 +25,7 @@ export default function Surveys(
   getallsurveytemplate,
   deletesurveytemplateId,
   getChamberId,
-) {
+}) {
   const [username, setUsername] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
