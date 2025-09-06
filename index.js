@@ -7,3 +7,5 @@ export { default as SuccessMessagePortal } from "./src/components/successMesage/
 export { default as AnswerSheet } from "./src/components/answer/answerComponents/AnswerTableComponent/AnswerSheet";
 export { default as Share } from "./src/components/Share/Share";
 export { default as Answer } from "./src/components/answer/AnswerPage";
+
+export * from "./src/components/modals/TemplateSurveyModal";
