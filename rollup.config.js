@@ -4,12 +4,19 @@ import postcss from 'rollup-plugin-postcss';
 import autoprefixer from 'autoprefixer';
 import babel from '@rollup/plugin-babel';
 import url from '@rollup/plugin-url';
+import progress from 'rollup-plugin-progress';
 
 export default {
-  input: './index.js', 
+  onwarn(warning, warn) {
+    if (warning.code === "MODULE_LEVEL_DIRECTIVE" && warning.message.includes("'use client'")) {
+      return; // ignore
+    }
+    warn(warning); // diğer uyarılar normal
+  },
+  input: './index.js',
   output: [
     {
-      file: 'dist/index.cjs.js', 
+      file: 'dist/index.cjs.js',
       format: 'cjs',
       exports: 'named',
       sourcemap: true,
@@ -43,6 +50,7 @@ export default {
       include: ['**/*.mp3'],
       limit: 0,
     }),
+    progress({ clearLine: true }) // terminali temizleyerek gösterir
   ],
-  external: ['react', 'react-dom', 'react-router-dom','react-hot-toast'],
+  external: ['react', 'react-dom', 'react-router-dom', 'react-hot-toast'],
 };
