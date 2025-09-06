@@ -2,6 +2,7 @@
 node_modules/
 
 scripts
+client.txt
 
 # build
 dist/
