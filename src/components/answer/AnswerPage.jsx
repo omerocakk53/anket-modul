@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import Header from "../common/Header";
 
-import ViewSelector from ".answer.componentss/ViewSelector";
+import ViewSelector from "./answerComponents/ViewSelector";
 
 export default function AnswerPage({
   answerget,
