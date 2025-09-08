@@ -3,20 +3,6 @@ node_modules/
 
 # build
 dist/
-# logs
-*.log
-
-# IDE/editor
-.vscode/
-.idea/
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Env
-.env
-.env.local
 
 # npm
 package-lock.json
