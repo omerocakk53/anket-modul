@@ -81,10 +81,8 @@ Amaç; anket oluşturma, düzenleme, paylaşma ve sonuçları yönetilebilir hal
 
 # Açıklamalar
 
-- **Colors** → Renk yönetimi ve tema bileşenleri  
 - **components** → Anket bileşenleri (SurveyCreate, SurveyPlayer, Toast, Modals vb.)  
 - **Controller** → Anket soruları ile ilgili kontrol kodları  
-- **hooks** → Özel hook’lar (`useThemeManager`)  
 - **Items** → Item görünüm dosyaları  
 - **Modal** → Anket düzenleme ekranları  
 - **pages** → Sayfa bazlı bileşenler (`SurveyList`, `SurveyPlayerWrapper`, `Survey`)  
