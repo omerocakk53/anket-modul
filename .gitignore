@@ -1,9 +1,6 @@
 # node modules
 node_modules/
 
-scripts
-client.txt
-
 # build
 dist/
 # logs
