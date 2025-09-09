@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import SurveyPlayer from "../components/SurveyPlayer/index";
+import SurveyPlayer from "./surveyplayer/index.jsx";
 
 export default function SurveyPlayerWrapper({
   fetchsurveyById,

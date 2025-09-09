@@ -4,8 +4,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { QRCodeCanvas, QRCodeSVG } from "qrcode.react";
-import SurveyCard from "../components/common/SurveyCard/index.jsx";
+import SurveyCard from "../components/survey/SurveyCard/index.jsx";
 import { IoMdClose } from "react-icons/io";
+import ConfirmDialog from "../components/confirm/ConfirmDelete.jsx";
 
 export default function AnketListele({
   allSurveys,
@@ -25,42 +26,24 @@ export default function AnketListele({
 
   const handleDelete = async (id, title) => {
     toast(
-      (t) => (
-        <div className="flex flex-col items-center p-4 rounded-lg max-w-sm">
-          <p className="text-lg font-semibold mb-4 text-primary-darktext">
-            Anketi silmek istediğinize emin misiniz?
-          </p>
-          <p className="text-sm text-primary-darktext mb-6">
-            Bu işlem geri alınamaz.
-          </p>
-          <div className="flex gap-4">
-            <button
-              onClick={async () => {
-                toast.dismiss(t.id);
-                try {
-                  await deletesurvey(id);
-                  await allanswerdelete(id);
-                  await deletesurveyshareById(id);
-                  setRefreshKey((prev) => prev + 1);
-                  toast.success(`"${title}" anketi silindi.`);
-                } catch (err) {
-                  toast.error(`Silinemedi: "${title}"`);
-                  console.error("Silme hatası:", err);
-                }
-              }}
-              className="bg-danger text-white px-4 py-2 rounded hover:bg-danger-dark transition"
-            >
-              Evet
-            </button>
-            <button
-              onClick={() => toast.dismiss(t.id)}
-              className="bg-neutral-light text-neutral-darkest px-4 py-2 rounded hover:bg-neutral-dark transition"
-            >
-              Hayır
-            </button>
-          </div>
-        </div>
-      ),
+      ConfirmDialog({
+        title: "Anketi silmek istediğinize emin misiniz?",
+        description: "Bu işlem geri alınamaz.",
+        confirmText: "Evet",
+        cancelText: "Hayır",
+        onConfirm: async () => {
+          try {
+            await deletesurvey(id);
+            await allanswerdelete(id);
+            await deletesurveyshareById(id);
+            setRefreshKey((prev) => prev + 1);
+            toast.success(`"${title}" anketi silindi.`);
+          } catch (err) {
+            toast.error(`Silinemedi: "${title}"`);
+            console.error("Silme hatası:", err);
+          }
+        },
+      }),
       {
         duration: 3000,
         closeButton: false,
@@ -69,6 +52,7 @@ export default function AnketListele({
       },
     );
   };
+
   const formatSurveyLink = (link) => {
     if (!link || typeof link !== "string") return "";
 

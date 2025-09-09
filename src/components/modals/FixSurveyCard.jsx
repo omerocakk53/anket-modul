@@ -25,18 +25,34 @@ export default function FixSurveyCard({
 
   useEffect(() => {
     if (survey) {
+      // Başlık için: sadece başta chamberName yoksa ekle
       if (!survey.title.includes(chamberName)) {
-        survey.title = chamberName + " - " + survey.title;
+        survey.title = survey.title.replace("?", chamberName);
       }
+
+      // items için
       survey.items = survey.items.map((element) => {
         if (
           element.title.includes("?") &&
           !element.title.includes(chamberName)
         ) {
-          element.title = element.title.replace("?", "");
           return {
             ...element,
-            title: chamberName + " " + element.title,
+            title: element.title.replace("?", chamberName), // ilk ? yerine koy
+          };
+        }
+        return element;
+      });
+
+      // FinishWelcomeitems için
+      survey.FinishWelcomeitems = survey.FinishWelcomeitems.map((element) => {
+        if (
+          element.title.includes("?") &&
+          !element.title.includes(chamberName)
+        ) {
+          return {
+            ...element,
+            title: element.title.replace("?", chamberName), // ilk ? yerine koy
           };
         }
         return element;

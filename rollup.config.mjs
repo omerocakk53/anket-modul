@@ -39,6 +39,7 @@ export default {
     postcss({
       inject: true,
       minimize: false,
+      modules: true,
       plugins: [autoprefixer()],
       include: ["**/node_modules/**/assets/*.css", "**/node_modules/**/*.css"],
       exclude: ["src/styles/tailwind.css"],

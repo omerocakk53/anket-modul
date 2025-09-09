@@ -10,7 +10,7 @@ import {
   FiFolder,
   FiEye,
 } from "react-icons/fi";
-import EditSurveyModal from "./EditSurveyModal";
+import EditSurveyModal from "../modals/EditSurveyModal";
 import { FaPoll } from "react-icons/fa";
 import { CiMenuKebab } from "react-icons/ci";
 import { MdOutlineFeaturedPlayList } from "react-icons/md";

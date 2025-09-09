@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import FixSurveyCard from "./FixSurveyCard";
 import toast from "react-hot-toast";
+import ConfirmDelete from "../confirm/ConfirmDelete";
 
 export default function TemplateSurveyModal({
   user,
@@ -91,33 +92,13 @@ export default function TemplateSurveyModal({
 
   const handleDelete = (id) => {
     toast(
-      (t) => (
-        <div className="flex flex-col gap-3">
-          <span className="text-sm font-medium">
-            Bu şablonu silmek istediğinize emin misiniz?
-          </span>
-          <div className="flex gap-2 justify-end">
-            <button
-              onClick={() => {
-                deletesurveytemplateId(id);
-                toast.dismiss(t.id);
-                toast.success("Şablon başarıyla silindi !", { duration: 2000 });
-                // Listeyi güncelle
-                setTemplates((prev) => prev.filter((tpl) => tpl._id !== id));
-              }}
-              className="px-3 py-1 text-sm bg-danger text-white rounded-md hover:bg-red-600 transition"
-            >
-              Evet
-            </button>
-            <button
-              onClick={() => toast.dismiss(t.id)}
-              className="px-3 py-1 text-sm bg-gray-200 rounded-md hover:bg-gray-300 transition"
-            >
-              Hayır
-            </button>
-          </div>
-        </div>
-      ),
+      ConfirmDelete({
+        onConfirm: () => {
+          deletesurveytemplateId(id);
+          setTemplates((prev) => prev.filter((tpl) => tpl._id !== id));
+        },
+        message: "Bu şablonu silmek istediğinize emin misiniz?",
+      }),
       { duration: 4000 },
     );
   };

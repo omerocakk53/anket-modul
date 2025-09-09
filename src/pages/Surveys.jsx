@@ -5,10 +5,10 @@ import FilterSortSearch from "../components/common/FilterSortSearch";
 import AnketListele from "./SurveyList";
 import CreateSurveyOrGroupModal from "../components/modals/CreateSurveyOrGroupModal";
 import TemplateSurveyModal from "../components/modals/TemplateSurveyModal";
-import EmptyState from "../components/Surveys/components/EmptyState";
-import useSurveys from "../components/Surveys/hooks/useSurveys";
-import { filterAndSortSurveys } from "../components/Surveys/utils/surveyFilters";
-import useSurveyActions from "../components/Surveys/hooks/useSurveyActions";
+import EmptyState from "./surveys/components/EmptyState";
+import useSurveys from "./surveys/hooks/useSurveys";
+import { filterAndSortSurveys } from "./surveys/utils/surveyFilters";
+import useSurveyActions from "./surveys/hooks/useSurveyActions";
 
 export default function Surveys({
   createSurvey,
