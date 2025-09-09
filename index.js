@@ -1,3 +1,4 @@
+import "./styles/tailwind.css"; // CSS’i JS içine göm
 // Default Exports
 export { default as Surveys } from "./src/pages/Surveys";
 export { default as SurveyPlayerWrapper } from "./src/pages/SurveyPlayerWrapper";

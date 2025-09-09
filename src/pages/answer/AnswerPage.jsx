@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { toast } from "react-hot-toast";
-import Header from "../../components/common/Header";
+import Header from "../../components/common/Header/index.jsx";
 
 import ViewSelector from "./answerComponents/ViewSelector";
 import ConfirmDialog from "../../components/confirm/ConfirmDelete";

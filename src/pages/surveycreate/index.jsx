@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 
-import Header from "../../components/common/Header";
+import Header from "../../components/common/Header/index.jsx";
 import QuestionsGuidancePopUp from "../../components/modals/QuestionsGuidancePopUp";
 
 import SidebarPanel from "./SidebarPanel";

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../components/common/Sidebar";
-import Header from "../components/common/Header";
-import FilterSortSearch from "../components/common/FilterSortSearch";
+import Header from "../components/common/Header/index.jsx";
+import FilterSortSearch from "../components/common/FilterSortSearch/index.jsx";
 import AnketListele from "./SurveyList";
 import CreateSurveyOrGroupModal from "../components/modals/CreateSurveyOrGroupModal";
 import TemplateSurveyModal from "../components/modals/TemplateSurveyModal";

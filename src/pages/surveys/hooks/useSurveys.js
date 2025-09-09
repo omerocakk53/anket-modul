@@ -10,6 +10,22 @@ export default function useSurveys({
   const [groupedSurveysData, setGroupedSurveysData] = useState({});
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [refreshKey, setRefreshKey] = useState(0);
+  const [groupAssignment, setGroupAssignment] = useState(false);
+
+  useEffect(() => {
+    const storedSelectedGroup = localStorage.getItem("selectedGroup");
+    if (selectedGroup === null) {
+      setSelectedGroup(storedSelectedGroup);
+      setGroupAssignment(true);
+    } else if (selectedGroup !== storedSelectedGroup) {
+      localStorage.setItem("selectedGroup", selectedGroup);
+      setGroupAssignment(false);
+    } else {
+      toast("Seçili Klasör " + selectedGroup);
+      setGroupAssignment(false);
+    }
+  }, [selectedGroup, setSelectedGroup]);
+
   useEffect(() => {
     if (!user || Object.keys(user).length === 0) return;
     const loadSurveys = async () => {
@@ -36,7 +52,10 @@ export default function useSurveys({
           (name) => name !== "Geçersiz Klasör Adı",
         );
         if (!selectedGroup || !validGroups.includes(selectedGroup)) {
-          setSelectedGroup(validGroups.length > 0 ? validGroups[0] : null);
+          setSelectedGroup(
+            validGroups.length > 0 && groupAssignment ? validGroups[0] : null,
+          );
+          setGroupAssignment(false);
         }
       } catch (error) {
         setAllSurveys([]);
