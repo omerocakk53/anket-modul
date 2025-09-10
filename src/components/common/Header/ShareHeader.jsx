@@ -26,11 +26,11 @@ export default function ShareHeader({ surveyData, onBackToMain }) {
               <FiArrowLeft size={16} />
             </button>
             <h2 className="text-base sm:text-lg font-medium text-neutral-800 truncate max-w-[80%]">
-              {surveyData.title}
+              {surveyData?.title}
             </h2>
           </div>
           <p className="text-sm text-neutral-600 truncate">
-            {surveyData.description || "Açıklama Yok"}
+            {surveyData?.description || "Açıklama Yok"}
           </p>
         </div>
 
@@ -38,21 +38,23 @@ export default function ShareHeader({ surveyData, onBackToMain }) {
         <div className="flex gap-2 overflow-x-auto text-xs pb-1">
           <Tag
             icon={<FiFolder size={14} />}
-            text={surveyData.group || "Belirtilmemiş"}
+            text={surveyData?.group || "Belirtilmemiş"}
           />
           <Tag
             icon={<FiCalendar size={14} />}
-            text={new Date(surveyData.createdAt).toLocaleDateString("tr-TR")}
+            text={new Date(surveyData?.createdAt).toLocaleDateString("tr-TR")}
           />
           <Tag
             icon={<FiEdit size={14} />}
-            text={new Date(surveyData.lastModified).toLocaleDateString("tr-TR")}
+            text={new Date(surveyData?.lastModified).toLocaleDateString(
+              "tr-TR",
+            )}
           />
           <Tag
             icon={<MdOutlineFeaturedPlayList size={14} />}
-            text={surveyData.surveyType || "Anket Tipi Yok"}
+            text={surveyData?.surveyType || "Anket Tipi Yok"}
           />
-          <StatusTag active={surveyData.active} />
+          <StatusTag active={surveyData?.active} />
         </div>
       </div>
     </header>

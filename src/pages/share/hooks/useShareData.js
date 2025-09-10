@@ -1,75 +1,106 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 
 export default function useShareData({
   surveyId,
   fetchsurveyById,
   getsurveyshare,
   savesurveyshare,
+  uploadImage,
 }) {
   const [survey, setSurvey] = useState({});
-  const [shareData, setShareData] = useState({});
+  const [shareData, setShareData] = useState({
+    title: "",
+    description: "",
+    image: "",
+  });
+  const [pendingImage, setPendingImage] = useState(null);
   const fileInputRef = useRef(null);
-  const BASE_URL = "http://localhost:3000";
+  const BASE_URL = window.location.origin;
 
+  // 📌 Survey ve mevcut shareData yükle
   useEffect(() => {
     const fetchData = async () => {
+      if (!surveyId) return;
       try {
         const surveyRes = await fetchsurveyById(surveyId);
         setSurvey(surveyRes);
 
-        let shareRes;
+        let shareRes = null;
         try {
           shareRes = await getsurveyshare(surveyId);
-        } catch (error) {
+        } catch {
           shareRes = null;
         }
-
         setShareData({
           title: shareRes?.title || surveyRes.title || "",
           description: shareRes?.description || surveyRes.description || "",
-          image: shareRes?.image || "",
+          image: shareRes?.image || {},
         });
       } catch (err) {
-        console.error("Veri getirilemedi:", err);
+        return err;
       }
     };
-    fetchData();
-  }, [surveyId]);
 
+    fetchData();
+  }, [surveyId, fetchsurveyById, getsurveyshare]);
+
+  // 📌 Form değişiklikleri
   const handleChange = (e) => {
     const { name, value } = e.target;
     setShareData((prev) => ({ ...prev, [name]: value }));
   };
 
+  // 📌 Görsel seçildiğinde pendingImage’e koy
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    if (!file) return;
-    setShareData((prev) => ({ ...prev, image: file }));
+    if (file) setPendingImage(file);
   };
 
-  const handleAutoSave = async () => {
-    const formData = new FormData();
-    formData.append("surveyId", surveyId);
-    formData.append("title", shareData.title ? shareData.title : survey.title);
-    formData.append(
-      "description",
-      shareData.description ? shareData.description : survey.description,
-    );
-    if (shareData?.image) formData.append("image", shareData.image);
-
+  // 📌 Görsel yükleme → sadece state güncelle
+  const saveImage = useCallback(async () => {
+    if (!pendingImage) return;
     try {
-      await savesurveyshare(formData);
+      const result = await uploadImage(pendingImage);
+      const filePath = result?.data;
+      if (filePath) {
+        setShareData((prev) => ({ ...prev, image: filePath }));
+      }
     } catch (err) {
-      console.error("Paylaşım kaydedilemedi", err);
+      return err;
+    } finally {
+      setPendingImage(null);
     }
-  };
+  }, [pendingImage, uploadImage]);
 
+  // 📌 ShareData kaydet (title, description, image)
+  const handleAutoSave = useCallback(async () => {
+    try {
+      if (!surveyId) return;
+      await savesurveyshare({ surveyId, ...shareData });
+    } catch (err) {
+      return err;
+    }
+  }, [surveyId, shareData, savesurveyshare]);
+
+  // 📌 Title / Description değişince autosave (debounce)
   useEffect(() => {
     const timeout = setTimeout(() => {
       handleAutoSave();
     }, 1000);
     return () => clearTimeout(timeout);
-  }, [shareData]);
+  }, [shareData.title, shareData.description, handleAutoSave]);
+
+  // 📌 Görsel değişince autosave
+  useEffect(() => {
+    if (shareData.image) {
+      handleAutoSave();
+    }
+  }, [shareData.image, handleAutoSave]);
+
+  // 📌 pendingImage değiştiğinde upload başlat
+  useEffect(() => {
+    saveImage();
+  }, [pendingImage, saveImage]);
 
   return {
     survey,

@@ -35,6 +35,7 @@ export default function RightPanel({
   updatesurvey,
   surveyId,
   setShouldReload,
+  Image,
 }) {
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
@@ -194,6 +195,7 @@ export default function RightPanel({
               SetEdit={setEdit}
               Edit={edit}
               SurveyType={surveyType}
+              Image={(image) => Image(image)}
             />
           );
         },

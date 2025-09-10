@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React } from "react";
 import WelcomeTextSettingsModel from "../modal/WelcomeTextSettingsModel";
 import { toast } from "react-hot-toast";
 
@@ -10,59 +10,60 @@ function WelcomeTextController({
   setItems,
   Edit,
   SetEdit,
+  Image, // async upload fonksiyonu
 }) {
-  const [WelcomeText, setWelcomeText] = useState({});
-  const [ImageData, setImageData] = useState({});
+  const handleSave = async (WelcomeTextData, ImageData) => {
+    if (!WelcomeTextData?.title) {
+      toast.error("Boş değerler var");
+      return;
+    }
 
-  useEffect(() => {
-    if (!Item.id) return;
+    // Mevcut imageName veya upload sonucu
+    let uploadedPath = Item.imageName || "";
 
-    console.log(WelcomeText);
-    console.log(ImageData);
+    if (ImageData) {
+      try {
+        uploadedPath = await Image(ImageData); // Dosya upload bekleniyor
+      } catch (err) {
+        toast.error("Görsel yüklenemedi");
+        return err;
+      }
+    }
 
     const updatedItem = {
       ...Item,
-      title: WelcomeText.title,
-      helpText: WelcomeText.helpText,
+      ...WelcomeTextData,
+      imageName: uploadedPath,
     };
 
-    if (!WelcomeText?.title) {
-      toast.error("boş değerler var");
-    }
+    const index = items.findIndex((i) => i.id === Item.id);
 
-    if (Edit) {
-      const updatedItems = items.map((i) =>
-        i.id === Item.id ? updatedItem : i,
-      );
+    if (index >= 0) {
+      // Var olanı güncelle
+      const updatedItems = [...items];
+      updatedItems[index] = updatedItem;
       setItems(updatedItems);
       toast.success("Bileşen güncellendi");
       SetEdit(false);
     } else {
-      const newItem = {
-        ...updatedItem,
-        id: Item.id,
-      };
-      setItems([...items, newItem]);
+      // Yeni ekle
+      setItems([...items, updatedItem]);
       toast.success("Yeni bileşen eklendi");
     }
+
     setControllerOpen(false);
-  }, [WelcomeText, ImageData]);
+  };
 
   return (
-    <>
-      <WelcomeTextSettingsModel
-        isOpen={isOpen}
-        onClose={() => {
-          setControllerOpen(false);
-          SetEdit(false);
-        }}
-        onSave={(WelcomeTextData, ImageData) => {
-          setWelcomeText(WelcomeTextData);
-          setImageData(ImageData);
-        }}
-        initialData={Edit ? Item : {}}
-      />
-    </>
+    <WelcomeTextSettingsModel
+      isOpen={isOpen}
+      onClose={() => {
+        setControllerOpen(false);
+        SetEdit(false);
+      }}
+      onSave={handleSave}
+      initialData={Edit ? Item : {}}
+    />
   );
 }
 

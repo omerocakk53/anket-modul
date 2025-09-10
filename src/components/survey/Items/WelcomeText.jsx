@@ -3,11 +3,7 @@ export default function WelcomeText({ title, helpText, image }) {
     <div className="sticky t p-4 rounded text-center gap-2 text-primary-text">
       {image && (
         <div className="mb-4">
-          <img
-            src={URL.createObjectURL(image)}
-            alt="Image"
-            className="w-[85%] h-auto mb-4"
-          />
+          <img src={image} alt="Image" className="w-[85%] h-auto mb-4" />
         </div>
       )}
       {title ? (

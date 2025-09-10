@@ -6,7 +6,12 @@ import ShareSettings from "./components/ShareSettings";
 import OpenGraphPreview from "./components/OpenGraphPreview";
 import SocialShareButtons from "./components/SocialShareButtons";
 
-function Share({ fetchsurveyById, savesurveyshare, getsurveyshare }) {
+function Share({
+  fetchsurveyById,
+  savesurveyshare,
+  getsurveyshare,
+  uploadImage,
+}) {
   const { surveyId } = useParams();
   const navigate = useNavigate();
 
@@ -22,9 +27,10 @@ function Share({ fetchsurveyById, savesurveyshare, getsurveyshare }) {
     fetchsurveyById,
     getsurveyshare,
     savesurveyshare,
+    uploadImage,
   });
 
-  const surveyLink = `${BASE_URL}/p/${survey.link}`;
+  const surveyLink = `${BASE_URL}/p/${survey?.link}`;
 
   const goBack = () => navigate("/anket", { replace: true });
 

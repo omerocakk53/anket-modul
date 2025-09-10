@@ -49,9 +49,9 @@ function ShareSettings({
           className="mt-2 flex items-center justify-center h-36 sm:h-40 border-2 border-dashed rounded-xl cursor-pointer hover:border-blue-400 hover:text-blue-500 transition text-center px-2"
         >
           <span className="text-sm text-gray-500">
-            {shareData.image === ""
+            {shareData.image === undefined
               ? "Yeni görsel seç"
-              : "Görsel seçmek için tıklayın"}
+              : "Görsel " + shareData.image?.filename}
           </span>
           <input
             type="file"

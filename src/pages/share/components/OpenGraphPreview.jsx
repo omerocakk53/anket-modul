@@ -1,16 +1,30 @@
 import React from "react";
 
 function OpenGraphPreview({ shareData, BASE_URL, surveyLink }) {
+  const getImageSrc = () => {
+    if (!shareData?.image) return `${BASE_URL}/uploads/fixShareimg.png`;
+
+    // Eğer file bir string ise direkt URL oluştur
+    if (typeof shareData.image.file === "string") {
+      return `${BASE_URL}${shareData.image.file}`;
+    }
+
+    // Eğer file bir File/Blob ise createObjectURL ile göster
+    if (
+      shareData.image.file instanceof File ||
+      shareData.image.file instanceof Blob
+    ) {
+      return URL.createObjectURL(shareData.image.file);
+    }
+
+    // Diğer durumlarda fallback
+    return `${BASE_URL}/uploads/fixShareimg.png`;
+  };
+
   return (
     <div className="rounded-xl overflow-hidden border bg-white">
       <img
-        src={
-          shareData?.image
-            ? typeof shareData.image === "string"
-              ? `${BASE_URL}${shareData.image}`
-              : URL.createObjectURL(shareData.image)
-            : `${BASE_URL}/uploads/fixShareimg.png`
-        }
+        src={getImageSrc()}
         alt="OpenGraph"
         className="w-full h-40 sm:h-48 object-cover"
       />

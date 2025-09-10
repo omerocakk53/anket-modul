@@ -12,12 +12,14 @@ import useSurveyLoader from "./hooks/useSurveyLoader";
 import useDragAndDrop from "./hooks/useDragAndDrop";
 import useGuidance from "./hooks/useGuidance";
 import controllerList from "./utils/controllerList";
+import ImageUpload from "./utils/ImageUpload.js";
 
 function SurveyCreate({
   updatesurvey,
   fetchsurveyById,
   updatesurveyfeature,
   fetchsurveychamberById,
+  uploadImage,
 }) {
   const navigate = useNavigate();
   const { surveyId } = useParams();
@@ -58,7 +60,7 @@ function SurveyCreate({
     setVariables,
     updatesurvey,
     surveyId,
-    setShouldReload,
+    setShouldReload
   );
 
   const [isOpen, setIsOpen] = useState([false, ""]);
@@ -73,7 +75,7 @@ function SurveyCreate({
     const id = item.id;
 
     const hasWelcome = finishWelcomeItems?.find((i) =>
-      i.id.includes("welcome"),
+      i.id.includes("welcome")
     );
     const hasFinish = finishWelcomeItems?.find((i) => i.id.includes("finish"));
 
@@ -110,7 +112,9 @@ function SurveyCreate({
       />
 
       <div
-        className={`flex justify-between gap-4 w-full pl-2 ${survey.active ? "blur-sm" : ""}`}
+        className={`flex justify-between gap-4 w-full pl-2 ${
+          survey.active ? "blur-sm" : ""
+        }`}
       >
         <SidebarPanel
           surveyActive={survey.active}
@@ -136,11 +140,12 @@ function SurveyCreate({
           controllers={controllerList(
             setItems,
             setFinishWelcomeItems,
-            finishWelcomeItems,
+            finishWelcomeItems
           )}
           updatesurvey={updatesurvey}
           surveyId={surveyId}
           setShouldReload={setShouldReload}
+          Image={(file) => ImageUpload(file, uploadImage)}
         />
       </div>
 
