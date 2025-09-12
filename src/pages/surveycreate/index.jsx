@@ -60,7 +60,7 @@ function SurveyCreate({
     setVariables,
     updatesurvey,
     surveyId,
-    setShouldReload
+    setShouldReload,
   );
 
   const [isOpen, setIsOpen] = useState([false, ""]);
@@ -75,7 +75,7 @@ function SurveyCreate({
     const id = item.id;
 
     const hasWelcome = finishWelcomeItems?.find((i) =>
-      i.id.includes("welcome")
+      i.id.includes("welcome"),
     );
     const hasFinish = finishWelcomeItems?.find((i) => i.id.includes("finish"));
 
@@ -140,7 +140,7 @@ function SurveyCreate({
           controllers={controllerList(
             setItems,
             setFinishWelcomeItems,
-            finishWelcomeItems
+            finishWelcomeItems,
           )}
           updatesurvey={updatesurvey}
           surveyId={surveyId}

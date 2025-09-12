@@ -10,24 +10,35 @@ function WelcomeTextController({
   setItems,
   Edit,
   SetEdit,
-  Image, // async upload fonksiyonu
+  Image,
 }) {
-  const handleSave = async (WelcomeTextData, ImageData) => {
+  const handleSave = async (WelcomeTextData, image) => {
     if (!WelcomeTextData?.title) {
       toast.error("Boş değerler var");
       return;
     }
 
     // Mevcut imageName veya upload sonucu
-    let uploadedPath = Item.imageName || "";
+    let uploadedPath = null;
 
-    if (ImageData) {
+    // imageName string mi object mi kontrol et
+    const newImageName = typeof image === "string" ? image : image?.name; // obje ise name alanını al
+
+    let oldImageName = "";
+    if (Array.isArray(items) && items.length > 0) {
+      oldImageName = items[0]?.imageName?.filename || "";
+    }
+
+    // Yeni resim varsa yükle
+    if (newImageName && newImageName !== oldImageName) {
       try {
-        uploadedPath = await Image(ImageData); // Dosya upload bekleniyor
+        uploadedPath = await Image(image);
       } catch (err) {
         toast.error("Görsel yüklenemedi");
         return err;
       }
+    } else {
+      uploadedPath = items?.[0]?.imageName ?? "";
     }
 
     const updatedItem = {

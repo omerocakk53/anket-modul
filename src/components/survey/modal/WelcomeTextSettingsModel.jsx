@@ -1,7 +1,8 @@
 import { React, useState, useEffect, useRef } from "react";
 import WelcomeText from "../Items/WelcomeText";
 import ModalLayout from "../../../layouts/ModalLayout";
-
+import RichTextEditor from "../../common/RichTextEditor";
+import he from "he";
 function WelcomeTextSettingsModel({
   isOpen,
   onClose,
@@ -10,7 +11,9 @@ function WelcomeTextSettingsModel({
   initialData,
 }) {
   const [title, setTitle] = useState("");
+  const [titleStyle, setTitleStyle] = useState("");
   const [helpText, setHelpText] = useState("");
+  const [helpTextStyle, setHelpTextStyle] = useState("");
   const [image, setImage] = useState(null);
   const fileInputRef = useRef(null);
   useEffect(() => {
@@ -20,6 +23,8 @@ function WelcomeTextSettingsModel({
     setTitle(initialData?.title || "");
     setHelpText(initialData?.helpText || "");
     setImage(initialData?.imageName?.filename);
+    setTitleStyle(initialData?.titleStyle || "");
+    setHelpTextStyle(initialData?.helpTextStyle || "");
   }, [initialData]);
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -29,28 +34,33 @@ function WelcomeTextSettingsModel({
   if (!isOpen) return null;
   const leftPanel = (
     <div className="space-y-2">
-      <h2 className="text-lg font-bold">Hoşgeldiniz Metni Ayarları</h2>
+      <h2 className="text-lg font-bold">Hoşgeldin Metni Ayarları</h2>
 
       <div>
         <label className="block text-sm font-medium mb-1">Mesajınız</label>
-        <input
-          type="text"
-          className="w-full border rounded p-2"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Ankete hoş geldiniz!"
+        <RichTextEditor
+          value={he.decode(titleStyle)}
+          onChange={(html) => {
+            setTitleStyle(html); // stilli HTML
+            const tempEl = document.createElement("div");
+            tempEl.innerHTML = html;
+            setTitle(tempEl.innerText || ""); // stilsiz metin
+          }}
+          placeholder="Mesajınız"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-1">
-          Alt Mesaj (isteğe bağlı)
-        </label>
-        <input
-          type="text"
-          className="w-full border rounded p-2"
-          value={helpText}
-          onChange={(e) => setHelpText(e.target.value)}
+        <label className="block text-sm font-medium mb-1">Alt Mesaj</label>
+        <RichTextEditor
+          value={he.decode(helpTextStyle)}
+          onChange={(html) => {
+            setHelpTextStyle(html); // stilli HTML
+            const tempEl = document.createElement("div");
+            tempEl.innerHTML = html;
+            setHelpText(tempEl.innerText || ""); // stilsiz metin
+          }}
+          placeholder="Alt Mesaj"
         />
       </div>
 
@@ -86,7 +96,7 @@ function WelcomeTextSettingsModel({
         <button
           className="px-4 py-2 bg-blue-500 text-white rounded"
           onClick={() => {
-            onSave({ title, helpText }, image); // Direkt FormData gönder
+            onSave({ title, helpText, titleStyle, helpTextStyle }, image); // Direkt FormData gönder
             setTitle("");
             setHelpText("");
             setImage(null);
@@ -114,8 +124,8 @@ function WelcomeTextSettingsModel({
 
   const rightPanel = (
     <WelcomeText
-      title={title}
-      helpText={helpText}
+      title={titleStyle}
+      helpText={helpTextStyle}
       image={getImageUrl(image, initialData)}
     />
   );

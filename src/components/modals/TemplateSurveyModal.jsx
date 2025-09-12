@@ -58,7 +58,7 @@ export default function TemplateSurveyModal({
   useEffect(() => {
     const goToTemplate = async (survey) => {
       try {
-        const template = await createsurveytemplate(survey);
+        const template = await createsurveytemplate({ surveyId: survey._id });
         toast.success(template.title + " adlı anketin şablonu oluşturuldu.", {
           duration: 2000,
         });
@@ -99,7 +99,7 @@ export default function TemplateSurveyModal({
         },
         message: "Bu şablonu silmek istediğinize emin misiniz?",
       }),
-      { duration: 4000 },
+      { duration: 4000 }
     );
   };
 

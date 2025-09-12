@@ -56,7 +56,13 @@ export default function QuestionRenderer({ item, answers, onChange }) {
 
   switch (item?.label) {
     case "Hoşgeldin Sayfası":
-      return <WelcomeText {...item} image={item?.imageName.file} />;
+      return (
+        <WelcomeText
+          helpText={item?.helpTextStyle}
+          title={item?.titleStyle}
+          image={item?.imageName.file}
+        />
+      );
     case "Bitiş Sayfası":
       return <FinishText {...item} />;
     case "Kısa Metin":

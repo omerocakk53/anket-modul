@@ -1,16 +1,22 @@
+import he from "he";
 export default function WelcomeText({ title, helpText, image }) {
   return (
-    <div className="sticky t p-4 rounded text-center gap-2 text-primary-text">
+    <div className="sticky p-4 rounded gap-2 text-primary-text w-full">
       {image && (
-        <div className="mb-4">
-          <img src={image} alt="Image" className="w-[85%] h-auto mb-4" />
+        <div className="mb-6 flex justify-center">
+          <img src={image} alt="Image" className="w-2/6 h-auto" />
         </div>
       )}
       {title ? (
         <>
-          {" "}
-          <h1 className="text-5xl font-bold mb-5">{title}</h1>
-          <p className="text-3xl text-neutral">{helpText}</p>
+          <h1
+            className="leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: he.decode(title) }}
+          />
+          <p
+            className="leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: he.decode(helpText) }}
+          />
         </>
       ) : (
         <>
