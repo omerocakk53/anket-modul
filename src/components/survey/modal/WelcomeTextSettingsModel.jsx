@@ -113,7 +113,7 @@ function WelcomeTextSettingsModel({
     }
     if (initialData?.imageName) {
       // imageName string mi yoksa obje mi kontrol et
-      return `http://localhost:3000${
+      return `${window.location.origin}${
         typeof initialData.imageName === "string"
           ? initialData.imageName
           : initialData.imageName?.file || ""
