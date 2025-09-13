@@ -1,11 +1,17 @@
-export default function FinishText({ title, helpText }) {
+import he from "he";
+export default function FinishText({ titleStyle, helpTextStyle }) {
   return (
-    <div className="p-4 rounded text-center gap-2 text-primary-text">
-      {title ? (
+    <div className="sticky p-4 rounded gap-2 text-primary-text w-full">
+      {titleStyle ? (
         <>
-          {" "}
-          <h1 className="text-5xl font-bold mb-5">{title}</h1>
-          <p className="text-3xl text-neutral">{helpText}</p>
+          <h1
+            className="leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: he.decode(titleStyle) }}
+          />
+          <p
+            className="leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: he.decode(helpTextStyle) }}
+          />
         </>
       ) : (
         <>

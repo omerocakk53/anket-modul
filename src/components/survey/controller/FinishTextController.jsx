@@ -25,6 +25,8 @@ function FinishTextController({
       ...Item,
       title: FinishText.title,
       helpText: FinishText.helpText,
+      helpTextStyle: FinishText.helpTextStyle,
+      titleStyle: FinishText.titleStyle,
     };
     if (Edit) {
       const updatedItems = items.map((i) =>

@@ -22,6 +22,8 @@ function DescriptionController({
       ...Item,
       title: DescriptionData.title,
       helpText: DescriptionData.helpText,
+      helpTextStyle: DescriptionData.helpTextStyle,
+      titleStyle: DescriptionData.titleStyle,
       SurveyNumberVisible: DescriptionData.SurveyNumberVisible,
     };
     if (Edit) {

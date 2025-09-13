@@ -41,7 +41,7 @@ export default function QuestionRenderer({ item, answers, onChange }) {
   if (!item) return null;
 
   const questionItems = Object.values(answers).filter((i) =>
-    questionLabels.includes(i.label),
+    questionLabels.includes(i.label)
   );
   const questionIndex = questionItems.findIndex((i) => i.id === item.id);
   const count = questionIndex !== -1 ? questionIndex + 1 : undefined;
@@ -56,13 +56,7 @@ export default function QuestionRenderer({ item, answers, onChange }) {
 
   switch (item?.label) {
     case "Hoşgeldin Sayfası":
-      return (
-        <WelcomeText
-          helpText={item?.helpTextStyle}
-          title={item?.titleStyle}
-          image={item?.imageName.file}
-        />
-      );
+      return <WelcomeText {...item} />;
     case "Bitiş Sayfası":
       return <FinishText {...item} />;
     case "Kısa Metin":

@@ -1,24 +1,18 @@
-export default function Description({
-  title,
-  helpText,
-  count,
-  SurveyNumberVisible,
-}) {
+import he from "he";
+
+export default function Description({ titleStyle, helpTextStyle }) {
   return (
-    <div className="p-4 rounded text-center gap-2 text-primary-text">
-      {title ? (
+    <div className="sticky p-4 rounded gap-2 text-primary-text w-full">
+      {titleStyle ? (
         <>
-          {" "}
-          <h1 className="text-3xl font-bold mb-5">
-            {SurveyNumberVisible
-              ? count
-                ? title === ""
-                  ? `${count}. Soru ${title}`
-                  : `${count}. ${title}`
-                : title || null
-              : title || null}
-          </h1>
-          <p className="text-xl text-neutral">{helpText}</p>
+          <h1
+            className="leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: he.decode(titleStyle) }}
+          />
+          <p
+            className="leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: he.decode(helpTextStyle) }}
+          />
         </>
       ) : (
         <>

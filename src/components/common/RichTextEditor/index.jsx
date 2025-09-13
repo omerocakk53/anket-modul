@@ -27,7 +27,7 @@ export default function RichTextEditor({ value, onChange, placeholder }) {
         types: ["heading", "paragraph"], // bu tiplerde çalışır
       }),
     ],
-    content: he.decode(value) || "",
+    content: he.decode(value) ?? placeholder,
     editorProps: {
       attributes: {
         placeholder,

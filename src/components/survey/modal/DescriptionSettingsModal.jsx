@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Description from "../Items/Description";
 import ModalLayout from "../../../layouts/ModalLayout";
+import he from "he";
+import RichTextEditor from "../../common/RichTextEditor";
 
 function DescriptionSettingsModal({
   isOpen,
@@ -11,7 +13,9 @@ function DescriptionSettingsModal({
   count,
 }) {
   const [title, setTitle] = useState("");
+  const [titleStyle, setTitleStyle] = useState("");
   const [helpText, setHelpText] = useState("");
+  const [helpTextStyle, setHelpTextStyle] = useState("");
   const [SurveyNumberVisible, setSurveyNumberVisible] = useState(true);
   useEffect(() => {
     onChange?.({ title, helpText });
@@ -21,11 +25,15 @@ function DescriptionSettingsModal({
     if (Object.keys(initialData).length !== 0) {
       setTitle(initialData?.title);
       setHelpText(initialData?.helpText);
+      setTitleStyle(initialData?.titleStyle);
+      setHelpTextStyle(initialData?.helpTextStyle);
       setSurveyNumberVisible(initialData?.SurveyNumberVisible);
     } else {
       setHelpText("");
       setTitle("");
       setSurveyNumberVisible(true);
+      setTitleStyle("");
+      setHelpTextStyle("");
     }
   }, [initialData]);
 
@@ -35,20 +43,30 @@ function DescriptionSettingsModal({
       <h2 className="text-lg font-bold">Soru Ayarları</h2>
       <div>
         <label className="block text-sm font-medium mb-1">Başlık</label>
-        <input
-          className="w-full border rounded p-2"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+        <RichTextEditor
+          value={he.decode(titleStyle)}
+          onChange={(html) => {
+            setTitleStyle(html);
+            const tempEl = document.createElement("div");
+            tempEl.innerHTML = html;
+            setTitle(tempEl.innerText || "");
+          }}
+          placeholder="Başlık"
         />
       </div>
       <div>
         <label className="block text-sm font-medium mb-1">
           Yardım Metni (isteğe bağlı)
         </label>{" "}
-        <input
-          className="w-full border rounded p-2"
-          value={helpText}
-          onChange={(e) => setHelpText(e.target.value)}
+        <RichTextEditor
+          value={he.decode(helpTextStyle)}
+          onChange={(html) => {
+            setHelpTextStyle(html);
+            const tempEl = document.createElement("div");
+            tempEl.innerHTML = html;
+            setHelpText(tempEl.innerText || "");
+          }}
+          placeholder="Yardım Metni"
         />
       </div>
       <div className="flex items-center space-x-3 mt-2">
@@ -80,7 +98,13 @@ function DescriptionSettingsModal({
         <button
           className="px-4 py-2 bg-blue-500 text-white rounded"
           onClick={() => {
-            (onSave({ title, helpText, SurveyNumberVisible }),
+            (onSave({
+              title,
+              helpText,
+              helpTextStyle,
+              titleStyle,
+              SurveyNumberVisible,
+            }),
               setTitle(""),
               setHelpText(""));
           }}
@@ -92,12 +116,7 @@ function DescriptionSettingsModal({
   );
 
   const rightPanel = (
-    <Description
-      title={title}
-      helpText={helpText}
-      count={count}
-      SurveyNumberVisible={SurveyNumberVisible}
-    />
+    <Description titleStyle={titleStyle} helpTextStyle={helpTextStyle} />
   );
 
   return <ModalLayout leftPanel={leftPanel} rightPanel={rightPanel} />;

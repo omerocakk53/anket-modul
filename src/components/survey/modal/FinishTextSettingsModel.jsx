@@ -1,6 +1,8 @@
-import { React, useState, useEffect, useRef } from "react";
+import { React, useState, useEffect } from "react";
 import FinishText from "../Items/FinishText";
 import ModalLayout from "../../../layouts/ModalLayout";
+import RichTextEditor from "../../common/RichTextEditor";
+import he from "he";
 
 function WelcomeTextSettingsModel({
   isOpen,
@@ -10,7 +12,9 @@ function WelcomeTextSettingsModel({
   initialData,
 }) {
   const [title, setTitle] = useState("");
+  const [titleStyle, setTitleStyle] = useState("");
   const [helpText, setHelpText] = useState("");
+  const [helpTextStyle, setHelpTextStyle] = useState("");
   useEffect(() => {
     onChange?.({ title, helpText });
   }, [title, helpText]);
@@ -18,6 +22,8 @@ function WelcomeTextSettingsModel({
   useEffect(() => {
     setTitle(initialData?.title || "");
     setHelpText(initialData?.helpText || "");
+    setTitleStyle(initialData?.titleStyle || "");
+    setHelpTextStyle(initialData?.helpTextStyle || "");
   }, [initialData]);
 
   if (!isOpen) return null;
@@ -27,12 +33,15 @@ function WelcomeTextSettingsModel({
 
       <div>
         <label className="block text-sm font-medium mb-1">Mesajınız</label>
-        <input
-          type="text"
-          className="w-full border rounded p-2"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Ankete hoş geldiniz!"
+        <RichTextEditor
+          value={he.decode(titleStyle)}
+          onChange={(html) => {
+            setTitleStyle(html);
+            const tempEl = document.createElement("div");
+            tempEl.innerHTML = html;
+            setTitle(tempEl.innerText || "");
+          }}
+          placeholder="Mesajınız"
         />
       </div>
 
@@ -40,11 +49,15 @@ function WelcomeTextSettingsModel({
         <label className="block text-sm font-medium mb-1">
           Alt Mesaj (isteğe bağlı)
         </label>
-        <input
-          type="text"
-          className="w-full border rounded p-2"
-          value={helpText}
-          onChange={(e) => setHelpText(e.target.value)}
+        <RichTextEditor
+          value={he.decode(helpTextStyle)}
+          onChange={(html) => {
+            setHelpTextStyle(html);
+            const tempEl = document.createElement("div");
+            tempEl.innerHTML = html;
+            setHelpText(tempEl.innerText || "");
+          }}
+          placeholder="Alt Mesaj"
         />
       </div>
 
@@ -55,7 +68,7 @@ function WelcomeTextSettingsModel({
         <button
           className="px-4 py-2 bg-blue-500 text-white rounded"
           onClick={() => {
-            onSave({ title, helpText });
+            onSave({ title, helpText, helpTextStyle, titleStyle });
             setTitle("");
             setHelpText("");
           }}
@@ -66,7 +79,9 @@ function WelcomeTextSettingsModel({
     </div>
   );
 
-  const rightPanel = <FinishText title={title} helpText={helpText} />;
+  const rightPanel = (
+    <FinishText titleStyle={titleStyle} helpTextStyle={helpTextStyle} />
+  );
 
   return <ModalLayout leftPanel={leftPanel} rightPanel={rightPanel} />;
 }

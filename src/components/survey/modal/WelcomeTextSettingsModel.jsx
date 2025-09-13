@@ -41,10 +41,10 @@ function WelcomeTextSettingsModel({
         <RichTextEditor
           value={he.decode(titleStyle)}
           onChange={(html) => {
-            setTitleStyle(html); // stilli HTML
+            setTitleStyle(html);
             const tempEl = document.createElement("div");
             tempEl.innerHTML = html;
-            setTitle(tempEl.innerText || ""); // stilsiz metin
+            setTitle(tempEl.innerText || "");
           }}
           placeholder="Mesajınız"
         />
@@ -55,10 +55,10 @@ function WelcomeTextSettingsModel({
         <RichTextEditor
           value={he.decode(helpTextStyle)}
           onChange={(html) => {
-            setHelpTextStyle(html); // stilli HTML
+            setHelpTextStyle(html);
             const tempEl = document.createElement("div");
             tempEl.innerHTML = html;
-            setHelpText(tempEl.innerText || ""); // stilsiz metin
+            setHelpText(tempEl.innerText || "");
           }}
           placeholder="Alt Mesaj"
         />
@@ -124,8 +124,8 @@ function WelcomeTextSettingsModel({
 
   const rightPanel = (
     <WelcomeText
-      title={titleStyle}
-      helpText={helpTextStyle}
+      titleStyle={titleStyle}
+      helpTextStyle={helpTextStyle}
       image={getImageUrl(image, initialData)}
     />
   );
