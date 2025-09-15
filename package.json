@@ -1,6 +1,6 @@
 {
   "name": "@omerocakk53/anket-modul",
-  "version": "2.1.16",
+  "version": "2.1.17",
   "description": "Yeniden kullanılabilir React anket modülü",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.esm.js",
@@ -95,6 +95,7 @@
     "react-date-range": "^2.0.1",
     "react-datepicker": "^8.7.0",
     "react-icons": "^5.5.0",
+    "react-rnd": "^10.5.2",
     "react-table": "^7.8.0",
     "react-tooltip": "^5.29.1",
     "recharts": "^3.2.0",
