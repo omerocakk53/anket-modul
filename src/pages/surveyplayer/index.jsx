@@ -56,6 +56,7 @@ export default function SurveyPlayer({
       user,
       startDate,
       answersave,
+      tester,
     });
 
   // Render koşulları sadece JSX return öncesinde kontrol edilir

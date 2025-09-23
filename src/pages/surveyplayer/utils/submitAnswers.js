@@ -1,6 +1,4 @@
 import { toast } from "react-hot-toast";
-import { showSuccess } from "../../../components/successMesage/successController";
-
 export async function submitAnswers(
   answers,
   data,
@@ -29,13 +27,11 @@ export async function submitAnswers(
       surveyId,
       user.name,
       { minutes, seconds },
-      formattedAnswers,
+      formattedAnswers
     );
 
     if (response.message) {
       toast.error(response.message);
-    } else {
-      showSuccess("Anket Cevabınız Alındı");
     }
   } catch (err) {
     console.error("Cevaplar kaydedilemedi:", err);

@@ -27,6 +27,8 @@ function FinishTextController({
       helpText: FinishText.helpText,
       helpTextStyle: FinishText.helpTextStyle,
       titleStyle: FinishText.titleStyle,
+      socialLinks: FinishText.socialLinks,
+      platform: FinishText.platform,
     };
     if (Edit) {
       const updatedItems = items.map((i) =>

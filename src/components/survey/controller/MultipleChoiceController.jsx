@@ -28,6 +28,7 @@ function MultipleChoiceController({
       helpText: MultipleChoiceData.helpText,
       options: MultipleChoiceData.options,
       allowCustomOption: MultipleChoiceData.allowCustomOption,
+      allowCustomText: MultipleChoiceData.allowCustomText,
       complusory: MultipleChoiceData.complusory,
       SurveyNumberVisible: MultipleChoiceData.SurveyNumberVisible,
       HorizontalDesign: MultipleChoiceData.HorizontalDesign,

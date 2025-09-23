@@ -16,6 +16,7 @@ function MultipleChoiceSettingsModal({
   const [helpText, setHelpText] = useState("");
   const [options, setOptions] = useState([]);
   const [allowCustomOption, setAllowCustomOption] = useState(false);
+  const [allowCustomText, setAllowCustomText] = useState("Diğer...");
   const [complusory, setComplusory] = useState(true);
   const [value, setValue] = useState();
   const [SurveyNumberVisible, setSurveyNumberVisible] = useState(true);
@@ -35,6 +36,7 @@ function MultipleChoiceSettingsModal({
       setMultiselectActive(initialData?.MultiselectActive);
       setMultiSelectLimit(initialData?.MultiSelectLimit);
       setFixedOptions(initialData?.fixedOptions);
+      setAllowCustomText(initialData?.allowCustomText || "Diğer...");
     } else {
       setTitle("");
       setHelpText("");
@@ -46,6 +48,7 @@ function MultipleChoiceSettingsModal({
       setSurveyNumberVisible(true);
       setMultiSelectLimit(0);
       setFixedOptions([]);
+      setAllowCustomText("Diğer...");
     }
   }, [initialData]);
 
@@ -82,6 +85,7 @@ function MultipleChoiceSettingsModal({
       MultiselectActive,
       MultiSelectLimit,
       fixedOptions,
+      allowCustomText,
     });
     setTitle("");
     setHelpText("");
@@ -89,6 +93,7 @@ function MultipleChoiceSettingsModal({
     setFixedOptions([]);
     setAllowCustomOption(false);
     setComplusory(true);
+    setAllowCustomText("Diğer...");
   };
 
   if (!isOpen) return null;
@@ -121,39 +126,6 @@ function MultipleChoiceSettingsModal({
           onChange={(e) => setHelpText(e.target.value)}
           type="text"
         />
-      </div>
-      <div>
-        <label className="block text-sm font-medium mb-1">
-          Sabit Seçenek Ekle
-        </label>
-        <select
-          onChange={handleDropdownChange}
-          className="w-full border rounded p-2"
-        >
-          <option value="">Seçenek Seçin...</option>
-          <option value="Hepsi">Hepsi</option>
-          <option value="Hiçbiri">Hiçbiri</option>
-        </select>
-      </div>
-      <div>
-        <label className="block text-sm font-medium mb-1">
-          Sabit Seçenekler
-        </label>
-        <div>
-          {fixedOptions.map((opt, idx) => (
-            <div key={idx} className="flex items-center gap-2 mb-2">
-              <span className="flex-1">{opt}</span>
-              <button
-                type="button"
-                onClick={() => removeFixedOption(opt)}
-                className="text-red-500 hover:text-red-700"
-                title="Sabit Seçeneği Sil"
-              >
-                <FaTrash />
-              </button>
-            </div>
-          ))}
-        </div>
       </div>
       <div>
         <label className="block text-sm font-medium mb-1">Seçenekler</label>
@@ -206,27 +178,38 @@ function MultipleChoiceSettingsModal({
           />
         </button>
       </div>
-      <div className="flex items-center space-x-3">
-        <label
-          className="text-sm font-medium text-primary-dark select-none cursor-pointer"
-          onClick={() => setAllowCustomOption((prev) => !prev)}
-        >
-          Cevaplayan kişi seçenek ekleyebilsin
-        </label>
-        <button
-          type="button"
-          aria-pressed={complusory}
-          onClick={() => setAllowCustomOption((prev) => !prev)}
-          className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${
-            allowCustomOption ? "bg-primary" : "bg-neutral-light"
-          }`}
-        >
-          <div
-            className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${
-              allowCustomOption ? "translate-x-6" : "translate-x-0"
+      <div className="flex flex-col">
+        <div className="flex items-center space-x-3">
+          <label
+            className="text-sm font-medium text-primary-dark select-none cursor-pointer"
+            onClick={() => setAllowCustomOption((prev) => !prev)}
+          >
+            Cevaplayan kişi seçenek ekleyebilsin
+          </label>
+          <button
+            type="button"
+            aria-pressed={complusory}
+            onClick={() => setAllowCustomOption((prev) => !prev)}
+            className={`w-12 h-6 flex items-center rounded-full p-1 cursor-pointer ${
+              allowCustomOption ? "bg-primary" : "bg-neutral-light"
             }`}
+          >
+            <div
+              className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ${
+                allowCustomOption ? "translate-x-6" : "translate-x-0"
+              }`}
+            />
+          </button>
+        </div>
+        {allowCustomOption && (
+          <input
+            className="mt-2 border rounded p-2"
+            value={allowCustomText}
+            onChange={(e) => setAllowCustomText(e.target.value)}
+            placeholder="Özel seçenek metni"
+            type="text"
           />
-        </button>
+        )}
       </div>
       <div className="flex items-center space-x-3">
         <label
@@ -295,19 +278,56 @@ function MultipleChoiceSettingsModal({
         </button>
       </div>
       {MultiselectActive ? (
-        <div>
-          <label className="block text-sm font-medium mb-1 text-primary-dark">
-            Çoklu Seçim Sınırı
-          </label>
-          <InputNumber
-            min={0}
-            max={options.length}
-            value={MultiSelectLimit}
-            onChange={(val) => setMultiSelectLimit(val || 0)}
-            style={{ width: 120 }}
-          />
-          <p className="text-xs text-gray-500">0 ' ise sınırsız seçim</p>
-        </div>
+        <>
+          <div>
+            <label className="block text-sm font-medium mb-1 text-primary-dark">
+              Çoklu Seçim Sınırı
+            </label>
+            <InputNumber
+              min={0}
+              max={options.length}
+              value={MultiSelectLimit}
+              onChange={(val) => setMultiSelectLimit(val || 0)}
+              style={{ width: 120 }}
+            />
+            <p className="text-xs text-gray-500">0 ' ise sınırsız seçim</p>
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-1">
+              Sabit Seçenek Ekle
+            </label>
+            <select
+              onChange={handleDropdownChange}
+              className="w-full border rounded p-2"
+            >
+              <option value="">Seçenek Seçin...</option>
+              <option value="Hepsi">Hepsi</option>
+              <option value="Hiçbiri">Hiçbiri</option>
+            </select>
+          </div>
+          {fixedOptions.length > 0 && (
+            <div>
+              <label className="block text-sm font-medium mb-1">
+                Sabit Seçenekler
+              </label>
+              <div>
+                {fixedOptions.map((opt, idx) => (
+                  <div key={idx} className="flex items-center gap-2 mb-2">
+                    <span className="flex-1">{opt}</span>
+                    <button
+                      type="button"
+                      onClick={() => removeFixedOption(opt)}
+                      className="text-red-500 hover:text-red-700"
+                      title="Sabit Seçeneği Sil"
+                    >
+                      <FaTrash />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </>
       ) : (
         <></>
       )}
@@ -346,6 +366,7 @@ function MultipleChoiceSettingsModal({
       HorizontalDesign={HorizontalDesign}
       MultiselectActive={MultiselectActive}
       MultiSelectLimit={MultiSelectLimit}
+      allowCustomText={allowCustomText}
     />
   );
 

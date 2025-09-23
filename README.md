@@ -33,8 +33,6 @@ Amaç; anket oluşturma, düzenleme, paylaşma ve sonuçları yönetilebilir hal
 
    Share
 
-   SuccessMessage
-
    SurveyCreate
 
    SurveyPlayer

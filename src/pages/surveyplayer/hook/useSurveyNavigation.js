@@ -10,6 +10,7 @@ export default function useSurveyNavigation({
   user,
   startDate,
   answersave,
+  tester,
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [history, setHistory] = useState([]);
@@ -30,7 +31,7 @@ export default function useSurveyNavigation({
           cell.colId?.trim().toLowerCase() === expectedCol &&
           cell.value !== undefined &&
           cell.value !== null &&
-          cell.value !== "",
+          cell.value !== ""
       );
     }
     return false;
@@ -56,7 +57,7 @@ export default function useSurveyNavigation({
     }
     if (Array.isArray(answerValue)) {
       const cell = answerValue.find(
-        (cell) => cell.rowId === expectedRow && cell.colId === expectedCol,
+        (cell) => cell.rowId === expectedRow && cell.colId === expectedCol
       );
       return (
         cell !== undefined &&
@@ -77,7 +78,7 @@ export default function useSurveyNavigation({
     const relatedRules = variables.filter(
       (v) =>
         v.trueDestinationItemId === questionId ||
-        v.falseDestinationItemId === questionId,
+        v.falseDestinationItemId === questionId
     );
     if (relatedRules.length === 0) return true;
     for (const rule of relatedRules) {
@@ -96,7 +97,7 @@ export default function useSurveyNavigation({
             matched = answer.value.some(
               (item) =>
                 item.title === rule.expectedValue ||
-                item.url === rule.expectedValue,
+                item.url === rule.expectedValue
             );
           } else {
             matched = answer === rule.expectedValue;
@@ -115,12 +116,16 @@ export default function useSurveyNavigation({
   const goNext = async () => {
     const currentItem = data[currentIndex];
     const currentValue = answers[currentItem?.id];
-    if (isRequired(currentItem) && isEmpty(currentItem, currentValue)) {
+    if (
+      !tester &&
+      isRequired(currentItem) &&
+      isEmpty(currentItem, currentValue)
+    ) {
       throw new Error("Bu alan zorunludur.");
     }
     let nextIndex = null;
     const relatedVariables = variables.filter(
-      (v) => v.itemId === currentItem?.id,
+      (v) => v.itemId === currentItem?.id
     );
     for (const variable of relatedVariables) {
       let goToItemId = null;
@@ -132,7 +137,7 @@ export default function useSurveyNavigation({
         ) {
           conditionMatched = checkMatrixMatch(
             currentValue,
-            variable.expectedValue,
+            variable.expectedValue
           );
         } else if (
           currentItem.type === "Table" &&
@@ -140,7 +145,7 @@ export default function useSurveyNavigation({
         ) {
           conditionMatched = checkTableMatch(
             currentValue,
-            variable.expectedValue,
+            variable.expectedValue
           );
         } else {
           if (currentValue?.value && Array.isArray(currentValue.value)) {
@@ -189,7 +194,7 @@ export default function useSurveyNavigation({
           surveyId,
           user,
           startDate,
-          answersave,
+          answersave
         );
         setSubmitted(true);
       }
@@ -200,7 +205,7 @@ export default function useSurveyNavigation({
         surveyId,
         user,
         startDate,
-        answersave,
+        answersave
       );
       setSubmitted(true);
     }
