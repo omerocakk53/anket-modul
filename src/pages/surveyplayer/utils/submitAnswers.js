@@ -1,4 +1,5 @@
 import { toast } from "react-hot-toast";
+import { getOrCreateGuestName } from "./guestName";
 export async function submitAnswers(
   answers,
   data,
@@ -25,9 +26,9 @@ export async function submitAnswers(
 
     const response = await answersave(
       surveyId,
-      user.name,
+      user.name ? user.name : getOrCreateGuestName(),
       { minutes, seconds },
-      formattedAnswers
+      formattedAnswers,
     );
 
     if (response.message) {

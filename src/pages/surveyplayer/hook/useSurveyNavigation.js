@@ -194,7 +194,7 @@ export default function useSurveyNavigation({
           surveyId,
           user,
           startDate,
-          answersave
+          answersave,
         );
         setSubmitted(true);
       }
@@ -205,7 +205,7 @@ export default function useSurveyNavigation({
         surveyId,
         user,
         startDate,
-        answersave
+        answersave,
       );
       setSubmitted(true);
     }

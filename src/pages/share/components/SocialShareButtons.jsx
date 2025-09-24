@@ -12,7 +12,7 @@ function SocialShareButtons({ shareData, surveyLink }) {
     {
       name: "WhatsApp",
       color: "text-green-600",
-      url: `https://wa.me/?text=${encodeURIComponent(shareData?.title + "\n" + surveyLink)}`,
+      url: `https://wa.me/?text=${encodeURIComponent(shareData?.title + "\n" + surveyLink)}?ref=wa`,
       icon: <FaSquareWhatsapp size={32} />,
     },
     {
@@ -20,7 +20,7 @@ function SocialShareButtons({ shareData, surveyLink }) {
       color: "text-sky-500",
       url: `https://t.me/share/url?url=${encodeURIComponent(surveyLink)}&text=${encodeURIComponent(
         shareData?.title,
-      )}`,
+      )}?ref=te`,
       icon: <FaTelegram size={32} />,
     },
     {
@@ -28,19 +28,19 @@ function SocialShareButtons({ shareData, surveyLink }) {
       color: "text-black",
       url: `https://twitter.com/intent/tweet?url=${encodeURIComponent(
         surveyLink,
-      )}&text=${encodeURIComponent(shareData?.title)}`,
+      )}&text=${encodeURIComponent(shareData?.title)}?ref=tw`,
       icon: <FaSquareXTwitter size={32} />,
     },
     {
       name: "LinkedIn",
       color: "text-blue-700",
-      url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(surveyLink)}`,
+      url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(surveyLink)}?ref=li`,
       icon: <FaLinkedin size={32} />,
     },
     {
       name: "Facebook",
       color: "text-blue-600",
-      url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(surveyLink)}`,
+      url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(surveyLink)}?ref=fb`,
       icon: <FaSquareFacebook size={32} />,
     },
   ];

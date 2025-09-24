@@ -10,7 +10,8 @@ import SurveyClosed from "./SurveyClosed";
 import useSurveyBySlug from "./hook/useSurveyBySlug";
 import useSurveyNavigation from "./hook/useSurveyNavigation";
 import { submitAnswers } from "./utils/submitAnswers";
-
+import { getOrCreateGuestName } from "./utils/guestName";
+import { getVisitorInfo } from "./utils/visitor-info";
 export default function SurveyPlayer({
   slug,
   tester,
@@ -19,6 +20,7 @@ export default function SurveyPlayer({
   answersave,
   viewsCount,
   fetchallsurvey,
+  devicecount,
 }) {
   const [answers, setAnswers] = useState({});
   const [startDate] = useState(new Date());
@@ -34,11 +36,22 @@ export default function SurveyPlayer({
 
   if (!survey) return null;
 
-  // Yalnızca surveyId varsa viewsCount fonksiyonunu çağır
   useEffect(() => {
-    if (tester) return; // tester true ise çalıştırma
-    viewsCount(surveyId).catch(console.error);
-  }, [viewsCount, tester, surveyId]);
+    if (tester) return;
+    if (surveyId) {
+      viewsCount(surveyId, user?.id || getOrCreateGuestName()).catch(
+        console.error
+      );
+
+      getVisitorInfo()
+        .then((info) => {
+          // info.deviceType -> desktop | mobile | tablet
+          // Eğer farklı bir cihaz türü gelirse 'other' olarak işleyebilirsin
+          devicecount(surveyId, info.deviceType);
+        })
+        .catch(console.error);
+    }
+  }, [viewsCount, tester, surveyId, user]);
 
   const wrappedSubmitAnswers = async (...args) => {
     if (tester) return; // tester ise submit işlemi yapılmaz

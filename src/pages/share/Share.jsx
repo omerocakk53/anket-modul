@@ -30,7 +30,7 @@ function Share({
     uploadImage,
   });
 
-  const surveyLink = `${BASE_URL}/p/${survey?.link}`;
+  const surveyLink = `${BASE_URL}/p/${survey?.link}?ref=other`;
 
   const goBack = () => navigate("/anket", { replace: true });
 

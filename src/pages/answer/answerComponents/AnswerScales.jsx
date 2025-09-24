@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Pie, Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -9,7 +9,6 @@ import {
   CategoryScale,
   LinearScale,
 } from "chart.js";
-
 import { FaTable, FaChartPie, FaChartBar } from "react-icons/fa";
 
 ChartJS.register(
@@ -18,10 +17,28 @@ ChartJS.register(
   Legend,
   BarElement,
   CategoryScale,
-  LinearScale,
+  LinearScale
 );
 
-function AnswerScales({ shareData }) {
+function AnswerScales({ shareData, getsurveyshare, surveyId }) {
+  const [visitCounts, setVisitCounts] = useState([]);
+  const [deviceCounts, setDeviceCounts] = useState([]);
+
+  useEffect(() => {
+    const fetchVisitCounts = async () => {
+      if (getsurveyshare && surveyId) {
+        try {
+          const data = await getsurveyshare(surveyId);
+          setVisitCounts(data.visitCounts);
+          setDeviceCounts(data.deviceCounts);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    };
+    fetchVisitCounts();
+  }, [getsurveyshare, surveyId]);
+
   const metrics = [
     { name: "Görüntüleme sayısı", value: shareData.viewCount },
     { name: "Yanıt sayısı", value: shareData.answerCount },
@@ -29,17 +46,29 @@ function AnswerScales({ shareData }) {
     { name: "Ortalama Yanıtlama Süresi", value: shareData.averageAnswerTime },
   ];
 
-  const deviceLabels = ["Cep Telefonu", "Tablet", "Bilgisayar", "Başka"];
-  const deviceData = [20, 1, 10, 20];
-
-  const distributionLabels = [
-    "Twitter",
-    "WhatsApp",
-    "Telegram",
-    "Linkedin",
-    "Başka",
+  // --- Cihaz verileri (şimdilik örnek) ---
+  const deviceLabels = [
+    { label: "Cep Telefonu", ref: "mobile" },
+    { label: "Tablet", ref: "tablet" },
+    { label: "Bilgisayar", ref: "desktop" },
+    { label: "Başka", ref: "other" },
   ];
-  const distributionData = [5, 20, 5, 1, 30];
+  const deviceData = deviceLabels.map((d) => deviceCounts?.[d.ref] ?? 0);
+
+  // --- Dağıtım kanalları ---
+  const distributionLabels = [
+    { label: "Twitter", ref: "tw" },
+    { label: "WhatsApp", ref: "wa" },
+    { label: "Telegram", ref: "tg" },
+    { label: "LinkedIn", ref: "li" },
+    { label: "Facebook", ref: "fb" },
+    { label: "Başka", ref: "other" },
+  ];
+
+  // visitCounts objesini diziye dönüştür
+  const distributionValues = distributionLabels.map(
+    (d) => visitCounts?.[d.ref] ?? 0
+  );
 
   const [deviceView, setDeviceView] = useState("pie");
   const [distributionView, setDistributionView] = useState("pie");
@@ -47,22 +76,12 @@ function AnswerScales({ shareData }) {
   const chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        position: "bottom",
-      },
-    },
+    plugins: { legend: { position: "bottom" } },
     scales: {
-      y: {
-        beginAtZero: true,
-        ticks: {
-          stepSize: 10,
-        },
-      },
+      y: { beginAtZero: true, ticks: { stepSize: 10 } },
     },
   };
 
-  // chart utils
   const chartColors = [
     "rgba(54, 162, 235, 0.6)",
     "rgba(255, 206, 86, 0.6)",
@@ -71,63 +90,46 @@ function AnswerScales({ shareData }) {
     "rgba(153, 102, 255, 0.6)",
     "rgba(255, 159, 64, 0.6)",
   ];
-
   const chartBorderColors = chartColors.map((c) => c.replace("0.6", "1"));
 
   /**
    * Dinamik ChartJS data oluşturucu
-   * @param {Array} labels - grafik etiketleri
-   * @param {Array} data - grafik verileri
-   * @param {string} type - "pie" | "bar"
+   * @param {Array} labels - string veya {label} objesi
+   * @param {Array<number>} values - sayısal değerler
+   * @param {"pie"|"bar"} type
    */
-  const generateChartData = (labels, data, type) => {
-    if (type === "pie") {
-      // Pie için tek dataset gerekir
-      return {
-        labels,
-        datasets: [
-          {
-            data,
-            backgroundColor: chartColors.slice(0, labels.length),
-            borderColor: chartBorderColors.slice(0, labels.length),
-            borderWidth: 1,
-          },
-        ],
-      };
-    }
+  const generateChartData = (labels, values, type) => {
+    const labelStrings = labels.map((l) =>
+      typeof l === "string" ? l : l.label
+    );
+    const dataset = {
+      data: values,
+      backgroundColor: chartColors.slice(0, labels.length),
+      borderColor: chartBorderColors.slice(0, labels.length),
+      borderWidth: 1,
+    };
 
-    // Bar için her label tek bir dataset olabilir
+    if (type === "pie") {
+      return { labels: labelStrings, datasets: [dataset] };
+    }
     return {
-      labels,
-      datasets: [
-        {
-          label: "Değerler",
-          data,
-          backgroundColor: chartColors.slice(0, labels.length),
-          borderColor: chartBorderColors.slice(0, labels.length),
-          borderWidth: 1,
-        },
-      ],
+      labels: labelStrings,
+      datasets: [{ ...dataset, label: "Değerler" }],
     };
   };
 
-  const renderChartView = (type, labels, data) => {
-    const chartData = generateChartData(labels, data, type);
+  const renderChartView = (type, labels, values, isDistribution = false) => {
+    if (type === "bar" || type === "pie") {
+      const chartData = generateChartData(labels, values, type);
+      const ChartComponent = type === "bar" ? Bar : Pie;
+      return (
+        <div className="w-full h-[300px]">
+          <ChartComponent data={chartData} options={chartOptions} />
+        </div>
+      );
+    }
 
-    if (type === "bar") {
-      return (
-        <div className="w-full h-[300px]">
-          <Bar data={chartData} options={chartOptions} />
-        </div>
-      );
-    }
-    if (type === "pie") {
-      return (
-        <div className="w-full h-[300px]">
-          <Pie data={chartData} options={chartOptions} />
-        </div>
-      );
-    }
+    // --- Tablo görünümü ---
     return (
       <table className="w-full text-sm border border-gray-200 rounded overflow-hidden">
         <thead className="bg-gray-100">
@@ -137,10 +139,14 @@ function AnswerScales({ shareData }) {
           </tr>
         </thead>
         <tbody>
-          {labels.map((label, i) => (
+          {labels.map((lb, i) => (
             <tr key={i} className="hover:bg-gray-50">
-              <td className="px-3 py-2 border">{label}</td>
-              <td className="px-3 py-2 border">{data[i]}</td>
+              <td className="px-3 py-2 border">
+                {typeof lb === "string" ? lb : lb.label}
+              </td>
+              <td className="px-3 py-2 border">
+                {isDistribution ? visitCounts?.[lb.ref] ?? 0 : values[i]}
+              </td>
             </tr>
           ))}
         </tbody>
@@ -150,6 +156,7 @@ function AnswerScales({ shareData }) {
 
   return (
     <div className="p-6 flex flex-col items-center gap-8 w-full max-w-6xl mx-auto">
+      {/* --- Üst metrik kartları --- */}
       <ul className="grid grid-cols-2 md:grid-cols-4 gap-6 w-full bg-white shadow p-6 rounded-xl border">
         {metrics.map((metric, i) => (
           <li key={i} className="text-center">
@@ -160,7 +167,9 @@ function AnswerScales({ shareData }) {
           </li>
         ))}
       </ul>
+
       <div className="flex flex-col md:flex-row gap-3 w-full">
+        {/* --- Cihazlar --- */}
         <div className="w-full max-w-2xl bg-white shadow rounded-xl p-6">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-semibold text-gray-800">Cihazlar</h2>
@@ -187,6 +196,8 @@ function AnswerScales({ shareData }) {
           </div>
           {renderChartView(deviceView, deviceLabels, deviceData)}
         </div>
+
+        {/* --- Dağıtım Ağları --- */}
         <div className="w-full max-w-2xl bg-white shadow rounded-xl p-6">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-semibold text-gray-800">
@@ -216,7 +227,8 @@ function AnswerScales({ shareData }) {
           {renderChartView(
             distributionView,
             distributionLabels,
-            distributionData,
+            distributionValues,
+            true,
           )}
         </div>
       </div>

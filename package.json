@@ -87,6 +87,7 @@
     "glob": "^11.0.3",
     "glob-promise": "^6.0.7",
     "he": "^1.2.0",
+    "mobile-detect": "^1.4.5",
     "qrcode.react": "^4.2.0",
     "rc-input-number": "^9.5.0",
     "rc-slider": "^11.1.8",

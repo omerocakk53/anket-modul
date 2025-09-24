@@ -8,12 +8,13 @@ import AnswerScales from "./AnswerScales";
 import TableWrapper from "./AnswerTableComponent/TableWrapper";
 import AnswerComparison from "./AnswerComparison";
 import { FiAlertCircle } from "react-icons/fi";
-const ViewSelector = ({ survey, answers, handleDelete }) => {
+const ViewSelector = ({ survey, answers, handleDelete, getsurveyshare }) => {
   const [viewType, setViewType] = useState("scales");
 
   const handleViewChange = (newViewType) => {
     setViewType(newViewType);
   };
+
   const NoAnswers = () => (
     <div className="max-w-md mx-auto mt-12 p-6 bg-white rounded-xl shadow-lg flex items-center space-x-6">
       <div className="flex-shrink-0 rounded-full p-4 relative">
@@ -53,7 +54,11 @@ const ViewSelector = ({ survey, answers, handleDelete }) => {
       <div className="flex p-4 gap-4 mb-4">
         <button
           onClick={() => handleViewChange("scales")}
-          className={`px-4 py-2 rounded ${viewType === "scales" ? "border border-primary text-primary" : "border border-gray-200 text-gray-700 hover:bg-gray-300"}`}
+          className={`px-4 py-2 rounded ${
+            viewType === "scales"
+              ? "border border-primary text-primary"
+              : "border border-gray-200 text-gray-700 hover:bg-gray-300"
+          }`}
         >
           <div className="flex items-center gap-2">
             <PiScalesLight size={20} /> Yanıt Ölçümü
@@ -61,7 +66,11 @@ const ViewSelector = ({ survey, answers, handleDelete }) => {
         </button>
         <button
           onClick={() => handleViewChange("table")}
-          className={`px-4 py-2 rounded ${viewType === "table" ? "border border-primary text-primary" : "border border-gray-200 text-gray-700 hover:bg-gray-300"}`}
+          className={`px-4 py-2 rounded ${
+            viewType === "table"
+              ? "border border-primary text-primary"
+              : "border border-gray-200 text-gray-700 hover:bg-gray-300"
+          }`}
         >
           <div className="flex items-center gap-2">
             <GoGraph size={20} /> Sonuç Tablosu
@@ -69,7 +78,11 @@ const ViewSelector = ({ survey, answers, handleDelete }) => {
         </button>
         <button
           onClick={() => handleViewChange("graph")}
-          className={`px-4 py-2 rounded ${viewType === "graph" ? "border border-primary text-primary" : "border border-gray-200 text-gray-700 hover:bg-gray-300"}`}
+          className={`px-4 py-2 rounded ${
+            viewType === "graph"
+              ? "border border-primary text-primary"
+              : "border border-gray-200 text-gray-700 hover:bg-gray-300"
+          }`}
         >
           <div className="flex items-center gap-2">
             <TbBrandGoogleAnalytics size={20} /> Analiz
@@ -77,7 +90,11 @@ const ViewSelector = ({ survey, answers, handleDelete }) => {
         </button>
         <button
           onClick={() => handleViewChange("compare")}
-          className={`px-4 py-2 rounded ${viewType === "compare" ? "border border-primary text-primary" : "border border-gray-200 text-gray-700 hover:bg-gray-300"}`}
+          className={`px-4 py-2 rounded ${
+            viewType === "compare"
+              ? "border border-primary text-primary"
+              : "border border-gray-200 text-gray-700 hover:bg-gray-300"
+          }`}
         >
           <div className="flex items-center gap-2">
             <MdCompare size={20} /> Karşılaştırma
@@ -91,7 +108,7 @@ const ViewSelector = ({ survey, answers, handleDelete }) => {
             answerCount: answers?.length,
             answerRate:
               ((answers?.length / survey.numberViews?.length) * 100).toFixed(
-                0,
+                0
               ) == "NaN"
                 ? "0%"
                 : (
@@ -100,6 +117,8 @@ const ViewSelector = ({ survey, answers, handleDelete }) => {
                   ).toFixed(0) + "%",
             averageAnswerTime,
           }}
+          surveyId={survey._id}
+          getsurveyshare={getsurveyshare}
         />
       )}
       {viewType === "graph" &&

@@ -7,6 +7,7 @@ export default function SurveyPlayerWrapper({
   user,
   viewsCount,
   fetchallsurvey,
+  devicecount,
 }) {
   const { slug, tester } = useParams();
   return (
@@ -18,6 +19,7 @@ export default function SurveyPlayerWrapper({
       answersave={answersave}
       viewsCount={viewsCount}
       fetchallsurvey={fetchallsurvey}
+      devicecount={devicecount}
     />
   );
 }

@@ -11,6 +11,7 @@ export default function AnswerPage({
   answerget,
   fetchsurveyById,
   answerdelete,
+  getsurveyshare,
 }) {
   const { surveyId } = useParams();
   const [answers, setAnswers] = useState([]);
@@ -70,6 +71,7 @@ export default function AnswerPage({
         survey={survey}
         answers={answers}
         handleDelete={handleDelete}
+        getsurveyshare={getsurveyshare}
       />
     </>
   );
